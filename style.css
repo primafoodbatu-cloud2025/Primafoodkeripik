@@ -1,0 +1,252 @@
+/* ========================================= */
+/* 1. VARIABEL & RESET DASAR */
+/* ========================================= */
+:root {
+    /* Warna Brand Rilldelish - Anda bisa ganti sesuai logo */
+    --color-primary: #4CAF50; /* Hijau Sayur/Segar */
+    --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
+    --color-cta: #ff6347; /* Merah Muda/Salmon (Action) */
+    --color-text: #333333;
+    --color-bg-light: #f7f7f7;
+    --color-bg-mix: #e6f7ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========================================= */
+/* 2. ELEMEN UMUM (Tombol & Judul) */
+/* ========================================= */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-secondary);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.cta-button {
+    background-color: var(--color-cta);
+    color: white !important; /* !important untuk menimpa inline style */
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: #e55337; /* Sedikit lebih gelap */
+    transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* 3. HEADER & HERO SECTION */
+/* ========================================= */
+.hero-section {
+    background-color: var(--color-bg-light); 
+    /* Tambahkan background image keripik */
+    /* background-image: url('hero-bg.jpg'); */
+    background-size: cover;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: var(--color-primary);
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hero-section h2 {
+    color: var(--color-text);
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* ========================================= */
+/* 4. MASALAH & SOLUSI */
+/* ========================================= */
+.problem-solution {
+    padding: 60px 0;
+    background-color: white;
+    text-align: center;
+}
+
+.problem-solution h3 {
+    margin-top: 20px;
+    font-size: 1.8em;
+}
+
+.problem-solution .solusi-rilldelish {
+    color: var(--color-primary);
+}
+
+/* ========================================= */
+/* 5. DUKUNGAN PENELITIAN ILMIAH */
+/* ========================================= */
+.research-proof {
+    padding: 60px 0;
+    background-color: var(--color-bg-light);
+}
+
+.research-proof > .container > div {
+    display: flex;
+    gap: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+.benefit-card {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-card h4 {
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+}
+
+/* ========================================= */
+/* 6. SKEMA PAKET MIX (RITEL) */
+/* ========================================= */
+.package-mix {
+    padding: 80px 0;
+    background-color: var(--color-bg-mix);
+}
+
+.package-mix .container > div {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.mix-card {
+    width: 30%; /* Untuk desktop view */
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+.mix-card:hover {
+    transform: translateY(-5px);
+}
+
+.mix-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.mix-card p:first-of-type { /* Harga Jual */
+    font-size: 2em;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+/* Promo Khusus Semua Paket */
+.promo-spesial {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #fffacd;
+    border-radius: 10px;
+    border: 2px dashed var(--color-secondary);
+}
+
+/* ========================================= */
+/* 7. SKEMA DISKON GROSIR (BULK ORDER) */
+/* ========================================= */
+.bulk-order {
+    padding: 60px 0;
+    background-color: white;
+}
+
+.bulk-order table {
+    width: 70%;
+    margin: 0 auto 30px auto;
+}
+
+.bulk-order th, .bulk-order td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.bulk-order th {
+    background-color: #f0f0f0;
+    color: var(--color-text);
+}
+
+/* ========================================= */
+/* 8. FOOTER */
+/* ========================================= */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--color-cta);
+    text-decoration: none;
+}
+
+/* ========================================= */
+/* 9. MEDIA QUERIES (RESPONSIVITAS) */
+/* ========================================= */
+@media (max-width: 900px) {
+    .research-proof > .container > div,
+    .package-mix .container > div {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mix-card {
+        width: 100%;
+    }
+
+    .bulk-order table {
+        width: 100%;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+
+    .cta-button {
+        padding: 12px 20px;
+    }
+}
