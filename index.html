@@ -233,6 +233,7 @@
     </footer>
 
     <script>
+        // --- 1. Fungsi Pengiriman Formulir WhatsApp ---
         document.getElementById('whatsappForm').addEventListener('submit', function(event) {
             // Mencegah formulir terkirim secara tradisional
             event.preventDefault();
@@ -265,6 +266,38 @@ Mohon diproses segera. Terima kasih!
             
             // 6. Arahkan pengguna ke link WhatsApp
             window.open(whatsappUrl, '_blank');
+        });
+
+
+        // --- 2. Fungsionalitas Filtering Katalog Satuan ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const productLists = document.querySelectorAll('.product-list');
+        
+            // Memastikan hanya list Sayur yang tampil saat load awal
+            const buahList = document.getElementById('buah-list');
+            if (buahList) {
+                buahList.style.display = 'none';
+            }
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-category');
+        
+                    // 1. Update button active state
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+        
+                    // 2. Show/Hide product lists
+                    productLists.forEach(list => {
+                        if (list.id === targetId + '-list') { // Perbaikan: Cek ID yang tepat
+                            list.style.display = 'block';
+                        } else {
+                            list.style.display = 'none';
+                        }
+                    });
+                });
+            });
         });
     </script>
 </body>
