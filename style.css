@@ -333,26 +333,42 @@ footer a {
 }
 
 /* ========================================= */
-/* 9.1 FORM PENDAFTARAN (ORDER CEPAT) - REVISI STYLING INPUT */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
     background-color: #fcebeb; 
 }
 
-/* Menggabungkan semua styling untuk input, textarea, dan select */
+/* Pastikan setiap grup input ada jarak */
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Aturan untuk SEMUA input, select, dan textarea */
 .contact-form .form-group input,
 .contact-form .form-group select,
 .contact-form .form-group textarea {
-    width: 100%; /* Pastikan semua elemen input/textarea memenuhi lebar 100% */
+    width: 100%; /* MEMBUAT SEMUA ELEMEN SAMA LEBAR */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s;
-    font-family: 'Poppins', sans-serif; /* Pastikan font konsisten */
-    resize: vertical; /* Hanya izinkan resize vertikal untuk textarea */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Tinggi Khusus Kolom Alamat dan Keterangan */
+.contact-form textarea {
+    height: 80px; /* Tinggi seragam untuk kolom teks panjang */
+    resize: vertical; /* Hanya izinkan resize vertikal */
+}
+
+/* Tinggi Khusus Kolom Jumlah Pesanan (Mengembalikan ke lebar penuh) */
+.contact-form input[type="number"] {
+    max-width: 100%; /* Memastikan kembali lebar penuh setelah kita hapus batasan 100px */
+    text-align: left;
 }
 
 /* Styling fokus */
@@ -361,10 +377,4 @@ footer a {
 .contact-form .form-group textarea:focus {
     border-color: var(--color-cta); 
     outline: none;
-}
-
-/* Styling Khusus untuk Nomor Input (Jumlah Pesanan) */
-.contact-form .form-group input[type="number"] {
-    max-width: 100px; /* Batasi lebar kolom jumlah agar tidak terlalu lebar */
-    text-align: center;
 }
