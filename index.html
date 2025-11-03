@@ -144,28 +144,28 @@
                     <p style="font-weight: bold; font-size: 1.5em;">Rp 49.900</p>
                     <p>Isi: Gedebog Pisang, Okra, Ubi Ungu, Labu Madu</p>
                     <p style="font-size: 0.9em;">*Hemat Rp 6.400 dari harga normal.</p>
-                    <a href="#" class="cta-button" style="background-color: #4CAF50;">Pesan Paket Serat</a>
+                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix Serat - Rp 49.900" style="background-color: #4CAF50;">Pesan Paket Serat</a>
                 </div>
                 <div class="mix-card" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <h3 style="color: #007bff;">PAKET MIX IMUN BOOSTER</h3>
                     <p style="font-weight: bold; font-size: 1.5em;">Rp 79.900</p>
                     <p>Isi: Strawberry, Brokoli, Wortel, Jamur Tiram</p>
                     <p style="font-size: 0.9em;">*Investasi Vitamin Harian terbaik.</p>
-                    <a href="#" class="cta-button" style="background-color: #007bff;">Pesan Paket Imun</a>
+                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix IMUN BOOSTER - Rp 79.900" style="background-color: #007bff;">Pesan Paket Imun</a>
                 </div>
                 <div class="mix-card" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <h3 style="color: #ff6347;">PAKET MIX EKSTREM</h3>
                     <p style="font-weight: bold; font-size: 1.5em;">Rp 67.900</p>
                     <p>Isi: Cabe Rawit, Bawang Merah, Paprika, Kentang Wedges</p>
                     <p style="font-size: 0.9em;">*Tantangan rasa unik, peningkat metabolisme.</p>
-                    <a href="#" class="cta-button" style="background-color: #ff6347;">Pesan Paket Ekstrem</a>
+                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix EKSTREM - Rp 67.900" style="background-color: #ff6347;">Pesan Paket Ekstrem</a>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 40px; padding: 20px; background-color: #fffacd; border-radius: 8px;">
                 <h3 style="color: #ff8c00;">PROMO SPESIAL (WAKTU TERBATAS!)</h3>
                 <p style="font-size: 1.2em; font-weight: 600;">Beli **Ketiga Paket Mix** sekaligus (Total 600gr) **Hanya Bayar Rp 190.000!**</p>
-                <a href="#" class="cta-button" style="background-color: #ff8c00;">AMBIL SEMUA PAKET (Hemat Ekstra!)</a>
+                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000" style="background-color: #ff8c00;">AMBIL SEMUA PAKET (Hemat Ekstra!)</a>
             </div>
         </div>
     </section>
@@ -358,10 +358,14 @@ Mohon diproses total biaya dan ongkirnya segera. Terima kasih!
         const formSection = document.getElementById('order-form');
 
         orderButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(event) {
+                // Mencegah link/tombol standar
+                event.preventDefault(); 
+                
                 const productName = this.getAttribute('data-product-name');
                 
                 // 1. Set nilai dropdown di formulir
+                // Cari opsi yang memiliki nilai (value) sama dengan productName
                 selectElement.value = productName;
 
                 // 2. Scroll ke bagian formulir
@@ -372,6 +376,20 @@ Mohon diproses total biaya dan ongkirnya segera. Terima kasih!
                 setTimeout(() => {
                     formSection.style.backgroundColor = '#fcebeb';
                 }, 1000); 
+            });
+        });
+        // --- 4. Fungsionalitas Tombol ORDER Mix ---
+        const mixOrderButtons = document.querySelectorAll('.mix-order-btn');
+
+        mixOrderButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                const productName = this.getAttribute('data-product-name');
+                
+                // Set nilai dropdown di formulir (Form Satuan/Mix)
+                selectElement.value = productName;
+
+                // Scroll ke bagian formulir
+                formSection.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
