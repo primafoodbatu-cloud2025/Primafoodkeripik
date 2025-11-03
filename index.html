@@ -22,7 +22,7 @@
         <div class="container">
             <img src="logo-riildelish.png" alt="Logo Rilldelish by Primafood" style="max-width: 150px; margin-bottom: 20px;">
             <h1 style="color: #4CAF50; font-size: 2.5em; margin-bottom: 10px;">
-                BERHENTI RACUNI DIRI DENGAN KRIPEK INSTAN! ☠️
+                BERHENTI RACUNI DIRI DENGAN KERIPiK INSTAN! ☠️
             </h1>
             <h2 style="color: #38761d; font-size: 1.5em; font-weight: 600;">
                 Rilldelish: Cemilan Sehat yang Berani Jujur. Lebih dari 25 Varian Sayur & Buah Asli.
@@ -174,9 +174,19 @@
                     <input type="tel" id="telepon" name="telepon" placeholder="Nomor WhatsApp (Wajib Aktif)" required 
                            style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
                 </div>
+                
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <textarea id="alamat" name="alamat" placeholder="Alamat Lengkap Pengiriman (Jalan, No. Rumah, Kecamatan, Kota/Kabupaten)" required 
+                              style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; height: 80px;"></textarea>
+                </div>
 
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <input type="number" id="jumlah" name="jumlah_pesanan" placeholder="Jumlah Pesanan (Contoh: 1, 2, atau 5)" required min="1" 
+                           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
+                </div>
+                
                 <div class="form-group" style="margin-bottom: 30px;">
-    <select id="paket" name="paket_pilihan" required
+                    <select id="paket" name="paket_pilihan" required
             style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
         
         <option value="">-- PILIH OPSI ORDER ANDA --</option>
@@ -203,7 +213,11 @@
         
     </select>
 </div>
-
+        <div class="form-group" style="margin-bottom: 30px;">
+            <textarea id="keterangan" name="keterangan" placeholder="Keterangan Tambahan (Contoh: Tanpa MSG, Request Rasa, atau Jam Pengiriman)" 
+              style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; height: 60px;"></textarea>
+        </div>
+              
                 <button type="submit" class="cta-button" 
                         style="background-color: #cc0000; border: none; width: 100%; padding: 15px;">
                         KIRIM & KLAIM DISKON SEKARANG
@@ -251,40 +265,46 @@
 
     <script>
         // --- 1. Fungsi Pengiriman Formulir WhatsApp ---
-        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-            // Mencegah formulir terkirim secara tradisional
-            event.preventDefault();
+    document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+        // Mencegah formulir terkirim secara tradisional
+        event.preventDefault();
 
-            // 1. Ambil data dari formulir
-            const nama = document.getElementById('nama').value;
-            const telepon = document.getElementById('telepon').value;
-            const paket = document.getElementById('paket').value;
-            
-            // 2. Format pesan WhatsApp
-            const message = `
+        // 1. Ambil data dari formulir (Revisi di sini)
+        const nama = document.getElementById('nama').value;
+        const telepon = document.getElementById('telepon').value;
+        const alamat = document.getElementById('alamat').value; // BARU
+        const jumlah = document.getElementById('jumlah').value; // BARU
+        const paket = document.getElementById('paket').value;
+        const keterangan = document.getElementById('keterangan').value; // BARU
+        
+        // 2. Format pesan WhatsApp (Revisi di sini)
+        const message = `
 Halo Primafood Rilldelish! 👋
-Saya ingin melakukan pemesanan dan klaim diskon khusus:
+Saya ingin melakukan pemesanan dan klaim diskon khusus (Order Lengkap):
 
 *Nama:* ${nama}
 *No. WhatsApp:* ${telepon}
-*Pilihan Paket:* ${paket}
+*Alamat Kirim:* ${alamat}
+*Pilihan Paket/Satuan:* ${paket}
+*Jumlah Pesanan:* ${jumlah} pcs
 
-Mohon diproses segera. Terima kasih!
-            `.trim(); // Menghapus spasi ekstra
+*Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
 
-            // 3. Encode pesan (agar aman untuk URL)
-            const encodedMessage = encodeURIComponent(message);
-            
-            // 4. Nomor Tujuan (08124966298)
-            const whatsappNumber = '628124966298'; 
+Mohon diproses total biaya dan ongkirnya segera. Terima kasih!
+        `.trim(); 
 
-            // 5. Buat link WhatsApp API
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-            
-            // 6. Arahkan pengguna ke link WhatsApp
-            window.open(whatsappUrl, '_blank');
-        });
+        // 3. Encode pesan (agar aman untuk URL)
+        const encodedMessage = encodeURIComponent(message);
+        
+        // 4. Nomor Tujuan (08124966298)
+        const whatsappNumber = '628124966298'; 
 
+        // 5. Buat link WhatsApp API
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+        
+        // 6. Arahkan pengguna ke link WhatsApp
+        window.open(whatsappUrl, '_blank');
+    });
 
         // --- 2. Fungsionalitas Filtering Katalog Satuan ---
         document.addEventListener('DOMContentLoaded', function() {
