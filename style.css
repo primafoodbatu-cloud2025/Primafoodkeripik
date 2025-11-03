@@ -250,3 +250,23 @@ footer a {
         padding: 12px 20px;
     }
 }
+
+/* ========================================= */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) */
+/* ========================================= */
+.conversion-form {
+    padding: 60px 0;
+    background-color: #fcebeb; /* Warna latar belakang lembut */
+}
+
+.contact-form .form-group input,
+.contact-form .form-group select {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+}
+
+.contact-form .form-group input:focus,
+.contact-form .form-group select:focus {
+    border-color: var(--color-cta); /* Warna fokus saat diklik */
+    outline: none;
+}
