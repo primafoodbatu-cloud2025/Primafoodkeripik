@@ -263,6 +263,43 @@ footer a {
 }
 
 /* ========================================= */
+/* 8.1. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
+/* ========================================= */
+.catalog-table .order-btn {
+    /* Desain Tombol */
+    background-color: var(--color-cta); /* Warna utama dari CTA Anda (merah/oranye) */
+    color: white;
+    font-weight: 600;
+    padding: 6px 12px; /* Disesuaikan agar lebih ringkas di dalam sel tabel */
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 0.85em; /* Ukuran font sedikit lebih kecil */
+    
+    /* Efek Interaktif */
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); 
+}
+
+.catalog-table .order-btn:hover {
+    background-color: #e55337; /* Warna sedikit lebih gelap saat di-hover */
+    transform: translateY(-1px); 
+}
+
+/* Styling Khusus untuk Sel Tabel (Kolom Aksi) */
+.catalog-table td:last-child {
+    text-align: center; /* Pastikan tombol ada di tengah kolom */
+    white-space: nowrap; /* Mencegah tombol/teks terpotong */
+}
+
+/* Styling khusus untuk teks harga yang Kosong */
+.catalog-table td strong {
+    color: #ff6347; /* Warna berbeda (merah/oranye) untuk kata "Kosong" */
+    font-weight: 700;
+}
+
+/* ========================================= */
 /* 9. MEDIA QUERIES (RESPONSIVITAS) */
 /* ========================================= */
 @media (max-width: 900px) {
@@ -296,7 +333,7 @@ footer a {
 }
 
 /* ========================================= */
-/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI STYLING INPUT */
+/* 9.1 FORM PENDAFTARAN (ORDER CEPAT) - REVISI STYLING INPUT */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
