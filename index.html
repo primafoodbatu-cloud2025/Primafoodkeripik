@@ -111,7 +111,7 @@
                 Isi formulir singkat di bawah ini, dan tim kami akan segera menghubungi Anda melalui WhatsApp untuk memproses diskon dan pesanan Anda.
             </p>
 
-            <form action="[TEMPAT-LINK-WHATSAPP-ATAU-SERVER-ANDA]" method="POST" class="contact-form">
+            <form id="whatsappForm" class="contact-form">
                 
                 <div class="form-group" style="margin-bottom: 20px;">
                     <input type="text" id="nama" name="nama" placeholder="Nama Lengkap Anda" required 
@@ -137,8 +137,9 @@
 
                 <button type="submit" class="cta-button" 
                         style="background-color: #cc0000; border: none; width: 100%; padding: 15px;">
-                    KIRIM & KLAIM DISKON SEKARANG
+                        KIRIM & KLAIM DISKON SEKARANG
                 </button>
+                
             </form>
         </div>
     </section>
@@ -179,5 +180,40 @@
         </div>
     </footer>
 
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+            // Mencegah formulir terkirim secara tradisional
+            event.preventDefault();
+
+            // 1. Ambil data dari formulir
+            const nama = document.getElementById('nama').value;
+            const telepon = document.getElementById('telepon').value;
+            const paket = document.getElementById('paket').value;
+            
+            // 2. Format pesan WhatsApp
+            const message = `
+Halo Primafood Rilldelish! 👋
+Saya ingin melakukan pemesanan dan klaim diskon khusus:
+
+*Nama:* ${nama}
+*No. WhatsApp:* ${telepon}
+*Pilihan Paket:* ${paket}
+
+Mohon diproses segera. Terima kasih!
+            `.trim(); // Menghapus spasi ekstra
+
+            // 3. Encode pesan (agar aman untuk URL)
+            const encodedMessage = encodeURIComponent(message);
+            
+            // 4. Nomor Tujuan (08124966298)
+            const whatsappNumber = '628124966298'; 
+
+            // 5. Buat link WhatsApp API
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+            
+            // 6. Arahkan pengguna ke link WhatsApp
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
 </body>
 </html>
