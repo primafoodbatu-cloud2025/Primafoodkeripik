@@ -180,81 +180,81 @@
 
             <form id="whatsappForm" class="contact-form">
                 
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <input type="text" id="nama" name="nama" placeholder="Nama Lengkap Anda" required 
-                           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
-                </div>
-                
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <input type="tel" id="telepon" name="telepon" placeholder="Nomor WhatsApp (Wajib Aktif)" required 
-                           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
-                </div>
-                
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <textarea id="alamat" name="alamat" placeholder="Alamat Lengkap Pengiriman (Jalan, No. Rumah, Kecamatan, Kota/Kabupaten)" required 
-                              style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; height: 80px;"></textarea>
-                </div>
+    <div class="form-group">
+        <label for="nama" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Nama Pemesan *</label>
+        <input type="text" id="nama" name="nama" placeholder="Nama Lengkap Anda" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="telepon" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Nomor WhatsApp *</label>
+        <input type="tel" id="telepon" name="telepon" placeholder="Nomor WhatsApp (Wajib Aktif)" required>
+    </div>
 
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <input type="number" id="jumlah" name="jumlah_pesanan" placeholder="Jumlah Pesanan (Contoh: 1, 2, atau 5)" required min="1" 
-                           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
-                </div>
-                
-                <div class="form-group" style="margin-bottom: 30px;">
-<select id="paket" name="paket_pilihan" required
-        style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
-    
-        <option value="">-- PILIH OPSI ORDER ANDA --</option>
-    
-    <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
-        <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
-        <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
-        <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
-        <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option> 
-    </optgroup>
-    
-<optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
-    <option value="Satuan - Keripik Gedebog Pisang (Rp 15.900)">Keripik Gedebog Pisang (Rp 15.900)</option>
-    <option value="Satuan - Keripik Wortel (Rp 26.900)">Keripik Wortel (Rp 26.900)</option>
-    <option value="Satuan - Keripik Ubi Ungu (Rp 20.900)">Keripik Ubi Ungu (Rp 20.900)</option>
-    <option value="Satuan - Keripik Ubi Madu (Rp 20.900)">Keripik Ubi Madu (Rp 20.900)</option>
-    <option value="Satuan - Keripik Okra (Rp 50.900)">Keripik Okra (Rp 50.900)</option>
-    <option value="Satuan - Keripik Jagung Manis (Rp 24.900)">Keripik Jagung Manis (Rp 24.900)</option>
-    <option value="Satuan - Keripik Kentang (Rp 28.900)">Keripik Kentang (Rp 28.900)</option>
-    <option value="Satuan - Keripik Kentang Wedges (Rp 32.900)">Keripik Kentang Wedges (Rp 32.900)</option>
-    <option value="Satuan - Keripik Bawang Merah (Rp 56.900)">Keripik Bawang Merah (Rp 56.900)</option>
-    <option value="Satuan - Keripik Bawang Putih (Rp 54.900)">Keripik Bawang Putih (Rp 54.900)</option>
-    <option value="Satuan - Keripik Bawang Bombay (Rp 26.900)">Keripik Bawang Bombay (Rp 26.900)</option>
-    <option value="Satuan - Keripik Cabe Besar (Rp 28.900)">Keripik Cabe Besar (Rp 28.900)</option>
-    <option value="Satuan - Keripik Cabe Rawit (Rp 28.900)">Keripik Cabe Rawit (Rp 28.900)</option>
-    <option value="Satuan - Keripik Paprika (Rp 28.900)">Keripik Paprika (Rp 28.900)</option>
-    <option value="Satuan - Keripik Buncis (Rp 30.900)">Keripik Buncis (Rp 30.900)</option>
-    <option value="Satuan - Keripik Jamur Tiram (Rp 20.900)">Keripik Jamur Tiram (Rp 20.900)</option>
-    <option value="Satuan - Keripik Jamur Kuping (Rp 22.900)">Keripik Jamur Kuping (Rp 22.900)</option>
-    <option value="Satuan - Keripik Bunga Kol (Rp 26.900)">Keripik Bunga Kol (Rp 26.900)</option>
-    <option value="Satuan - Keripik Brokoli (Rp 24.900)">Keripik Brokoli (Rp 24.900)</option>
-    <option value="Satuan - Keripik Edamame (Rp 30.900)">Keripik Edamame (Rp 30.900)</option>
-    <option value="Satuan - Keripik Strawberry (Rp 100.000)">PREMIUM: Keripik Strawberry (Rp 100.000)</option>
-    <option value="Satuan - Keripik Pisang (Rp 20.900)">Keripik Pisang (Rp 20.900)</option>
-    <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
-</optgroup>
+    <div class="form-group">
+        <label for="alamat" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Alamat Lengkap Pengiriman *</label>
+        <textarea id="alamat" name="alamat" placeholder="Jalan, No. Rumah, Kecamatan, Kota/Kabupaten" required></textarea>
+    </div>
 
-    <optgroup label="ORDER GROSIR (1KG+)">
-        <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
-    </optgroup>    
-</select>
-</div>
-        <div class="form-group" style="margin-bottom: 30px;">
-            <textarea id="keterangan" name="keterangan" placeholder="Keterangan Tambahan (Contoh: Tanpa MSG, Request Rasa, atau Jam Pengiriman)" 
-              style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; height: 60px;"></textarea>
-        </div>
-              
-                <button type="submit" class="cta-button" 
-                        style="background-color: #cc0000; border: none; width: 100%; padding: 15px;">
-                        KIRIM & KLAIM DISKON SEKARANG
-                </button>
-                
-            </form>
+    <div class="form-group">
+        <label for="jumlah" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Jumlah Pesanan (pcs) *</label>
+        <input type="number" id="jumlah" name="jumlah_pesanan" placeholder="Contoh: 1, 2, atau 5" required min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="paket" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Pilih Paket / Varian *</label>
+        <select id="paket" name="paket_pilihan" required>
+            
+            <option value="">-- PILIH OPSI ORDER ANDA --</option>
+            
+            <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
+                <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
+                <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
+                <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
+                <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option> 
+            </optgroup>
+            
+            <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
+                <option value="Satuan - Keripik Gedebog Pisang (Rp 15.900)">Keripik Gedebog Pisang (Rp 15.900)</option>
+                <option value="Satuan - Keripik Wortel (Rp 26.900)">Keripik Wortel (Rp 26.900)</option>
+                <option value="Satuan - Keripik Ubi Ungu (Rp 20.900)">Keripik Ubi Ungu (Rp 20.900)</option>
+                <option value="Satuan - Keripik Ubi Madu (Rp 20.900)">Keripik Ubi Madu (Rp 20.900)</option>
+                <option value="Satuan - Keripik Okra (Rp 50.900)">Keripik Okra (Rp 50.900)</option>
+                <option value="Satuan - Keripik Jagung Manis (Rp 24.900)">Keripik Jagung Manis (Rp 24.900)</option>
+                <option value="Satuan - Keripik Kentang (Rp 28.900)">Keripik Kentang (Rp 28.900)</option>
+                <option value="Satuan - Keripik Kentang Wedges (Rp 32.900)">Keripik Kentang Wedges (Rp 32.900)</option>
+                <option value="Satuan - Keripik Bawang Merah (Rp 56.900)">Keripik Bawang Merah (Rp 56.900)</option>
+                <option value="Satuan - Keripik Bawang Putih (Rp 54.900)">Keripik Bawang Putih (Rp 54.900)</option>
+                <option value="Satuan - Keripik Bawang Bombay (Rp 26.900)">Keripik Bawang Bombay (Rp 26.900)</option>
+                <option value="Satuan - Keripik Cabe Besar (Rp 28.900)">Keripik Cabe Besar (Rp 28.900)</option>
+                <option value="Satuan - Keripik Cabe Rawit (Rp 28.900)">Keripik Cabe Rawit (Rp 28.900)</option>
+                <option value="Satuan - Keripik Paprika (Rp 28.900)">Keripik Paprika (Rp 28.900)</option>
+                <option value="Satuan - Keripik Buncis (Rp 30.900)">Keripik Buncis (Rp 30.900)</option>
+                <option value="Satuan - Keripik Jamur Tiram (Rp 20.900)">Keripik Jamur Tiram (Rp 20.900)</option>
+                <option value="Satuan - Keripik Jamur Kuping (Rp 22.900)">Keripik Jamur Kuping (Rp 22.900)</option>
+                <option value="Satuan - Keripik Bunga Kol (Rp 26.900)">Keripik Bunga Kol (Rp 26.900)</option>
+                <option value="Satuan - Keripik Brokoli (Rp 24.900)">Keripik Brokoli (Rp 24.900)</option>
+                <option value="Satuan - Keripik Edamame (Rp 30.900)">Keripik Edamame (Rp 30.900)</option>
+                <option value="Satuan - Keripik Strawberry (Rp 100.000)">PREMIUM: Keripik Strawberry (Rp 100.000)</option>
+                <option value="Satuan - Keripik Pisang (Rp 20.900)">Keripik Pisang (Rp 20.900)</option>
+                <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
+            </optgroup>
+            
+            <optgroup label="ORDER GROSIR (1KG+)">
+                <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="keterangan" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Catatan / Keterangan (Opsional)</label>
+        <textarea id="keterangan" name="keterangan" placeholder="Contoh: Tanpa MSG, Request Rasa, atau Jam Pengiriman"></textarea>
+    </div>
+
+    <button type="submit" class="cta-button" 
+            style="background-color: #cc0000; border: none; width: 100%; padding: 15px;">
+        KIRIM & KLAIM DISKON SEKARANG
+    </button>
+</form>
         </div>
     </section>
     <section class="bulk-order" style="padding: 60px 0;">
