@@ -133,6 +133,43 @@ body {
 }
 
 /* ========================================= */
+/* 5.1. STYLING VIDEO PROSES PRODUKSI (16:9) */
+/* ========================================= */
+
+.production-video {
+    padding: 60px 0;
+    background-color: white; /* Latar belakang bersih untuk menonjolkan video */
+}
+
+.video-embed {
+    /* Menggunakan rasio 16:9 yang responsif */
+    position: relative;
+    padding-bottom: 56.25%; /* Rasio 16:9 (9 / 16 * 100 = 56.25) */
+    height: 0;
+    overflow: hidden;
+    max-width: 800px; /* Batas lebar maksimum */
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Bayangan yang kuat */
+}
+
+.video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #000; /* Latar belakang hitam saat loading */
+}
+
+/* Styling Judul dan Keterangan Video */
+.production-video h2 {
+    color: var(--color-primary); /* Menggunakan warna hijau Rilldelish */
+    margin-bottom: 20px;
+}
+
+/* ========================================= */
 /* 6. KATALOG PRODUK TUNGGAL & MIX */
 /* ========================================= */
 .single-product-catalog {
