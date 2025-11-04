@@ -373,21 +373,30 @@
                     </div>
                 </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
                 
-                <div class="form-group" style="margin-top: -10px; margin-bottom: 5px;">
-                    <p style="text-align: left; color: #8B4513; font-weight: 600;">
-                        Total Berat: <span id="display-total-weight" style="font-weight: 700;">100 g</span>
+                <div class="form-group" style="margin-bottom: 5px;">
+                    <p style="text-align: left; color: #cc0000; font-weight: 600;">
+                        Harga Normal: <span id="display-normal-price" style="font-weight: 700;">Rp 0</span>
+                    </p>
+                </div>
+                <div class="form-group" style="margin-bottom: 5px;">
+                    <p style="text-align: left; color: #4CAF50; font-weight: 600;">
+                        Potongan Diskon: <span id="display-discount-amount" style="font-weight: 700;">Rp 0</span>
+                    </p>
+                </div>
+                <div class="form-group" style="margin-bottom: 5px;">
+                    <p style="text-align: left; color: #777; font-weight: 600;">
+                        Total Berat: <span id="display-total-weight" style="font-weight: 700;">0 g</span>
                     </p>
                 </div>
 
-                <div class="form-group">
-                    <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
-                        TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
+                <div class="form-group" style="border-top: 2px solid #ccc; padding-top: 10px;">
+                    <p style="text-align: left; color: #cc0000; font-size: 1.4em; font-weight: 800;">
+                        JUMLAH BAYAR: <span id="display-grand-total" style="font-weight: 800; color: #cc0000;">Rp 0</span> 💰
                     </p>
-                    <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #cc0000; margin-top: 5px;">
-                        Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%!
+                    <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #777;">
+                        *Harga ini belum termasuk biaya kirim.
                     </p>
                 </div>
-
                 <div class="form-group">
                     <label for="keterangan">Catatan / Keterangan (Opsional)</label>
                     <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
@@ -460,10 +469,10 @@
 
     // Konfigurasi Diskon
     const GROSIR_DISCOUNT_RATES = {
-        10: 0.10, // 10 pcs (1kg) = 10%
-        100: 0.15, // 100 pcs (10kg) = 15%
-        250: 0.20, // 250 pcs (25kg) = 20%
-        500: 0.30  // 500 pcs (50kg) = 30%
+        1: 0.10, // 1 kg = 10%
+        10: 0.15, // 10 kg = 15%
+        25: 0.20, // 25 kg = 20%
+        50: 0.30  // 50 kg = 30%
     };
     const FLASH_SALE_DISCOUNT = 0.05; // 5%
     const FLASH_SALE_DURATION = 3600; // 1 Jam (3600 detik)
@@ -516,7 +525,7 @@
         updateTimer();
     }
     
-    // --- Fungsi Pembantu: Ekstraksi Harga dari Teks ---
+    // --- Fungsi Pembantu: Ekstraksi Harga dari Teks & Formatting ---
     function extractPrice(value) {
         const match = value.match(/Rp\s*([\d\.]+)/);
         if (match && match[1]) {
@@ -524,19 +533,21 @@
         }
         return 0;
     }
+    const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
     
     // --- Fungsi Penentu Diskon Maksimal ---
-    function getMaxDiscount(quantity) {
+    function getMaxDiscount(totalWeightKg) {
         let maxDisc = 0;
         
         for (const threshold in GROSIR_DISCOUNT_RATES) {
-            if (quantity >= parseInt(threshold)) {
+            if (totalWeightKg >= parseInt(threshold)) {
                 if (GROSIR_DISCOUNT_RATES[threshold] > maxDisc) {
                     maxDisc = GROSIR_DISCOUNT_RATES[threshold];
                 }
             }
         }
         
+        // Cek Flash Sale (Hanya jika Diskon Grosir < 5%)
         if (isFlashSaleActive && maxDisc < FLASH_SALE_DISCOUNT) {
             maxDisc = FLASH_SALE_DISCOUNT;
         }
@@ -552,38 +563,19 @@
         return { rate: 0, type: 'None' };
     }
 
-    // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total ---
+    // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total (DIPERBAIKI TOTAL) ---
     function calculateTotal() {
+        let totalHargaAwal = 0;
         let grandTotal = 0;
         let totalWeightGrams = 0;
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let totalQuantityPcs = 0;
 
-        // Loop 1: Hitung Total Quantity (PCS)
-        productItems.forEach(item => {
-            const unitElement = item.querySelector('.unit-select');
-            const quantityInput = item.querySelector('.product-quantity');
-            const quantityValue = parseFloat(quantityInput.value) || 0;
-            const unit = unitElement.value;
-            
-            if (unit === 'kg') {
-                totalQuantityPcs += quantityValue * 10; // 1 kg = 10 pcs
-            } else {
-                totalQuantityPcs += quantityValue; // 1 pcs = 1 pcs
-            }
-        });
-
-        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalQuantityPcs);
-        const totalKeterangan = document.getElementById('total-discount-keterangan');
-        const displayTotalWeight = document.getElementById('display-total-weight');
-        
-        // Loop 2: Hitung Harga dan Berat
+        // Loop 1: Hitung Harga Awal, Berat, dan Total PCS
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
-            const subtotalDisplay = item.querySelector('.display-subtotal');
-            const removeButton = item.querySelector('.remove-product-btn');
             const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
@@ -594,7 +586,7 @@
             
             // Konversi Quantity ke PCS dan hitung harga dasar
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
-            let subtotal = hargaItemPerPcs * quantityPcs;
+            let subtotalAwal = hargaItemPerPcs * quantityPcs;
 
             // --- LOGIKA BERAT ITEM ---
             let itemWeightPerPcs = (selectedValue.includes("Paket Mix")) ? MIX_PACKAGE_WEIGHT : WEIGHT_PER_PCS_GRAMS;
@@ -603,51 +595,73 @@
             
             itemWeightDisplay.textContent = `${itemWeightPerPcs} g`; 
             // --- AKHIR LOGIKA BERAT ITEM ---
+            
+            totalHargaAwal += subtotalAwal;
+            totalQuantityPcs += quantityPcs;
+        });
+        
+        const totalWeightKg = Math.floor(totalWeightGrams / 1000);
+        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalWeightKg);
+        
+        // Hitung Potongan
+        const discountAmount = totalHargaAwal * globalDiscRate;
+        const finalGrandTotal = totalHargaAwal - discountAmount;
+        
+        // Loop 3: Update Subtotal Akhir di Keranjang Mini
+        productItems.forEach(item => {
+            const subtotalDisplay = item.querySelector('.display-subtotal');
+            const quantityInput = item.querySelector('.product-quantity');
+            const unitElement = item.querySelector('.unit-select');
+            const selectElement = item.querySelector('.product-select');
+            
+            const selectedValue = selectElement.value;
+            const quantityValue = parseFloat(quantityInput.value) || 0;
+            const unit = unitElement.value;
 
+            let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
+            const hargaItemPerPcs = extractPrice(selectedValue);
+            let subtotalAwal = hargaItemPerPcs * quantityPcs;
+            let subtotalAkhir = subtotalAwal * (1 - globalDiscRate);
             
-            let finalSubtotal = subtotal;
+            subtotalDisplay.textContent = formatCurrency(subtotalAkhir);
+            
+            // Tambahkan keterangan Diskon ke Subtotal Display
             if (globalDiscRate > 0) {
-                finalSubtotal = subtotal * (1 - globalDiscRate);
-            }
-            
-            grandTotal += finalSubtotal;
-            
-            // 3. Update Tampilan Subtotal
-            const formatHarga = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
-            subtotalDisplay.textContent = formatHarga(finalSubtotal);
-            
-            if (globalDiscRate > 0 && finalSubtotal !== subtotal) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
+        });
+        
+        // --- UPDATE TAMPILAN STRUK UTAMA ---
+        document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaAwal);
+        document.getElementById('display-discount-amount').textContent = formatCurrency(discountAmount);
+        document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
+        
+        const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
+        document.getElementById('display-total-weight').textContent = totalWeightText;
 
-            if (productItems.length > 1) {
+        // Update Keterangan Diskon di Total
+        const totalKeterangan = document.getElementById('total-discount-keterangan');
+        if (totalKeterangan) {
+            let kemasanNote = '*Harga ini belum termasuk biaya kirim.';
+            if (globalDiscRate >= 0.10) {
+                 kemasanNote = `*Anda mendapatkan kemasan grosir tanpa stiker. (${totalQuantityPcs} pcs). Harga belum termasuk biaya kirim.`;
+            } else if (globalDiscRate === FLASH_SALE_DISCOUNT) {
+                 kemasanNote = `*Diskon 5% Flash Sale Diterapkan. Harga belum termasuk biaya kirim.`;
+            } else if (totalQuantityPcs >= 1) {
+                 kemasanNote = `*Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%! Harga belum termasuk biaya kirim.`;
+            }
+            totalKeterangan.innerHTML = kemasanNote;
+        }
+        
+        // Tampilkan tombol Hapus
+        productItems.forEach(item => {
+             const removeButton = item.querySelector('.remove-product-btn');
+             if (productItems.length > 1) {
                 removeButton.style.display = 'inline-block';
             } else {
                 removeButton.style.display = 'none';
             }
         });
-        
-        // 4. Update Tampilan Grand Total & Berat Total
-        const grandTotalDisplay = document.getElementById('display-grand-total');
-        grandTotalDisplay.textContent = `Rp ${grandTotal.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
-        
-        const totalWeightKg = (totalWeightGrams / 1000).toFixed(2);
-        const totalWeightText = totalWeightGrams >= 1000 ? `${totalWeightKg.replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
-        displayTotalWeight.textContent = totalWeightText;
-
-
-        // Update Keterangan Diskon di Total
-        if (totalKeterangan) {
-            if (globalDiscRate > 0) {
-                 let kemasanNote = '';
-                 if (globalDiscRate >= 0.10) {
-                     kemasanNote = ', Kemasan Grosir Tanpa Stiker';
-                 }
-                totalKeterangan.innerHTML = `Anda Hemat <b>${(globalDiscRate * 100).toFixed(0)}% (${discType})</b>. Total Qty: ${totalQuantityPcs} pcs. Berat Total: ${totalWeightText}${kemasanNote}`;
-            } else {
-                 totalKeterangan.innerHTML = `Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%!`;
-            }
-        }
     }
 
     // --- Fungsi Tambah Produk Baru ---
@@ -684,7 +698,7 @@
         const labelQuantity = newItem.querySelector(`label[for="${firstItem.querySelector('.product-quantity').id}"]`);
         if (labelQuantity) labelQuantity.setAttribute('for', quantityElement.id);
 
-        newItem.querySelector('.display-subtotal').textContent = 'Rp 0';
+        newItem.querySelector('.display-subtotal').textContent = formatCurrency(0);
         
         const removeButton = newItem.querySelector('.remove-product-btn');
         removeButton.addEventListener('click', function() {
@@ -697,24 +711,27 @@
         selectElement.focus();
     }
 
-    // --- Fungsionalitas WhatsApp (Diperbarui untuk Multi-Item) ---
+    // --- Fungsionalitas WhatsApp (DIPERBAIKI KE FORMAT STRUK) ---
     function sendWhatsAppOrder(event) {
         event.preventDefault();
 
-        // Ambil data pelanggan
         const nama = document.getElementById('nama').value;
         const telepon = document.getElementById('telepon').value;
         const alamat = document.getElementById('alamat').value;
         const keterangan = document.getElementById('keterangan').value;
-        const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
 
+        const totalHargaNormalDisplay = document.getElementById('display-normal-price').textContent;
+        const discountAmountDisplay = document.getElementById('display-discount-amount').textContent;
+        const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
+        const totalWeightDisplay = document.getElementById('display-total-weight').textContent;
+        const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent;
+
+        
         const productItems = document.querySelectorAll('#product-list-container .product-item');
-        let totalHargaAwal = 0;
-        let totalQuantityPcs = 0;
         let productDetails = [];
+        let totalQuantityPcs = 0;
         let itemCounter = 1;
         
-        // Loop 1: Hitung Total Quantity dan Harga Awal
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
@@ -723,17 +740,14 @@
             const paket = selectElement.value;
             const unit = unitElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
-            const hargaItem = extractPrice(paket);
             
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
-            
+            totalQuantityPcs += quantityPcs;
+
             if (paket && quantityValue > 0) {
-                totalHargaAwal += hargaItem * quantityPcs;
-                totalQuantityPcs += quantityPcs;
-                
-                const subtotalAwalItem = hargaItem * quantityPcs;
+                const subtotalDisplay = item.querySelector('.display-subtotal').textContent;
                 productDetails.push(
-                    `*Item ${itemCounter}:* ${quantityValue} ${unit} (${quantityPcs} pcs) ${paket} (Subtotal Awal: Rp ${subtotalAwalItem.toLocaleString('id-ID')})`
+                    `*Item ${itemCounter}:* ${quantityValue} ${unit} (${quantityPcs} pcs) ${paket} (Subtotal Akhir: ${subtotalDisplay})`
                 );
                 itemCounter++;
             }
@@ -744,14 +758,9 @@
             return;
         }
 
-        // Tentukan Diskon dan Keterangan
-        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalQuantityPcs);
-        const discountAmount = totalHargaAwal * globalDiscRate;
-        const totalDiscountNoteElement = document.getElementById('total-discount-keterangan');
-        const totalDiscountNote = totalDiscountNoteElement ? totalDiscountNoteElement.innerHTML.replace(/<[^>]*>/g, '') : '';
         const productListText = productDetails.join('\n');
 
-        // Format pesan WhatsApp (STRUK)
+        // Format pesan WhatsApp (STRUK FINAL)
         const message = `
 Halo Primafood Rilldelish! 👋
 Saya ingin melakukan pemesanan (Struk Otomatis):
@@ -763,19 +772,17 @@ Saya ingin melakukan pemesanan (Struk Otomatis):
 *===== R I N C I A N  S T R U K =====*
 ${productListText}
 *----------------------------------------*
-Total Qty: ${totalQuantityPcs} pcs
-Total Berat: ${document.getElementById('display-total-weight').textContent}
-Harga Normal: Rp ${totalHargaAwal.toLocaleString('id-ID', { minimumFractionDigits: 0 })}
+Total Qty: ${totalQuantityPcs} pcs | Berat: ${totalWeightDisplay}
+Harga Normal: ${totalHargaNormalDisplay}
+Potongan Diskon: ${discountAmountDisplay}
 
-Diskon Berlaku: ${discType.toUpperCase()} ${(globalDiscRate * 100).toFixed(0)}%
-Potongan Harga: Rp ${discountAmount.toLocaleString('id-ID', { minimumFractionDigits: 0 })}
-*----------------------------------------*
 *TOTAL YANG HARUS DIBAYAR:* ${grandTotalDisplay}
+*======================================*
 ${totalDiscountNote}
 
 *Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
 
-Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. Terima kasih!
+Mohon diproses dan konfirmasi pembayaran segera. Terima kasih!
         `.trim(); 
 
         const whatsappNumber = '628124966298'; 
@@ -790,19 +797,18 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
         const productContainer = document.getElementById('product-list-container');
         const formSection = document.getElementById('order-form');
         
-        // Event listeners untuk item produk awal
+        // EVENT LISTENERS AWAL
         const initialSelect = document.getElementById('paket-1');
         const initialQuantity = document.getElementById('jumlah-1');
         const initialUnit = document.getElementById('unit-1');
         
         initialSelect.addEventListener('change', calculateTotal);
         initialQuantity.addEventListener('input', calculateTotal);
-        initialUnit.addEventListener('change', calculateTotal); // Listener untuk unit baru
+        initialUnit.addEventListener('change', calculateTotal);
 
-        // Event listener untuk tombol 'Tambah Produk'
         document.getElementById('add-product-btn').addEventListener('click', addProductItem);
 
-        // Event listener untuk tombol 'Hapus' pada item pertama
+        // Hapus Button Listener Awal
         const initialRemoveBtn = document.querySelector('.product-item[data-id="1"] .remove-product-btn');
         initialRemoveBtn.addEventListener('click', function() {
             if (productContainer.children.length > 1) {
@@ -812,17 +818,13 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
         });
 
 
-        // Ganti event listener submit lama dengan fungsi multi-item baru
         document.getElementById('whatsappForm').addEventListener('submit', sendWhatsAppOrder);
         
-        // Panggil hitung total pertama kali
         calculateTotal();
-
-        // Mulai Timer Flash Sale
         startCountdownTimer();
 
 
-        // --- Fungsionalitas Filtering Katalog Satuan (Tetap di sini) ---
+        // --- Fungsionalitas Filtering Katalog Satuan (TETAP SAMA) ---
         const categoryButtons = document.querySelectorAll('.category-btn');
         const productLists = document.querySelectorAll('.product-list');
         const buahList = document.getElementById('fruit-list');
@@ -860,17 +862,14 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
                     if (item.getAttribute('data-id') !== '1') item.remove();
                 });
                 
-                // Set item pertama dengan produk yang diklik
                 const initialSelect = document.getElementById('paket-1');
                 const initialQuantity = document.getElementById('jumlah-1');
                 const initialUnit = document.getElementById('unit-1');
                 
                 initialSelect.value = productName;
                 initialQuantity.value = 1;
-                initialUnit.value = 'pcs'; // Default ke pcs
-
+                initialUnit.value = 'pcs'; 
                 
-                // Pastikan hanya ada 1 item awal saat diklik dari katalog
                 while (productContainer.children.length > 1) {
                     productContainer.removeChild(productContainer.lastChild);
                 }
