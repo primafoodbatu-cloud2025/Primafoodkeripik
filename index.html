@@ -235,58 +235,56 @@
             <h3 style="color: #38761d; margin-top: 30px; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Pilihan Produk (Keranjang Mini)</h3>
             
             <div id="product-list-container">
-                <div class="product-item" data-id="1">
-                    <div class="form-group">
-                        <label for="paket-1">Pilih Produk/Paket *</label>
-                        <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
-                            <option value="">-- PILIH OPSI ORDER ANDA --</option>
-                            <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
-                                <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
-                                <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
-                                <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
-                                <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option>
-                                <option value="Paket Mix 6 Varian - Rp 120.000">Paket Mix 6 Varian (Rp 120.000) - Rincian di Catatan</option>
-                                <option value="Paket Mix 10 Varian - Rp 180.000">Paket Mix 10 Varian (Rp 180.000) - Rincian di Catatan</option>
-                            </optgroup>
-                            <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
-                                <option value="Satuan - Keripik Gedebog Pisang (Rp 15.900)">Keripik Gedebog Pisang (Rp 15.900)</option>
-                                <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
-                            </optgroup>
-                            <optgroup label="ORDER GROSIR (1KG+)">
-                                <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
-                            </optgroup>
-                        </select>
-                    </div>
+    <div class="product-item" data-id="1">
+        <div class="form-group">
+            <label for="paket-1">Pilih Produk/Paket *</label>
+            <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
+                <option value="">-- PILIH OPSI ORDER ANDA --</option>
+                <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
+                    <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
+                    <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
+                    <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
+                    <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option>
+                    <option value="Paket Mix 6 Varian - Rp 120.000">Paket Mix 6 Varian (Rp 120.000) - Rincian di Catatan</option>
+                    <option value="Paket Mix 10 Varian - Rp 180.000">Paket Mix 10 Varian (Rp 180.000) - Rincian di Catatan</option>
+                </optgroup>
+                <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
+                    <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
+                </optgroup>
+                <optgroup label="ORDER GROSIR (1KG+)">
+                    <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
+                </optgroup>
+            </select>
+        </div>
 
-                    <div class="form-group-inline">
-                        <div class="form-group">
-                            <label for="jumlah-1">Jumlah (pcs) *</label>
-                            <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
-                            <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
-                                Subtotal: <span class="display-subtotal">Rp 0</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
-            
-
+        <div class="form-group-inline">
             <div class="form-group">
-                <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
-                    TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
+                <label for="jumlah-1">Jumlah (pcs) *</label>
+                <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
+                <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
+                    Subtotal: <span class="display-subtotal">Rp 0</span>
                 </p>
             </div>
+        </div>
+    </div>
+    </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
 
-            <div class="form-group">
-                <label for="keterangan">Catatan / Keterangan (Opsional)</label>
-                <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
-            </div>
 
-            <button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
-        </form>
+<div class="form-group">
+    <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
+        TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
+    </p>
+</div>
+
+<div class="form-group">
+    <label for="keterangan">Catatan / Keterangan (Opsional)</label>
+    <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
+</div>
+<button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
+</form>
     </div>
 </section>
     <section class="bulk-order" style="padding: 60px 0;">
