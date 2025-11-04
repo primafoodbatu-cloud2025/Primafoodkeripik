@@ -14,7 +14,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* PENTING: Untuk lebar konsisten */
 }
 
 body {
@@ -42,6 +42,17 @@ body {
     padding-bottom: 10px;
 }
 
+/* Judul Rata Kiri dengan Garis Bawah */
+.section-title-left {
+    text-align: left !important;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    color: var(--color-text);
+    border-bottom: 3px solid var(--color-secondary); 
+    display: inline-block; 
+    padding-bottom: 5px;
+}
+
 .cta-button {
     background-color: var(--color-cta);
     color: white !important;
@@ -62,35 +73,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* ========================================= */
-/* 2.1. JUDUL KHUSUS RATA KIRI (DIBERI GARIS BAWAH) */
-/* ========================================= */
-.section-title-left {
-    text-align: left !important; /* Memastikan rata kiri */
-    margin-bottom: 10px; /* Jarak yang lebih rapat ke subtitle */
-    font-size: 2.2em;
-    color: var(--color-text);
-    
-    /* BARIS KOREKSI: Tambahkan Garis Bawah Merah/Oranye */
-    border-bottom: 3px solid var(--color-secondary); 
-    display: inline-block; /* Agar garis hanya selebar teks */
-    padding-bottom: 5px; /* Jarak antara teks dan garis */
-}
-
-/* Styling Subtitle Bahasa Inggris Rata Kiri */
-.section-subtitle-left {
-    text-align: left !important;
-    font-size: 1.1em;
-    margin-bottom: 15px; /* Jarak sebelum deskripsi */
-}
-
-/* Styling untuk teks Bahasa Inggris dan Garis Bawah (tetap ada) */
-.section-subtitle-left span {
-    color: var(--color-primary) !important; /* Warna Hijau Rilldelish */
-    border-bottom: 3px solid var(--color-cta) !important; /* Garis Merah/Salmon Khas CTA */
-    display: inline-block;
-    padding-bottom: 5px;
-}
 /* ========================================= */
 /* 3. HEADER & HERO SECTION */
 /* ========================================= */
@@ -117,12 +99,12 @@ body {
 
 /* Styling Kutipan Ahli di Hero Section */
 .expert-quote-hero {
-    background: rgba(255, 255, 255, 0.85); /* Latar belakang semi-transparan */
-    color: var(--color-primary); /* Warna teks hijau */
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-primary);
     padding: 15px 25px;
     margin: 25px auto;
     max-width: 75%;
-    border-left: 5px solid var(--color-secondary); /* Garis kuning/orange untuk otoritas */
+    border-left: 5px solid var(--color-secondary);
     font-style: italic;
     font-size: 1.1em;
     border-radius: 4px;
@@ -137,6 +119,7 @@ body {
     font-weight: 600;
     color: #333;
 }
+
 
 /* ========================================= */
 /* 4. MASALAH & SOLUSI */
@@ -154,6 +137,27 @@ body {
 
 .problem-solution .solusi-rilldelish {
     color: var(--color-primary);
+}
+
+/* Styling Quote Masalah */
+.expert-quote-problem {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 5px solid #cc0000;
+    background: #fffafa;
+    font-style: italic;
+    font-size: 1.1em;
+    border-radius: 4px;
+    text-align: left !important;
+}
+
+.expert-quote-problem cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 600;
+    color: #8b0000;
 }
 
 /* ========================================= */
@@ -184,42 +188,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* ========================================= */
-/* 5.1. STYLING VIDEO PROSES PRODUKSI (16:9) */
-/* ========================================= */
-
-.production-video {
-    padding: 60px 0;
-    background-color: white; /* Latar belakang bersih untuk menonjolkan video */
-}
-
-.video-embed {
-    /* Menggunakan rasio 16:9 yang responsif */
-    position: relative;
-    padding-bottom: 56.25%; /* Rasio 16:9 (9 / 16 * 100 = 56.25) */
-    height: 0;
-    overflow: hidden;
-    max-width: 800px; /* Batas lebar maksimum */
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Bayangan yang kuat */
-}
-
-.video-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #000; /* Latar belakang hitam saat loading */
-}
-
-/* Styling Judul dan Keterangan Video */
-.production-video h2 {
-    color: var(--color-primary); /* Menggunakan warna hijau Rilldelish */
-    margin-bottom: 20px;
-}
 
 /* ========================================= */
 /* 6. KATALOG PRODUK TUNGGAL & MIX */
@@ -281,7 +249,22 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* 6.2. STYLING TABEL SATUAN */
+/* 6.2. STYLING SUBTITLE KATALOG */
+.section-subtitle-left {
+    text-align: left !important;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.section-subtitle-left span {
+    color: var(--color-primary) !important;
+    border-bottom: 3px solid var(--color-cta) !important;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+
+/* 6.3. STYLING TABEL SATUAN */
 .catalog-table {
     width: 100%;
     border-collapse: collapse;
@@ -302,7 +285,7 @@ body {
     font-weight: 600;
 }
 
-/* 6.3. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
+/* 6.4. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
 .catalog-table .order-btn {
     background-color: var(--color-cta);
     color: white;
@@ -332,7 +315,7 @@ body {
     font-weight: 700;
 }
 
-/* 6.4. STYLING PAKET MIX CARD */
+/* 6.5. STYLING PAKET MIX CARD */
 .package-mix {
     padding: 80px 0;
     background-color: var(--color-bg-mix);
@@ -394,7 +377,7 @@ body {
 
 
 /* ========================================= */
-/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
+/* 8. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
@@ -410,17 +393,15 @@ body {
 .contact-form .form-group input,
 .contact-form .form-group select,
 .contact-form .form-group textarea {
-    width: 100%; /* MEMASTIKAN LEBAR 100% (SEJAJAR) */
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
     transition: border-color 0.3s;
     font-family: 'Poppins', sans-serif;
-    
-    /* Perbaikan: Menetapkan Tinggi Minimum untuk Input dan Select */
-    min-height: 48px; 
-    box-sizing: border-box; /* PENTING: Mencegah padding menambah lebar total */
+    min-height: 48px;
+    box-sizing: border-box; 
 }
 
 /* Label Styling (memastikan label rata kiri) */
@@ -430,12 +411,12 @@ body {
     font-weight: 600;
     margin-bottom: 5px;
     font-size: 0.95em;
-    color: var(--color-text); /* Warna Teks Label */
+    color: var(--color-text);
 }
 
 /* Tinggi Khusus Kolom Alamat dan Keterangan */
 .contact-form textarea {
-    height: 80px; /* Textarea memang harus lebih tinggi */
+    height: 80px;
     min-height: 80px;
     resize: vertical;
 }
@@ -472,17 +453,15 @@ body {
 }
 
 /* KOREKSI LEBAR UNTUK FORM DINAMIS */
-/* Kolom Jumlah (Product Quantity Input) */
 .form-group-inline .form-group {
-    width: 35%; /* Tetapkan 35% untuk kolom jumlah */
+    width: 35%;
     flex-grow: 0; 
     min-width: 120px;
     margin-bottom: 0; 
 }
 
-/* Kolom Subtotal dan Tombol Hapus */
 .form-group-inline > div:last-child {
-    width: 65%; /* Tetapkan 65% untuk subtotal dan hapus */
+    width: 65%;
     text-align: right;
     display: flex;
     flex-direction: column;
@@ -506,67 +485,79 @@ body {
     background-color: #d32f2f !important;
 }
 
-/* === STYLING STRUK DINAMIS FINAL (FIXED ALIGNMENT) === */
+/* === STYLING STRUK DINAMIS FINAL === */
 
-/* Styling untuk Rata Kanan/Kiri pada Summary Struk */
+/* KOREKSI: PENGGUNAAN FLEXBOX UNTUK RATA KANAN/KIRI DAN PELURUSAN TITIK DUA */
 .conversion-form .form-group p {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 0;
-    
-    /* Perbaikan 2 & 3: Tambahkan padding untuk meluruskan */
     padding-left: 10px; 
     padding-right: 10px;
+    font-size: 1em;
+    position: relative; /* Wadah relatif untuk penempatan nominal absolut */
 }
 
-/* Styling Nominal Angka (Rata Kanan) */
-.conversion-form .form-group p span {
-    text-align: right;
-    font-weight: 700;
-    flex-shrink: 0; 
-    margin-left: 15px; /* Jarak dari label */
-}
-
-/* Styling Keterangan Diskon (Potongan Diskon) */
-#display-discount-amount + span { /* Menargetkan span keterangan di bawah nominal */
-    display: block;
-    font-size: 0.85em; /* KOREKSI 4: Perkecil font keterangan */
-    color: #555;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-align: right;
-}
-
-/* KOREKSI 4: Styling Keterangan Bawah Total (Ongkir/Grosir Note) */
-#total-discount-keterangan {
-    font-size: 0.9em !important; /* Perkecil font keterangan akhir */
-    color: #555 !important;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
+/* Styling Label (misal: "Harga Normal:", "Potongan Diskon:") */
+.conversion-form .form-group p:not(#total-discount-keterangan) {
     text-align: left;
 }
 
-/* Styling Total Bayar (Dikuatkan) */
-.conversion-form .form-group[style*="border-top: 2px solid #ccc"] {
-    /* Target wadah Grand Total (dibuat menonjol) */
-    padding-top: 15px; 
-    margin-top: 15px; 
-    border-top: 2px solid var(--color-primary) !important;
+/* Styling Nominal Angka (Rata Kanan Absolut) */
+.conversion-form .form-group p span {
+    text-align: right;
+    font-weight: 700;
+    /* Posisikan nominal secara absolut agar meluruskan angka */
+    position: absolute;
+    right: 10px;
 }
 
+/* Styling Potongan Diskon Keterangan */
+.disc-note-inline {
+    display: block;
+    font-size: 0.7em;
+    color: #555;
+    margin-top: 2px;
+    text-align: right;
+    font-weight: 400;
+}
+
+/* Styling Total Bayar (Dikuatkan) */
 .conversion-form .form-group[style*="border-top: 2px solid #ccc"] p {
     font-size: 1.4em !important;
     color: #cc0000 !important;
     margin: 0;
 }
-/* FINAL DISPLAY GRAND TOTAL */
+
+/* KOREKSI 3: Menangani Ikon Uang di Total Bayar (DIPINDAHKAN DARI NOMINAL KE CSS) */
+.conversion-form .form-group[style*="border-top: 2px solid #ccc"] p::after {
+    content: ' 💰';
+    position: absolute;
+    right: 5px; 
+    font-size: 0.8em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 #display-grand-total {
-    font-size: 1.2em !important; 
+    font-size: 1.2em !important;
     color: #cc0000 !important;
     font-weight: 800 !important;
+    padding-right: 20px; /* Alokasi ruang untuk ikon uang */
 }
+
+/* KOREKSI 4: Styling Keterangan Bawah Total (Ongkir/Grosir Note) */
+#total-discount-keterangan {
+    font-size: 0.85em !important;
+    color: #555 !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
 
 /* ========================================= */
 /* 10. FOOTER */
