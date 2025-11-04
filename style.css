@@ -66,10 +66,25 @@ body {
 /* 2.1. JUDUL KHUSUS RATA KIRI */
 /* ========================================= */
 .section-title-left {
-    text-align: left !important; /* Memastikan rata kiri */
+    text-align: left !important;
     margin-bottom: 10px;
     font-size: 2.2em;
-    color: var(--color-text);
+    color: var(--color-text); /* Warna teks utama */
+}
+
+/* KOREKSI BARU: Styling Subtitle Bahasa Inggris Rata Kiri */
+.section-subtitle-left {
+    text-align: left !important;
+    font-size: 1.1em;
+    margin-bottom: 15px; /* Jarak sebelum deskripsi */
+}
+
+/* Styling untuk teks Bahasa Inggris dan Garis Bawah */
+.section-subtitle-left span {
+    color: var(--color-primary) !important; /* Warna Hijau Rilldelish */
+    border-bottom: 3px solid var(--color-cta) !important; /* Garis Merah/Salmon Khas CTA */
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
 /* ========================================= */
