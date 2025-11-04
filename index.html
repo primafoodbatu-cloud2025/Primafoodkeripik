@@ -335,100 +335,153 @@
     </footer>
 
     <script>
-        // --- Fungsi Pembantu: Ekstraksi Harga dari Teks ---
-        function extractPrice(value) {
-            // Mencari angka di dalam kurung kurawal, membersihkan Rp, spasi, dan titik
-            const match = value.match(/\((Rp\s*|Rp)(\d+\.?\d*)\)/);
-            if (match && match[2]) {
-                return parseFloat(match[2].replace(/\./g, ''));
-            }
-            return 0;
+    // --- Fungsi Pembantu: Ekstraksi Harga dari Teks ---
+    function extractPrice(value) {
+        // Mencari angka di dalam kurung kurawal, membersihkan Rp, spasi, dan titik
+        const match = value.match(/\((Rp\s*|Rp)?(\d{1,3}(\.\d{3})*)\)/); // Diperbaiki untuk format harga penuh
+        if (match && match[2]) {
+            return parseFloat(match[2].replace(/\./g, ''));
         }
+        return 0;
+    }
 
-        // --- Fungsi UTAMA: Menghitung dan Memperbarui Harga ---
-        function updatePriceDisplay() {
-            const selectElement = document.getElementById('paket');
-            const jumlahElement = document.getElementById('jumlah');
-            const displayHarga = document.getElementById('display-harga');
-            const displayTotal = document.getElementById('display-total');
-            
-            const selectedValue = selectElement.value;
-            const jumlah = parseInt(jumlahElement.value) || 0;
-            
-            // 1. Dapatkan Harga Item
-            const hargaItem = extractPrice(selectedValue);
-            
-            // 2. Hitung Total
-            const total = hargaItem * jumlah;
-            
-            // 3. Format Ulang untuk Tampilan
-            const formatHarga = (num) => {
-                return `Rp ${num.toLocaleString('id-ID')}`;
-            };
-            
-            // 4. Update Tampilan
-            displayHarga.textContent = formatHarga(hargaItem);
-            displayTotal.textContent = formatHarga(total);
+    // --- Fungsi UTAMA: Menghitung dan Memperbarui Harga ---
+    function updatePriceDisplay() {
+        const selectElement = document.getElementById('paket');
+        const jumlahElement = document.getElementById('jumlah');
+        const displayHarga = document.getElementById('display-harga');
+        const displayTotal = document.getElementById('display-total');
+        
+        const selectedValue = selectElement.value;
+        const jumlah = parseInt(jumlahElement.value) || 0;
+        
+        // 1. Dapatkan Harga Item
+        const hargaItem = extractPrice(selectedValue);
+        
+        // 2. Hitung Total
+        const total = hargaItem * jumlah;
+        
+        // 3. Format Ulang untuk Tampilan
+        const formatHarga = (num) => {
+            return `Rp ${num.toLocaleString('id-ID')}`;
+        };
+        
+        // 4. Update Tampilan
+        displayHarga.textContent = formatHarga(hargaItem);
+        displayTotal.textContent = formatHarga(total);
 
-            // Khusus untuk informasi grosir / kosong
-            if (selectedValue.includes("Grosir") || hargaItem === 0) {
-                 displayHarga.textContent = "Lihat Keterangan";
-                 displayTotal.textContent = "Lihat Keterangan";
-            }
+        // Khusus untuk informasi grosir / kosong
+        if (selectedValue.includes("Grosir") || hargaItem === 0) {
+             displayHarga.textContent = "N/A";
+             displayTotal.textContent = "N/A";
         }
+    }
 
-        // --- Event Listeners untuk Form ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectElement = document.getElementById('paket');
-            const jumlahElement = document.getElementById('jumlah');
+    // --- Event Listeners dan Fungsionalitas ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectElement = document.getElementById('paket');
+        const jumlahElement = document.getElementById('jumlah');
+        const formSection = document.getElementById('order-form');
+
+        // Panggil fungsi saat Form dan Jumlah berubah
+        selectElement.addEventListener('change', updatePriceDisplay);
+        jumlahElement.addEventListener('input', updatePriceDisplay);
+        
+        // Inisiasi harga saat dimuat
+        updatePriceDisplay();
+
+
+        // 1. Fungsi Pengiriman Formulir WhatsApp (DIGABUNGKAN DI SINI)
+        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Ambil data dari formulir
+            const nama = document.getElementById('nama').value;
+            const telepon = document.getElementById('telepon').value;
+            const alamat = document.getElementById('alamat').value;
+            const jumlah = document.getElementById('jumlah').value;
+            const paket = document.getElementById('paket').value;
+            const keterangan = document.getElementById('keterangan').value;
             
-            // Panggil fungsi saat Form dan Jumlah berubah
-            selectElement.addEventListener('change', updatePriceDisplay);
-            jumlahElement.addEventListener('input', updatePriceDisplay);
+            // Dapatkan total harga yang sudah dihitung
+            const totalDisplay = document.getElementById('display-total').textContent; 
 
-            // 1. Fungsi Pengiriman Formulir WhatsApp (Kode lama Anda tetap di sini)
-            document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-                event.preventDefault();
+            // Format pesan WhatsApp
+            const message = `
+Halo Primafood Rilldelish! 👋
+Saya ingin melakukan pemesanan dan klaim diskon khusus (Order Lengkap):
 
-                // ... (Kode pengiriman WA yang sudah kita buat sebelumnya) ...
-                // Pastikan kode WA ini tetap utuh, saya hanya menyertakan yang baru di atas.
-            });
+*Nama:* ${nama}
+*No. WhatsApp:* ${telepon}
+*Alamat Kirim:* ${alamat}
+*Pilihan Paket/Varian:* ${paket}
+*Jumlah Pesanan:* ${jumlah} pcs
+*Total Perkiraan Biaya:* ${totalDisplay}
 
-            // 2. Fungsionalitas Filtering Katalog Satuan (Kode lama Anda tetap di sini)
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            // ... (lanjutan kode filtering) ...
+*Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
 
-            // 3. Fungsionalitas Tombol ORDER Satuan
-            const orderButtons = document.querySelectorAll('.order-btn');
-            const formSection = document.getElementById('order-form');
-            orderButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    const productName = this.getAttribute('data-product-name');
-                    selectElement.value = productName;
-                    formSection.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Panggil fungsi ini untuk UPDATE HARGA segera setelah pilihan produk diatur
-                    updatePriceDisplay(); 
-                });
-            });
+Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. Terima kasih!
+            `.trim(); 
 
-            // 4. Fungsionalitas Tombol ORDER Mix
-            const mixOrderButtons = document.querySelectorAll('.mix-order-btn');
-            mixOrderButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    const productName = this.getAttribute('data-product-name');
-                    selectElement.value = productName;
-                    formSection.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Panggil fungsi ini untuk UPDATE HARGA segera setelah pilihan paket diatur
-                    updatePriceDisplay(); 
-                });
-            });
-
-            // Panggil sekali saat dimuat untuk inisiasi harga Rp 0
-            updatePriceDisplay();
+            // Nomor Tujuan (08124966298)
+            const whatsappNumber = '628124966298'; 
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
         });
-    </script>
+
+
+        // 2. Fungsionalitas Filtering Katalog Satuan
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productLists = document.querySelectorAll('.product-list');
+        // ... (Kode filter) ...
+        const buahList = document.getElementById('fruit-list');
+        const coatedList = document.getElementById('coated-list');
+        if (buahList) buahList.style.display = 'none';
+        if (coatedList) coatedList.style.display = 'none';
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-category');
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                productLists.forEach(list => {
+                    if (list.id === targetId + '-list') {
+                        list.style.display = 'block';
+                    } else {
+                        list.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+
+        // 3. Fungsionalitas Tombol ORDER Satuan
+        const orderButtons = document.querySelectorAll('.order-btn');
+        orderButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                const productName = this.getAttribute('data-product-name');
+                selectElement.value = productName;
+                formSection.scrollIntoView({ behavior: 'smooth' });
+                updatePriceDisplay(); 
+            });
+        });
+
+
+        // 4. Fungsionalitas Tombol ORDER Mix
+        const mixOrderButtons = document.querySelectorAll('.mix-order-btn');
+        mixOrderButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                const productName = this.getAttribute('data-product-name');
+                selectElement.value = productName;
+                formSection.scrollIntoView({ behavior: 'smooth' });
+                updatePriceDisplay(); 
+            });
+        });
+    });
+</script>
 </body>
 </html>
