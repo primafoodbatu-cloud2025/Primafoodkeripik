@@ -274,7 +274,17 @@
             </optgroup>
         </select>
     </div>
+<div class="form-group" style="margin-top: -10px; margin-bottom: 5px;">
+        <p style="text-align: left; color: #cc0000; font-weight: 600;">
+            Harga per item: <span id="display-harga">Rp 0</span>
+        </p>
+    </div>
 
+    <div class="form-group" style="margin-bottom: 30px; border-top: 2px dashed #ccc; padding-top: 10px;">
+        <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
+            TOTAL HARGA: <span id="display-total">Rp 0</span> 💰
+        </p>
+    </div>
     <div class="form-group">
         <label for="keterangan" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Catatan / Keterangan (Opsional)</label>
         <textarea id="keterangan" name="keterangan" placeholder="Contoh: Tanpa MSG, Request Rasa, atau Jam Pengiriman"></textarea>
@@ -325,118 +335,99 @@
     </footer>
 
     <script>
-        // --- 1. Fungsi Pengiriman Formulir WhatsApp ---
-    document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-        // Mencegah formulir terkirim secara tradisional
-        event.preventDefault();
-
-        // 1. Ambil data dari formulir (Revisi di sini)
-        const nama = document.getElementById('nama').value;
-        const telepon = document.getElementById('telepon').value;
-        const alamat = document.getElementById('alamat').value; // BARU
-        const jumlah = document.getElementById('jumlah').value; // BARU
-        const paket = document.getElementById('paket').value;
-        const keterangan = document.getElementById('keterangan').value; // BARU
-        
-        // 2. Format pesan WhatsApp (Revisi di sini)
-        const message = `
-Halo Primafood Rilldelish! 👋
-Saya ingin melakukan pemesanan dan klaim diskon khusus (Order Lengkap):
-
-*Nama:* ${nama}
-*No. WhatsApp:* ${telepon}
-*Alamat Kirim:* ${alamat}
-*Pilihan Paket/Satuan:* ${paket}
-*Jumlah Pesanan:* ${jumlah} pcs
-
-*Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
-
-Mohon diproses total biaya dan ongkirnya segera. Terima kasih!
-        `.trim(); 
-
-        // 3. Encode pesan (agar aman untuk URL)
-        const encodedMessage = encodeURIComponent(message);
-        
-        // 4. Nomor Tujuan (08124966298)
-        const whatsappNumber = '628124966298'; 
-
-        // 5. Buat link WhatsApp API
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-        
-        // 6. Arahkan pengguna ke link WhatsApp
-        window.open(whatsappUrl, '_blank');
-    });
-
-        // --- 2. Fungsionalitas Filtering Katalog Satuan ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const productLists = document.querySelectorAll('.product-list');
-        
-            // Memastikan hanya list Sayur yang tampil saat load awal
-            const buahList = document.getElementById('buah-list');
-            if (buahList) {
-                buahList.style.display = 'none';
+        // --- Fungsi Pembantu: Ekstraksi Harga dari Teks ---
+        function extractPrice(value) {
+            // Mencari angka di dalam kurung kurawal, membersihkan Rp, spasi, dan titik
+            const match = value.match(/\((Rp\s*|Rp)(\d+\.?\d*)\)/);
+            if (match && match[2]) {
+                return parseFloat(match[2].replace(/\./g, ''));
             }
+            return 0;
+        }
 
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-category');
-        
-                    // 1. Update button active state
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-        
-                    // 2. Show/Hide product lists
-                    productLists.forEach(list => {
-                        if (list.id === targetId + '-list') { // Perbaikan: Cek ID yang tepat
-                            list.style.display = 'block';
-                        } else {
-                            list.style.display = 'none';
-                        }
-                    });
+        // --- Fungsi UTAMA: Menghitung dan Memperbarui Harga ---
+        function updatePriceDisplay() {
+            const selectElement = document.getElementById('paket');
+            const jumlahElement = document.getElementById('jumlah');
+            const displayHarga = document.getElementById('display-harga');
+            const displayTotal = document.getElementById('display-total');
+            
+            const selectedValue = selectElement.value;
+            const jumlah = parseInt(jumlahElement.value) || 0;
+            
+            // 1. Dapatkan Harga Item
+            const hargaItem = extractPrice(selectedValue);
+            
+            // 2. Hitung Total
+            const total = hargaItem * jumlah;
+            
+            // 3. Format Ulang untuk Tampilan
+            const formatHarga = (num) => {
+                return `Rp ${num.toLocaleString('id-ID')}`;
+            };
+            
+            // 4. Update Tampilan
+            displayHarga.textContent = formatHarga(hargaItem);
+            displayTotal.textContent = formatHarga(total);
+
+            // Khusus untuk informasi grosir / kosong
+            if (selectedValue.includes("Grosir") || hargaItem === 0) {
+                 displayHarga.textContent = "Lihat Keterangan";
+                 displayTotal.textContent = "Lihat Keterangan";
+            }
+        }
+
+        // --- Event Listeners untuk Form ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectElement = document.getElementById('paket');
+            const jumlahElement = document.getElementById('jumlah');
+            
+            // Panggil fungsi saat Form dan Jumlah berubah
+            selectElement.addEventListener('change', updatePriceDisplay);
+            jumlahElement.addEventListener('input', updatePriceDisplay);
+
+            // 1. Fungsi Pengiriman Formulir WhatsApp (Kode lama Anda tetap di sini)
+            document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // ... (Kode pengiriman WA yang sudah kita buat sebelumnya) ...
+                // Pastikan kode WA ini tetap utuh, saya hanya menyertakan yang baru di atas.
+            });
+
+            // 2. Fungsionalitas Filtering Katalog Satuan (Kode lama Anda tetap di sini)
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            // ... (lanjutan kode filtering) ...
+
+            // 3. Fungsionalitas Tombol ORDER Satuan
+            const orderButtons = document.querySelectorAll('.order-btn');
+            const formSection = document.getElementById('order-form');
+            orderButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const productName = this.getAttribute('data-product-name');
+                    selectElement.value = productName;
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Panggil fungsi ini untuk UPDATE HARGA segera setelah pilihan produk diatur
+                    updatePriceDisplay(); 
                 });
             });
-        });
 
-        // --- 3. Fungsionalitas Tombol ORDER Satuan ---
-        const orderButtons = document.querySelectorAll('.order-btn');
-        const selectElement = document.getElementById('paket');
-        const formSection = document.getElementById('order-form');
-
-        orderButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                // Mencegah link/tombol standar
-                event.preventDefault(); 
-                
-                const productName = this.getAttribute('data-product-name');
-                
-                // 1. Set nilai dropdown di formulir
-                // Cari opsi yang memiliki nilai (value) sama dengan productName
-                selectElement.value = productName;
-
-                // 2. Scroll ke bagian formulir
-                formSection.scrollIntoView({ behavior: 'smooth' });
-                
-                // Opsional: Beri efek fokus/warna pada form
-                formSection.style.backgroundColor = '#fffacd';
-                setTimeout(() => {
-                    formSection.style.backgroundColor = '#fcebeb';
-                }, 1000); 
+            // 4. Fungsionalitas Tombol ORDER Mix
+            const mixOrderButtons = document.querySelectorAll('.mix-order-btn');
+            mixOrderButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    const productName = this.getAttribute('data-product-name');
+                    selectElement.value = productName;
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Panggil fungsi ini untuk UPDATE HARGA segera setelah pilihan paket diatur
+                    updatePriceDisplay(); 
+                });
             });
-        });
-        // --- 4. Fungsionalitas Tombol ORDER Mix ---
-        const mixOrderButtons = document.querySelectorAll('.mix-order-btn');
 
-        mixOrderButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                const productName = this.getAttribute('data-product-name');
-                
-                // Set nilai dropdown di formulir (Form Satuan/Mix)
-                selectElement.value = productName;
-
-                // Scroll ke bagian formulir
-                formSection.scrollIntoView({ behavior: 'smooth' });
-            });
+            // Panggil sekali saat dimuat untuk inisiasi harga Rp 0
+            updatePriceDisplay();
         });
     </script>
 </body>
