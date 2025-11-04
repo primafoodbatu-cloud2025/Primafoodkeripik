@@ -473,3 +473,39 @@ footer a {
     border-color: var(--color-cta); 
     outline: none;
 }
+/* Styling untuk wadah produk yang dinamis */
+.product-item {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+/* Mengatur input jumlah dan tombol hapus dalam satu baris */
+.form-group-inline {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end; /* Memastikan semuanya sejajar di bagian bawah */
+    margin-top: 10px;
+}
+
+.remove-product-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    white-space: nowrap; /* Mencegah tombol pecah */
+}
+
+.remove-product-btn:hover {
+    background-color: #d32f2f !important;
+}
+
+/* Kerapian Form Group */
+.form-group-inline .form-group {
+    margin-bottom: 0; 
+}
