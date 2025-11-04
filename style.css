@@ -485,23 +485,24 @@ body {
     background-color: #d32f2f !important;
 }
 
-/* === STYLING STRUK DINAMIS FINAL (FIXED ALIGNMENT) === */
+/* === STYLING STRUK DINAMIS FINAL (FINAL FIX ALIGNMENT) === */
 
-/* Styling Wadah Baris Struk */
+/* Wadah Baris Struk */
 .conversion-form .form-group p {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 0;
-    padding: 3px 10px; /* Padding samping untuk ruang */
+    padding: 3px 10px; 
     font-size: 1em;
+    position: relative; 
 }
 
-/* KOREKSI: Label Judul (memaksa lebar tetap untuk meluruskan nominal) */
+/* Label Nominal (misal: "Harga Normal:", "Potongan Diskon:") */
 .struk-row .struk-label, .struk-grand-total .struk-label {
     /* Lebar tetap untuk meluruskan titik dua */
-    width: 50%; 
-    min-width: 160px;
+    width: 60%; /* Ditingkatkan menjadi 60% agar label panjang muat */
+    min-width: 180px;
     text-align: left;
     font-weight: 600;
 }
@@ -510,31 +511,21 @@ body {
 .struk-row .struk-nominal {
     text-align: right;
     font-weight: 700;
-    flex-grow: 1; /* Biarkan nominal mengambil sisa ruang */
-    padding-left: 10px; /* Sedikit padding agar tidak menempel label */
+    flex-grow: 1; 
+    /* Nominal akan berada di sebelah kanan label */
 }
 
-/* Styling Keterangan Diskon (KOREKSI FONT & POSISI) */
+/* KOREKSI: Styling Keterangan Diskon (DI BAWAH NOMINAL) */
 #discount-tier-note {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
     text-align: right !important; /* Agar deskripsi diskon rata kanan */
-    margin-top: -10px !important; /* Tarik ke atas agar dekat nominal diskon */
+    margin-top: -15px !important; /* Tarik ke atas agar dekat nominal diskon */
     padding-right: 10px;
     margin-bottom: 10px !important;
     line-height: 1.2;
-}
-
-/* KOREKSI 4: Styling Keterangan Bawah Total (FINAL NOTES) */
-#total-discount-keterangan {
-    font-size: 0.85em !important; /* Perkecil font */
-    color: #777 !important;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: left;
-    white-space: pre-wrap;
-    line-height: 1.4;
-    border-top: none !important; /* Hapus border konflik */
+    width: 100%; /* Agar bisa rata kanan penuh */
+    display: block;
 }
 
 /* Styling Total Bayar (Dikuatkan) */
@@ -554,6 +545,17 @@ body {
 .ikon-uang {
     margin-left: 5px;
     color: #ff8c00;
+}
+
+/* Keterangan Bawah Total */
+#total-discount-keterangan {
+    font-size: 0.85em !important;
+    color: #777 !important;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+    white-space: pre-wrap;
+    line-height: 1.4;
 }
 
 /* ========================================= */
