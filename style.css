@@ -485,88 +485,75 @@ body {
     background-color: #d32f2f !important;
 }
 
-/* === STYLING STRUK DINAMIS FINAL === */
+/* === STYLING STRUK DINAMIS FINAL (FIXED ALIGNMENT) === */
 
-/* Wadah Baris Struk */
-.struk-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 3px 0;
-    position: relative; /* Wadah relatif untuk penempatan nominal absolut */
-}
-
-/* Styling Label (misal: "Harga Normal:", "Potongan Diskon:") */
+/* Styling Wadah Baris Struk */
 .conversion-form .form-group p {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 0;
-    padding-left: 10px; 
-    padding-right: 10px;
+    padding: 3px 10px; /* Padding samping untuk ruang */
     font-size: 1em;
-    position: relative; 
 }
 
-/* Styling Nominal Angka (Rata Kanan Absolut) */
-.conversion-form .form-group p span {
+/* KOREKSI: Label Judul (memaksa lebar tetap untuk meluruskan nominal) */
+.struk-row .struk-label, .struk-grand-total .struk-label {
+    /* Lebar tetap untuk meluruskan titik dua */
+    width: 50%; 
+    min-width: 160px;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Nominal Angka (Rata Kanan) */
+.struk-row .struk-nominal {
     text-align: right;
     font-weight: 700;
-    flex-shrink: 0;
-    position: absolute;
-    right: 10px;
+    flex-grow: 1; /* Biarkan nominal mengambil sisa ruang */
+    padding-left: 10px; /* Sedikit padding agar tidak menempel label */
 }
 
-/* Styling Keterangan Potongan Diskon (DI BAWAH NOMINAL DISKON) */
+/* Styling Keterangan Diskon (KOREKSI FONT & POSISI) */
 #discount-tier-note {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
-    text-align: right !important;
-    margin-top: -15px !important; 
+    text-align: right !important; /* Agar deskripsi diskon rata kanan */
+    margin-top: -10px !important; /* Tarik ke atas agar dekat nominal diskon */
     padding-right: 10px;
     margin-bottom: 10px !important;
-    display: block; /* Memastikan ini di baris baru */
-    width: 100%;
+    line-height: 1.2;
 }
 
-
-/* Styling Total Bayar (Dikuatkan) */
-.conversion-form .form-group[style*="border-top: 2px solid #ccc"] p {
-    font-size: 1.4em !important;
-    color: #cc0000 !important;
-    margin: 0;
-    position: relative;
-    padding-right: 25px; 
-}
-
-/* Ikon Mata Uang (Posisikan) */
-.conversion-form .form-group[style*="border-top: 2px solid #ccc"] p::after {
-    content: ' 💰';
-    position: absolute;
-    right: 5px; 
-    font-size: 0.8em;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#display-grand-total {
-    font-size: 1.2em !important;
-    color: #cc0000 !important;
-    font-weight: 800 !important;
-    padding-right: 20px;
-}
-
-/* Styling Keterangan Bawah Total (Ongkir/Grosir Note) */
+/* KOREKSI 4: Styling Keterangan Bawah Total (FINAL NOTES) */
 #total-discount-keterangan {
-    font-size: 0.85em !important;
+    font-size: 0.85em !important; /* Perkecil font */
     color: #777 !important;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     margin-top: 10px;
     text-align: left;
     white-space: pre-wrap;
     line-height: 1.4;
+    border-top: none !important; /* Hapus border konflik */
+}
+
+/* Styling Total Bayar (Dikuatkan) */
+.struk-grand-total {
+    padding-top: 10px;
+    margin-top: 10px; 
+    border-top: 2px solid #ccc !important;
+}
+
+.grand-total-line {
+    font-size: 1.4em !important;
+    color: #cc0000 !important;
+    font-weight: 800;
+    padding: 0 10px !important;
+}
+
+.ikon-uang {
+    margin-left: 5px;
+    color: #ff8c00;
 }
 
 /* ========================================= */
