@@ -519,12 +519,15 @@ body {
 
 /* KOREKSI: Styling Keterangan Potongan Diskon (DI BAWAH NOMINAL) */
 #discount-tier-note {
-    font-size: 0.8em !important;
-    color: #4CAF50 !important;
-    text-align: right !important; /* Agar deskripsi diskon rata kanan */
-    margin-top: -15px !important; /* Tarik ke atas agar dekat nominal diskon */
+    font-size: 0.8em !important; /* Ukuran font tetap kecil */
+    color: #4CAF50 !important; /* Warna Hijau Rilldelish */
+    text-align: right !important; 
+    
+    /* KOREKSI: MENGHAPUS NEGATIVE MARGIN & MEMBERSIHKAN SPASI */
+    margin-top: -10px !important; /* Turunkan sedikit dari sebelumnya */
+    margin-bottom: 5px !important; /* Tambahkan jarak bawah yang sehat */
     padding-right: 10px;
-    margin-bottom: 10px !important;
+    
     line-height: 1.2;
     width: 100%;
     display: block; 
