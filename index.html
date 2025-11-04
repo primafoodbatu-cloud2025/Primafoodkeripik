@@ -670,7 +670,7 @@
             let finalNote = '*Harga ini belum termasuk biaya kirim.';
             
             if (globalDiscRate >= 0.10) {
-                 finalNote = `*Anda mendapatkan kemasan grosir tanpa stiker. (${totalQuantityPcs} pcs). Harga belum termasuk biaya kirim.`;
+                 finalNote = `*Anda mendapatkan kemasan grosir tanpa stiker. (${totalQuantityPcs} pcs). Harga ini belum termasuk biaya kirim.`;
             } else if (globalDiscRate === FLASH_SALE_DISCOUNT) {
                  finalNote = `*Diskon 5% Flash Sale Diterapkan. Harga ini belum termasuk biaya kirim.`;
             } else if (totalWeightKg < 1 && totalWeightGrams > 0) {
