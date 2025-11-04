@@ -208,92 +208,99 @@
                 Isi formulir singkat di bawah ini, dan tim kami akan segera menghubungi Anda melalui WhatsApp untuk memproses diskon dan pesanan Anda.
             </p>
 
-            <form id="whatsappForm" class="contact-form">
-                
+            <form id="whatsappForm">
     <div class="form-group">
-        <label for="nama" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Nama Pemesan *</label>
-        <input type="text" id="nama" name="nama" placeholder="Nama Lengkap Anda" required>
+        <label for="nama">Nama Lengkap *</label>
+        <input type="text" id="nama" name="nama" required>
     </div>
+    <div class="form-group">
+        <label for="telepon">No. WhatsApp Aktif *</label>
+        <input type="tel" id="telepon" name="telepon" required>
+    </div>
+    <div class="form-group">
+        <label for="alamat">Alamat Pengiriman *</label>
+        <textarea id="alamat" name="alamat" rows="2" required></textarea>
+    </div>
+
+    <h3 style="color: #38761d; margin-top: 30px; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Pilihan Produk (Keranjang Mini)</h3>
     
-    <div class="form-group">
-        <label for="telepon" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Nomor WhatsApp *</label>
-        <input type="tel" id="telepon" name="telepon" placeholder="Nomor WhatsApp (Wajib Aktif)" required>
+    <div id="product-list-container">
+        <div class="product-item" data-id="1">
+            <div class="form-group">
+                <label for="paket-1">Pilih Produk/Paket *</label>
+                <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
+                    <option value="">-- PILIH OPSI ORDER ANDA --</option>
+                    
+                    <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
+                        <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
+                        <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
+                        <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
+                        <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option>
+                        <option value="Paket Mix 6 Varian - Rp 120.000">Paket Mix 6 Varian (Rp 120.000) - Rincian di Catatan</option>
+                        <option value="Paket Mix 10 Varian - Rp 180.000">Paket Mix 10 Varian (Rp 180.000) - Rincian di Catatan</option>
+                    </optgroup>
+                    
+                    <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
+                        <option value="Satuan - Keripik Gedebog Pisang (Rp 15.900)">Keripik Gedebog Pisang (Rp 15.900)</option>
+                        <option value="Satuan - Keripik Wortel (Rp 26.900)">Keripik Wortel (Rp 26.900)</option>
+                        <option value="Satuan - Keripik Ubi Ungu (Rp 20.900)">Keripik Ubi Ungu (Rp 20.900)</option>
+                        <option value="Satuan - Keripik Ubi Madu (Rp 20.900)">Keripik Ubi Madu (Rp 20.900)</option>
+                        <option value="Satuan - Keripik Okra (Rp 50.900)">Keripik Okra (Rp 50.900)</option>
+                        <option value="Satuan - Keripik Jagung Manis (Rp 24.900)">Keripik Jagung Manis (Rp 24.900)</option>
+                        <option value="Satuan - Keripik Kentang (Rp 28.900)">Keripik Kentang (Rp 28.900)</option>
+                        <option value="Satuan - Keripik Kentang Wedges (Rp 32.900)">Keripik Kentang Wedges (Rp 32.900)</option>
+                        <option value="Satuan - Keripik Bawang Merah (Rp 56.900)">Keripik Bawang Merah (Rp 56.900)</option>
+                        <option value="Satuan - Keripik Bawang Putih (Rp 54.900)">Keripik Bawang Putih (Rp 54.900)</option>
+                        <option value="Satuan - Keripik Bawang Bombay (Rp 26.900)">Keripik Bawang Bombay (Rp 26.900)</option>
+                        <option value="Satuan - Keripik Cabe Besar (Rp 28.900)">Keripik Cabe Besar (Rp 28.900)</option>
+                        <option value="Satuan - Keripik Cabe Rawit (Rp 28.900)">Keripik Cabe Rawit (Rp 28.900)</option>
+                        <option value="Satuan - Keripik Paprika (Rp 28.900)">Keripik Paprika (Rp 28.900)</option>
+                        <option value="Satuan - Keripik Buncis (Rp 30.900)">Keripik Buncis (Rp 30.900)</option>
+                        <option value="Satuan - Keripik Jamur Tiram (Rp 20.900)">Keripik Jamur Tiram (Rp 20.900)</option>
+                        <option value="Satuan - Keripik Jamur Kuping (Rp 22.900)">Keripik Jamur Kuping (Rp 22.900)</option>
+                        <option value="Satuan - Keripik Bunga Kol (Rp 26.900)">Keripik Bunga Kol (Rp 26.900)</option>
+                        <option value="Satuan - Keripik Brokoli (Rp 24.900)">Keripik Brokoli (Rp 24.900)</option>
+                        <option value="Satuan - Keripik Edamame (Rp 30.900)">Keripik Edamame (Rp 30.900)</option>
+                        <option value="Satuan - Keripik Strawberry (Rp 100.000)">PREMIUM: Keripik Strawberry (Rp 100.000)</option>
+                        <option value="Satuan - Keripik Pisang (Rp 20.900)">Keripik Pisang (Rp 20.900)</option>
+                        <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
+                    </optgroup>
+                    
+                    <optgroup label="ORDER GROSIR (1KG+)">
+                        <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="form-group-inline">
+                <div class="form-group" style="width: 50%;">
+                    <label for="jumlah-1">Jumlah Pesanan *</label>
+                    <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+                </div>
+                <div class="form-group" style="width: 50%; text-align: right;">
+                    <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
+                    <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
+                        Subtotal: <span class="display-subtotal">Rp 0</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
+    
+
+    <div class="form-group" style="margin-bottom: 30px; border-top: 2px dashed #4CAF50; padding-top: 15px;">
+        <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
+            TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
+        </p>
     </div>
 
     <div class="form-group">
-        <label for="alamat" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Alamat Lengkap Pengiriman *</label>
-        <textarea id="alamat" name="alamat" placeholder="Jalan, No. Rumah, Kecamatan, Kota/Kabupaten" required></textarea>
+        <label for="keterangan">Catatan / Keterangan (Opsional)</label>
+        <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
     </div>
-
-    <div class="form-group">
-        <label for="jumlah" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Jumlah Pesanan (pcs) *</label>
-        <input type="number" id="jumlah" name="jumlah_pesanan" placeholder="Contoh: 1, 2, atau 5" required min="1">
-    </div>
-
-    <div class="form-group">
-        <label for="paket" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Pilih Paket / Varian *</label>
-        <select id="paket" name="paket_pilihan" required>
-            
-            <option value="">-- PILIH OPSI ORDER ANDA --</option>
-            
-            <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
-                <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
-                <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
-                <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
-                <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option> 
-            </optgroup>
-            
-            <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
-                <option value="Satuan - Keripik Gedebog Pisang (Rp 15.900)">Keripik Gedebog Pisang (Rp 15.900)</option>
-                <option value="Satuan - Keripik Wortel (Rp 26.900)">Keripik Wortel (Rp 26.900)</option>
-                <option value="Satuan - Keripik Ubi Ungu (Rp 20.900)">Keripik Ubi Ungu (Rp 20.900)</option>
-                <option value="Satuan - Keripik Ubi Madu (Rp 20.900)">Keripik Ubi Madu (Rp 20.900)</option>
-                <option value="Satuan - Keripik Okra (Rp 50.900)">Keripik Okra (Rp 50.900)</option>
-                <option value="Satuan - Keripik Jagung Manis (Rp 24.900)">Keripik Jagung Manis (Rp 24.900)</option>
-                <option value="Satuan - Keripik Kentang (Rp 28.900)">Keripik Kentang (Rp 28.900)</option>
-                <option value="Satuan - Keripik Kentang Wedges (Rp 32.900)">Keripik Kentang Wedges (Rp 32.900)</option>
-                <option value="Satuan - Keripik Bawang Merah (Rp 56.900)">Keripik Bawang Merah (Rp 56.900)</option>
-                <option value="Satuan - Keripik Bawang Putih (Rp 54.900)">Keripik Bawang Putih (Rp 54.900)</option>
-                <option value="Satuan - Keripik Bawang Bombay (Rp 26.900)">Keripik Bawang Bombay (Rp 26.900)</option>
-                <option value="Satuan - Keripik Cabe Besar (Rp 28.900)">Keripik Cabe Besar (Rp 28.900)</option>
-                <option value="Satuan - Keripik Cabe Rawit (Rp 28.900)">Keripik Cabe Rawit (Rp 28.900)</option>
-                <option value="Satuan - Keripik Paprika (Rp 28.900)">Keripik Paprika (Rp 28.900)</option>
-                <option value="Satuan - Keripik Buncis (Rp 30.900)">Keripik Buncis (Rp 30.900)</option>
-                <option value="Satuan - Keripik Jamur Tiram (Rp 20.900)">Keripik Jamur Tiram (Rp 20.900)</option>
-                <option value="Satuan - Keripik Jamur Kuping (Rp 22.900)">Keripik Jamur Kuping (Rp 22.900)</option>
-                <option value="Satuan - Keripik Bunga Kol (Rp 26.900)">Keripik Bunga Kol (Rp 26.900)</option>
-                <option value="Satuan - Keripik Brokoli (Rp 24.900)">Keripik Brokoli (Rp 24.900)</option>
-                <option value="Satuan - Keripik Edamame (Rp 30.900)">Keripik Edamame (Rp 30.900)</option>
-                <option value="Satuan - Keripik Strawberry (Rp 100.000)">PREMIUM: Keripik Strawberry (Rp 100.000)</option>
-                <option value="Satuan - Keripik Pisang (Rp 20.900)">Keripik Pisang (Rp 20.900)</option>
-                <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
-            </optgroup>
-            
-            <optgroup label="ORDER GROSIR (1KG+)">
-                <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
-            </optgroup>
-        </select>
-    </div>
-<div class="form-group" style="margin-top: -10px; margin-bottom: 5px;">
-    <p style="text-align: left; color: #cc0000; font-weight: 600;">
-        Harga per item: <span id="display-harga" style="font-weight: 700;">Rp 0</span>
-    </p>
-</div>
-
-<div class="form-group" style="margin-bottom: 30px; border-top: 2px dashed #ccc; padding-top: 10px;">
-    <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
-        TOTAL HARGA: <span id="display-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
-    </p>
-</div>
-    <div class="form-group">
-        <label for="keterangan" style="display: block; text-align: left; font-weight: 600; margin-bottom: 5px;">Catatan / Keterangan (Opsional)</label>
-        <textarea id="keterangan" name="keterangan" placeholder="Contoh: Tanpa MSG, Request Rasa, atau Jam Pengiriman"></textarea>
-    </div>
-
-    <button type="submit" class="cta-button" 
-            style="background-color: #cc0000; border: none; width: 100%; padding: 15px;">
-        KIRIM & KLAIM DISKON SEKARANG
-    </button>
+    <button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
 </form>
         </div>
     </section>
@@ -335,10 +342,12 @@
     </footer>
 
     <script>
-    // --- Fungsi Pembantu: Ekstraksi Harga dari Teks (DIPERKUAT) ---
+    // Global Counter untuk ID produk
+    let productIdCounter = 1;
+    
+    // --- Fungsi Pembantu: Ekstraksi Harga dari Teks ---
     function extractPrice(value) {
         // Regex mencari pola: (Rp [angka dengan titik atau koma])
-        // Menggunakan versi baru yang lebih andal untuk memparsing format Indonesia (X.XXX)
         const match = value.match(/Rp\s*([\d\.]+)/);
         if (match && match[1]) {
             // Menghapus semua titik (separator ribuan) agar JavaScript bisa menghitung
@@ -347,97 +356,187 @@
         return 0;
     }
 
-    // --- Fungsi UTAMA: Menghitung dan Memperbarui Harga ---
-    function updatePriceDisplay() {
-        const selectElement = document.getElementById('paket');
-        const jumlahElement = document.getElementById('jumlah');
-        const displayHarga = document.getElementById('display-harga');
-        const displayTotal = document.getElementById('display-total');
-        
-        const selectedValue = selectElement.value;
-        const jumlah = parseInt(jumlahElement.value) || 0;
-        
-        // 1. Dapatkan Harga Item
-        const hargaItem = extractPrice(selectedValue);
-        
-        // 2. Hitung Total
-        const total = hargaItem * jumlah;
-        
-        // 3. Format Ulang untuk Tampilan
-        const formatHarga = (num) => {
-            return `Rp ${num.toLocaleString('id-ID')}`;
-        };
-        
-        // 4. Update Tampilan
-        displayHarga.textContent = formatHarga(hargaItem);
-        displayTotal.textContent = formatHarga(total);
+    // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total ---
+    function calculateTotal() {
+        let grandTotal = 0;
+        const productItems = document.querySelectorAll('#product-list-container .product-item');
 
-        // Khusus untuk informasi grosir / kosong
-        if (selectedValue.includes("Grosir") || hargaItem === 0) {
-             displayHarga.textContent = "N/A";
-             displayTotal.textContent = "N/A";
-        }
+        productItems.forEach(item => {
+            const selectElement = item.querySelector('.product-select');
+            const quantityElement = item.querySelector('.product-quantity');
+            const subtotalDisplay = item.querySelector('.display-subtotal');
+            const removeButton = item.querySelector('.remove-product-btn');
+            
+            const selectedValue = selectElement.value;
+            const quantity = parseInt(quantityElement.value) || 0;
+            
+            // 1. Dapatkan Harga Item
+            const hargaItem = extractPrice(selectedValue);
+            
+            // 2. Hitung Subtotal
+            const subtotal = hargaItem * quantity;
+            grandTotal += subtotal;
+            
+            // 3. Update Tampilan Subtotal
+            const formatHarga = (num) => `Rp ${num.toLocaleString('id-ID')}`;
+            subtotalDisplay.textContent = formatHarga(subtotal);
+
+            // Tampilkan tombol Hapus hanya jika ada lebih dari 1 item
+            if (productItems.length > 1) {
+                removeButton.style.display = 'inline-block';
+            } else {
+                removeButton.style.display = 'none';
+            }
+        });
+        
+        // 4. Update Tampilan Grand Total
+        const grandTotalDisplay = document.getElementById('display-grand-total');
+        grandTotalDisplay.textContent = `Rp ${grandTotal.toLocaleString('id-ID')}`;
     }
 
-    // --- Event Listeners dan Fungsionalitas ---
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectElement = document.getElementById('paket');
-        const jumlahElement = document.getElementById('jumlah');
-        const formSection = document.getElementById('order-form');
 
-        // Panggil fungsi saat Form dan Jumlah berubah
-        selectElement.addEventListener('change', updatePriceDisplay);
-        jumlahElement.addEventListener('input', updatePriceDisplay);
+    // --- Fungsi Tambah Produk Baru ---
+    function addProductItem() {
+        productIdCounter++;
+        const container = document.getElementById('product-list-container');
+        const firstItem = container.querySelector('.product-item');
+
+        // Duplikasi elemen pertama
+        const newItem = firstItem.cloneNode(true);
+        newItem.setAttribute('data-id', productIdCounter);
         
-        // Inisiasi harga saat dimuat
-        updatePriceDisplay();
+        // Update ID dan name agar unik
+        const selectElement = newItem.querySelector('.product-select');
+        selectElement.id = 'paket-' + productIdCounter;
+        selectElement.name = 'paket_pilihan[]';
+        selectElement.value = ""; // Reset pilihan
+        
+        const quantityElement = newItem.querySelector('.product-quantity');
+        quantityElement.id = 'jumlah-' + productIdCounter;
+        quantityElement.name = 'jumlah_pesanan[]';
+        quantityElement.value = 1; // Reset jumlah
 
+        // Update Label
+        const labelSelect = newItem.querySelector(`label[for="${firstItem.querySelector('.product-select').id}"]`);
+        if (labelSelect) labelSelect.setAttribute('for', selectElement.id);
+        
+        const labelQuantity = newItem.querySelector(`label[for="${firstItem.querySelector('.product-quantity').id}"]`);
+        if (labelQuantity) labelQuantity.setAttribute('for', quantityElement.id);
 
-        // 1. Fungsi Pengiriman Formulir WhatsApp (DIGABUNGKAN DI SINI)
-        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        // Reset Subtotal
+        newItem.querySelector('.display-subtotal').textContent = 'Rp 0';
+        
+        // Pasang Event Listeners baru
+        selectElement.addEventListener('change', calculateTotal);
+        quantityElement.addEventListener('input', calculateTotal);
+        
+        // Pasang Event Listener untuk tombol Hapus
+        const removeButton = newItem.querySelector('.remove-product-btn');
+        removeButton.addEventListener('click', function() {
+            newItem.remove();
+            calculateTotal(); // Hitung ulang setelah menghapus
+        });
+        
+        container.appendChild(newItem);
+        calculateTotal(); // Hitung ulang setelah menambah
+        selectElement.focus(); // Fokus ke produk yang baru
+    }
 
-            // Ambil data dari formulir
-            const nama = document.getElementById('nama').value;
-            const telepon = document.getElementById('telepon').value;
-            const alamat = document.getElementById('alamat').value;
-            const jumlah = document.getElementById('jumlah').value;
-            const paket = document.getElementById('paket').value;
-            const keterangan = document.getElementById('keterangan').value;
-            
-            // Dapatkan total harga yang sudah dihitung
-            const totalDisplay = document.getElementById('display-total').textContent; 
+    // --- Fungsionalitas WhatsApp (Diperbarui untuk Multi-Item) ---
+    function sendWhatsAppOrder(event) {
+        event.preventDefault();
 
-            // Format pesan WhatsApp
-            const message = `
+        // Ambil data pelanggan
+        const nama = document.getElementById('nama').value;
+        const telepon = document.getElementById('telepon').value;
+        const alamat = document.getElementById('alamat').value;
+        const keterangan = document.getElementById('keterangan').value;
+        const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
+
+        // Ambil data produk (Looping)
+        const productItems = document.querySelectorAll('#product-list-container .product-item');
+        let productDetails = [];
+        let itemCounter = 1;
+        
+        productItems.forEach(item => {
+            const paket = item.querySelector('.product-select').value;
+            const jumlah = item.querySelector('.product-quantity').value;
+            const subtotal = item.querySelector('.display-subtotal').textContent;
+
+            if (paket && jumlah > 0) {
+                productDetails.push(
+                    `*Item ${itemCounter}:* ${jumlah}x ${paket} (Subtotal: ${subtotal})`
+                );
+                itemCounter++;
+            }
+        });
+
+        if (productDetails.length === 0) {
+            alert("Mohon pilih setidaknya satu produk sebelum mengirim pesanan.");
+            return;
+        }
+
+        const productListText = productDetails.join('\n');
+
+        // Format pesan WhatsApp
+        const message = `
 Halo Primafood Rilldelish! 👋
-Saya ingin melakukan pemesanan dan klaim diskon khusus (Order Lengkap):
+Saya ingin melakukan pemesanan (Multi-Item Order):
 
 *Nama:* ${nama}
 *No. WhatsApp:* ${telepon}
 *Alamat Kirim:* ${alamat}
-*Pilihan Paket/Varian:* ${paket}
-*Jumlah Pesanan:* ${jumlah} pcs
-*Total Perkiraan Biaya:* ${totalDisplay}
 
+*==== DETAIL PESANAN ====*\n${productListText}
+*========================*
+
+*TOTAL KESELURUHAN:* ${grandTotalDisplay}
 *Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
 
 Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. Terima kasih!
-            `.trim(); 
+        `.trim(); 
 
-            // Nomor Tujuan (08124966298)
-            const whatsappNumber = '628124966298'; 
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
+        const whatsappNumber = '628124966298'; 
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const productContainer = document.getElementById('product-list-container');
+        const formSection = document.getElementById('order-form');
+        
+        // Event listeners untuk item produk awal
+        const initialSelect = document.getElementById('paket-1');
+        const initialQuantity = document.getElementById('jumlah-1');
+        initialSelect.addEventListener('change', calculateTotal);
+        initialQuantity.addEventListener('input', calculateTotal);
+
+        // Event listener untuk tombol 'Tambah Produk'
+        document.getElementById('add-product-btn').addEventListener('click', addProductItem);
+
+        // Event listener untuk tombol 'Hapus' pada item pertama
+        const initialRemoveBtn = document.querySelector('.product-item[data-id="1"] .remove-product-btn');
+        initialRemoveBtn.addEventListener('click', function() {
+            if (productContainer.children.length > 1) {
+                document.querySelector('.product-item[data-id="1"]').remove();
+                calculateTotal();
+            }
         });
 
 
-        // 2. Fungsionalitas Filtering Katalog Satuan
+        // Ganti event listener submit lama dengan fungsi multi-item baru
+        document.getElementById('whatsappForm').addEventListener('submit', sendWhatsAppOrder);
+        
+        // Panggil hitung total pertama kali
+        calculateTotal();
+
+
+        // --- Fungsionalitas Filtering Katalog Satuan (Tetap di sini) ---
         const categoryButtons = document.querySelectorAll('.category-btn');
         const productLists = document.querySelectorAll('.product-list');
-        // ... (Kode filter) ...
         const buahList = document.getElementById('fruit-list');
         const coatedList = document.getElementById('coated-list');
         if (buahList) buahList.style.display = 'none';
@@ -460,27 +559,33 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
         });
 
 
-        // 3. Fungsionalitas Tombol ORDER Satuan
-        const orderButtons = document.querySelectorAll('.order-btn');
+        // --- Fungsionalitas Tombol ORDER Satuan/Mix (Diperbarui) ---
+        const orderButtons = document.querySelectorAll('.order-btn, .mix-order-btn');
+        
         orderButtons.forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault(); 
                 const productName = this.getAttribute('data-product-name');
-                selectElement.value = productName;
-                formSection.scrollIntoView({ behavior: 'smooth' });
-                updatePriceDisplay(); 
-            });
-        });
+                
+                // Hapus semua item yang ada
+                document.querySelectorAll('.product-item').forEach(item => {
+                    if (item.getAttribute('data-id') !== '1') item.remove();
+                });
+                
+                // Set item pertama dengan produk yang diklik
+                const initialSelect = document.getElementById('paket-1');
+                const initialQuantity = document.getElementById('jumlah-1');
+                
+                initialSelect.value = productName;
+                initialQuantity.value = 1;
+                
+                // Pastikan hanya ada 1 item awal saat diklik dari katalog
+                while (productContainer.children.length > 1) {
+                    productContainer.removeChild(productContainer.lastChild);
+                }
 
-
-        // 4. Fungsionalitas Tombol ORDER Mix
-        const mixOrderButtons = document.querySelectorAll('.mix-order-btn');
-        mixOrderButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                const productName = this.getAttribute('data-product-name');
-                selectElement.value = productName;
                 formSection.scrollIntoView({ behavior: 'smooth' });
-                updatePriceDisplay(); 
+                calculateTotal(); 
             });
         });
     });
