@@ -536,63 +536,52 @@
     }
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
     
-    // --- Fungsi Penentu Diskon Maksimal (TETAP SAMA) ---
-    function getMaxDiscount(totalWeightKg) { 
-        // ... (KodegetMaxDiscount) ...
-        // ... (Kode getMaxDiscount tidak diulang di sini) ...
-        let maxDisc = 0;
+    // --- Fungsi Penentu Diskon Maksimal ---
+    function getMaxDiscount(totalWeightKg) {
+        let bestDiscount = { rate: 0, type: 'None', tier: null, range: null };
         
+        // Loop Diskon Grosir
         for (const threshold in GROSIR_DISCOUNT_RATES) {
             if (totalWeightKg >= parseInt(threshold)) {
-                if (GROSIR_DISCOUNT_RATES[threshold] > maxDisc) {
-                    maxDisc = GROSIR_DISCOUNT_RATES[threshold];
+                const rate = GROSIR_DISCOUNT_RATES[threshold];
+                if (rate > bestDiscount.rate) {
+                    bestDiscount.rate = rate;
+                    bestDiscount.type = 'Grosir';
+                    
+                    // Menentukan Tier dan Range
+                    const tierNum = (threshold == 1) ? 1 : (threshold == 10) ? 2 : (threshold == 25) ? 3 : 4;
+                    const maxKg = (threshold == 50) ? 'ke atas' : (parseInt(threshold) + 9);
+                    const range = (threshold == 1) ? '1-9 kg' : `${threshold}-${maxKg} kg`;
+                    
+                    bestDiscount.tier = tierNum;
+                    bestDiscount.range = range;
                 }
             }
         }
         
-        if (isFlashSaleActive && maxDisc < FLASH_SALE_DISCOUNT) {
-            maxDisc = FLASH_SALE_DISCOUNT;
+        // Cek Flash Sale
+        if (isFlashSaleActive && bestDiscount.rate < FLASH_SALE_DISCOUNT) {
+            bestDiscount.rate = FLASH_SALE_DISCOUNT;
+            bestDiscount.type = 'Flash Sale';
+            bestDiscount.tier = null;
+            bestDiscount.range = null;
+        } else if (isFlashSaleActive && bestDiscount.rate === 0 && totalWeightKg > 0) {
+             bestDiscount.rate = FLASH_SALE_DISCOUNT;
+             bestDiscount.type = 'Flash Sale';
+             bestDiscount.tier = null;
+             bestDiscount.range = null;
         }
 
-        if (maxDisc >= 0.10) { 
-             let tier = 0;
-             for (const t in GROSIR_DISCOUNT_RATES) {
-                 if (GROSIR_DISCOUNT_RATES[t] === maxDisc) {
-                     tier = t;
-                     break;
-                 }
-             }
-             const maxKg = (tier == 50) ? 'ke atas' : (parseInt(tier) + 9);
-             const range = (tier == 1) ? '1-9 kg' : `${tier}-${maxKg} kg`;
-             return { rate: maxDisc, type: 'Grosir', tier: GROSIR_DISCOUNT_RATES[tier], range: range };
-        } else if (maxDisc === FLASH_SALE_DISCOUNT) {
-             return { rate: maxDisc, type: 'Flash Sale', tier: null, range: null };
-        } else if (maxDisc > 0) {
-             return { rate: maxDisc, type: 'Grosir', tier: 1, range: '1-9 kg' };
-        }
-        
-        return { rate: 0, type: 'None', tier: null, range: null };
+        return bestDiscount;
     }
 
-
-    // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total (DIPERBAIKI TOTAL) ---
+    // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total ---
     function calculateTotal() {
         let totalHargaAwal = 0;
         let grandTotal = 0;
         let totalWeightGrams = 0;
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let totalQuantityPcs = 0;
-        
-        // Cek apakah ada item yang dipilih, jika tidak, reset total.
-        if (productItems.length === 0) {
-            // Jika container kosong, paksa reset display
-            document.getElementById('display-normal-price').textContent = formatCurrency(0);
-            document.getElementById('display-discount-amount').textContent = formatCurrency(0);
-            document.getElementById('display-grand-total').textContent = formatCurrency(0);
-            document.getElementById('display-total-weight').textContent = '0 g';
-            return;
-        }
-
 
         // Loop 1: Hitung Harga Awal, Berat, dan Total PCS
         productItems.forEach(item => {
@@ -607,17 +596,15 @@
             
             const hargaItemPerPcs = extractPrice(selectedValue);
             
-            // Konversi Quantity ke PCS dan hitung harga dasar
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
 
-            // --- LOGIKA BERAT ITEM ---
+            // LOGIKA BERAT ITEM
             let itemWeightPerPcs = (selectedValue.includes("Paket Mix")) ? MIX_PACKAGE_WEIGHT : WEIGHT_PER_PCS_GRAMS;
             let subtotalWeight = itemWeightPerPcs * quantityPcs;
             totalWeightGrams += subtotalWeight;
             
             itemWeightDisplay.textContent = `${itemWeightPerPcs} g`; 
-            // --- AKHIR LOGIKA BERAT ITEM ---
             
             totalHargaAwal += subtotalAwal;
             totalQuantityPcs += quantityPcs;
@@ -640,8 +627,7 @@
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
             const unit = unitElement.value;
-            
-            // Hitung kembali subtotal item dengan diskon global
+
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             const hargaItemPerPcs = extractPrice(selectedValue);
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
@@ -652,6 +638,13 @@
             // Tambahkan keterangan Diskon ke Subtotal Display
             if (globalDiscRate > 0) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
+            }
+
+            const removeButton = item.querySelector('.remove-product-btn');
+            if (productItems.length > 1) {
+                removeButton.style.display = 'inline-block';
+            } else {
+                removeButton.style.display = 'none';
             }
         });
         
@@ -671,30 +664,32 @@
         const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
         document.getElementById('display-total-weight').textContent = totalWeightText;
 
-        // Update Keterangan Diskon di Total
+        // Update Keterangan Diskon di Total (OUTPUT BARIS BARU)
         const totalKeterangan = document.getElementById('total-discount-keterangan');
         if (totalKeterangan) {
-            let finalNote = '*Harga ini belum termasuk biaya kirim.';
+            let notes = [];
             
+            // 1. Keterangan Potongan
+            if (globalDiscRate > 0) {
+                if (discType === 'Grosir') {
+                    notes.push(`* Anda mendapatkan Potongan Discount Grosir Tier ${discTier} (Pembelian ${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%.`);
+                } else if (discType === 'Flash Sale') {
+                    notes.push(`* Diskon 5% Flash Sale Tambahan Diterapkan.`);
+                }
+            } else if (totalWeightGrams > 0 && totalWeightKg < 1) {
+                notes.push(`* Pesan minimal 1 kg untuk diskon grosir 10%!`);
+            }
+            
+            // 2. Keterangan Kemasan
             if (globalDiscRate >= 0.10) {
-                 finalNote = `*Anda mendapatkan kemasan grosir tanpa stiker. (${totalQuantityPcs} pcs). Harga ini belum termasuk biaya kirim.`;
-            } else if (globalDiscRate === FLASH_SALE_DISCOUNT) {
-                 finalNote = `*Diskon 5% Flash Sale Diterapkan. Harga ini belum termasuk biaya kirim.`;
-            } else if (totalWeightKg < 1 && totalWeightGrams > 0) {
-                 finalNote = `*Pesan minimal 1 kg untuk diskon grosir 10%! Harga ini belum termasuk biaya kirim.`;
+                notes.push(`* Anda mendapatkan kemasan grosir tanpa sticker dengan berat bersih ${totalWeightText}.`);
             }
-            totalKeterangan.innerHTML = finalNote;
+            
+            // 3. Keterangan Ongkir
+            notes.push(`* Harga di atas belum termasuk Ongkir.`);
+            
+            totalKeterangan.innerHTML = notes.join('<br>'); 
         }
-        
-        // Tampilkan tombol Hapus
-        productItems.forEach(item => {
-             const removeButton = item.querySelector('.remove-product-btn');
-             if (productItems.length > 1) {
-                removeButton.style.display = 'inline-block';
-            } else {
-                removeButton.style.display = 'none';
-            }
-        });
     }
 
     // --- Fungsi Tambah Produk Baru ---
@@ -753,6 +748,7 @@
         const alamat = document.getElementById('alamat').value;
         const keterangan = document.getElementById('keterangan').value;
 
+        // Ambil Data Struk
         const totalHargaNormalDisplay = document.getElementById('display-normal-price').textContent;
         const discountAmountDisplay = document.getElementById('display-discount-amount').textContent;
         const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
