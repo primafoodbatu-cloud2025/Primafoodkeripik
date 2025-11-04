@@ -188,6 +188,40 @@ body {
     margin-bottom: 10px;
 }
 
+/* ========================================= */
+/* 5.1. STYLING VIDEO PROSES PRODUKSI (16:9) */
+/* ========================================= */
+.production-video {
+    padding: 60px 0;
+    background-color: white; /* Latar belakang bersih untuk menonjolkan video */
+}
+
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* Rasio 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #000;
+}
+
+.production-video h2 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
 
 /* ========================================= */
 /* 6. KATALOG PRODUK TUNGGAL & MIX */
@@ -375,6 +409,12 @@ body {
     color: var(--color-text);
 }
 
+/* ========================================= */
+/* 8. TESTIMONI */
+/* ========================================= */
+.testimonial-video {
+    padding: 60px 0;
+}
 
 /* ========================================= */
 /* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
@@ -519,15 +559,12 @@ body {
 
 /* KOREKSI: Styling Keterangan Potongan Diskon (DI BAWAH NOMINAL) */
 #discount-tier-note {
-    font-size: 0.8em !important; /* Ukuran font tetap kecil */
-    color: #4CAF50 !important; /* Warna Hijau Rilldelish */
-    text-align: right !important; 
-    
-    /* KOREKSI: MENGHAPUS NEGATIVE MARGIN & MEMBERSIHKAN SPASI */
-    margin-top: -10px !important; /* Turunkan sedikit dari sebelumnya */
-    margin-bottom: 5px !important; /* Tambahkan jarak bawah yang sehat */
+    font-size: 0.8em !important;
+    color: #4CAF50 !important;
+    text-align: right !important; /* Agar deskripsi diskon rata kanan */
+    margin-top: -10px !important; /* Tarik ke atas agar dekat nominal diskon */
     padding-right: 10px;
-    
+    margin-bottom: 10px !important;
     line-height: 1.2;
     width: 100%;
     display: block; 
@@ -563,8 +600,17 @@ body {
     line-height: 1.4;
 }
 
+
 /* ========================================= */
-/* 10. FOOTER */
+/* 10. FAQ */
+/* ========================================= */
+.faq-section {
+    padding: 60px 0; 
+    background-color: #f7f7f7;
+}
+
+/* ========================================= */
+/* 11. FOOTER */
 /* ========================================= */
 footer {
     background-color: #333;
@@ -580,7 +626,7 @@ footer a {
 
 
 /* ========================================= */
-/* 11. MEDIA QUERIES (RESPONSIVITAS) */
+/* 12. MEDIA QUERIES (RESPONSIVITAS) */
 /* ========================================= */
 @media (max-width: 900px) {
     .research-proof > .container > div,
