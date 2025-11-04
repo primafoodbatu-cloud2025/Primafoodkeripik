@@ -351,8 +351,14 @@
 
                         <div class="form-group-inline">
                             <div class="form-group">
-                                <label for="jumlah-1">Jumlah (pcs) *</label>
-                                <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+                                <label for="jumlah-1">Jumlah *</label>
+                                <div style="display: flex; gap: 5px;">
+                                    <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required style="width: 60px;">
+                                    <select id="unit-1" name="unit_pesanan[]" class="unit-select" style="width: 40%;" onchange="calculateTotal()">
+                                        <option value="pcs">pcs (100g)</option>
+                                        <option value="kg">kg (10 pcs)</option>
+                                    </select>
+                                </div>
                                 <p style="font-size: 0.85em; margin-top: 5px; color: #777;">
                                     Berat/pcs: <span class="display-item-weight">100g</span>
                                 </p>
@@ -378,7 +384,7 @@
                         TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
                     </p>
                     <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #cc0000; margin-top: 5px;">
-                        Pesan minimal 10 pcs untuk diskon grosir 10%!
+                        Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%!
                     </p>
                 </div>
 
@@ -464,7 +470,7 @@
     
     let isFlashSaleActive = false;
     let flashSaleEndTime;
-    const BASE_WEIGHT_GRAMS = 100;
+    const WEIGHT_PER_PCS_GRAMS = 100;
     const MIX_PACKAGE_WEIGHT = 200;
 
     
@@ -523,7 +529,6 @@
     function getMaxDiscount(quantity) {
         let maxDisc = 0;
         
-        // 1. Cek Diskon Grosir
         for (const threshold in GROSIR_DISCOUNT_RATES) {
             if (quantity >= parseInt(threshold)) {
                 if (GROSIR_DISCOUNT_RATES[threshold] > maxDisc) {
@@ -532,7 +537,6 @@
             }
         }
         
-        // 2. Cek Flash Sale (Hanya jika Diskon Grosir < 5%)
         if (isFlashSaleActive && maxDisc < FLASH_SALE_DISCOUNT) {
             maxDisc = FLASH_SALE_DISCOUNT;
         }
@@ -553,45 +557,55 @@
         let grandTotal = 0;
         let totalWeightGrams = 0;
         const productItems = document.querySelectorAll('#product-list-container .product-item');
-        let totalQuantity = 0;
+        let totalQuantityPcs = 0;
 
+        // Loop 1: Hitung Total Quantity (PCS)
         productItems.forEach(item => {
-            totalQuantity += parseInt(item.querySelector('.product-quantity').value) || 0;
+            const unitElement = item.querySelector('.unit-select');
+            const quantityInput = item.querySelector('.product-quantity');
+            const quantityValue = parseFloat(quantityInput.value) || 0;
+            const unit = unitElement.value;
+            
+            if (unit === 'kg') {
+                totalQuantityPcs += quantityValue * 10; // 1 kg = 10 pcs
+            } else {
+                totalQuantityPcs += quantityValue; // 1 pcs = 1 pcs
+            }
         });
 
-        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalQuantity);
+        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalQuantityPcs);
         const totalKeterangan = document.getElementById('total-discount-keterangan');
         const displayTotalWeight = document.getElementById('display-total-weight');
         
+        // Loop 2: Hitung Harga dan Berat
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
-            const quantityElement = item.querySelector('.product-quantity');
+            const quantityInput = item.querySelector('.product-quantity');
+            const unitElement = item.querySelector('.unit-select');
             const subtotalDisplay = item.querySelector('.display-subtotal');
             const removeButton = item.querySelector('.remove-product-btn');
             const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
-            const quantity = parseInt(quantityElement.value) || 0;
-            const hargaItem = extractPrice(selectedValue);
+            const quantityValue = parseFloat(quantityInput.value) || 0;
+            const unit = unitElement.value;
             
-            // --- LOGIKA BERAT ITEM ---
-            let itemWeight = BASE_WEIGHT_GRAMS;
-            if (selectedValue.includes("Paket Mix 6") || selectedValue.includes("Paket Mix 10")) {
-                itemWeight = BASE_WEIGHT_GRAMS; 
-            } else if (selectedValue.includes("Paket Mix")) {
-                itemWeight = MIX_PACKAGE_WEIGHT; 
-            } else if (selectedValue.includes("Informasi Order Grosir")) {
-                 itemWeight = 0;
-            }
+            const hargaItemPerPcs = extractPrice(selectedValue);
+            
+            // Konversi Quantity ke PCS dan hitung harga dasar
+            let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
+            let subtotal = hargaItemPerPcs * quantityPcs;
 
-            const subtotalWeight = itemWeight * quantity;
+            // --- LOGIKA BERAT ITEM ---
+            let itemWeightPerPcs = (selectedValue.includes("Paket Mix")) ? MIX_PACKAGE_WEIGHT : WEIGHT_PER_PCS_GRAMS;
+            let subtotalWeight = itemWeightPerPcs * quantityPcs;
             totalWeightGrams += subtotalWeight;
-            itemWeightDisplay.textContent = `${itemWeight} g`; 
+            
+            itemWeightDisplay.textContent = `${itemWeightPerPcs} g`; 
             // --- AKHIR LOGIKA BERAT ITEM ---
+
             
-            let subtotal = hargaItem * quantity;
             let finalSubtotal = subtotal;
-            
             if (globalDiscRate > 0) {
                 finalSubtotal = subtotal * (1 - globalDiscRate);
             }
@@ -627,9 +641,9 @@
             if (globalDiscRate > 0) {
                  let kemasanNote = '';
                  if (globalDiscRate >= 0.10) {
-                     kemasanNote = ' (Kemasan Grosir Tanpa Stiker)';
+                     kemasanNote = ', Kemasan Grosir Tanpa Stiker';
                  }
-                totalKeterangan.innerHTML = `Anda Hemat <b>${(globalDiscRate * 100).toFixed(0)}% (${discType})</b>. Total ${totalQuantity} pcs. Berat Total: ${totalWeightText}.${kemasanNote}`;
+                totalKeterangan.innerHTML = `Anda Hemat <b>${(globalDiscRate * 100).toFixed(0)}% (${discType})</b>. Total Qty: ${totalQuantityPcs} pcs. Berat Total: ${totalWeightText}${kemasanNote}`;
             } else {
                  totalKeterangan.innerHTML = `Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%!`;
             }
@@ -649,11 +663,20 @@
         selectElement.id = 'paket-' + productIdCounter;
         selectElement.name = 'paket_pilihan[]';
         selectElement.value = "";
+        selectElement.addEventListener('change', calculateTotal);
         
         const quantityElement = newItem.querySelector('.product-quantity');
         quantityElement.id = 'jumlah-' + productIdCounter;
         quantityElement.name = 'jumlah_pesanan[]';
         quantityElement.value = 1;
+        quantityElement.addEventListener('input', calculateTotal);
+        
+        const unitElement = newItem.querySelector('.unit-select');
+        unitElement.id = 'unit-' + productIdCounter;
+        unitElement.name = 'unit_pesanan[]';
+        unitElement.value = 'pcs';
+        unitElement.addEventListener('change', calculateTotal);
+
 
         const labelSelect = newItem.querySelector(`label[for="${firstItem.querySelector('.product-select').id}"]`);
         if (labelSelect) labelSelect.setAttribute('for', selectElement.id);
@@ -662,9 +685,6 @@
         if (labelQuantity) labelQuantity.setAttribute('for', quantityElement.id);
 
         newItem.querySelector('.display-subtotal').textContent = 'Rp 0';
-        
-        selectElement.addEventListener('change', calculateTotal);
-        quantityElement.addEventListener('input', calculateTotal);
         
         const removeButton = newItem.querySelector('.remove-product-btn');
         removeButton.addEventListener('click', function() {
@@ -688,22 +708,32 @@
         const keterangan = document.getElementById('keterangan').value;
         const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
 
-        const totalKeteranganElement = document.getElementById('total-discount-keterangan');
-        const totalDiscountNote = totalKeteranganElement ? totalKeteranganElement.textContent : '';
-
-        // Ambil data produk (Looping)
         const productItems = document.querySelectorAll('#product-list-container .product-item');
+        let totalHargaAwal = 0;
+        let totalQuantityPcs = 0;
         let productDetails = [];
         let itemCounter = 1;
         
+        // Loop 1: Hitung Total Quantity dan Harga Awal
         productItems.forEach(item => {
-            const paket = item.querySelector('.product-select').value;
-            const jumlah = item.querySelector('.product-quantity').value;
-            const subtotal = item.querySelector('.display-subtotal').textContent;
-
-            if (paket && jumlah > 0) {
+            const selectElement = item.querySelector('.product-select');
+            const quantityInput = item.querySelector('.product-quantity');
+            const unitElement = item.querySelector('.unit-select');
+            
+            const paket = selectElement.value;
+            const unit = unitElement.value;
+            const quantityValue = parseFloat(quantityInput.value) || 0;
+            const hargaItem = extractPrice(paket);
+            
+            let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
+            
+            if (paket && quantityValue > 0) {
+                totalHargaAwal += hargaItem * quantityPcs;
+                totalQuantityPcs += quantityPcs;
+                
+                const subtotalAwalItem = hargaItem * quantityPcs;
                 productDetails.push(
-                    `*Item ${itemCounter}:* ${jumlah}x ${paket} (Subtotal: ${subtotal})`
+                    `*Item ${itemCounter}:* ${quantityValue} ${unit} (${quantityPcs} pcs) ${paket} (Subtotal Awal: Rp ${subtotalAwalItem.toLocaleString('id-ID')})`
                 );
                 itemCounter++;
             }
@@ -714,22 +744,35 @@
             return;
         }
 
+        // Tentukan Diskon dan Keterangan
+        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalQuantityPcs);
+        const discountAmount = totalHargaAwal * globalDiscRate;
+        const totalDiscountNoteElement = document.getElementById('total-discount-keterangan');
+        const totalDiscountNote = totalDiscountNoteElement ? totalDiscountNoteElement.innerHTML.replace(/<[^>]*>/g, '') : '';
         const productListText = productDetails.join('\n');
 
-        // Format pesan WhatsApp
+        // Format pesan WhatsApp (STRUK)
         const message = `
 Halo Primafood Rilldelish! 👋
-Saya ingin melakukan pemesanan (Multi-Item Order):
+Saya ingin melakukan pemesanan (Struk Otomatis):
 
 *Nama:* ${nama}
 *No. WhatsApp:* ${telepon}
 *Alamat Kirim:* ${alamat}
 
-*==== DETAIL PESANAN ====*\n${productListText}
-*========================*
+*===== R I N C I A N  S T R U K =====*
+${productListText}
+*----------------------------------------*
+Total Qty: ${totalQuantityPcs} pcs
+Total Berat: ${document.getElementById('display-total-weight').textContent}
+Harga Normal: Rp ${totalHargaAwal.toLocaleString('id-ID', { minimumFractionDigits: 0 })}
+
+Diskon Berlaku: ${discType.toUpperCase()} ${(globalDiscRate * 100).toFixed(0)}%
+Potongan Harga: Rp ${discountAmount.toLocaleString('id-ID', { minimumFractionDigits: 0 })}
+*----------------------------------------*
+*TOTAL YANG HARUS DIBAYAR:* ${grandTotalDisplay}
 ${totalDiscountNote}
 
-*TOTAL KESELURUHAN:* ${grandTotalDisplay}
 *Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
 
 Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. Terima kasih!
@@ -750,8 +793,11 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
         // Event listeners untuk item produk awal
         const initialSelect = document.getElementById('paket-1');
         const initialQuantity = document.getElementById('jumlah-1');
+        const initialUnit = document.getElementById('unit-1');
+        
         initialSelect.addEventListener('change', calculateTotal);
         initialQuantity.addEventListener('input', calculateTotal);
+        initialUnit.addEventListener('change', calculateTotal); // Listener untuk unit baru
 
         // Event listener untuk tombol 'Tambah Produk'
         document.getElementById('add-product-btn').addEventListener('click', addProductItem);
@@ -817,9 +863,12 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
                 // Set item pertama dengan produk yang diklik
                 const initialSelect = document.getElementById('paket-1');
                 const initialQuantity = document.getElementById('jumlah-1');
+                const initialUnit = document.getElementById('unit-1');
                 
                 initialSelect.value = productName;
                 initialQuantity.value = 1;
+                initialUnit.value = 'pcs'; // Default ke pcs
+
                 
                 // Pastikan hanya ada 1 item awal saat diklik dari katalog
                 while (productContainer.children.length > 1) {
