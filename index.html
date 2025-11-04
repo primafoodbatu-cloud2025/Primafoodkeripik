@@ -354,7 +354,7 @@
                                 <label for="jumlah-1">Jumlah *</label>
                                 <div style="display: flex; gap: 5px;">
                                     <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required style="width: 60px;">
-                                    <select id="unit-1" name="unit_pesanan[]" class="unit-select" style="width: 40%;" onchange="calculateTotal()">
+                                    <select id="unit-1" name="unit_pesanan[]" class="unit-select" style="width: 40%;">
                                         <option value="pcs">pcs (100g)</option>
                                         <option value="kg">kg (10 pcs)</option>
                                     </select>
@@ -373,33 +373,32 @@
                     </div>
                 </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
                 
-               <div class="form-group summary-struk">
-    <p class="struk-line normal-price">
-        <span class="struk-label">Harga Normal:</span>
-        <span class="struk-nominal" id="display-normal-price">Rp 0</span>
-    </p>
+                <div class="form-group summary-struk">
+                    <p class="struk-line normal-price">
+                        <span class="struk-label">Harga Normal:</span>
+                        <span class="struk-nominal" id="display-normal-price">Rp 0</span>
+                    </p>
 
-    <p class="struk-line discount-amount">
-        <span class="struk-label">Potongan Diskon:</span>
-        <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
-    </p>
-    
-    <p id="discount-tier-note" class="struk-deskripsi"></p>
+                    <p class="struk-line discount-amount">
+                        <span class="struk-label">Potongan Diskon:</span>
+                        <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
+                    </p>
+                    <p id="discount-tier-note" class="struk-deskripsi"></p>
 
-    <p class="struk-line total-weight">
-        <span class="struk-label">Total Berat:</span>
-        <span class="struk-nominal" id="display-total-weight">0 g</span>
-    </p>
-</div>
+                    <p class="struk-line total-weight">
+                        <span class="struk-label">Total Berat:</span>
+                        <span class="struk-nominal" id="display-total-weight">0 g</span>
+                    </p>
+                </div>
 
-<div class="form-group struk-grand-total">
-    <p class="struk-line grand-total-line" style="border-top: 2px solid #ccc; padding-top: 10px;">
-        <span class="struk-label">JUMLAH BAYAR:</span>
-        <span class="struk-nominal" id="display-grand-total">Rp 0</span> 
-        <span class="ikon-uang">💰</span>
-    </p>
-    <p id="total-discount-keterangan" class="final-notes" style="text-align: left;"></p>
-</div>
+                <div class="form-group struk-grand-total">
+                    <p class="struk-line grand-total-line" style="border-top: 2px solid #ccc; padding-top: 10px;">
+                        <span class="struk-label">JUMLAH BAYAR:</span>
+                        <span class="struk-nominal" id="display-grand-total">Rp 0</span> 
+                        <span class="ikon-uang">💰</span>
+                    </p>
+                    <p id="total-discount-keterangan" class="final-notes" style="text-align: left;"></p>
+                </div>
                 <div class="form-group">
                     <label for="keterangan">Catatan / Keterangan (Opsional)</label>
                     <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
@@ -506,22 +505,24 @@
 
             if (distance < 0) {
                 isFlashSaleActive = false;
-                bannerElement.style.display = 'none';
-                timerElement.textContent = 'Sale Selesai!';
+                if (bannerElement) bannerElement.style.display = 'none';
+                if (timerElement) timerElement.textContent = 'Sale Selesai!';
                 localStorage.removeItem('flashSaleEndTime');
                 calculateTotal(); 
                 return;
             }
 
             isFlashSaleActive = true;
-            bannerElement.style.display = 'block';
+            if (bannerElement) bannerElement.style.display = 'block';
 
             const hours = Math.floor(distance / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            timerElement.textContent = 
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (timerElement) {
+                timerElement.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
             
             calculateTotal();
             setTimeout(updateTimer, 1000);
@@ -531,6 +532,7 @@
     
     // --- Fungsi Pembantu: Ekstraksi Harga dari Teks & Formatting ---
     function extractPrice(value) {
+        if (!value) return 0;
         const match = value.match(/Rp\s*([\d\.]+)/);
         if (match && match[1]) {
             return parseFloat(match[1].replace(/\./g, ''));
@@ -589,6 +591,7 @@
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
+            const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
@@ -596,7 +599,6 @@
             
             const hargaItemPerPcs = extractPrice(selectedValue);
             
-            // Konversi Quantity ke PCS dan hitung harga dasar
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
 
@@ -605,8 +607,9 @@
             let subtotalWeight = itemWeightPerPcs * quantityPcs;
             totalWeightGrams += subtotalWeight;
             
-            const itemWeightDisplay = item.querySelector('.display-item-weight');
-            itemWeightDisplay.textContent = `${itemWeightPerPcs} g`; 
+            if (itemWeightDisplay) {
+                itemWeightDisplay.textContent = `${itemWeightPerPcs} g`; 
+            }
             
             totalHargaAwal += subtotalAwal;
             totalQuantityPcs += quantityPcs;
@@ -637,7 +640,6 @@
             
             subtotalDisplay.textContent = formatCurrency(subtotalAkhir);
             
-            // Tambahkan keterangan Diskon ke Subtotal Display
             if (globalDiscRate > 0) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
@@ -652,11 +654,8 @@
         
         // --- UPDATE TAMPILAN STRUK UTAMA ---
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaAwal);
-        
-        // Potongan Diskon (HANYA NOMINAL)
         document.getElementById('display-discount-amount').textContent = formatCurrency(discountAmount);
         
-        // KOREKSI 1 & 2: KETERANGAN TIER DISKON
         const tierNoteElement = document.getElementById('discount-tier-note');
         if (tierNoteElement) {
             if (globalDiscRate > 0) {
@@ -699,16 +698,6 @@
             
             totalKeterangan.innerHTML = notes.join('<br>'); 
         }
-        
-        // Tampilkan tombol Hapus
-        productItems.forEach(item => {
-             const removeButton = item.querySelector('.remove-product-btn');
-             if (productItems.length > 1) {
-                removeButton.style.display = 'inline-block';
-            } else {
-                removeButton.style.display = 'none';
-            }
-        });
     }
 
     // --- Fungsi Tambah Produk Baru ---
@@ -758,7 +747,7 @@
         selectElement.focus();
     }
 
-    // --- Fungsionalitas WhatsApp (Diperbaiki KE FORMAT STRUK) ---
+    // --- Fungsionalitas WhatsApp (DIPERBAIKI KE FORMAT STRUK) ---
     function sendWhatsAppOrder(event) {
         event.preventDefault();
 
@@ -808,7 +797,7 @@
         const productListText = productDetails.join('\n');
         
         // Ambil keterangan Potongan Diskon yang disisipkan di span display-discount-amount (untuk WA)
-        const discountSpan = document.getElementById('display-discount-amount').nextElementSibling; // Mengambil span di sebelah nominal
+        const discountSpan = document.getElementById('discount-tier-note');
         const tierKeteranganWA = discountSpan ? discountSpan.textContent : '';
 
         // Format pesan WhatsApp (STRUK FINAL)
@@ -824,7 +813,8 @@ Saya ingin melakukan pemesanan (Struk Otomatis):
 ${productListText}
 *----------------------------------------*
 Harga Normal: ${totalHargaNormalDisplay}
-Potongan Diskon: ${discountAmountDisplay} ${tierKeteranganWA}
+Potongan Diskon: ${discountAmountDisplay}
+${tierKeteranganWA}
 Total Berat: ${totalWeightDisplay}
 Total Qty: ${totalQuantityPcs} pcs
 
