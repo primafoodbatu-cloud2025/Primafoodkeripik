@@ -63,30 +63,34 @@ body {
 }
 
 /* ========================================= */
-/* 2.1. JUDUL KHUSUS RATA KIRI */
+/* 2.1. JUDUL KHUSUS RATA KIRI (DIBERI GARIS BAWAH) */
 /* ========================================= */
 .section-title-left {
-    text-align: left !important;
-    margin-bottom: 10px;
+    text-align: left !important; /* Memastikan rata kiri */
+    margin-bottom: 10px; /* Jarak yang lebih rapat ke subtitle */
     font-size: 2.2em;
-    color: var(--color-text); /* Warna teks utama */
+    color: var(--color-text);
+    
+    /* BARIS KOREKSI: Tambahkan Garis Bawah Merah/Oranye */
+    border-bottom: 3px solid var(--color-secondary); 
+    display: inline-block; /* Agar garis hanya selebar teks */
+    padding-bottom: 5px; /* Jarak antara teks dan garis */
 }
 
-/* KOREKSI BARU: Styling Subtitle Bahasa Inggris Rata Kiri */
+/* Styling Subtitle Bahasa Inggris Rata Kiri */
 .section-subtitle-left {
     text-align: left !important;
     font-size: 1.1em;
     margin-bottom: 15px; /* Jarak sebelum deskripsi */
 }
 
-/* Styling untuk teks Bahasa Inggris dan Garis Bawah */
+/* Styling untuk teks Bahasa Inggris dan Garis Bawah (tetap ada) */
 .section-subtitle-left span {
     color: var(--color-primary) !important; /* Warna Hijau Rilldelish */
     border-bottom: 3px solid var(--color-cta) !important; /* Garis Merah/Salmon Khas CTA */
     display: inline-block;
     padding-bottom: 5px;
 }
-
 /* ========================================= */
 /* 3. HEADER & HERO SECTION */
 /* ========================================= */
