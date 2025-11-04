@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    </head>
+</head>
 <body>
 
     <header class="hero-section">
@@ -280,7 +280,7 @@
             
             <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
                 <p style="font-weight: 700; font-size: 1.1em;">
-                    ⚡ FLASH SALE AKTIF! Diskon Tambahan 5% untuk anda, jika anda order sebelum waktu HABIS!
+                    ⚡ FLASH SALE AKTIF! Diskon Tambahan 5% untuk Ritel!
                 </p>
                 <p>Waktu Tersisa: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
             </div>
@@ -353,6 +353,9 @@
                             <div class="form-group">
                                 <label for="jumlah-1">Jumlah (pcs) *</label>
                                 <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+                                <p style="font-size: 0.85em; margin-top: 5px; color: #777;">
+                                    Berat/pcs: <span class="display-item-weight">100g</span>
+                                </p>
                             </div>
                             <div class="form-group">
                                 <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
@@ -364,10 +367,18 @@
                     </div>
                 </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
                 
+                <div class="form-group" style="margin-top: -10px; margin-bottom: 5px;">
+                    <p style="text-align: left; color: #8B4513; font-weight: 600;">
+                        Total Berat: <span id="display-total-weight" style="font-weight: 700;">100 g</span>
+                    </p>
+                </div>
 
                 <div class="form-group">
                     <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
                         TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
+                    </p>
+                    <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #cc0000; margin-top: 5px;">
+                        Pesan minimal 10 pcs untuk diskon grosir 10%!
                     </p>
                 </div>
 
@@ -402,7 +413,7 @@
             
             <p style="text-align: center; margin-top: 20px; font-style: italic;">*Pengemasan menggunakan Aluminium Foil tanpa stiker (siap re-branding).</p>
             <div style="text-align: center; margin-top: 30px;">
-                <a href="https://wa.me/628124966298?text=Halo%20Primafood%20Rilldelish%21%20Saya%20berminat%20untuk%20menjadi%20reseller%20dan%20mendapatkan%20harga%20grosir.%20Mohon%20info%20katalog%20B2B%20terbaru.%20Terima%20kasih." class="cta-button" style="background-color: #008000;">DAPATKAN DAFTAR HARGA GROSIR (PABRIK) SEKARANG</a>
+                <a href="https://wa.me/628124966298?text=Halo%20Primafood%20Rilldelish%21%20Saya%20berminat%20untuk%20menjadi%20reseller%20dan%20mendapatkan%20harga%20grosir.%20Mohon%20info%20katalog%20B2B%20terbaru.%20Terbaru.%20Terima%20kasih." class="cta-button" style="background-color: #008000;">DAPATKAN DAFTAR HARGA GROSIR (PABRIK) SEKARANG</a>
                 <p style="margin-top: 10px;">Hubungi Kontak B2B: **0812-4966-298**</p>
             </div>
         </div>
@@ -453,6 +464,9 @@
     
     let isFlashSaleActive = false;
     let flashSaleEndTime;
+    const BASE_WEIGHT_GRAMS = 100;
+    const MIX_PACKAGE_WEIGHT = 200;
+
     
     // --- Fungsi Utama Timer ---
     function startCountdownTimer() {
@@ -528,7 +542,7 @@
         } else if (maxDisc === FLASH_SALE_DISCOUNT) {
              return { rate: maxDisc, type: 'Flash Sale' };
         } else if (maxDisc > 0) {
-             return { rate: maxDisc, type: 'Grosir' }; // Untuk 10%
+             return { rate: maxDisc, type: 'Grosir' };
         }
         
         return { rate: 0, type: 'None' };
@@ -537,27 +551,43 @@
     // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total ---
     function calculateTotal() {
         let grandTotal = 0;
+        let totalWeightGrams = 0;
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let totalQuantity = 0;
 
         productItems.forEach(item => {
-            const quantityElement = item.querySelector('.product-quantity');
-            totalQuantity += parseInt(quantityElement.value) || 0;
+            totalQuantity += parseInt(item.querySelector('.product-quantity').value) || 0;
         });
 
         const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalQuantity);
         const totalKeterangan = document.getElementById('total-discount-keterangan');
+        const displayTotalWeight = document.getElementById('display-total-weight');
         
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityElement = item.querySelector('.product-quantity');
             const subtotalDisplay = item.querySelector('.display-subtotal');
             const removeButton = item.querySelector('.remove-product-btn');
-            
+            const itemWeightDisplay = item.querySelector('.display-item-weight');
+
             const selectedValue = selectElement.value;
             const quantity = parseInt(quantityElement.value) || 0;
-            
             const hargaItem = extractPrice(selectedValue);
+            
+            // --- LOGIKA BERAT ITEM ---
+            let itemWeight = BASE_WEIGHT_GRAMS;
+            if (selectedValue.includes("Paket Mix 6") || selectedValue.includes("Paket Mix 10")) {
+                itemWeight = BASE_WEIGHT_GRAMS; 
+            } else if (selectedValue.includes("Paket Mix")) {
+                itemWeight = MIX_PACKAGE_WEIGHT; 
+            } else if (selectedValue.includes("Informasi Order Grosir")) {
+                 itemWeight = 0;
+            }
+
+            const subtotalWeight = itemWeight * quantity;
+            totalWeightGrams += subtotalWeight;
+            itemWeightDisplay.textContent = `${itemWeight} g`; 
+            // --- AKHIR LOGIKA BERAT ITEM ---
             
             let subtotal = hargaItem * quantity;
             let finalSubtotal = subtotal;
@@ -568,11 +598,10 @@
             
             grandTotal += finalSubtotal;
             
+            // 3. Update Tampilan Subtotal
             const formatHarga = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
-            
             subtotalDisplay.textContent = formatHarga(finalSubtotal);
             
-            // Tambahkan keterangan Diskon ke Subtotal Display
             if (globalDiscRate > 0 && finalSubtotal !== subtotal) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
@@ -584,8 +613,14 @@
             }
         });
         
+        // 4. Update Tampilan Grand Total & Berat Total
         const grandTotalDisplay = document.getElementById('display-grand-total');
         grandTotalDisplay.textContent = `Rp ${grandTotal.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
+        
+        const totalWeightKg = (totalWeightGrams / 1000).toFixed(2);
+        const totalWeightText = totalWeightGrams >= 1000 ? `${totalWeightKg.replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
+        displayTotalWeight.textContent = totalWeightText;
+
 
         // Update Keterangan Diskon di Total
         if (totalKeterangan) {
@@ -594,9 +629,9 @@
                  if (globalDiscRate >= 0.10) {
                      kemasanNote = ' (Kemasan Grosir Tanpa Stiker)';
                  }
-                totalKeterangan.innerHTML = `Anda Hemat <b>${(globalDiscRate * 100).toFixed(0)}% (${discType})</b>. Total ${totalQuantity} pcs.${kemasanNote}`;
+                totalKeterangan.innerHTML = `Anda Hemat <b>${(globalDiscRate * 100).toFixed(0)}% (${discType})</b>. Total ${totalQuantity} pcs. Berat Total: ${totalWeightText}.${kemasanNote}`;
             } else {
-                 totalKeterangan.innerHTML = `Pesan minimal 10 pcs untuk diskon grosir 10%!`;
+                 totalKeterangan.innerHTML = `Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%!`;
             }
         }
     }
