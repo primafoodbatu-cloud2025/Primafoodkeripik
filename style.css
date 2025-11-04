@@ -164,7 +164,7 @@ body {
     display: block;
     font-size: 0.75em;
     font-weight: 400;
-    color: #007bff; /* Warna Biru untuk Bahasa Inggris */
+    color: #007bff;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 5px;
     margin-top: 5px;
@@ -301,12 +301,11 @@ body {
 .bulk-order th {
     background-color: #f0f0f0;
     color: var(--color-text);
-    /* GANTI INI KE NOMOR 7.2 */
 }
 
 
 /* ========================================= */
-/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL */
+/* 8. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
@@ -378,15 +377,18 @@ body {
     margin-top: 10px;
 }
 
+/* KOREKSI LEBAR UNTUK FORM DINAMIS */
+/* Kolom Jumlah (Product Quantity Input) */
 .form-group-inline .form-group {
-    width: 35%; 
+    width: 35%; /* Tetapkan 35% untuk kolom jumlah */
     flex-grow: 0; 
     min-width: 120px;
     margin-bottom: 0; 
 }
 
+/* Kolom Subtotal dan Tombol Hapus */
 .form-group-inline > div:last-child {
-    width: 65%;
+    width: 65%; /* Tetapkan 65% untuk subtotal dan hapus */
     text-align: right;
     display: flex;
     flex-direction: column;
@@ -507,6 +509,6 @@ footer a {
     }
     
     .form-group-inline > div:last-child {
-        align-items: flex-start; /* Merapikan total subtotal */
+        align-items: flex-start;
     }
 }
