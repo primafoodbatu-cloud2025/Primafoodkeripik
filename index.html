@@ -8,32 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Minimal untuk Keterbacaan Cepat (Hapus dan pindahkan ke style.css) */
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .cta-button { background-color: #ff6347; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 8px; display: inline-block; margin-top: 20px; transition: background-color 0.3s; }
-        .section-title { text-align: center; margin-bottom: 40px; }
-    </style>
-</head>
+    </head>
 <body>
 
-    <header class="hero-section" style="background-color: #e6ffe6; padding: 80px 0; text-align: center;">
+    <header class="hero-section">
         <div class="container">
             <img src="logo-riildelish.png" alt="Logo Rilldelish by Primafood" style="max-width: 150px; margin-bottom: 20px;">
-            <h1 style="color: #4CAF50; font-size: 2.5em; margin-bottom: 10px;">
-                BERHENTI RACUNI DIRI DENGAN KERIPiK INSTAN! ☠️
-            </h1>
-            <h2 style="color: #38761d; font-size: 1.5em; font-weight: 600;">
-                Rilldelish: Cemilan Sehat yang Berani Jujur. Lebih dari 25 Varian Sayur & Buah Asli.
-            </h2>
-            <p style="font-size: 1.1em;">Diolah dari 100% Bahan Segar Kota Batu, Renyah Maksimal & NOL Kompromi Kesehatan.</p>
+            <h1>BERHENTI RACUNI DIRI DENGAN KERIPiK INSTAN! ☠️</h1>
+            <h2>Rilldelish: Cemilan Sehat yang Berani Jujur. Lebih dari 25 Varian Sayur & Buah Asli.</h2>
+            <p>Diolah dari 100% Bahan Segar Kota Batu, Renyah Maksimal & NOL Kompromi Kesehatan.</p>
             <a href="#order-form" class="cta-button">BUKTIKAN SEKARANG! (Klaim Sampel/Diskon Khusus)</a>
         </div>
     </header>
 
-    <section class="problem-solution" style="padding: 60px 0; background-color: #f7f7f7;">
-        <div class="container" style="text-align: center;">
+    <section class="problem-solution">
+        <div class="container">
             <div style="max-width: 800px; margin: 0 auto;">
                 <h3 style="color: #cc0000;">FAKTA PAHIT INDUSTRI CEMILAN</h3>
                 <p style="font-size: 1.2em; font-style: italic;">"9 dari 10 Snack Kemasan Penuh Gula Tersembunyi, MSG, dan Minyak Bekas! Anda pikir Anda ngemil santai, padahal Anda sedang menimbun penyakit."</p>
@@ -44,9 +33,9 @@
         </div>
     </section>
 
-    <section class="research-proof" style="padding: 60px 0;">
+    <section class="research-proof">
         <div class="container">
-            <h2 class="section-title" style="color: #4CAF50;">🔬 Bukti Ilmiah: Mengapa Keripik Kami Beda?</h2>
+            <h2 class="section-title">🔬 Bukti Ilmiah: Mengapa Keripik Kami Beda?</h2>
             <div style="display: flex; gap: 30px; text-align: center;">
                 <div class="benefit-card">
                     <h4>Proses Vakum (Nutrisi Tetap Terjaga)</h4>
@@ -66,230 +55,223 @@
             </div>
         </div>
     </section>
-    <section class="single-product-catalog" style="padding: 60px 0; background-color: #f0fff0;">
-    <div class="container">
-        <h2 class="section-title" style="color: #38761d;">
-            Pilih Varian Favorit Anda (Harga Satuan 100gr)
-            <br><span style="font-size: 0.6em; font-weight: 400; color: #777;">Choose Your Favorite Variant (Single Item Price 100gr)</span>
-        </h2>
-        
-        <p style="text-align: center; margin-bottom: 40px; font-style: italic;">
-            Kami transparan: Varian Bertempung menggunakan adonan khusus rendah karbo untuk tekstur maksimal.
-        </p>
-
-        <div id="pure-veggie-list" class="product-list active">
-    <h3 style="color: #4CAF50; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-        <span style="font-size: 1.2em;">🌿</span> Keripik Sayur Murni <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Pure Veggie Crisps)</span>
-    </h3>
-    <table class="catalog-table">
-        </table>
-</div>
-
-<div id="coated-list" class="product-list" style="display: none;">
-    <h3 style="color: #ff8c00; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-        <span style="font-size: 1.2em;">💪</span> Varian Bertempung/Protein <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Coated/Protein Crisps)</span>
-    </h3>
-    <p style="font-size: 0.9em; margin-bottom: 15px;">*Menggunakan adonan khusus (misal: tepung singkong) untuk tekstur maksimal dan protein/serat tambahan.</p>
-    <table class="catalog-table">
-        </table>
-</div>
-
-<div id="fruit-list" class="product-list" style="display: none;">
-    <h3 style="color: #ff6347; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-        <span style="font-size: 1.2em;">🍓</span> Keripik Buah Murni <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Pure Fruit Crisps)</span>
-    </h3>
-    <table class="catalog-table">
-        </table>
-</div>
-
-        <div id="pure-veggie-list" class="product-list active">
-            <h3 style="color: #4CAF50; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-                Keripik Sayur Murni <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Pure Veggie Crisps)</span>
-            </h3>
-            <table class="catalog-table">
-                <thead>
-                    <tr><th>Produk</th><th>Harga Satuan</th><th>Aksi</th></tr>
-                </thead>
-                <tbody>
-                    <tr data-product="Keripik Wortel"><td><span style="color:#333;">Keripik Wortel</span><br><span style="font-size: 0.8em; color: #007bff;">Carrot Crisps</span></td><td>Rp 26.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Wortel (Rp 26.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Ubi Ungu"><td><span style="color:#333;">Keripik Ubi Ungu</span><br><span style="font-size: 0.8em; color: #007bff;">Purple Sweet Potato Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Ubi Ungu (Rp 20.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Ubi Madu"><td><span style="color:#333;">Keripik Ubi Madu</span><br><span style="font-size: 0.8em; color: #007bff;">Honey Sweet Potato Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Ubi Madu (Rp 20.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Okra"><td><span style="color:#333;">Keripik Okra</span><br><span style="font-size: 0.8em; color: #007bff;">Okra Crisps</span></td><td>Rp 50.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Okra (Rp 50.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Jagung Manis"><td><span style="color:#333;">Keripik Jagung Manis</span><br><span style="font-size: 0.8em; color: #007bff;">Sweet Corn Crisps</span></td><td>Rp 24.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Jagung Manis (Rp 24.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Labu Madu/Butternut"><td><span style="color:#333;">Keripik Labu Madu/Butternut</span><br><span style="font-size: 0.8em; color: #007bff;">Butternut Squash Crisps</span></td><td>**Kosong**</td><td></td></tr>
-                    <tr data-product="Keripik Kentang"><td><span style="color:#333;">Keripik Kentang</span><br><span style="font-size: 0.8em; color: #007bff;">Potato Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Kentang (Rp 28.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Kentang Wedges"><td><span style="color:#333;">Keripik Kentang Wedges</span><br><span style="font-size: 0.8em; color: #007bff;">Potato Wedges Crisps</span></td><td>Rp 32.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Kentang Wedges (Rp 32.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Edamame"><td><span style="color:#333;">Keripik Edamame</span><br><span style="font-size: 0.8em; color: #007bff;">Edamame Crisps</span></td><td>Rp 30.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Edamame (Rp 30.900)">ORDER</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div id="coated-list" class="product-list" style="display: none;">
-            <h3 style="color: #ff8c00; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-                Varian Bertempung/Protein <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Coated/Protein Crisps)</span>
-            </h3>
-            <p style="font-size: 0.9em; margin-bottom: 15px;">*Menggunakan adonan khusus (misal: tepung singkong) untuk tekstur maksimal dan protein/serat tambahan.</p>
-            <table class="catalog-table">
-                <thead>
-                    <tr><th>Produk</th><th>Harga Satuan</th><th>Aksi</th></tr>
-                </thead>
-                <tbody>
-                    <tr data-product="Keripik Gedebog Pisang"><td><span style="color:#333;">Keripik Gedebog Pisang</span><br><span style="font-size: 0.8em; color: #007bff;">Banana Stem Crisps</span></td><td>Rp 15.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Gedebog Pisang (Rp 15.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Buncis"><td><span style="color:#333;">Keripik Buncis</span><br><span style="font-size: 0.8em; color: #007bff;">Green Bean Crisps</span></td><td>Rp 30.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Buncis (Rp 30.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Bawang Merah"><td><span style="color:#333;">Keripik Bawang Merah</span><br><span style="font-size: 0.8em; color: #007bff;">Shallot Crisps</span></td><td>Rp 56.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bawang Merah (Rp 56.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Bawang Putih"><td><span style="color:#333;">Keripik Bawang Putih</span><br><span style="font-size: 0.8em; color: #007bff;">Garlic Crisps</span></td><td>Rp 54.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bawang Putih (Rp 54.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Bawang Bombay"><td><span style="color:#333;">Keripik Bawang Bombay</span><br><span style="font-size: 0.8em; color: #007bff;">Onion Crisps</span></td><td>Rp 26.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bawang Bombay (Rp 26.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Cabe Besar"><td><span style="color:#333;">Keripik Cabe Besar</span><br><span style="font-size: 0.8em; color: #007bff;">Large Chili Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Cabe Besar (Rp 28.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Cabe Rawit"><td><span style="color:#333;">Keripik Cabe Rawit</span><br><span style="font-size: 0.8em; color: #007bff;">Bird's Eye Chili Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Cabe Rawit (Rp 28.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Paprika"><td><span style="color:#333;">Keripik Paprika</span><br><span style="font-size: 0.8em; color: #007bff;">Bell Pepper Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Paprika (Rp 28.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Jamur Tiram"><td><span style="color:#333;">Keripik Jamur Tiram</span><br><span style="font-size: 0.8em; color: #007bff;">Oyster Mushroom Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Jamur Tiram (Rp 20.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Jamur Kuping"><td><span style="color:#333;">Keripik Jamur Kuping</span><br><span style="font-size: 0.8em; color: #007bff;">Black Fungus Crisps</span></td><td>Rp 22.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Jamur Kuping (Rp 22.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Bunga Kol"><td><span style="color:#333;">Keripik Bunga Kol</span><br><span style="font-size: 0.8em; color: #007bff;">Cauliflower Crisps</span></td><td>Rp 26.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bunga Kol (Rp 26.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Brokoli"><td><span style="color:#333;">Keripik Brokoli</span><br><span style="font-size: 0.8em; color: #007bff;">Broccoli Crisps</span></td><td>Rp 24.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Brokoli (Rp 24.900)">ORDER</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div id="fruit-list" class="product-list" style="display: none;">
-            <h3 style="color: #ff6347; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-                Keripik Buah Murni <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Pure Fruit Crisps)</span>
-            </h3>
-            <table class="catalog-table">
-                <thead>
-                    <tr><th>Produk</th><th>Harga Satuan</th><th>Aksi</th></tr>
-                </thead>
-                <tbody>
-                    <tr data-product="Keripik Pisang"><td><span style="color:#333;">Keripik Pisang</span><br><span style="font-size: 0.8em; color: #007bff;">Banana Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Pisang (Rp 20.900)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Apel"><td><span style="color:#333;">Keripik Apel</span><br><span style="font-size: 0.8em; color: #007bff;">Apple Crisps</span></td><td>**Kosong**</td><td></td></tr>
-                    <tr data-product="Keripik Nangka"><td><span style="color:#333;">Keripik Nangka</span><br><span style="font-size: 0.8em; color: #007bff;">Jackfruit Crisps</span></td><td>**Kosong**</td><td></td></tr>
-                    <tr data-product="Keripik Strawberry"><td><span style="color:#333;">Keripik Strawberry</span><br><span style="font-size: 0.8em; color: #007bff;">Strawberry Crisps</span></td><td>Rp 100.000</td><td><button class="order-btn" data-product-name="Satuan - Keripik Strawberry (Rp 100.000)">ORDER</button></td></tr>
-                    <tr data-product="Keripik Buah Naga"><td><span style="color:#333;">Keripik Buah Naga</span><br><span style="font-size: 0.8em; color: #007bff;">Dragon Fruit Crisps</span></td><td>**Kosong**</td><td></td></tr>
-                    <tr data-product="Keripik Mangga"><td><span style="color:#333;">Keripik Mangga</span><br><span style="font-size: 0.8em; color: #007bff;">Mango Crisps</span></td><td>**Kosong**</td><td></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="#order-form" class="cta-button" style="background-color: #ff8c00;">CEK DISKON PAKET (LEBIH HEMAT)</a>
-        </div>
-    </div>
-</section>
-    <section id="mix-package" class="package-mix" style="padding: 60px 0; background-color: #e6f7ff;">
+    
+    <section class="single-product-catalog">
         <div class="container">
-            <h2 class="section-title" style="color: #007bff;">🔥 3 Paket Mix Rilldelish: Solusi Ngemil Cerdas (200gr)</h2>
+            <h2 class="section-title">
+                Pilih Varian Favorit Anda (Harga Satuan 100gr)
+                <br><span style="font-size: 0.6em; font-weight: 400; color: #777;">Choose Your Favorite Variant (Single Item Price 100gr)</span>
+            </h2>
+            
+            <p style="text-align: center; margin-bottom: 40px; font-style: italic;">
+                Kami transparan: Varian Bertempung menggunakan adonan khusus rendah karbo untuk tekstur maksimal.
+            </p>
+
+            <div class="product-categories">
+                <button class="category-btn active" data-category="pure-veggie">
+                    Keripik Sayur Murni 
+                    <span class="en-text">Pure Veggie Crisps</span>
+                </button>
+                <button class="category-btn" data-category="coated">
+                    Varian Bertempung/Protein
+                    <span class="en-text">Coated/Protein Crisps</span>
+                </button>
+                <button class="category-btn" data-category="fruit">
+                    Keripik Buah Murni
+                    <span class="en-text">Pure Fruit Crisps</span>
+                </button>
+            </div>
+
+            <div id="pure-veggie-list" class="product-list active">
+                <h3 style="color: #4CAF50; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                    <span style="font-size: 1.2em;">🌿</span> Keripik Sayur Murni <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Pure Veggie Crisps)</span>
+                </h3>
+                <table class="catalog-table">
+                    <thead>
+                        <tr><th>Produk</th><th>Harga Satuan</th><th>Aksi</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr data-product="Keripik Wortel"><td><span style="color:#333;">Keripik Wortel</span><br><span style="font-size: 0.8em; color: #007bff;">Carrot Crisps</span></td><td>Rp 26.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Wortel (Rp 26.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Ubi Ungu"><td><span style="color:#333;">Keripik Ubi Ungu</span><br><span style="font-size: 0.8em; color: #007bff;">Purple Sweet Potato Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Ubi Ungu (Rp 20.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Ubi Madu"><td><span style="color:#333;">Keripik Ubi Madu</span><br><span style="font-size: 0.8em; color: #007bff;">Honey Sweet Potato Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Ubi Madu (Rp 20.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Okra"><td><span style="color:#333;">Keripik Okra</span><br><span style="font-size: 0.8em; color: #007bff;">Okra Crisps</span></td><td>Rp 50.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Okra (Rp 50.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Jagung Manis"><td><span style="color:#333;">Keripik Jagung Manis</span><br><span style="font-size: 0.8em; color: #007bff;">Sweet Corn Crisps</span></td><td>Rp 24.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Jagung Manis (Rp 24.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Labu Madu/Butternut"><td><span style="color:#333;">Keripik Labu Madu/Butternut</span><br><span style="font-size: 0.8em; color: #007bff;">Butternut Squash Crisps</span></td><td>**Kosong**</td><td></td></tr>
+                        <tr data-product="Keripik Kentang"><td><span style="color:#333;">Keripik Kentang</span><br><span style="font-size: 0.8em; color: #007bff;">Potato Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Kentang (Rp 28.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Kentang Wedges"><td><span style="color:#333;">Keripik Kentang Wedges</span><br><span style="font-size: 0.8em; color: #007bff;">Potato Wedges Crisps</span></td><td>Rp 32.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Kentang Wedges (Rp 32.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Edamame"><td><span style="color:#333;">Keripik Edamame</span><br><span style="font-size: 0.8em; color: #007bff;">Edamame Crisps</span></td><td>Rp 30.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Edamame (Rp 30.900)">ORDER</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="coated-list" class="product-list" style="display: none;">
+                <h3 style="color: #ff8c00; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                    <span style="font-size: 1.2em;">💪</span> Varian Bertempung/Protein <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Coated/Protein Crisps)</span>
+                </h3>
+                <p style="font-size: 0.9em; margin-bottom: 15px;">*Menggunakan adonan khusus (misal: tepung singkong) untuk tekstur maksimal dan protein/serat tambahan.</p>
+                <table class="catalog-table">
+                    <thead>
+                        <tr><th>Produk</th><th>Harga Satuan</th><th>Aksi</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr data-product="Keripik Gedebog Pisang"><td><span style="color:#333;">Keripik Gedebog Pisang</span><br><span style="font-size: 0.8em; color: #007bff;">Banana Stem Crisps</span></td><td>Rp 15.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Gedebog Pisang (Rp 15.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Buncis"><td><span style="color:#333;">Keripik Buncis</span><br><span style="font-size: 0.8em; color: #007bff;">Green Bean Crisps</span></td><td>Rp 30.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Buncis (Rp 30.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Bawang Mereripik Bawang Merah"><td><span style="color:#333;">Keripik Bawang Merah</span><br><span style="font-size: 0.8em; color: #007bff;">Shallot Crisps</span></td><td>Rp 56.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bawang Merah (Rp 56.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Bawang Putih"><td><span style="color:#333;">Keripik Bawang Putih</span><br><span style="font-size: 0.8em; color: #007bff;">Garlic Crisps</span></td><td>Rp 54.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bawang Putih (Rp 54.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Bawang Bombay"><td><span style="color:#333;">Keripik Bawang Bombay</span><br><span style="font-size: 0.8em; color: #007bff;">Onion Crisps</span></td><td>Rp 26.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bawang Bombay (Rp 26.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Cabe Besar"><td><span style="color:#333;">Keripik Cabe Besar</span><br><span style="font-size: 0.8em; color: #007bff;">Large Chili Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Cabe Besar (Rp 28.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Cabe Rawit"><td><span style="color:#333;">Keripik Cabe Rawit</span><br><span style="font-size: 0.8em; color: #007bff;">Bird's Eye Chili Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Cabe Rawit (Rp 28.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Paprika"><td><span style="color:#333;">Keripik Paprika</span><br><span style="font-size: 0.8em; color: #007bff;">Bell Pepper Crisps</span></td><td>Rp 28.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Paprika (Rp 28.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Jamur Tiram"><td><span style="color:#333;">Keripik Jamur Tiram</span><br><span style="font-size: 0.8em; color: #007bff;">Oyster Mushroom Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Jamur Tiram (Rp 20.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Jamur Kuping"><td><span style="color:#333;">Keripik Jamur Kuping</span><br><span style="font-size: 0.8em; color: #007bff;">Black Fungus Crisps</span></td><td>Rp 22.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Jamur Kuping (Rp 22.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Bunga Kol"><td><span style="color:#333;">Keripik Bunga Kol</span><br><span style="font-size: 0.8em; color: #007bff;">Cauliflower Crisps</span></td><td>Rp 26.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Bunga Kol (Rp 26.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Brokoli"><td><span style="color:#333;">Keripik Brokoli</span><br><span style="font-size: 0.8em; color: #007bff;">Broccoli Crisps</span></td><td>Rp 24.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Brokoli (Rp 24.900)">ORDER</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="fruit-list" class="product-list" style="display: none;">
+                <h3 style="color: #ff6347; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                    <span style="font-size: 1.2em;">🍓</span> Keripik Buah Murni <span style="font-size: 0.8em; font-weight: 400; color: #777;">(Pure Fruit Crisps)</span>
+                </h3>
+                <table class="catalog-table">
+                    <thead>
+                        <tr><th>Produk</th><th>Harga Satuan</th><th>Aksi</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr data-product="Keripik Pisang"><td><span style="color:#333;">Keripik Pisang</span><br><span style="font-size: 0.8em; color: #007bff;">Banana Crisps</span></td><td>Rp 20.900</td><td><button class="order-btn" data-product-name="Satuan - Keripik Pisang (Rp 20.900)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Apel"><td><span style="color:#333;">Keripik Apel</span><br><span style="font-size: 0.8em; color: #007bff;">Apple Crisps</span></td><td>**Kosong**</td><td></td></tr>
+                        <tr data-product="Keripik Nangka"><td><span style="color:#333;">Keripik Nangka</span><br><span style="font-size: 0.8em; color: #007bff;">Jackfruit Crisps</span></td><td>**Kosong**</td><td></td></tr>
+                        <tr data-product="Keripik Strawberry"><td><span style="color:#333;">Keripik Strawberry</span><br><span style="font-size: 0.8em; color: #007bff;">Strawberry Crisps</span></td><td>Rp 100.000</td><td><button class="order-btn" data-product-name="Satuan - Keripik Strawberry (Rp 100.000)">ORDER</button></td></tr>
+                        <tr data-product="Keripik Buah Naga"><td><span style="color:#333;">Keripik Buah Naga</span><br><span style="font-size: 0.8em; color: #007bff;">Dragon Fruit Crisps</span></td><td>**Kosong**</td><td></td></tr>
+                        <tr data-product="Keripik Mangga"><td><span style="color:#333;">Keripik Mangga</span><br><span style="font-size: 0.8em; color: #007bff;">Mango Crisps</span></td><td>**Kosong**</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#order-form" class="cta-button" style="background-color: #ff8c00;">CEK DISKON PAKET (LEBIH HEMAT)</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="mix-package" class="package-mix">
+        <div class="container">
+            <h2 class="section-title">🔥 3 Paket Mix Rilldelish: Solusi Ngemil Cerdas (200gr)</h2>
             
             <div style="display: flex; justify-content: space-around; gap: 20px; text-align: center;">
-                <div class="mix-card" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <h3 style="color: #4CAF50;">PAKET MIX SERAT</h3>
+                <div class="mix-card">
+                    <h3>PAKET MIX SERAT</h3>
                     <p style="font-weight: bold; font-size: 1.5em;">Rp 49.900</p>
                     <p>Isi: Gedebog Pisang, Okra, Ubi Ungu, Labu Madu</p>
                     <p style="font-size: 0.9em;">*Hemat Rp 6.400 dari harga normal.</p>
-                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix Serat - Rp 49.900" style="background-color: #4CAF50;">Pesan Paket Serat</a>
+                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix Serat - Rp 49.900">Pesan Paket Serat</a>
                 </div>
-                <div class="mix-card" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <h3 style="color: #007bff;">PAKET MIX IMUN BOOSTER</h3>
+                <div class="mix-card">
+                    <h3>PAKET MIX IMUN BOOSTER</h3>
                     <p style="font-weight: bold; font-size: 1.5em;">Rp 79.900</p>
                     <p>Isi: Strawberry, Brokoli, Wortel, Jamur Tiram</p>
                     <p style="font-size: 0.9em;">*Investasi Vitamin Harian terbaik.</p>
-                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix IMUN BOOSTER - Rp 79.900" style="background-color: #007bff;">Pesan Paket Imun</a>
+                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix IMUN BOOSTER - Rp 79.900">Pesan Paket Imun</a>
                 </div>
-                <div class="mix-card" style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <h3 style="color: #ff6347;">PAKET MIX EKSTREM</h3>
+                <div class="mix-card">
+                    <h3>PAKET MIX EKSTREM</h3>
                     <p style="font-weight: bold; font-size: 1.5em;">Rp 67.900</p>
                     <p>Isi: Cabe Rawit, Bawang Merah, Paprika, Kentang Wedges</p>
                     <p style="font-size: 0.9em;">*Tantangan rasa unik, peningkat metabolisme.</p>
-                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix EKSTREM - Rp 67.900" style="background-color: #ff6347;">Pesan Paket Ekstrem</a>
+                    <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix EKSTREM - Rp 67.900">Pesan Paket Ekstrem</a>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 40px; padding: 20px; background-color: #fffacd; border-radius: 8px;">
                 <h3 style="color: #ff8c00;">PROMO SPESIAL (WAKTU TERBATAS!)</h3>
                 <p style="font-size: 1.2em; font-weight: 600;">Beli **Ketiga Paket Mix** sekaligus (Total 600gr) **Hanya Bayar Rp 190.000!**</p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000" style="background-color: #ff8c00;">AMBIL SEMUA PAKET (Hemat Ekstra!)</a>
+                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">AMBIL SEMUA PAKET (Hemat Ekstra!)</a>
             </div>
         </div>
     </section>
-<section id="order-form" class="conversion-form">
-    <div class="container" style="max-width: 600px;">
-        <h2 class="section-title" style="color: #cc0000; border-bottom: 3px solid #ff6347;">
-            🎁 Klaim Diskon Khusus atau Sampel Anda di Sini!
-        </h2>
-        <p style="font-size: 1.1em; margin-bottom: 30px;">
-            Isi formulir singkat di bawah ini, dan tim kami akan segera menghubungi Anda melalui WhatsApp untuk memproses diskon dan pesanan Anda.
-        </p>
 
-        <form id="whatsappForm" class="contact-form">
-            <div class="form-group">
-                <label for="nama">Nama Pemesan *</label>
-                <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
-            </div>
-            <div class="form-group">
-                <label for="telepon">No. WhatsApp Aktif *</label>
-                <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required>
-            </div>
-            <div class="form-group">
-                <label for="alamat">Alamat Lengkap Pengiriman *</label>
-                <textarea id="alamat" name="alamat" rows="2" placeholder="Jalan, No. Rumah, Kecamatan, Kota/Kabupaten" required></textarea>
-            </div>
+    <section id="order-form" class="conversion-form">
+        <div class="container" style="max-width: 600px;">
+            <h2 class="section-title">🎁 Klaim Diskon Khusus atau Sampel Anda di Sini!</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                Isi formulir singkat di bawah ini, dan tim kami akan segera menghubungi Anda melalui WhatsApp untuk memproses diskon dan pesanan Anda.
+            </p>
 
-            <h3 style="color: #38761d; margin-top: 30px; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Pilihan Produk (Keranjang Mini)</h3>
-            
-            <div id="product-list-container">
-    <div class="product-item" data-id="1">
-        <div class="form-group">
-            <label for="paket-1">Pilih Produk/Paket *</label>
-            <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
-                <option value="">-- PILIH OPSI ORDER ANDA --</option>
-                <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
-                    <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
-                    <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
-                    <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
-                    <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option>
-                    <option value="Paket Mix 6 Varian - Rp 120.000">Paket Mix 6 Varian (Rp 120.000) - Rincian di Catatan</option>
-                    <option value="Paket Mix 10 Varian - Rp 180.000">Paket Mix 10 Varian (Rp 180.000) - Rincian di Catatan</option>
-                </optgroup>
-                <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
-                    <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
-                </optgroup>
-                <optgroup label="ORDER GROSIR (1KG+)">
-                    <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
-                </optgroup>
-            </select>
+            <form id="whatsappForm" class="contact-form">
+                <div class="form-group">
+                    <label for="nama">Nama Pemesan *</label>
+                    <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="telepon">No. WhatsApp Aktif *</label>
+                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat Lengkap Pengiriman *</label>
+                    <textarea id="alamat" name="alamat" rows="2" placeholder="Jalan, No. Rumah, Kecamatan, Kota/Kabupaten" required></textarea>
+                </div>
+
+                <h3 style="color: #38761d; margin-top: 30px; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Pilihan Produk (Keranjang Mini)</h3>
+                
+                <div id="product-list-container">
+                    <div class="product-item" data-id="1">
+                        <div class="form-group">
+                            <label for="paket-1">Pilih Produk/Paket *</label>
+                            <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
+                                <option value="">-- PILIH OPSI ORDER ANDA --</option>
+                                <optgroup label="PILIH PAKET MIX (LEBIH HEMAT)">
+                                    <option value="Paket Mix Serat - Rp 49.900">Paket Mix Serat (Rp 49.900)</option>
+                                    <option value="Paket Mix IMUN BOOSTER - Rp 79.900">Paket Mix Imun Booster (Rp 79.900)</option>
+                                    <option value="Paket Mix EKSTREM - Rp 67.900">Paket Mix Ekstrem (Rp 67.900)</option>
+                                    <option value="Paket Mix SERAT - IMUN - EKSTREM - Rp 190.000">PROMO KHUSUS: Ambil Semua 3 Paket!</option>
+                                    <option value="Paket Mix 6 Varian - Rp 120.000">Paket Mix 6 Varian (Rp 120.000) - Rincian di Catatan</option>
+                                    <option value="Paket Mix 10 Varian - Rp 180.000">Paket Mix 10 Varian (Rp 180.000) - Rincian di Catatan</option>
+                                </optgroup>
+                                <optgroup label="PESAN PRODUK SATUAN (LENGKAP)">
+                                    <option value="Satuan - Keripik Gedebog Pisang (Rp 15.900)">Keripik Gedebog Pisang (Rp 15.900)</option>
+                                    <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
+                                </optgroup>
+                                <optgroup label="ORDER GROSIR (1KG+)">
+                                    <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label for="jumlah-1">Jumlah (pcs) *</label>
+                                <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
+                                <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
+                                    Subtotal: <span class="display-subtotal">Rp 0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
+                
+
+                <div class="form-group">
+                    <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
+                        TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="keterangan">Catatan / Keterangan (Opsional)</label>
+                    <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
+                </div>
+                <button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
+            </form>
         </div>
+    </section>
 
-        <div class="form-group-inline">
-            <div class="form-group">
-                <label for="jumlah-1">Jumlah (pcs) *</label>
-                <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
-            </div>
-            <div class="form-group">
-                <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
-                <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
-                    Subtotal: <span class="display-subtotal">Rp 0</span>
-                </p>
-            </div>
-        </div>
-    </div>
-    </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
-
-
-<div class="form-group">
-    <p style="text-align: left; color: #4CAF50; font-size: 1.2em; font-weight: 700;">
-        TOTAL KESELURUHAN: <span id="display-grand-total" style="font-weight: 800; color: #000;">Rp 0</span> 💰
-    </p>
-</div>
-
-<div class="form-group">
-    <label for="keterangan">Catatan / Keterangan (Opsional)</label>
-    <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
-</div>
-<button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
-</form>
-    </div>
-</section>
-    <section class="bulk-order" style="padding: 60px 0;">
+    <section class="bulk-order">
         <div class="container">
-            <h2 class="section-title" style="color: #8b4513;">💰 JANGAN HANYA JADI PEMBELI, JADILAH MITRA BISNIS SEHAT KAMI!</h2>
+            <h2 class="section-title">💰 JANGAN HANYA JADI PEMBELI, JADILAH MITRA BISNIS SEHAT KAMI!</h2>
             <p style="text-align: center; font-size: 1.1em; margin-bottom: 30px;">Penawaran Khusus Grosir untuk Reseller, Kafe, dan Distributor.</p>
 
             <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
@@ -315,7 +297,7 @@
         </div>
     </section>
     
-    <footer style="background-color: #333; color: white; padding: 30px 0; text-align: center;">
+    <footer>
         <div class="container">
             <p>Rilldelish (Primafood) - Cemilan Sehat Pilihan Keluarga.</p>
             <p>Diproduksi di: Jl. Sumbergondo No. 28, Bumiaji, Kota Batu, Jawa Timur.</p>
@@ -330,10 +312,8 @@
     
     // --- Fungsi Pembantu: Ekstraksi Harga dari Teks ---
     function extractPrice(value) {
-        // Regex mencari pola: (Rp [angka dengan titik atau koma])
         const match = value.match(/Rp\s*([\d\.]+)/);
         if (match && match[1]) {
-            // Menghapus semua titik (separator ribuan) agar JavaScript bisa menghitung
             return parseFloat(match[1].replace(/\./g, ''));
         }
         return 0;
@@ -572,6 +552,6 @@ Mohon diproses total biaya (termasuk ongkir) dan konfirmasi pembayaran segera. T
             });
         });
     });
-</script>
+    </script>
 </body>
 </html>
