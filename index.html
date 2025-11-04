@@ -374,34 +374,30 @@
                 </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
                 
                <div class="form-group summary-struk">
-    <div class="struk-row">
+    <p class="struk-line normal-price">
         <span class="struk-label">Harga Normal:</span>
         <span class="struk-nominal" id="display-normal-price">Rp 0</span>
-    </div>
-
-    <div class="struk-row">
-        <span class="struk-label">Potongan Diskon:</span>
-        <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
-    </div>
-    <p id="discount-tier-note" class="struk-discount-note">
-        *Keterangan diskon akan muncul di sini.
     </p>
 
-    <div class="struk-row">
-        <span class="struk-label" style="color: #777;">Total Berat:</span>
+    <p class="struk-line discount-amount">
+        <span class="struk-label">Potongan Diskon:</span>
+        <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
+    </p>
+    <p id="discount-tier-note" class="final-notes" style="text-align: right; margin-top: -10px;"></p>
+
+    <p class="struk-line total-weight">
+        <span class="struk-label">Total Berat:</span>
         <span class="struk-nominal" id="display-total-weight">0 g</span>
-    </div>
+    </p>
 </div>
 
 <div class="form-group struk-grand-total">
-    <div class="struk-row">
+    <p class="struk-line grand-total-line" style="border-top: 2px solid #ccc; padding-top: 10px;">
         <span class="struk-label">JUMLAH BAYAR:</span>
         <span class="struk-nominal" id="display-grand-total">Rp 0</span> 
         <span class="ikon-uang">💰</span>
-    </div>
-    <p id="total-discount-keterangan" class="final-notes">
-        *Harga ini belum termasuk biaya kirim.
     </p>
+    <p id="total-discount-keterangan" class="final-notes" style="text-align: left;"></p>
 </div>
                 <div class="form-group">
                     <label for="keterangan">Catatan / Keterangan (Opsional)</label>
