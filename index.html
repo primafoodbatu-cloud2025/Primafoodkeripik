@@ -550,6 +550,7 @@
                     bestDiscount.rate = rate;
                     bestDiscount.type = 'Grosir';
                     
+                    // Menentukan Tier dan Range
                     const tierNum = (threshold == 1) ? 1 : (threshold == 10) ? 2 : (threshold == 25) ? 3 : 4;
                     const maxKg = (threshold == 50) ? 'ke atas' : (parseInt(threshold) + 9);
                     const range = (threshold == 1) ? '1-9 kg' : `${threshold}-${maxKg} kg`;
@@ -588,7 +589,6 @@
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
-            const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
@@ -605,6 +605,7 @@
             let subtotalWeight = itemWeightPerPcs * quantityPcs;
             totalWeightGrams += subtotalWeight;
             
+            const itemWeightDisplay = item.querySelector('.display-item-weight');
             itemWeightDisplay.textContent = `${itemWeightPerPcs} g`; 
             
             totalHargaAwal += subtotalAwal;
@@ -621,8 +622,6 @@
         // Loop 3: Update Subtotal Akhir di Keranjang Mini
         productItems.forEach(item => {
             const subtotalDisplay = item.querySelector('.display-subtotal');
-            const removeButton = item.querySelector('.remove-product-btn');
-            
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
@@ -643,6 +642,7 @@
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
 
+            const removeButton = item.querySelector('.remove-product-btn');
             if (productItems.length > 1) {
                 removeButton.style.display = 'inline-block';
             } else {
@@ -653,14 +653,24 @@
         // --- UPDATE TAMPILAN STRUK UTAMA ---
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaAwal);
         
-        // Potongan Diskon (DENGAN KETERANGAN TIER)
-        const discountKeterangan = discType === 'Grosir' 
-            ? `(Grosir Tier ${discTier} (${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%)`
-            : `(Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%)`;
-
-        document.getElementById('display-discount-amount').innerHTML = 
-            `${formatCurrency(discountAmount)} <span class="disc-note-inline">${globalDiscRate > 0 ? discountKeterangan : ''}</span>`;
+        // Potongan Diskon (HANYA NOMINAL)
+        document.getElementById('display-discount-amount').textContent = formatCurrency(discountAmount);
         
+        // KOREKSI 1 & 2: KETERANGAN TIER DISKON
+        const tierNoteElement = document.getElementById('discount-tier-note');
+        if (tierNoteElement) {
+            if (globalDiscRate > 0) {
+                const tierKeterangan = discType === 'Grosir' 
+                    ? `Potongan: Grosir Tier ${discTier} (Pembelian ${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%.`
+                    : `Potongan: Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%.`;
+                tierNoteElement.textContent = tierKeterangan;
+                tierNoteElement.style.display = 'block';
+            } else {
+                tierNoteElement.style.display = 'none';
+                tierNoteElement.textContent = '';
+            }
+        }
+
         document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         
         const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
@@ -748,7 +758,7 @@
         selectElement.focus();
     }
 
-    // --- Fungsionalitas WhatsApp (DIPERBAIKI KE FORMAT STRUK) ---
+    // --- Fungsionalitas WhatsApp (Diperbaiki KE FORMAT STRUK) ---
     function sendWhatsAppOrder(event) {
         event.preventDefault();
 
@@ -798,7 +808,7 @@
         const productListText = productDetails.join('\n');
         
         // Ambil keterangan Potongan Diskon yang disisipkan di span display-discount-amount (untuk WA)
-        const discountSpan = document.getElementById('display-discount-amount').querySelector('span');
+        const discountSpan = document.getElementById('display-discount-amount').nextElementSibling; // Mengambil span di sebelah nominal
         const tierKeteranganWA = discountSpan ? discountSpan.textContent : '';
 
         // Format pesan WhatsApp (STRUK FINAL)
@@ -813,9 +823,10 @@ Saya ingin melakukan pemesanan (Struk Otomatis):
 *===== R I N C I A N  S T R U K =====*
 ${productListText}
 *----------------------------------------*
-Total Qty: ${totalQuantityPcs} pcs | Berat: ${totalWeightDisplay}
 Harga Normal: ${totalHargaNormalDisplay}
 Potongan Diskon: ${discountAmountDisplay} ${tierKeteranganWA}
+Total Berat: ${totalWeightDisplay}
+Total Qty: ${totalQuantityPcs} pcs
 
 *TOTAL YANG HARUS DIBAYAR:* ${grandTotalDisplay}
 *======================================*
