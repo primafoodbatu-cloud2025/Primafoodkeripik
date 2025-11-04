@@ -373,30 +373,31 @@
                     </div>
                 </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
                 
-                <div class="form-group" style="margin-bottom: 5px;">
-                    <p style="text-align: left; color: #cc0000; font-weight: 600;">
-                        Harga Normal: <span id="display-normal-price" style="font-weight: 700;">Rp 0</span>
-                    </p>
-                </div>
-                <div class="form-group" style="margin-bottom: 5px;">
-                    <p style="text-align: left; color: #4CAF50; font-weight: 600;">
-                        Potongan Diskon: <span id="display-discount-amount" style="font-weight: 700;">Rp 0</span>
-                    </p>
-                </div>
-                <div class="form-group" style="margin-bottom: 5px;">
-                    <p style="text-align: left; color: #777; font-weight: 600;">
-                        Total Berat: <span id="display-total-weight" style="font-weight: 700;">0 g</span>
-                    </p>
-                </div>
+               <div class="form-group" style="margin-bottom: 5px;">
+    <p style="text-align: left; color: #cc0000; font-weight: 600;">
+        Harga Normal: <span id="display-normal-price" style="font-weight: 700;">Rp 0</span>
+    </p>
+</div>
+<div class="form-group" style="margin-bottom: 5px;">
+    <p style="text-align: left; color: #4CAF50; font-weight: 600;">
+        Potongan Diskon: <span id="display-discount-amount" style="font-weight: 700;">Rp 0</span>
+    </p>
+    <p id="discount-tier-note" style="text-align: right; font-size: 0.9em; color: #555; margin-top: -15px;"></p>
+</div>
+<div class="form-group" style="margin-bottom: 5px;">
+    <p style="text-align: left; color: #777; font-weight: 600;">
+        Total Berat: <span id="display-total-weight" style="font-weight: 700;">0 g</span>
+    </p>
+</div>
 
-                <div class="form-group" style="border-top: 2px solid #ccc; padding-top: 10px;">
-                    <p style="text-align: left; color: #cc0000; font-size: 1.4em; font-weight: 800;">
-                        JUMLAH BAYAR: <span id="display-grand-total" style="font-weight: 800; color: #cc0000;">Rp 0</span> 💰
-                    </p>
-                    <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #777;">
-                        *Harga ini belum termasuk biaya kirim.
-                    </p>
-                </div>
+<div class="form-group" style="border-top: 2px solid #ccc; padding-top: 10px;">
+    <p style="text-align: left; color: #cc0000; font-size: 1.4em; font-weight: 800;">
+        JUMLAH BAYAR: <span id="display-grand-total" style="font-weight: 800; color: #cc0000;">Rp 0</span> 💰
+    </p>
+    <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #777;">
+        *Harga ini belum termasuk biaya kirim.
+    </p>
+</div>
                 <div class="form-group">
                     <label for="keterangan">Catatan / Keterangan (Opsional)</label>
                     <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
@@ -540,7 +541,6 @@
     function getMaxDiscount(totalWeightKg) {
         let bestDiscount = { rate: 0, type: 'None', tier: null, range: null };
         
-        // Loop Diskon Grosir
         for (const threshold in GROSIR_DISCOUNT_RATES) {
             if (totalWeightKg >= parseInt(threshold)) {
                 const rate = GROSIR_DISCOUNT_RATES[threshold];
@@ -596,6 +596,7 @@
             
             const hargaItemPerPcs = extractPrice(selectedValue);
             
+            // Konversi Quantity ke PCS dan hitung harga dasar
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
 
@@ -620,6 +621,8 @@
         // Loop 3: Update Subtotal Akhir di Keranjang Mini
         productItems.forEach(item => {
             const subtotalDisplay = item.querySelector('.display-subtotal');
+            const removeButton = item.querySelector('.remove-product-btn');
+            
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
@@ -640,7 +643,6 @@
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
 
-            const removeButton = item.querySelector('.remove-product-btn');
             if (productItems.length > 1) {
                 removeButton.style.display = 'inline-block';
             } else {
@@ -690,6 +692,16 @@
             
             totalKeterangan.innerHTML = notes.join('<br>'); 
         }
+        
+        // Tampilkan tombol Hapus
+        productItems.forEach(item => {
+             const removeButton = item.querySelector('.remove-product-btn');
+             if (productItems.length > 1) {
+                removeButton.style.display = 'inline-block';
+            } else {
+                removeButton.style.display = 'none';
+            }
+        });
     }
 
     // --- Fungsi Tambah Produk Baru ---
@@ -748,19 +760,19 @@
         const alamat = document.getElementById('alamat').value;
         const keterangan = document.getElementById('keterangan').value;
 
-        // Ambil Data Struk
+        // Ambil Data Struk dari HTML
         const totalHargaNormalDisplay = document.getElementById('display-normal-price').textContent;
         const discountAmountDisplay = document.getElementById('display-discount-amount').textContent;
         const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
         const totalWeightDisplay = document.getElementById('display-total-weight').textContent;
-        const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent;
-
+        const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent; // Sudah berupa string multi-baris
         
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let productDetails = [];
         let totalQuantityPcs = 0;
         let itemCounter = 1;
         
+        // Loop untuk Detail Produk
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
@@ -788,6 +800,10 @@
         }
 
         const productListText = productDetails.join('\n');
+        
+        // Ambil keterangan Potongan Diskon yang disisipkan di span display-discount-amount (untuk WA)
+        const discountSpan = document.getElementById('display-discount-amount').querySelector('span');
+        const tierKeteranganWA = discountSpan ? discountSpan.textContent : '';
 
         // Format pesan WhatsApp (STRUK FINAL)
         const message = `
@@ -803,7 +819,7 @@ ${productListText}
 *----------------------------------------*
 Total Qty: ${totalQuantityPcs} pcs | Berat: ${totalWeightDisplay}
 Harga Normal: ${totalHargaNormalDisplay}
-Potongan Diskon: ${discountAmountDisplay}
+Potongan Diskon: ${discountAmountDisplay} ${tierKeteranganWA}
 
 *TOTAL YANG HARUS DIBAYAR:* ${grandTotalDisplay}
 *======================================*
