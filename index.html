@@ -536,8 +536,10 @@
     }
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
     
-    // --- Fungsi Penentu Diskon Maksimal ---
-    function getMaxDiscount(totalWeightKg) {
+    // --- Fungsi Penentu Diskon Maksimal (TETAP SAMA) ---
+    function getMaxDiscount(totalWeightKg) { 
+        // ... (KodegetMaxDiscount) ...
+        // ... (Kode getMaxDiscount tidak diulang di sini) ...
         let maxDisc = 0;
         
         for (const threshold in GROSIR_DISCOUNT_RATES) {
@@ -552,7 +554,7 @@
             maxDisc = FLASH_SALE_DISCOUNT;
         }
 
-        if (maxDisc >= 0.10) { // Grosir 10% atau lebih
+        if (maxDisc >= 0.10) { 
              let tier = 0;
              for (const t in GROSIR_DISCOUNT_RATES) {
                  if (GROSIR_DISCOUNT_RATES[t] === maxDisc) {
@@ -572,6 +574,7 @@
         return { rate: 0, type: 'None', tier: null, range: null };
     }
 
+
     // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total (DIPERBAIKI TOTAL) ---
     function calculateTotal() {
         let totalHargaAwal = 0;
@@ -579,12 +582,24 @@
         let totalWeightGrams = 0;
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let totalQuantityPcs = 0;
+        
+        // Cek apakah ada item yang dipilih, jika tidak, reset total.
+        if (productItems.length === 0) {
+            // Jika container kosong, paksa reset display
+            document.getElementById('display-normal-price').textContent = formatCurrency(0);
+            document.getElementById('display-discount-amount').textContent = formatCurrency(0);
+            document.getElementById('display-grand-total').textContent = formatCurrency(0);
+            document.getElementById('display-total-weight').textContent = '0 g';
+            return;
+        }
+
 
         // Loop 1: Hitung Harga Awal, Berat, dan Total PCS
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
+            const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
@@ -618,17 +633,15 @@
         // Loop 3: Update Subtotal Akhir di Keranjang Mini
         productItems.forEach(item => {
             const subtotalDisplay = item.querySelector('.display-subtotal');
-            const removeButton = item.querySelector('.remove-product-btn');
-            
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
-            const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
             const unit = unitElement.value;
-
+            
+            // Hitung kembali subtotal item dengan diskon global
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             const hargaItemPerPcs = extractPrice(selectedValue);
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
@@ -639,12 +652,6 @@
             // Tambahkan keterangan Diskon ke Subtotal Display
             if (globalDiscRate > 0) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
-            }
-
-            if (productItems.length > 1) {
-                removeButton.style.display = 'inline-block';
-            } else {
-                removeButton.style.display = 'none';
             }
         });
         
