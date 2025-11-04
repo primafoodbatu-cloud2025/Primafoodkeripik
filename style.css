@@ -313,6 +313,36 @@ body {
 }
 
 /* ========================================= */
+/* 7.1 STYLING DISPLAY HARGA OTOMATIS */
+/* ========================================= */
+
+/* Styling Harga Per Item (Merah) */
+#display-harga {
+    color: #cc0000; /* Warna Merah */
+    font-weight: 700;
+    padding: 0 5px;
+    border-bottom: 2px dashed #ffdddd; /* Garis putus-putus ringan */
+    display: inline-block; /* Memastikan padding dan border bekerja */
+}
+
+/* Styling Total Harga (Hijau dan Besar) */
+.form-group p:has(#display-total) {
+    /* Target paragraf yang berisi total harga */
+    padding: 15px;
+    border: 3px solid #4CAF50; /* Border hijau tebal */
+    border-radius: 8px;
+    background-color: #e8f5e9; /* Latar belakang hijau muda */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+#display-total {
+    color: #000; /* Warna Hitam untuk angka total */
+    font-size: 1.5em; /* Ukuran teks lebih besar */
+    font-weight: 800;
+}
+
+/* ========================================= */
 /* 8. FOOTER */
 /* ========================================= */
 footer {
