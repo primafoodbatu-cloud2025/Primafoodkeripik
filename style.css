@@ -377,7 +377,7 @@ body {
 
 
 /* ========================================= */
-/* 8. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
@@ -393,7 +393,7 @@ body {
 .contact-form .form-group input,
 .contact-form .form-group select,
 .contact-form .form-group textarea {
-    width: 100%;
+    width: 100%; 
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -487,7 +487,17 @@ body {
 
 /* === STYLING STRUK DINAMIS FINAL === */
 
-/* KOREKSI: PENGGUNAAN FLEXBOX UNTUK RATA KANAN/KIRI DAN PELURUSAN TITIK DUA */
+/* Wadah Baris Struk */
+.struk-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 3px 0;
+    position: relative; /* Wadah relatif untuk penempatan nominal absolut */
+}
+
+/* Styling Label (misal: "Harga Normal:", "Potongan Diskon:") */
 .conversion-form .form-group p {
     display: flex;
     justify-content: space-between;
@@ -496,41 +506,41 @@ body {
     padding-left: 10px; 
     padding-right: 10px;
     font-size: 1em;
-    position: relative; /* Wadah relatif untuk penempatan nominal absolut */
-}
-
-/* Styling Label (misal: "Harga Normal:", "Potongan Diskon:") */
-.conversion-form .form-group p:not(#total-discount-keterangan) {
-    text-align: left;
+    position: relative; 
 }
 
 /* Styling Nominal Angka (Rata Kanan Absolut) */
 .conversion-form .form-group p span {
     text-align: right;
     font-weight: 700;
-    /* Posisikan nominal secara absolut agar meluruskan angka */
+    flex-shrink: 0;
     position: absolute;
     right: 10px;
 }
 
-/* Styling Potongan Diskon Keterangan */
-.disc-note-inline {
-    display: block;
-    font-size: 0.7em;
-    color: #555;
-    margin-top: 2px;
-    text-align: right;
-    font-weight: 400;
+/* Styling Keterangan Potongan Diskon (DI BAWAH NOMINAL DISKON) */
+#discount-tier-note {
+    font-size: 0.8em !important;
+    color: #4CAF50 !important;
+    text-align: right !important;
+    margin-top: -15px !important; 
+    padding-right: 10px;
+    margin-bottom: 10px !important;
+    display: block; /* Memastikan ini di baris baru */
+    width: 100%;
 }
+
 
 /* Styling Total Bayar (Dikuatkan) */
 .conversion-form .form-group[style*="border-top: 2px solid #ccc"] p {
     font-size: 1.4em !important;
     color: #cc0000 !important;
     margin: 0;
+    position: relative;
+    padding-right: 25px; 
 }
 
-/* KOREKSI 3: Menangani Ikon Uang di Total Bayar (DIPINDAHKAN DARI NOMINAL KE CSS) */
+/* Ikon Mata Uang (Posisikan) */
 .conversion-form .form-group[style*="border-top: 2px solid #ccc"] p::after {
     content: ' 💰';
     position: absolute;
@@ -544,20 +554,20 @@ body {
     font-size: 1.2em !important;
     color: #cc0000 !important;
     font-weight: 800 !important;
-    padding-right: 20px; /* Alokasi ruang untuk ikon uang */
+    padding-right: 20px;
 }
 
-/* KOREKSI 4: Styling Keterangan Bawah Total (Ongkir/Grosir Note) */
+/* Styling Keterangan Bawah Total (Ongkir/Grosir Note) */
 #total-discount-keterangan {
     font-size: 0.85em !important;
-    color: #555 !important;
+    color: #777 !important;
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 10px;
     text-align: left;
     white-space: pre-wrap;
+    line-height: 1.4;
 }
-
 
 /* ========================================= */
 /* 10. FOOTER */
