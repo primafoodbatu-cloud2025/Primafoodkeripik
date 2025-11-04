@@ -2,7 +2,7 @@
 /* 1. VARIABEL & RESET DASAR */
 /* ========================================= */
 :root {
-    /* Warna Brand Rilldelish - Anda bisa ganti sesuai logo */
+    /* Warna Brand Rilldelish */
     --color-primary: #4CAF50; /* Hijau Sayur/Segar */
     --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
     --color-cta: #ff6347; /* Merah Muda/Salmon (Action) */
@@ -44,7 +44,7 @@ body {
 
 .cta-button {
     background-color: var(--color-cta);
-    color: white !important; /* !important untuk menimpa inline style */
+    color: white !important;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: 700;
@@ -54,11 +54,11 @@ body {
     transition: background-color 0.3s, transform 0.2s;
     text-transform: uppercase;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .cta-button:hover {
-    background-color: #e55337; /* Sedikit lebih gelap */
+    background-color: #e55337;
     transform: translateY(-2px);
 }
 
@@ -66,9 +66,7 @@ body {
 /* 3. HEADER & HERO SECTION */
 /* ========================================= */
 .hero-section {
-    background-color: var(--color-bg-light); 
-    /* Tambahkan background image keripik */
-    /* background-image: url('hero-bg.jpg'); */
+    background-color: var(--color-bg-light);
     background-size: cover;
     padding: 100px 0;
     text-align: center;
@@ -135,28 +133,66 @@ body {
 }
 
 /* ========================================= */
-/* 6. KATALOG PRODUK TUNGGAL */
+/* 6. KATALOG PRODUK TUNGGAL & MIX */
 /* ========================================= */
 .single-product-catalog {
     background-color: #f0fff0;
 }
 
+/* 6.1. STYLING TOMBOL KATEGORI (.category-btn) */
+.product-categories {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10px;
+}
+
 .product-categories button {
     background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    margin: 5px;
+    border: 2px solid #ccc;
+    color: #333;
+    padding: 10px 18px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
+.product-categories button .en-text {
+    display: block;
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #007bff; /* Warna Biru untuk Bahasa Inggris */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.product-categories button:hover {
+    border-color: #ff8c00;
+    color: #ff8c00;
+}
+
+.product-categories button:hover .en-text {
+    color: #ff8c00;
 }
 
 .product-categories button.active {
-    background-color: var(--color-primary);
+    background-color: #38761d;
     color: white;
-    border-color: var(--color-primary);
+    border-color: #38761d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
+.product-categories button.active .en-text {
+    color: #c9e6c9;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 6.2. STYLING TABEL SATUAN */
 .catalog-table {
     width: 100%;
     border-collapse: collapse;
@@ -177,74 +213,37 @@ body {
     font-weight: 600;
 }
 
-/* ========================================= */
-/* 6.1. STYLING TOMBOL KATEGORI (.category-btn) */
-/* ========================================= */
-.product-categories {
-    /* Untuk tampilan yang lebih baik pada perangkat kecil */
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 10px;
-}
-
-.product-categories button {
-    /* Reset Styling Dasar */
-    background-color: white;
-    border: 2px solid #ccc;
-    color: #333; /* Warna Teks Indonesia */
-    padding: 10px 18px;
-    cursor: pointer;
-    border-radius: 20px;
-    font-weight: 600;
-    transition: all 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow yang lebih jelas */
-    line-height: 1.2; /* Merapikan jarak antar baris */
-}
-
-/* Styling Teks Bahasa Inggris */
-.product-categories button .en-text {
-    display: block; /* Memaksa ke baris baru */
-    font-size: 0.75em;
-    font-weight: 400;
-    color: #6699ff; /* Warna Biru untuk Bahasa Inggris */
-    
-    /* Garis Pemisah (Border Atas) */
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 5px;
-    margin-top: 5px;
-}
-
-/* Hover State */
-.product-categories button:hover {
-    border-color: #ff8c00; /* Border berubah Orange saat di-hover */
-    color: #ff8c00; /* Teks Indonesia berubah Orange */
-}
-
-.product-categories button:hover .en-text {
-    color: #ff8c00; /* Teks Inggris juga ikut berubah Orange saat di-hover */
-}
-
-
-/* Active State (Tombol yang sedang dipilih) */
-.product-categories button.active {
-    background-color: #38761d; /* Warna Hijau Tua Khas Rilldelish */
+/* 6.3. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
+.catalog-table .order-btn {
+    background-color: var(--color-cta);
     color: white;
-    border-color: #38761d;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.product-categories button.active .en-text {
-    color: #c9e6c9; /* Warna Hijau Muda untuk Inggris saat Active */
-    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Garis Putih tipis saat Active */
+.catalog-table .order-btn:hover {
+    background-color: #e55337;
+    transform: translateY(-1px);
 }
 
-/* Pastikan Tombol Murni (Pure Veggie) saat active tetap berwarna hijau terang */
-/* Anda dapat menambahkan style spesifik jika diperlukan, tetapi style umum di atas sudah efektif. */
-/* ========================================= */
-/* 6. SKEMA PAKET MIX (RITEL) */
-/* ========================================= */
+.catalog-table td:last-child {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.catalog-table td strong {
+    color: #ff6347;
+    font-weight: 700;
+}
+
+/* 6.4. STYLING PAKET MIX CARD */
 .package-mix {
     padding: 80px 0;
     background-color: var(--color-bg-mix);
@@ -257,7 +256,7 @@ body {
 }
 
 .mix-card {
-    width: 30%; /* Untuk desktop view */
+    width: 30%;
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -274,20 +273,12 @@ body {
     margin-bottom: 10px;
 }
 
-.mix-card p:first-of-type { /* Harga Jual */
+.mix-card p:first-of-type {
     font-size: 2em;
     font-weight: 700;
     margin: 10px 0;
 }
 
-/* Promo Khusus Semua Paket */
-.promo-spesial {
-    margin-top: 40px;
-    padding: 25px;
-    background-color: #fffacd;
-    border-radius: 10px;
-    border: 2px dashed var(--color-secondary);
-}
 
 /* ========================================= */
 /* 7. SKEMA DISKON GROSIR (BULK ORDER) */
@@ -310,40 +301,142 @@ body {
 .bulk-order th {
     background-color: #f0f0f0;
     color: var(--color-text);
+    /* GANTI INI KE NOMOR 7.2 */
 }
 
-/* ========================================= */
-/* 7.1 STYLING DISPLAY HARGA OTOMATIS */
-/* ========================================= */
 
-/* Styling Harga Per Item (Merah) */
+/* ========================================= */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL */
+/* ========================================= */
+.conversion-form {
+    padding: 60px 0;
+    background-color: #fcebeb;
+}
+
+/* Pastikan setiap grup input ada jarak */
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Aturan untuk SEMUA input, select, dan textarea */
+.contact-form .form-group input,
+.contact-form .form-group select,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Label Styling (memastikan label rata kiri) */
+.contact-form label {
+    display: block;
+    text-align: left !important;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+/* Tinggi Khusus Kolom Alamat dan Keterangan */
+.contact-form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Input angka kembali ke lebar penuh */
+.contact-form input[type="number"] {
+    max-width: 100%;
+    text-align: left;
+}
+
+/* Styling fokus */
+.contact-form .form-group input:focus,
+.contact-form .form-group select:focus,
+.contact-form .form-group textarea:focus {
+    border-color: var(--color-cta);
+    outline: none;
+}
+
+/* === Styling Keranjang Dinamis (Multi-Item) === */
+.product-item {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+/* Wadah untuk Jumlah dan Subtotal */
+.form-group-inline {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.form-group-inline .form-group {
+    width: 35%; 
+    flex-grow: 0; 
+    min-width: 120px;
+    margin-bottom: 0; 
+}
+
+.form-group-inline > div:last-child {
+    width: 65%;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.remove-product-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    background-color: #f44336;
+    margin-top: 5px;
+}
+
+.remove-product-btn:hover {
+    background-color: #d32f2f !important;
+}
+
+/* Styling Harga Display */
 #display-harga {
-    color: #cc0000; /* Warna Merah */
+    color: #cc0000;
     font-weight: 700;
     padding: 0 5px;
-    border-bottom: 2px dashed #ffdddd; /* Garis putus-putus ringan */
-    display: inline-block; /* Memastikan padding dan border bekerja */
+    border-bottom: 2px dashed #ffdddd;
+    display: inline-block;
 }
 
-/* Styling Total Harga (Hijau dan Besar) */
 .form-group p:has(#display-total) {
-    /* Target paragraf yang berisi total harga */
     padding: 15px;
-    border: 3px solid #4CAF50; /* Border hijau tebal */
+    border: 3px solid #4CAF50;
     border-radius: 8px;
-    background-color: #e8f5e9; /* Latar belakang hijau muda */
+    background-color: #e8f5e9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 15px;
 }
 
 #display-total {
-    color: #000; /* Warna Hitam untuk angka total */
-    font-size: 1.5em; /* Ukuran teks lebih besar */
+    color: #000;
+    font-size: 1.5em;
     font-weight: 800;
 }
 
+
 /* ========================================= */
-/* 8. FOOTER */
+/* 10. FOOTER */
 /* ========================================= */
 footer {
     background-color: #333;
@@ -357,45 +450,9 @@ footer a {
     text-decoration: none;
 }
 
-/* ========================================= */
-/* 8.1. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
-/* ========================================= */
-.catalog-table .order-btn {
-    /* Desain Tombol */
-    background-color: var(--color-cta); /* Warna utama dari CTA Anda (merah/oranye) */
-    color: white;
-    font-weight: 600;
-    padding: 6px 12px; /* Disesuaikan agar lebih ringkas di dalam sel tabel */
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-size: 0.85em; /* Ukuran font sedikit lebih kecil */
-    
-    /* Efek Interaktif */
-    cursor: pointer; 
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); 
-}
-
-.catalog-table .order-btn:hover {
-    background-color: #e55337; /* Warna sedikit lebih gelap saat di-hover */
-    transform: translateY(-1px); 
-}
-
-/* Styling Khusus untuk Sel Tabel (Kolom Aksi) */
-.catalog-table td:last-child {
-    text-align: center; /* Pastikan tombol ada di tengah kolom */
-    white-space: nowrap; /* Mencegah tombol/teks terpotong */
-}
-
-/* Styling khusus untuk teks harga yang Kosong */
-.catalog-table td strong {
-    color: #ff6347; /* Warna berbeda (merah/oranye) untuk kata "Kosong" */
-    font-weight: 700;
-}
 
 /* ========================================= */
-/* 9. MEDIA QUERIES (RESPONSIVITAS) */
+/* 11. MEDIA QUERIES (RESPONSIVITAS) */
 /* ========================================= */
 @media (max-width: 900px) {
     .research-proof > .container > div,
@@ -415,6 +472,10 @@ footer a {
     .hero-section h1 {
         font-size: 2.2em;
     }
+    
+    .bulk-order table {
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -425,87 +486,27 @@ footer a {
     .cta-button {
         padding: 12px 20px;
     }
-}
-
-/* ========================================= */
-/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL */
-/* ========================================= */
-.conversion-form {
-    padding: 60px 0;
-    background-color: #fcebeb; 
-}
-
-/* Pastikan setiap grup input ada jarak */
-.contact-form .form-group {
-    margin-bottom: 20px;
-}
-
-/* Aturan untuk SEMUA input, select, dan textarea */
-.contact-form .form-group input,
-.contact-form .form-group select,
-.contact-form .form-group textarea {
-    width: 100%; /* MEMBUAT SEMUA ELEMEN SAMA LEBAR */
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Tinggi Khusus Kolom Alamat dan Keterangan */
-.contact-form textarea {
-    height: 80px; /* Tinggi seragam untuk kolom teks panjang */
-    resize: vertical; /* Hanya izinkan resize vertikal */
-}
-
-/* Tinggi Khusus Kolom Jumlah Pesanan (Mengembalikan ke lebar penuh) */
-.contact-form input[type="number"] {
-    max-width: 100%; /* Memastikan kembali lebar penuh setelah kita hapus batasan 100px */
-    text-align: left;
-}
-
-/* Styling fokus */
-.contact-form .form-group input:focus,
-.contact-form .form-group select:focus,
-.contact-form .form-group textarea:focus {
-    border-color: var(--color-cta); 
-    outline: none;
-}
-/* Styling untuk wadah produk yang dinamis */
-.product-item {
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    background-color: #ffffff;
-}
-
-/* Mengatur input jumlah dan tombol hapus dalam satu baris */
-.form-group-inline {
-    display: flex;
-    gap: 15px;
-    align-items: flex-end; /* Memastikan semuanya sejajar di bagian bawah */
-    margin-top: 10px;
-}
-
-.remove-product-btn {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s;
-    white-space: nowrap; /* Mencegah tombol pecah */
-}
-
-.remove-product-btn:hover {
-    background-color: #d32f2f !important;
-}
-
-/* Kerapian Form Group */
-.form-group-inline .form-group {
-    margin-bottom: 0; 
+    
+    /* Perbaikan Form Dinamis di Mobile */
+    .form-group-inline {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+    
+    .form-group-inline .form-group,
+    .form-group-inline > div:last-child {
+        width: 100% !important;
+        margin-top: 10px;
+        text-align: left !important;
+    }
+    
+    .remove-product-btn {
+        width: 100%; 
+        margin-top: 10px !important;
+    }
+    
+    .form-group-inline > div:last-child {
+        align-items: flex-start; /* Merapikan total subtotal */
+    }
 }
