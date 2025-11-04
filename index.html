@@ -373,28 +373,33 @@
                     </div>
                 </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
                 
-               <div class="form-group" style="margin-bottom: 5px;">
-    <p style="text-align: left; color: #cc0000; font-weight: 600;">
-        Harga Normal: <span id="display-normal-price" style="font-weight: 700;">Rp 0</span>
+               <div class="form-group summary-struk">
+    <div class="struk-row">
+        <span class="struk-label">Harga Normal:</span>
+        <span class="struk-nominal" id="display-normal-price">Rp 0</span>
+    </div>
+
+    <div class="struk-row">
+        <span class="struk-label">Potongan Diskon:</span>
+        <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
+    </div>
+    <p id="discount-tier-note" class="struk-discount-note">
+        *Keterangan diskon akan muncul di sini.
     </p>
-</div>
-<div class="form-group" style="margin-bottom: 5px;">
-    <p style="text-align: left; color: #4CAF50; font-weight: 600;">
-        Potongan Diskon: <span id="display-discount-amount" style="font-weight: 700;">Rp 0</span>
-    </p>
-    <p id="discount-tier-note" style="text-align: right; font-size: 0.9em; color: #555; margin-top: -15px;"></p>
-</div>
-<div class="form-group" style="margin-bottom: 5px;">
-    <p style="text-align: left; color: #777; font-weight: 600;">
-        Total Berat: <span id="display-total-weight" style="font-weight: 700;">0 g</span>
-    </p>
+
+    <div class="struk-row">
+        <span class="struk-label" style="color: #777;">Total Berat:</span>
+        <span class="struk-nominal" id="display-total-weight">0 g</span>
+    </div>
 </div>
 
-<div class="form-group" style="border-top: 2px solid #ccc; padding-top: 10px;">
-    <p style="text-align: left; color: #cc0000; font-size: 1.4em; font-weight: 800;">
-        JUMLAH BAYAR: <span id="display-grand-total" style="font-weight: 800; color: #cc0000;">Rp 0</span> 💰
-    </p>
-    <p id="total-discount-keterangan" style="text-align: left; font-size: 0.9em; color: #777;">
+<div class="form-group struk-grand-total">
+    <div class="struk-row">
+        <span class="struk-label">JUMLAH BAYAR:</span>
+        <span class="struk-nominal" id="display-grand-total">Rp 0</span> 
+        <span class="ikon-uang">💰</span>
+    </div>
+    <p id="total-discount-keterangan" class="final-notes">
         *Harga ini belum termasuk biaya kirim.
     </p>
 </div>
@@ -594,6 +599,7 @@
             
             const hargaItemPerPcs = extractPrice(selectedValue);
             
+            // Konversi Quantity ke PCS dan hitung harga dasar
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
 
@@ -760,7 +766,6 @@
         const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
         const totalWeightDisplay = document.getElementById('display-total-weight').textContent;
         const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent; 
-
         
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let productDetails = [];
