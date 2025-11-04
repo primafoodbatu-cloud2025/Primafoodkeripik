@@ -548,7 +548,6 @@
                     bestDiscount.rate = rate;
                     bestDiscount.type = 'Grosir';
                     
-                    // Menentukan Tier dan Range
                     const tierNum = (threshold == 1) ? 1 : (threshold == 10) ? 2 : (threshold == 25) ? 3 : 4;
                     const maxKg = (threshold == 50) ? 'ke atas' : (parseInt(threshold) + 9);
                     const range = (threshold == 1) ? '1-9 kg' : `${threshold}-${maxKg} kg`;
@@ -559,7 +558,6 @@
             }
         }
         
-        // Cek Flash Sale
         if (isFlashSaleActive && bestDiscount.rate < FLASH_SALE_DISCOUNT) {
             bestDiscount.rate = FLASH_SALE_DISCOUNT;
             bestDiscount.type = 'Flash Sale';
@@ -596,7 +594,6 @@
             
             const hargaItemPerPcs = extractPrice(selectedValue);
             
-            // Konversi Quantity ke PCS dan hitung harga dasar
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
             let subtotalAwal = hargaItemPerPcs * quantityPcs;
 
@@ -659,7 +656,7 @@
             : `(Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%)`;
 
         document.getElementById('display-discount-amount').innerHTML = 
-            `${formatCurrency(discountAmount)} <span style="font-size: 0.8em; color: #555;">${globalDiscRate > 0 ? discountKeterangan : ''}</span>`;
+            `${formatCurrency(discountAmount)} <span class="disc-note-inline">${globalDiscRate > 0 ? discountKeterangan : ''}</span>`;
         
         document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         
@@ -671,7 +668,6 @@
         if (totalKeterangan) {
             let notes = [];
             
-            // 1. Keterangan Potongan
             if (globalDiscRate > 0) {
                 if (discType === 'Grosir') {
                     notes.push(`* Anda mendapatkan Potongan Discount Grosir Tier ${discTier} (Pembelian ${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%.`);
@@ -682,12 +678,10 @@
                 notes.push(`* Pesan minimal 1 kg untuk diskon grosir 10%!`);
             }
             
-            // 2. Keterangan Kemasan
             if (globalDiscRate >= 0.10) {
                 notes.push(`* Anda mendapatkan kemasan grosir tanpa sticker dengan berat bersih ${totalWeightText}.`);
             }
             
-            // 3. Keterangan Ongkir
             notes.push(`* Harga di atas belum termasuk Ongkir.`);
             
             totalKeterangan.innerHTML = notes.join('<br>'); 
@@ -765,14 +759,14 @@
         const discountAmountDisplay = document.getElementById('display-discount-amount').textContent;
         const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
         const totalWeightDisplay = document.getElementById('display-total-weight').textContent;
-        const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent; // Sudah berupa string multi-baris
+        const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent; 
+
         
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let productDetails = [];
         let totalQuantityPcs = 0;
         let itemCounter = 1;
         
-        // Loop untuk Detail Produk
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
