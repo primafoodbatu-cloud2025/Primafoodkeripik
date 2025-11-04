@@ -485,7 +485,7 @@ body {
     background-color: #d32f2f !important;
 }
 
-/* === STYLING STRUK DINAMIS FINAL (FINAL FIX ALIGNMENT) === */
+/* === STYLING STRUK DINAMIS FINAL (FIXED ALIGNMENT) === */
 
 /* Wadah Baris Struk */
 .conversion-form .form-group p {
@@ -499,23 +499,25 @@ body {
 }
 
 /* Label Nominal (misal: "Harga Normal:", "Potongan Diskon:") */
-.struk-row .struk-label, .struk-grand-total .struk-label {
+.struk-label {
     /* Lebar tetap untuk meluruskan titik dua */
-    width: 60%; /* Ditingkatkan menjadi 60% agar label panjang muat */
+    width: 60%; 
     min-width: 180px;
     text-align: left;
     font-weight: 600;
+    line-height: 1.4;
 }
 
 /* Nominal Angka (Rata Kanan) */
-.struk-row .struk-nominal {
+.struk-nominal {
     text-align: right;
     font-weight: 700;
     flex-grow: 1; 
-    /* Nominal akan berada di sebelah kanan label */
+    padding-left: 10px; 
+    line-height: 1.4;
 }
 
-/* KOREKSI: Styling Keterangan Diskon (DI BAWAH NOMINAL) */
+/* KOREKSI: Styling Keterangan Potongan Diskon (DI BAWAH NOMINAL) */
 #discount-tier-note {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
@@ -524,8 +526,8 @@ body {
     padding-right: 10px;
     margin-bottom: 10px !important;
     line-height: 1.2;
-    width: 100%; /* Agar bisa rata kanan penuh */
-    display: block;
+    width: 100%;
+    display: block; 
 }
 
 /* Styling Total Bayar (Dikuatkan) */
