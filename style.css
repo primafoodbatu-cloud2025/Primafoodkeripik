@@ -178,6 +178,42 @@ body {
 }
 
 /* ========================================= */
+/* 6.1. STYLING TOMBOL KATEGORI (.category-btn) */
+/* ========================================= */
+.product-categories {
+    /* Untuk tampilan yang lebih baik pada perangkat kecil */
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10px;
+}
+
+.product-categories button {
+    background-color: white;
+    border: 2px solid #ccc; /* Border lebih tebal */
+    color: #555;
+    padding: 10px 18px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 20px; /* Lebih membulat */
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.product-categories button:hover {
+    border-color: var(--color-primary); /* Border berubah hijau saat di-hover */
+    color: var(--color-primary);
+}
+
+.product-categories button.active {
+    background-color: var(--color-primary); /* Latar Belakang Hijau */
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateY(-2px); /* Efek 3D ringan */
+}
+
+/* ========================================= */
 /* 6. SKEMA PAKET MIX (RITEL) */
 /* ========================================= */
 .package-mix {
