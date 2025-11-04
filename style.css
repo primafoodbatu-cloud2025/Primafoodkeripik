@@ -63,6 +63,16 @@ body {
 }
 
 /* ========================================= */
+/* 2.1. JUDUL KHUSUS RATA KIRI */
+/* ========================================= */
+.section-title-left {
+    text-align: left !important; /* Memastikan rata kiri */
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    color: var(--color-text);
+}
+
+/* ========================================= */
 /* 3. HEADER & HERO SECTION */
 /* ========================================= */
 .hero-section {
