@@ -414,15 +414,16 @@
             <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
                 <thead style="background-color: #ffe4b5;">
                     <tr>
-                        <th style="padding: 15px; border: 1px solid #ccc;">Jumlah Total Berat (Per Varian)</th>
+                        <th style="padding: 15px; border: 1px solid #ccc;">Tier</th>
+                        <th style="padding: 15px; border: 1px solid #ccc;">Jumlah Pembelian</th>
                         <th style="padding: 15px; border: 1px solid #ccc;">Diskon yang Diberikan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc;">1 kg (Minimum Order)</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">10% OFF</td></tr>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">10 kg</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">15% OFF</td></tr>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc;">25 kg</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">20% OFF</td></tr>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold;">50 kg ke atas</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #cc0000;">30% OFF</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #ccc;">1</td><td style="padding: 10px; border: 1px solid #ccc;">1 - 9 kg</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">10% OFF</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">2</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">10 - 24 kg</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #4CAF50;">15% OFF</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #ccc;">3</td><td style="padding: 10px; border: 1px solid #ccc;">25 - 49 kg</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">20% OFF</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">4</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">50 kg ke atas</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #cc0000;">30% OFF</td></tr>
                 </tbody>
             </table>
             
@@ -547,20 +548,28 @@
             }
         }
         
-        // Cek Flash Sale (Hanya jika Diskon Grosir < 5%)
         if (isFlashSaleActive && maxDisc < FLASH_SALE_DISCOUNT) {
             maxDisc = FLASH_SALE_DISCOUNT;
         }
 
         if (maxDisc >= 0.10) { // Grosir 10% atau lebih
-             return { rate: maxDisc, type: 'Grosir' };
+             let tier = 0;
+             for (const t in GROSIR_DISCOUNT_RATES) {
+                 if (GROSIR_DISCOUNT_RATES[t] === maxDisc) {
+                     tier = t;
+                     break;
+                 }
+             }
+             const maxKg = (tier == 50) ? 'ke atas' : (parseInt(tier) + 9);
+             const range = (tier == 1) ? '1-9 kg' : `${tier}-${maxKg} kg`;
+             return { rate: maxDisc, type: 'Grosir', tier: GROSIR_DISCOUNT_RATES[tier], range: range };
         } else if (maxDisc === FLASH_SALE_DISCOUNT) {
-             return { rate: maxDisc, type: 'Flash Sale' };
+             return { rate: maxDisc, type: 'Flash Sale', tier: null, range: null };
         } else if (maxDisc > 0) {
-             return { rate: maxDisc, type: 'Grosir' };
+             return { rate: maxDisc, type: 'Grosir', tier: 1, range: '1-9 kg' };
         }
         
-        return { rate: 0, type: 'None' };
+        return { rate: 0, type: 'None', tier: null, range: null };
     }
 
     // --- Fungsi UTAMA: Menghitung Subtotal & Grand Total (DIPERBAIKI TOTAL) ---
@@ -576,7 +585,6 @@
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
-            const itemWeightDisplay = item.querySelector('.display-item-weight');
 
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
@@ -601,7 +609,7 @@
         });
         
         const totalWeightKg = Math.floor(totalWeightGrams / 1000);
-        const { rate: globalDiscRate, type: discType } = getMaxDiscount(totalWeightKg);
+        const { rate: globalDiscRate, type: discType, tier: discTier, range: discRange } = getMaxDiscount(totalWeightKg);
         
         // Hitung Potongan
         const discountAmount = totalHargaAwal * globalDiscRate;
@@ -610,10 +618,13 @@
         // Loop 3: Update Subtotal Akhir di Keranjang Mini
         productItems.forEach(item => {
             const subtotalDisplay = item.querySelector('.display-subtotal');
+            const removeButton = item.querySelector('.remove-product-btn');
+            
+            const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
             const unitElement = item.querySelector('.unit-select');
-            const selectElement = item.querySelector('.product-select');
-            
+            const itemWeightDisplay = item.querySelector('.display-item-weight');
+
             const selectedValue = selectElement.value;
             const quantityValue = parseFloat(quantityInput.value) || 0;
             const unit = unitElement.value;
@@ -629,11 +640,25 @@
             if (globalDiscRate > 0) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
+
+            if (productItems.length > 1) {
+                removeButton.style.display = 'inline-block';
+            } else {
+                removeButton.style.display = 'none';
+            }
         });
         
         // --- UPDATE TAMPILAN STRUK UTAMA ---
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaAwal);
-        document.getElementById('display-discount-amount').textContent = formatCurrency(discountAmount);
+        
+        // Potongan Diskon (DENGAN KETERANGAN TIER)
+        const discountKeterangan = discType === 'Grosir' 
+            ? `(Grosir Tier ${discTier} (${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%)`
+            : `(Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%)`;
+
+        document.getElementById('display-discount-amount').innerHTML = 
+            `${formatCurrency(discountAmount)} <span style="font-size: 0.8em; color: #555;">${globalDiscRate > 0 ? discountKeterangan : ''}</span>`;
+        
         document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         
         const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
@@ -642,15 +667,16 @@
         // Update Keterangan Diskon di Total
         const totalKeterangan = document.getElementById('total-discount-keterangan');
         if (totalKeterangan) {
-            let kemasanNote = '*Harga ini belum termasuk biaya kirim.';
+            let finalNote = '*Harga ini belum termasuk biaya kirim.';
+            
             if (globalDiscRate >= 0.10) {
-                 kemasanNote = `*Anda mendapatkan kemasan grosir tanpa stiker. (${totalQuantityPcs} pcs). Harga belum termasuk biaya kirim.`;
+                 finalNote = `*Anda mendapatkan kemasan grosir tanpa stiker. (${totalQuantityPcs} pcs). Harga belum termasuk biaya kirim.`;
             } else if (globalDiscRate === FLASH_SALE_DISCOUNT) {
-                 kemasanNote = `*Diskon 5% Flash Sale Diterapkan. Harga belum termasuk biaya kirim.`;
-            } else if (totalQuantityPcs >= 1) {
-                 kemasanNote = `*Pesan minimal 10 pcs (1kg) untuk diskon grosir 10%! Harga belum termasuk biaya kirim.`;
+                 finalNote = `*Diskon 5% Flash Sale Diterapkan. Harga ini belum termasuk biaya kirim.`;
+            } else if (totalWeightKg < 1 && totalWeightGrams > 0) {
+                 finalNote = `*Pesan minimal 1 kg untuk diskon grosir 10%! Harga ini belum termasuk biaya kirim.`;
             }
-            totalKeterangan.innerHTML = kemasanNote;
+            totalKeterangan.innerHTML = finalNote;
         }
         
         // Tampilkan tombol Hapus
