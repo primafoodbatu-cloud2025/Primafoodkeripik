@@ -189,30 +189,59 @@ body {
 }
 
 .product-categories button {
+    /* Reset Styling Dasar */
     background-color: white;
-    border: 2px solid #ccc; /* Border lebih tebal */
-    color: #555;
+    border: 2px solid #ccc;
+    color: #333; /* Warna Teks Indonesia */
     padding: 10px 18px;
-    margin: 5px 0;
     cursor: pointer;
-    border-radius: 20px; /* Lebih membulat */
+    border-radius: 20px;
     font-weight: 600;
     transition: all 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow yang lebih jelas */
+    line-height: 1.2; /* Merapikan jarak antar baris */
 }
 
+/* Styling Teks Bahasa Inggris */
+.product-categories button .en-text {
+    display: block; /* Memaksa ke baris baru */
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #6699ff; /* Warna Biru untuk Bahasa Inggris */
+    
+    /* Garis Pemisah (Border Atas) */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+/* Hover State */
 .product-categories button:hover {
-    border-color: var(--color-primary); /* Border berubah hijau saat di-hover */
-    color: var(--color-primary);
+    border-color: #ff8c00; /* Border berubah Orange saat di-hover */
+    color: #ff8c00; /* Teks Indonesia berubah Orange */
 }
 
+.product-categories button:hover .en-text {
+    color: #ff8c00; /* Teks Inggris juga ikut berubah Orange saat di-hover */
+}
+
+
+/* Active State (Tombol yang sedang dipilih) */
 .product-categories button.active {
-    background-color: var(--color-primary); /* Latar Belakang Hijau */
+    background-color: #38761d; /* Warna Hijau Tua Khas Rilldelish */
     color: white;
-    border-color: var(--color-primary);
-    transform: translateY(-2px); /* Efek 3D ringan */
+    border-color: #38761d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
+.product-categories button.active .en-text {
+    color: #c9e6c9; /* Warna Hijau Muda untuk Inggris saat Active */
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Garis Putih tipis saat Active */
+}
+
+/* Pastikan Tombol Murni (Pure Veggie) saat active tetap berwarna hijau terang */
+/* Anda dapat menambahkan style spesifik jika diperlukan, tetapi style umum di atas sudah efektif. */
 /* ========================================= */
 /* 6. SKEMA PAKET MIX (RITEL) */
 /* ========================================= */
