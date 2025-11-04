@@ -305,7 +305,7 @@ body {
 
 
 /* ========================================= */
-/* 8. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
@@ -321,14 +321,16 @@ body {
 .contact-form .form-group input,
 .contact-form .form-group select,
 .contact-form .form-group textarea {
-    width: 100%;
+    width: 100%; /* MEMASTIKAN LEBAR 100% (SEJAJAR) */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s;
     font-family: 'Poppins', sans-serif;
+    
+    /* Perbaikan: Menetapkan Tinggi Minimum untuk Input dan Select */
+    min-height: 48px; 
 }
 
 /* Label Styling (memastikan label rata kiri) */
@@ -338,11 +340,13 @@ body {
     font-weight: 600;
     margin-bottom: 5px;
     font-size: 0.95em;
+    color: var(--color-text); /* Warna Teks Label */
 }
 
 /* Tinggi Khusus Kolom Alamat dan Keterangan */
 .contact-form textarea {
-    height: 80px;
+    height: 80px; /* Textarea memang harus lebih tinggi */
+    min-height: 80px;
     resize: vertical;
 }
 
