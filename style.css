@@ -420,6 +420,7 @@ body {
     
     /* Perbaikan: Menetapkan Tinggi Minimum untuk Input dan Select */
     min-height: 48px; 
+    box-sizing: border-box; /* PENTING: Mencegah padding menambah lebar total */
 }
 
 /* Label Styling (memastikan label rata kiri) */
@@ -505,28 +506,42 @@ body {
     background-color: #d32f2f !important;
 }
 
-/* Styling Harga Display */
-#display-harga {
-    color: #cc0000;
+/* === STYLING STRUK DINAMIS FINAL === */
+
+/* Styling untuk Rata Kanan/Kiri pada Summary Struk */
+.conversion-form .form-group p {
+    display: flex;
+    justify-content: space-between; /* PENTING: Memisahkan label (kiri) dan nominal (kanan) */
+    width: 100%;
+    margin-bottom: 0; /* Menghilangkan margin bawah default p */
+}
+
+/* Styling Nominal Angka (Rata Kanan) */
+.conversion-form .form-group p span {
+    text-align: right; 
     font-weight: 700;
-    padding: 0 5px;
-    border-bottom: 2px dashed #ffdddd;
-    display: inline-block;
+    flex-shrink: 0; /* Jangan menyusut */
+    margin-left: 10px; /* Jarak dari label */
 }
 
-.form-group p:has(#display-total) {
-    padding: 15px;
-    border: 3px solid #4CAF50;
-    border-radius: 8px;
-    background-color: #e8f5e9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
+/* TOTAL YANG HARUS DIBAYAR (GRAND TOTAL) */
+.conversion-form .form-group[style*="border-top: 2px solid #ccc"] {
+    /* Target wadah Grand Total (dibuat menonjol) */
+    padding-top: 15px; 
+    margin-top: 15px; 
+    border-top: 2px solid var(--color-primary) !important;
 }
 
-#display-total {
-    color: #000;
-    font-size: 1.5em;
-    font-weight: 800;
+.conversion-form .form-group[style*="border-top: 2px solid #ccc"] p {
+    font-size: 1.4em !important;
+    color: #cc0000 !important; /* Warna merah total */
+    margin: 0;
+}
+/* FINAL DISPLAY GRAND TOTAL */
+#display-grand-total {
+    font-size: 1.2em !important; 
+    color: #cc0000 !important;
+    font-weight: 800 !important;
 }
 
 
