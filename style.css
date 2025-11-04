@@ -506,25 +506,49 @@ body {
     background-color: #d32f2f !important;
 }
 
-/* === STYLING STRUK DINAMIS FINAL === */
+/* === STYLING STRUK DINAMIS FINAL (FIXED ALIGNMENT) === */
 
 /* Styling untuk Rata Kanan/Kiri pada Summary Struk */
 .conversion-form .form-group p {
     display: flex;
-    justify-content: space-between; /* PENTING: Memisahkan label (kiri) dan nominal (kanan) */
+    justify-content: space-between;
     width: 100%;
-    margin-bottom: 0; /* Menghilangkan margin bawah default p */
+    margin-bottom: 0;
+    
+    /* Perbaikan 2 & 3: Tambahkan padding untuk meluruskan */
+    padding-left: 10px; 
+    padding-right: 10px;
 }
 
 /* Styling Nominal Angka (Rata Kanan) */
 .conversion-form .form-group p span {
-    text-align: right; 
+    text-align: right;
     font-weight: 700;
-    flex-shrink: 0; /* Jangan menyusut */
-    margin-left: 10px; /* Jarak dari label */
+    flex-shrink: 0; 
+    margin-left: 15px; /* Jarak dari label */
 }
 
-/* TOTAL YANG HARUS DIBAYAR (GRAND TOTAL) */
+/* Styling Keterangan Diskon (Potongan Diskon) */
+#display-discount-amount + span { /* Menargetkan span keterangan di bawah nominal */
+    display: block;
+    font-size: 0.85em; /* KOREKSI 4: Perkecil font keterangan */
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+/* KOREKSI 4: Styling Keterangan Bawah Total (Ongkir/Grosir Note) */
+#total-discount-keterangan {
+    font-size: 0.9em !important; /* Perkecil font keterangan akhir */
+    color: #555 !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* Styling Total Bayar (Dikuatkan) */
 .conversion-form .form-group[style*="border-top: 2px solid #ccc"] {
     /* Target wadah Grand Total (dibuat menonjol) */
     padding-top: 15px; 
@@ -534,7 +558,7 @@ body {
 
 .conversion-form .form-group[style*="border-top: 2px solid #ccc"] p {
     font-size: 1.4em !important;
-    color: #cc0000 !important; /* Warna merah total */
+    color: #cc0000 !important;
     margin: 0;
 }
 /* FINAL DISPLAY GRAND TOTAL */
@@ -543,7 +567,6 @@ body {
     color: #cc0000 !important;
     font-weight: 800 !important;
 }
-
 
 /* ========================================= */
 /* 10. FOOTER */
