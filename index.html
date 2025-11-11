@@ -829,7 +829,8 @@ Saya ingin melakukan pemesanan (Struk Otomatis):
 ${productListText}
 *----------------------------------------*
 Harga Normal: ${totalHargaNormalDisplay}
-Potongan Diskon: ${discountAmountDisplay} ${tierKeteranganWA}
+Potongan Diskon: ${discountAmountDisplay}
+${tierKeteranganWA}
 Total Berat: ${totalWeightDisplay}
 Total Qty: ${totalQuantityPcs} pcs
 
@@ -847,9 +848,11 @@ Mohon diproses dan konfirmasi pembayaran segera. Terima kasih!
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
         
         // ▼▼▼ KODE PIXEL EVENT BARU DITAMBAHKAN DI SINI ▼▼▼
-        fbq('track', 'Lead');
+        if (typeof fbq === 'function') { 
+            fbq('track', 'Lead');
+        }
         // ▲▲▲ AKHIR KODE PIXEL EVENT BARU ▲▲▲
-
+        
         window.open(whatsappUrl, '_blank');
     }
 
