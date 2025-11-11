@@ -8,29 +8,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  
-  fbq('init', '2037326590352817');
-  
-  // ▼▼▼ PASTIKAN BARIS INI ADA! ▼▼▼
-  fbq('track', 'PageView');
-  // ▲▲▲ AKHIR DARI KOREKSI ▲▲▲
 
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-</head>
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '2037326590352817');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
 <body>
 
     <header class="hero-section">
@@ -375,8 +370,8 @@
                             <div class="form-group">
                                 <label for="jumlah-1">Jumlah *</label>
                                 <div style="display: flex; gap: 5px;">
-                                    <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required style="width: 60px;">
-                                    <select id="unit-1" name="unit_pesanan[]" class="unit-select" style="width: 40%;">
+                                    <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+                                    <select id="unit-1" name="unit_pesanan[]" class="unit-select">
                                         <option value="pcs">pcs (100g)</option>
                                         <option value="kg">kg (10 pcs)</option>
                                     </select>
@@ -678,14 +673,24 @@
         // --- UPDATE TAMPILAN STRUK UTAMA ---
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaAwal);
         
-        // Potongan Diskon (DENGAN KETERANGAN TIER)
-        const discountKeterangan = discType === 'Grosir' 
-            ? `(Grosir Tier ${discTier} (${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%)`
-            : `(Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%)`;
-
-        document.getElementById('display-discount-amount').innerHTML = 
-            `${formatCurrency(discountAmount)} <span class="disc-note-inline">${globalDiscRate > 0 ? discountKeterangan : ''}</span>`;
+        // Potongan Diskon (HANYA NOMINAL)
+        document.getElementById('display-discount-amount').textContent = formatCurrency(discountAmount);
         
+        // KOREKSI: KETERANGAN TIER DISKON (DIPISAHKAN)
+        const tierNoteElement = document.getElementById('discount-tier-note');
+        if (tierNoteElement) {
+            if (globalDiscRate > 0) {
+                const tierKeterangan = discType === 'Grosir' 
+                    ? `Potongan: Grosir Tier ${discTier} (Pembelian ${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%.`
+                    : `Potongan: Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%.`;
+                tierNoteElement.textContent = tierKeterangan;
+                tierNoteElement.style.display = 'block';
+            } else {
+                tierNoteElement.style.display = 'none';
+                tierNoteElement.textContent = '';
+            }
+        }
+
         document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         
         const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
