@@ -193,7 +193,7 @@ body {
 /* ========================================= */
 .production-video {
     padding: 60px 0;
-    background-color: white; /* Latar belakang bersih untuk menonjolkan video */
+    background-color: white;
 }
 
 .video-embed {
@@ -540,7 +540,6 @@ body {
 
 /* Label Nominal (misal: "Harga Normal:", "Potongan Diskon:") */
 .struk-label {
-    /* Lebar tetap untuk meluruskan titik dua */
     width: 60%; 
     min-width: 180px;
     text-align: left;
@@ -561,8 +560,8 @@ body {
 #discount-tier-note {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
-    text-align: right !important; /* Agar deskripsi diskon rata kanan */
-    margin-top: -10px !important; /* Tarik ke atas agar dekat nominal diskon */
+    text-align: right !important; 
+    margin-top: -5px !important; /* KOREKSI: Mengurangi tumpang tindih */
     padding-right: 10px;
     margin-bottom: 10px !important;
     line-height: 1.2;
@@ -682,5 +681,11 @@ footer a {
     
     .form-group-inline > div:last-child {
         align-items: flex-start;
+    }
+
+    /* KOREKSI: Perataan Struk di Mobile */
+    .struk-label {
+        width: 50% !important; /* Beri ruang lebih di mobile */
+        min-width: 0 !important;
     }
 }
