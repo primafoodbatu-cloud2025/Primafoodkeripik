@@ -657,6 +657,7 @@ src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
             
             subtotalDisplay.textContent = formatCurrency(subtotalAkhir);
             
+            // Tambahkan keterangan Diskon ke Subtotal Display
             if (globalDiscRate > 0) {
                 subtotalDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
             }
@@ -671,22 +672,15 @@ src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
         
         // --- UPDATE TAMPILAN STRUK UTAMA ---
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaAwal);
-        document.getElementById('display-discount-amount').textContent = formatCurrency(discountAmount);
         
-        const tierNoteElement = document.getElementById('discount-tier-note');
-        if (tierNoteElement) {
-            if (globalDiscRate > 0) {
-                const tierKeterangan = discType === 'Grosir' 
-                    ? `Potongan: Grosir Tier ${discTier} (Pembelian ${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%.`
-                    : `Potongan: Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%.`;
-                tierNoteElement.textContent = tierKeterangan;
-                tierNoteElement.style.display = 'block';
-            } else {
-                tierNoteElement.style.display = 'none';
-                tierNoteElement.textContent = '';
-            }
-        }
+        // Potongan Diskon (DENGAN KETERANGAN TIER)
+        const discountKeterangan = discType === 'Grosir' 
+            ? `(Grosir Tier ${discTier} (${discRange}) sebesar ${(globalDiscRate * 100).toFixed(0)}%)`
+            : `(Flash Sale sebesar ${(globalDiscRate * 100).toFixed(0)}%)`;
 
+        document.getElementById('display-discount-amount').innerHTML = 
+            `${formatCurrency(discountAmount)} <span class="disc-note-inline">${globalDiscRate > 0 ? discountKeterangan : ''}</span>`;
+        
         document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         
         const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
@@ -830,8 +824,7 @@ Saya ingin melakukan pemesanan (Struk Otomatis):
 ${productListText}
 *----------------------------------------*
 Harga Normal: ${totalHargaNormalDisplay}
-Potongan Diskon: ${discountAmountDisplay}
-${tierKeteranganWA}
+Potongan Diskon: ${discountAmountDisplay} ${tierKeteranganWA}
 Total Berat: ${totalWeightDisplay}
 Total Qty: ${totalQuantityPcs} pcs
 
@@ -848,6 +841,10 @@ Mohon diproses dan konfirmasi pembayaran segera. Terima kasih!
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
         
+        // ▼▼▼ KODE PIXEL EVENT BARU DITAMBAHKAN DI SINI ▼▼▼
+        fbq('track', 'Lead');
+        // ▲▲▲ AKHIR KODE PIXEL EVENT BARU ▲▲▲
+
         window.open(whatsappUrl, '_blank');
     }
 
