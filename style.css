@@ -835,3 +835,34 @@ h3[style*="color: #ff8c00"] {
     color: #666 !important; 
     opacity: 1;
 }
+/* ========================================= */
+/* FINAL FIX: ACCESSIBILITY 100 (LAST STEP) */
+/* ========================================= */
+
+/* 1. Perbaiki Background Form Order */
+/* Mengubah background dari Pink ke Putih agar Judul Hijau & Teks Hitam terbaca jelas */
+.conversion-form {
+    background-color: #ffffff !important; 
+    border-top: 5px solid #fcebeb; /* Tetap kasih sentuhan pink di border atas saja */
+}
+
+/* 2. Perbaiki Teks "Potongan Flash Sale" di Struk */
+/* Mengubah warna menjadi Hijau Sangat Gelap */
+#discount-tier-note {
+    color: #1b5e20 !important; /* Hijau sangat tua (High Contrast) */
+    font-weight: bold;
+}
+
+/* 3. Pastikan Banner Flash Sale Kontras */
+/* Background pink sangat muda, teks merah sangat tua */
+#flash-sale-banner {
+    background-color: #ffebee !important; 
+    color: #b71c1c !important;
+    border: 2px dashed #b71c1c !important;
+}
+
+/* 4. Pastikan Judul di dalam Form Order Kontras */
+#order-form .section-title {
+    color: #2e7d32 !important; /* Pastikan Hijau Hutan */
+    border-bottom-color: #e65100 !important;
+}
