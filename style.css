@@ -703,28 +703,42 @@ footer a {
 }
 
 /* ========================================= */
-/* TAMBAHAN KHUSUS: JUDUL KATEGORI PRODUK */
+/* REVISI FINAL: JUDUL KATEGORI DENGAN GARIS HITAM */
 /* ========================================= */
 
-/* Mengatur Judul Kategori (Hijau, Merah, Orange) agar RATA TENGAH & TURUN SEDIKIT */
+/* 1. Container Produk Rata Tengah */
+.product-list {
+    text-align: center; 
+}
+
+/* 2. Styling Judul (Hijau/Orange/Merah) */
 .catalog-title-green, 
 .catalog-title-orange, 
 .catalog-title-red {
-    text-align: center;       /* Rata Tengah */
-    margin-top: 40px;         /* Turun sedikit dari tombol (Jarak Atas) */
-    margin-bottom: 10px;      /* Jarak Bawah ke deskripsi */
-    font-size: 1.5em;         /* Ukuran Font */
+    /* Posisi & Font */
+    text-align: center;
+    margin-top: 50px;         /* Jarak agak jauh dari tombol di atas */
+    margin-bottom: 20px;      /* Jarak dari garis ke deskripsi di bawah */
+    font-size: 1.5em;
+    
+    /* PEMBATAS GARIS HITAM */
+    display: inline-block;    /* Agar garis mengikuti panjang teks */
+    border-bottom: 3px solid #000000; /* GARIS WARNA HITAM PEKAT */
+    padding-bottom: 10px;     /* Jarak antara teks judul dengan garis hitam */
+    width: auto;
 }
 
+/* Warna Text Judul (Tetap berwarna, tapi garisnya hitam karena kode di atas) */
 .catalog-title-green { color: #38761d; }
 .catalog-title-orange { color: #f39c12; }
 .catalog-title-red { color: #c0392b; }
 
-/* Mengatur Deskripsi Kategori (*100% Sayur Murni...) agar RATA TENGAH */
+/* 3. Deskripsi di bawah garis (*100% Sayur Murni...) */
 .catalog-desc {
-    text-align: center;       /* Rata Tengah */
+    text-align: center;
     font-style: italic;
-    color: #666;
-    margin-bottom: 20px;      /* Jarak ke Tabel */
+    color: #555;              /* Warna abu gelap */
+    margin-bottom: 25px;      /* Jarak ke Tabel */
     display: block;
+    font-weight: 500;
 }
