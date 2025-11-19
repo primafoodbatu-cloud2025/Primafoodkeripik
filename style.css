@@ -621,20 +621,124 @@ body {
 }
 
 /* ========================================= */
-/* 11. FOOTER */
+/* FOOTER COMPACT & MODERN */
 /* ========================================= */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 30px 0;
+.site-footer {
+    background-color: #1a1a1a; /* Hitam Elegan */
+    color: #eee;
+    padding: 30px 0 15px 0; /* Padding atas bawah dikurangi agar pendek */
     font-size: 0.9em;
 }
 
-footer a {
-    color: var(--color-cta);
+/* Layout 3 Kolom Menyamping */
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start; /* Rata atas */
+}
+
+.footer-col {
+    flex: 1;             /* Membagi rata 3 kolom */
+    min-width: 250px;    /* Batas minimal lebar kolom */
+}
+
+.footer-heading {
+    font-size: 1.1em;
+    color: #ff8c00;      /* Warna Oranye Brand */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* KOLOM 2: PETA KECIL */
+.map-container-small {
+    width: 100%;
+    height: 140px;       /* TINGGI DIKURANGI JADI PENDEK */
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid #444;
+}
+
+.map-link-text {
+    display: block;
+    font-size: 0.8em;
+    color: #aaa;
+    margin-top: 5px;
     text-decoration: none;
 }
 
+/* KOLOM 3: TOMBOL KONTAK (WA & TOKPED) */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-flat {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white !important;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: opacity 0.2s;
+}
+
+.wa-btn { background-color: #25D366; }
+.tokped-btn { background-color: #42b549; }
+
+/* KOLOM 3: SOSMED GRID (KOTAK-KOTAK) */
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Kolom Kotak */
+    gap: 8px;
+}
+
+.social-box {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background-color: #333;
+    color: #ccc !important;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    border: 1px solid #444;
+    transition: all 0.2s;
+}
+
+/* Warna Hover Sosmed */
+.social-box:hover { color: white !important; border-color: transparent; }
+.social-box.fb:hover { background-color: #1877F2; }
+.social-box.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-box.tt:hover { background-color: #000000; border-color: #fff; }
+.social-box.yt:hover { background-color: #FF0000; }
+
+/* COPYRIGHT */
+.footer-copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 0.8em;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+    .footer-row {
+        flex-direction: column; /* Di HP kembali menumpuk */
+        gap: 30px;
+    }
+    .map-container-small {
+        height: 180px; /* Di HP peta agak tinggi sedikit agar jelas */
+    }
+}
 
 /* ========================================= */
 /* 12. MEDIA QUERIES (RESPONSIVITAS) */
