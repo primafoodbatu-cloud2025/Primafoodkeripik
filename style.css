@@ -32,27 +32,31 @@ body {
 /* ========================================= */
 /* 2. ELEMEN UMUM (Tombol & Judul) */
 /* ========================================= */
+
+/* JUDUL UTAMA (RATA TENGAH) */
 .section-title {
     text-align: center;
-    margin-bottom: 15px; /* UBAH INI: Dulu 40px, sekarang 15px agar lebih rapat ke bawah */
+    margin-bottom: 15px; /* SUDAH DIPERBAIKI: Jarak ke bawah dirapatkan (sebelumnya 40px) */
     font-size: 2.2em;
     color: var(--color-primary);
     border-bottom: 3px solid var(--color-secondary);
     display: inline-block;
     padding-bottom: 10px;
 }
-/* TAMBAHAN BARU: Agar teks deskripsi rapat ke judul */
+
+/* SUB-JUDUL / DESKRIPSI (RATA TENGAH & RAPAT KE ATAS) */
 .section-subtitle {
     text-align: center;
-    margin-top: 0;         /* Hilangkan jarak atas */
-    margin-bottom: 40px;   /* Jarak ke elemen berikutnya (tombol kategori) */
+    margin-top: 0;         /* SUDAH DIPERBAIKI: Menempel ke judul atas */
+    margin-bottom: 40px;   /* Jarak ke elemen bawahnya */
     font-size: 1.1em;
     color: #555;
-    max-width: 800px;      /* Agar teks tidak terlalu melebar */
-    margin-left: auto;
+    max-width: 800px;      /* Membatasi lebar agar enak dibaca */
+    margin-left: auto;     /* Auto margin kiri-kanan agar posisi di tengah */
     margin-right: auto;
 }
-/* Judul Rata Kiri dengan Garis Bawah */
+
+/* (Opsional) Judul Rata Kiri - Jika masih dibutuhkan di masa depan */
 .section-title-left {
     text-align: left !important;
     margin-bottom: 10px;
@@ -60,6 +64,19 @@ body {
     color: var(--color-text);
     border-bottom: 3px solid var(--color-secondary); 
     display: inline-block; 
+    padding-bottom: 5px;
+}
+
+.section-subtitle-left {
+    text-align: left !important;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.section-subtitle-left span {
+    color: var(--color-primary) !important;
+    border-bottom: 3px solid var(--color-cta) !important;
+    display: inline-block;
     padding-bottom: 5px;
 }
 
@@ -129,7 +146,6 @@ body {
     font-weight: 600;
     color: #333;
 }
-
 
 /* ========================================= */
 /* 4. MASALAH & SOLUSI */
@@ -291,20 +307,6 @@ body {
 .product-categories button.active .en-text {
     color: #c9e6c9;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* 6.2. STYLING SUBTITLE KATALOG */
-.section-subtitle-left {
-    text-align: left !important;
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-
-.section-subtitle-left span {
-    color: var(--color-primary) !important;
-    border-bottom: 3px solid var(--color-cta) !important;
-    display: inline-block;
-    padding-bottom: 5px;
 }
 
 
@@ -571,7 +573,7 @@ body {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
     text-align: right !important; 
-    margin-top: -5px !important; /* KOREKSI: Mengurangi tumpang tindih */
+    margin-top: -5px !important;
     padding-right: 10px;
     margin-bottom: 10px !important;
     line-height: 1.2;
