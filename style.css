@@ -210,7 +210,7 @@ body {
 }
 
 .benefit-card h4 {
-    color: var(--color-secondary);
+    color: #555;
     margin-bottom: 10px;
 }
 
@@ -240,7 +240,7 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    background: #000;
+    background: #555;
 }
 
 .production-video h2 {
@@ -603,7 +603,7 @@ body {
 /* Keterangan Bawah Total */
 #total-discount-keterangan {
     font-size: 0.85em !important;
-    color: #777 !important;
+    color: #444 !important;
     padding: 10px;
     margin-top: 10px;
     text-align: left;
