@@ -34,14 +34,24 @@ body {
 /* ========================================= */
 .section-title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 15px; /* UBAH INI: Dulu 40px, sekarang 15px agar lebih rapat ke bawah */
     font-size: 2.2em;
     color: var(--color-primary);
     border-bottom: 3px solid var(--color-secondary);
     display: inline-block;
     padding-bottom: 10px;
 }
-
+/* TAMBAHAN BARU: Agar teks deskripsi rapat ke judul */
+.section-subtitle {
+    text-align: center;
+    margin-top: 0;         /* Hilangkan jarak atas */
+    margin-bottom: 40px;   /* Jarak ke elemen berikutnya (tombol kategori) */
+    font-size: 1.1em;
+    color: #555;
+    max-width: 800px;      /* Agar teks tidak terlalu melebar */
+    margin-left: auto;
+    margin-right: auto;
+}
 /* Judul Rata Kiri dengan Garis Bawah */
 .section-title-left {
     text-align: left !important;
