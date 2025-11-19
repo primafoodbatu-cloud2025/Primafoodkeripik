@@ -25,7 +25,9 @@
 
     <meta name="facebook-domain-verification" content="kqzf4prcsyf5m7shvkp6x9x7lyffkh" />
 
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
@@ -33,36 +35,44 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"></noscript>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            console.log("Lazy Loading Tracking Scripts..."); // Cek di console browser
+    var scriptsLoaded = false;
+    
+    function loadTrackingScripts() {
+        if (scriptsLoaded) return;
+        scriptsLoaded = true;
+        
+        // 1. Load Google Tag Manager
+        var gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G';
+        document.head.appendChild(gtmScript);
 
-            // 1. Load Google Tag Manager (GTM)
-            var gtmScript = document.createElement('script');
-            gtmScript.async = true;
-            gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G';
-            document.head.appendChild(gtmScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-M4C764ED4G');
 
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-M4C764ED4G');
+        // 2. Load Facebook Pixel
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        fbq('init', '2037326590352817');
+        fbq('track', 'PageView');
+    }
 
-            // 2. Load Facebook Pixel
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            
-            fbq('init', '2037326590352817');
-            fbq('track', 'PageView');
-
-        }, 3500); // Penundaan 3500ms (3.5 Detik)
-    });
+    // Pemicu Script (User Interaction)
+    window.addEventListener('scroll', loadTrackingScripts, {passive: true});
+    window.addEventListener('mousemove', loadTrackingScripts, {passive: true});
+    window.addEventListener('touchstart', loadTrackingScripts, {passive: true});
+    
+    // Fallback: Load otomatis setelah 4 detik jika user diam saja
+    setTimeout(loadTrackingScripts, 4000);
     </script>
     
     <noscript><img height="1" width="1" style="display=none"
