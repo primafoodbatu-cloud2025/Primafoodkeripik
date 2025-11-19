@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <title>Rilldelish | Keripik Sayur & Buah Unik - Primafood Batu</title>
 
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
@@ -20,38 +23,52 @@
     <meta property="og:image" content="favicon-192x192.png">
     <meta property="og:url" content=""> 
 
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-M4C764ED4G');
-</script>
-
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '2037326590352817');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display=none"
-    src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
-    /></noscript>
-    
     <meta name="facebook-domain-verification" content="kqzf4prcsyf5m7shvkp6x9x7lyffkh" />
 
     <link rel="stylesheet" href="style.css"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"></noscript>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            console.log("Lazy Loading Tracking Scripts..."); // Cek di console browser
+
+            // 1. Load Google Tag Manager (GTM)
+            var gtmScript = document.createElement('script');
+            gtmScript.async = true;
+            gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G';
+            document.head.appendChild(gtmScript);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-M4C764ED4G');
+
+            // 2. Load Facebook Pixel
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            
+            fbq('init', '2037326590352817');
+            fbq('track', 'PageView');
+
+        }, 3500); // Penundaan 3500ms (3.5 Detik)
+    });
+    </script>
+    
+    <noscript><img height="1" width="1" style="display=none"
+    src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
+    /></noscript>
+
 </head>
 <body>
 
