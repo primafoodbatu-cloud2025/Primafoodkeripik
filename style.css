@@ -701,3 +701,30 @@ footer a {
         min-width: 0 !important;
     }
 }
+
+/* ========================================= */
+/* TAMBAHAN KHUSUS: JUDUL KATEGORI PRODUK */
+/* ========================================= */
+
+/* Mengatur Judul Kategori (Hijau, Merah, Orange) agar RATA TENGAH & TURUN SEDIKIT */
+.catalog-title-green, 
+.catalog-title-orange, 
+.catalog-title-red {
+    text-align: center;       /* Rata Tengah */
+    margin-top: 40px;         /* Turun sedikit dari tombol (Jarak Atas) */
+    margin-bottom: 10px;      /* Jarak Bawah ke deskripsi */
+    font-size: 1.5em;         /* Ukuran Font */
+}
+
+.catalog-title-green { color: #38761d; }
+.catalog-title-orange { color: #f39c12; }
+.catalog-title-red { color: #c0392b; }
+
+/* Mengatur Deskripsi Kategori (*100% Sayur Murni...) agar RATA TENGAH */
+.catalog-desc {
+    text-align: center;       /* Rata Tengah */
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;      /* Jarak ke Tabel */
+    display: block;
+}
