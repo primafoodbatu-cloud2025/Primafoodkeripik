@@ -871,3 +871,58 @@ h3[style*="color: #ff8c00"] {
     color: #2e7d32 !important; /* Pastikan Hijau Hutan */
     border-bottom-color: #e65100 !important;
 }
+
+/* ========================================= */
+/* FIX: MEMUNCULKAN TABEL TIER (FORCE VISIBLE) */
+/* ========================================= */
+
+/* 1. Pastikan Section Punya Background Putih */
+.bulk-order {
+    background-color: #ffffff !important;
+    padding: 60px 0;
+    display: block !important; /* Memaksa muncul */
+}
+
+/* 2. Styling Tabel Agar Garisnya Jelas (Hitam) */
+.bulk-order table {
+    width: 90% !important; /* Lebar tabel */
+    margin: 20px auto !important;
+    border-collapse: collapse !important;
+    background-color: #fff !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Efek bayangan agar timbul */
+}
+
+/* 3. Styling Header Tabel (Warna Cream) */
+.bulk-order thead {
+    background-color: #ffe4b5 !important;
+}
+.bulk-order th {
+    padding: 15px !important;
+    border: 2px solid #333 !important; /* Garis Tebal Hitam */
+    color: #000 !important; /* Teks Hitam Pekat */
+    font-weight: 800 !important;
+    text-transform: uppercase;
+}
+
+/* 4. Styling Isi Tabel (Baris) */
+.bulk-order td {
+    padding: 12px !important;
+    border: 1px solid #555 !important; /* Garis Abu Tua */
+    color: #222 !important; /* Teks Hitam */
+    font-size: 1em !important;
+}
+
+/* 5. Styling Baris Ganjil/Genap (Zebra Striping) */
+.bulk-order tr:nth-child(even) td {
+    background-color: #f9f9f9 !important;
+}
+
+/* 6. Memaksa Teks Diskon Berwarna */
+.bulk-order td[style*="color: #2e7d32"] {
+    color: #2e7d32 !important; /* Hijau Tebal */
+    font-weight: bold;
+}
+.bulk-order td[style*="color: #c62828"] {
+    color: #c62828 !important; /* Merah Tebal */
+    font-weight: bold;
+}
