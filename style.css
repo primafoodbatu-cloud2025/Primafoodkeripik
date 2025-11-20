@@ -428,43 +428,47 @@ body {
 }
 
 /* ========================================= */
-/* 9. FORM PENDAFTARAN */
+/* 9. FORM PENDAFTARAN (COMPACT / RAPAT) */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
     background-color: #fcebeb;
 }
 
+/* JARAK ANTAR FORM DIKURANGI */
 .contact-form .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 12px; /* Dulu 20px, sekarang lebih rapat */
 }
 
+/* UKURAN INPUT DIPERKECIL */
 .contact-form .form-group input,
 .contact-form .form-group select,
 .contact-form .form-group textarea {
     width: 100%; 
-    padding: 12px;
+    padding: 8px 12px;      /* Padding dikurangi agar tidak gemuk */
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.95em;      /* Font sedikit diperkecil */
     transition: border-color 0.3s;
     font-family: 'Poppins', sans-serif;
-    min-height: 48px;
+    min-height: 38px;       /* Tinggi dikurangi dari 48px ke 38px */
     box-sizing: border-box; 
 }
 
+/* JARAK LABEL KE INPUT DIRAPATKAN */
 .contact-form label {
     display: block;
     text-align: left !important;
     font-weight: 600;
-    margin-bottom: 5px;
-    font-size: 0.95em;
+    margin-bottom: 3px;     /* Sangat rapat ke input bawahnya */
+    font-size: 0.9em;
     color: var(--color-text);
 }
 
+/* TINGGI KOLOM ALAMAT & CATATAN DIKURANGI */
 .contact-form textarea {
-    height: 80px;
-    min-height: 80px;
+    height: 60px;           /* Dulu 80px */
+    min-height: 60px;
     resize: vertical;
 }
 
@@ -488,11 +492,12 @@ body {
     background-color: #ffffff;
 }
 
+/* BARIS JUMLAH & SATUAN (INLINE) LEBIH RAPAT */
 .form-group-inline {
     display: flex;
-    gap: 15px;
+    gap: 10px;              /* Jarak antar input kiri kanan dirapatkan */
     align-items: flex-end;
-    margin-top: 10px;
+    margin-top: 5px;        /* Jarak atas dikurangi */
 }
 
 .form-group-inline .form-group {
@@ -527,13 +532,14 @@ body {
     background-color: #b71c1c !important;
 }
 
+/* BARIS STRUK TOTALAN LEBIH RAPAT */
 .conversion-form .form-group p {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 0;
-    padding: 3px 10px; 
-    font-size: 1em;
+    padding: 1px 10px;      /* Padding atas bawah sangat tipis */
+    font-size: 0.95em;
     position: relative; 
 }
 
@@ -554,8 +560,8 @@ body {
 }
 
 .struk-grand-total {
-    padding-top: 10px;
-    margin-top: 10px; 
+    padding-top: 8px;       /* Dikurangi sedikit */
+    margin-top: 5px; 
     border-top: 2px solid #ccc !important;
 }
 
@@ -570,7 +576,6 @@ body {
     margin-left: 5px;
     color: var(--color-secondary);
 }
-
 /* ========================================= */
 /* 10. FAQ */
 /* ========================================= */
