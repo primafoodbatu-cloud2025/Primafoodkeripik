@@ -537,10 +537,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc;">1</td><td style="padding: 10px; border: 1px solid #ccc;">1 - 9 kg</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">10% OFF</td></tr>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">2</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">10 - 24 kg</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #4CAF50;">15% OFF</td></tr>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc;">3</td><td style="padding: 10px; border: 1px solid #ccc;">25 - 49 kg</td><td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #4CAF50;">20% OFF</td></tr>
-                    <tr><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">4</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">50 kg ke atas</td><td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #cc0000;">30% OFF</td></tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1 - 4 kg</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #2e7d32;">10% OFF</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">2</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">5 - 14 kg</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #2e7d32;">15% OFF</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">3</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">15 - 24 kg</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #2e7d32;">20% OFF</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">4</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">25 kg ke atas</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #c62828;">25% OFF</td>
+                    </tr>
                 </tbody>
             </table>
             
@@ -623,12 +639,12 @@
     // Global Counter untuk ID produk
     let productIdCounter = 1;
 
-    // Konfigurasi Diskon
+    // Konfigurasi Diskon TERBARU
     const GROSIR_DISCOUNT_RATES = {
-        1: 0.10, // 1 kg = 10%
-        10: 0.15, // 10 kg = 15%
-        25: 0.20, // 25 kg = 20%
-        50: 0.30  // 50 kg = 30%
+        1: 0.10,  // 1 kg = 10%
+        5: 0.15,  // 5 kg = 15%
+        15: 0.20, // 15 kg = 20%
+        25: 0.25  // 25 kg = 25% (Maksimal)
     };
     const FLASH_SALE_DISCOUNT = 0.05; // 5%
     const FLASH_SALE_DURATION = 3600; // 1 Jam (3600 detik)
@@ -694,10 +710,11 @@
     }
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
     
-    // --- Fungsi Penentu Diskon Maksimal ---
+    // --- Fungsi Penentu Diskon Maksimal (UPDATED) ---
     function getMaxDiscount(totalWeightKg) {
         let bestDiscount = { rate: 0, type: 'None', tier: null, range: null };
         
+        // Loop logic diskon baru
         for (const threshold in GROSIR_DISCOUNT_RATES) {
             if (totalWeightKg >= parseInt(threshold)) {
                 const rate = GROSIR_DISCOUNT_RATES[threshold];
@@ -705,10 +722,18 @@
                     bestDiscount.rate = rate;
                     bestDiscount.type = 'Grosir';
                     
-                    // Menentukan Tier dan Range
-                    const tierNum = (threshold == 1) ? 1 : (threshold == 10) ? 2 : (threshold == 25) ? 3 : 4;
-                    const maxKg = (threshold == 50) ? 'ke atas' : (parseInt(threshold) + 9);
-                    const range = (threshold == 1) ? '1-9 kg' : `${threshold}-${maxKg} kg`;
+                    // Menentukan Tier (1, 2, 3, 4)
+                    const t = parseInt(threshold);
+                    const tierNum = (t == 1) ? 1 : (t == 5) ? 2 : (t == 15) ? 3 : 4;
+                    
+                    // Menentukan Range Text untuk Struk
+                    let maxKg;
+                    if (t == 1) maxKg = 4;
+                    else if (t == 5) maxKg = 14;
+                    else if (t == 15) maxKg = 24;
+                    else maxKg = 'ke atas';
+                    
+                    const range = (maxKg === 'ke atas') ? '25 kg+' : `${t}-${maxKg} kg`;
                     
                     bestDiscount.tier = tierNum;
                     bestDiscount.range = range;
@@ -716,16 +741,15 @@
             }
         }
         
-        if (isFlashSaleActive && bestDiscount.rate < FLASH_SALE_DISCOUNT) {
-            bestDiscount.rate = FLASH_SALE_DISCOUNT;
-            bestDiscount.type = 'Flash Sale';
-            bestDiscount.tier = null;
-            bestDiscount.range = null;
-        } else if (isFlashSaleActive && bestDiscount.rate === 0 && totalWeightKg > 0) {
-             bestDiscount.rate = FLASH_SALE_DISCOUNT;
-             bestDiscount.type = 'Flash Sale';
-             bestDiscount.tier = null;
-             bestDiscount.range = null;
+        // Cek Flash Sale
+        if (isFlashSaleActive) {
+             if (bestDiscount.rate === 0 && totalWeightKg > 0) {
+                 bestDiscount.rate = FLASH_SALE_DISCOUNT;
+                 bestDiscount.type = 'Flash Sale';
+             } else if (bestDiscount.rate < FLASH_SALE_DISCOUNT) {
+                 bestDiscount.rate = FLASH_SALE_DISCOUNT;
+                 bestDiscount.type = 'Flash Sale';
+             }
         }
 
         return bestDiscount;
