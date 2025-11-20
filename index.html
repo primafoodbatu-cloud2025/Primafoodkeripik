@@ -929,7 +929,7 @@
         selectElement.focus();
     }
 
-    // --- Fungsionalitas WhatsApp (DIPERBAIKI KE FORMAT STRUK) ---
+    // --- Fungsionalitas WhatsApp (FORMAT STRUK RAPI & RATA KIRI) ---
     function sendWhatsAppOrder(event) {
         event.preventDefault();
 
@@ -943,7 +943,11 @@
         const discountAmountDisplay = document.getElementById('display-discount-amount').textContent;
         const grandTotalDisplay = document.getElementById('display-grand-total').textContent;
         const totalWeightDisplay = document.getElementById('display-total-weight').textContent;
-        const totalDiscountNote = document.getElementById('total-discount-keterangan').textContent; 
+        
+        // Bersihkan teks note dari spasi berlebih
+        let totalDiscountNoteRaw = document.getElementById('total-discount-keterangan').innerText;
+        // Ganti baris baru HTML dengan baris baru WA, dan hapus spasi ganda
+        const totalDiscountNote = totalDiscountNoteRaw.replace(/\n\s+/g, '\n').trim(); 
         
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let productDetails = [];
@@ -964,9 +968,8 @@
 
             if (paket && quantityValue > 0) {
                 const subtotalDisplay = item.querySelector('.display-subtotal').textContent;
-                productDetails.push(
-                    `*Item ${itemCounter}:* ${quantityValue} ${unit} (${quantityPcs} pcs) ${paket} (Subtotal Akhir: ${subtotalDisplay})`
-                );
+                // Format Item agar rapi per baris
+                productDetails.push(`${itemCounter}. ${paket}\n   Qty: ${quantityValue} ${unit} = ${subtotalDisplay}`);
                 itemCounter++;
             }
         });
@@ -976,48 +979,52 @@
             return;
         }
 
-        const productListText = productDetails.join('\n');
+        const productListText = productDetails.join('\n\n');
         
-        // Ambil keterangan Potongan Diskon yang disisipkan di span display-discount-amount (untuk WA)
+        // Ambil keterangan Potongan Diskon
         const discountSpan = document.getElementById('discount-tier-note');
         const tierKeteranganWA = discountSpan ? discountSpan.textContent : '';
 
-        // Format pesan WhatsApp (STRUK FINAL)
-        const message = `
-Halo Primafood Rilldelish! 👋
-Saya ingin melakukan pemesanan (Struk Otomatis):
+        // --- FORMAT PESAN WHATSAPP FINAL (RATA KIRI) ---
+        // Perhatikan: Jangan ada spasi di awal baris di dalam tanda ` `
+const message = `Halo Primafood Rilldelish! 👋
+Saya ingin memesan produk (via Website):
 
+━━━━━━━━━━━━━━━━━━
+👤 *DATA PEMESAN*
+━━━━━━━━━━━━━━━━━━
 *Nama:* ${nama}
-*No. WhatsApp:* ${telepon}
-*Alamat Kirim:* ${alamat}
+*No. WA:* ${telepon}
+*Alamat:* ${alamat}
 
-*===== R I N C I A N  S T R U K =====*
+📦 *RINCIAN PESANAN*
+━━━━━━━━━━━━━━━━━━
 ${productListText}
-*----------------------------------------*
+━━━━━━━━━━━━━━━━━━
 Harga Normal: ${totalHargaNormalDisplay}
-Potongan Diskon: ${discountAmountDisplay}
-${tierKeteranganWA}
-Total Berat: ${totalWeightDisplay}
-Total Qty: ${totalQuantityPcs} pcs
+Potongan: ${discountAmountDisplay}
+(${tierKeteranganWA})
 
-*TOTAL YANG HARUS DIBAYAR:* ${grandTotalDisplay}
-*======================================*
+*TOTAL TAGIHAN: ${grandTotalDisplay}*
+━━━━━━━━━━━━━━━━━━
+*Total Berat:* ${totalWeightDisplay}
+*Total Qty:* ${totalQuantityPcs} pcs
+
+*Catatan:* ${keterangan || '-'}
+
+ℹ️ *Info Tambahan:*
 ${totalDiscountNote}
 
-*Keterangan Tambahan:* ${keterangan || 'Tidak ada keterangan.'}
-
-Mohon diproses dan konfirmasi pembayaran segera. Terima kasih!
-        `.trim(); 
+Mohon di cek dan info nomor rekening. Terima kasih!`; 
+        // --- AKHIR FORMAT PESAN ---
 
         const whatsappNumber = '628124966298'; 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
         
-        // ▼▼▼ KODE PIXEL EVENT BARU DITAMBAHKAN DI SINI ▼▼▼
         if (typeof fbq === 'function') { 
             fbq('track', 'Lead');
         }
-        // ▲▲▲ AKHIR KODE PIXEL EVENT BARU ▲▲▲
         
         window.open(whatsappUrl, '_blank');
     }
