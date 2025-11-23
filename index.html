@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://connect.facebook.net https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.google.com https://www.googleadservices.com; font-src 'self' data:;">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; img-src 'self' data: https:; connect-src 'self' https:; upgrade-insecure-requests;">
 
     <title>Grosir Keripik Sayur & Buah Unik Rilldelish - Primafood</title>
 
@@ -34,7 +35,6 @@
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Tunda loading script berat selama 4 detik
         setTimeout(function() {
             
             // 1. Load Google Tag Manager
