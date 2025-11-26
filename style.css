@@ -977,3 +977,97 @@ h3[style*="color: #ff8c00"] {
     margin-bottom: 15px !important; /* Jarak ke tombol pesan */
     min-height: 40px !important;    /* Kurangi tinggi minimal agar tidak ada ruang kosong besar */
 }
+
+/* ========================================= */
+/* CSS PROMO HORIZONTAL (SIDE-BY-SIDE) */
+/* ========================================= */
+
+/* Container Utama (Kotak Besar) */
+.promo-horizontal-card {
+    display: flex;              /* KUNCI: Membuat isi berjajar ke samping */
+    flex-direction: row;        /* Arah Horizontal */
+    align-items: center;        /* Vertikal Center */
+    justify-content: center;
+    gap: 30px;                  /* Jarak antara Gambar dan Teks */
+    
+    max-width: 800px;           /* Lebar maksimal agar enak dilihat */
+    margin: 50px auto 20px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 3px solid #e65100;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Kolom Kiri (Gambar) */
+.promo-left {
+    flex: 1;                    /* Mengambil 1 bagian ruang */
+    width: 100%;
+}
+
+.promo-left img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    aspect-ratio: 4/3;          /* Menjaga rasio gambar tetap bagus */
+}
+
+/* Kolom Kanan (Teks) */
+.promo-right {
+    flex: 1.2;                  /* Mengambil ruang sedikit lebih lebar dari gambar */
+    text-align: left;           /* Teks rata kiri (Rapi di Desktop) */
+}
+
+.promo-title {
+    color: #e65100;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.promo-desc {
+    font-size: 1em;
+    color: #212121;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.promo-price-box {
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ffecb3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Harga rata kiri */
+    gap: 15px;
+}
+
+/* --- RESPONSIVE MOBILE (HP) --- */
+/* Saat di HP, kembali menumpuk ke bawah agar tidak kekecilan */
+@media (max-width: 768px) {
+    .promo-horizontal-card {
+        flex-direction: column; /* Ganti jadi menumpuk */
+        padding: 20px;
+        max-width: 350px;       /* Lebar disesuaikan HP */
+        text-align: center;
+    }
+
+    .promo-right {
+        text-align: center;     /* Teks kembali rata tengah di HP */
+        width: 100%;
+    }
+
+    .promo-price-box {
+        justify-content: center; /* Harga rata tengah di HP */
+    }
+    
+    .promo-title {
+        font-size: 1.5em;
+    }
+}
