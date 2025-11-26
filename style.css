@@ -928,23 +928,19 @@ h3[style*="color: #ff8c00"] {
 }
 
 /* ========================================= */
-/* STYLING GAMBAR PRODUK */
+/* STYLING GAMBAR PRODUK (Full Image 4:3) */
 /* ========================================= */
 .product-img {
-    width: 100%;            /* Lebar penuh kartu */
-    height: 200px;          /* Tinggi dikunci agar seragam */
-    object-fit: cover;      /* Gambar dipotong rapi, tidak penyok */
-    border-radius: 8px;     /* Sudut melengkung */
-    margin-bottom: 15px;    /* Jarak ke judul */
-    border: 1px solid #eee; /* Garis tipis halus */
+    width: 100%;            /* Lebar penuh mengikuti kartu */
+    height: auto;           /* Tinggi otomatis (agar tidak gepeng) */
+    aspect-ratio: 4 / 3;    /* KUNCI: Menjaga rasio tetap 800x600 di semua layar */
+    object-fit: cover;      /* Cover = Mengisi penuh tanpa celah (karena rasio sdh pas) */
+    border-radius: 8px;     
+    margin-bottom: 15px;    
+    border: 1px solid #eee; 
+    background-color: #f9f9f9; 
 }
-
-/* Khusus Tampilan Mobile */
-@media (max-width: 600px) {
-    .product-img {
-        height: 180px;      /* Sedikit lebih pendek di HP */
-    }
-}
+/* ============================================== */
 
 /* ========================================= */
 /* FIX: TAMPILAN KARTU MIX LEBIH RAPAT (COMPACT) */
