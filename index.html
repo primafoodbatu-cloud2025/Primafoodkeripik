@@ -1159,7 +1159,7 @@ Mohon di cek dan info nomor rekening. Terima kasih!`;
         startCountdownTimer();
 
 
-        // --- Fungsionalitas Filtering Katalog Satuan (TETAP SAMA) ---
+      // --- Fungsionalitas Filtering Katalog Satuan (TETAP SAMA) ---
         const categoryButtons = document.querySelectorAll('.category-btn');
         const productLists = document.querySelectorAll('.product-list');
         const buahList = document.getElementById('fruit-list');
@@ -1213,7 +1213,33 @@ Mohon di cek dan info nomor rekening. Terima kasih!`;
                 calculateTotal(); 
             });
         });
-    });
+        
+    }); // --- BATAS AKHIR DOMContentLoaded (JANGAN DIHAPUS) ---
+
+    // --- FITUR LIGHTBOX (GAMBAR BESAR) ---
+    // Fungsi ini diletakkan DI LUAR event listener agar bisa dipanggil oleh HTML
+    function openImage(element) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("imgExpanded");
+        
+        // Ambil sumber gambar yang diklik
+        modalImg.src = element.src;
+        
+        // Tampilkan Modal
+        modal.classList.add('active');
+    }
+
+    function closeImage() {
+        const modal = document.getElementById("imgModal");
+        // Sembunyikan Modal
+        modal.classList.remove('active');
+    }
     </script>
+
+    <div id="imgModal" class="lightbox-modal" onclick="closeImage()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="imgExpanded">
+    </div>
 </body>
+</html>
 </html>
