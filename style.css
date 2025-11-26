@@ -979,10 +979,9 @@ h3[style*="color: #ff8c00"] {
 }
 
 /* ========================================= */
-/* CSS PROMO HORIZONTAL (SIDE-BY-SIDE) - REVISI FINAL */
+/* CSS PROMO HORIZONTAL (REVISI KONTRAS 100%) */
 /* ========================================= */
 
-/* Container Utama (Kotak Besar) */
 .promo-horizontal-card {
     display: flex;
     flex-direction: row;
@@ -990,18 +989,17 @@ h3[style*="color: #ff8c00"] {
     justify-content: center;
     gap: 30px;
     
-    max-width: 900px;           /* Sedikit dilebarkan agar lega untuk gambar 3:1 */
+    max-width: 900px;
     margin: 50px auto 20px auto;
     padding: 30px;
     background-color: #ffffff;
     border-radius: 15px;
-    border: 3px solid #e65100;
+    border: 3px solid #bf360c; /* UBAH: Oranye Sangat Gelap (Deep Orange) */
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* Kolom Kiri (Gambar) */
 .promo-left {
-    flex: 1.2;                  /* Memberi ruang lebih untuk gambar yang lebar */
+    flex: 1.2;
     width: 100%;
 }
 
@@ -1011,44 +1009,51 @@ h3[style*="color: #ff8c00"] {
     border-radius: 10px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    /* PERBAIKAN PENTING: Ubah rasio jadi 3:1 agar gambar 900x300 utuh */
     aspect-ratio: 3 / 1;
 }
 
-/* Kolom Kanan (Teks) */
 .promo-right {
     flex: 1;
     text-align: left;
 }
 
-/* PERBAIKAN JUDUL DESKTOP */
+/* PERBAIKAN KONTRAS JUDUL */
 .promo-title {
-    color: #e65100;
-    font-size: 1.6em; /* Ukuran pas untuk desktop 1 baris */
+    color: #bf360c; /* UBAH: Jadi Oranye Tua (High Contrast) */
+    font-size: 1.6em;
     margin-top: 0;
     margin-bottom: 15px;
     line-height: 1.2;
     text-transform: uppercase;
-    white-space: nowrap; /* Paksa 1 baris di desktop */
+    white-space: nowrap;
 }
 
 .promo-desc {
     font-size: 1em;
-    color: #212121;
+    color: #212121; /* Hitam pekat */
     margin-bottom: 20px;
     line-height: 1.5;
 }
 
 .promo-price-box {
-    background: #fff8e1;
+    background: #fff3e0; /* Background lebih soft */
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
-    border: 1px solid #ffecb3;
+    border: 1px solid #ffe0b2;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 15px;
+}
+
+/* PERBAIKAN KONTRAS TOMBOL */
+.promo-right .cta-button {
+    background-color: #bf360c !important; /* UBAH: Tombol jadi Oranye Tua */
+    color: #ffffff !important; /* Teks Putih */
+}
+.promo-right .cta-button:hover {
+    background-color: #d84315 !important; /* Hover sedikit lebih terang */
 }
 
 /* --- RESPONSIVE MOBILE (HP) --- */
@@ -1066,20 +1071,18 @@ h3[style*="color: #ff8c00"] {
         width: 100%;
     }
 
-    /* PERBAIKAN JUDUL MOBILE (HP) */
     .promo-title {
-        font-size: 1.1em;    /* Font dikecilkan drastis agar muat */
-        white-space: nowrap; /* Paksa tetap 1 baris */
+        font-size: 1.1em;
+        white-space: nowrap;
         margin-bottom: 10px;
     }
 
     .promo-price-box {
         justify-content: center;
-        padding: 10px; /* Padding diperkecil di HP */
+        padding: 10px;
     }
 
-    /* Gambar di HP tetap utuh */
     .promo-left img {
-         aspect-ratio: 3 / 1; /* Memastikan di HP juga rasionya 3:1 (pendek lebar) */
+         aspect-ratio: 3 / 1;
     }
 }
