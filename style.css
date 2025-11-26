@@ -979,18 +979,18 @@ h3[style*="color: #ff8c00"] {
 }
 
 /* ========================================= */
-/* CSS PROMO HORIZONTAL (SIDE-BY-SIDE) */
+/* CSS PROMO HORIZONTAL (SIDE-BY-SIDE) - REVISI FINAL */
 /* ========================================= */
 
 /* Container Utama (Kotak Besar) */
 .promo-horizontal-card {
-    display: flex;              /* KUNCI: Membuat isi berjajar ke samping */
-    flex-direction: row;        /* Arah Horizontal */
-    align-items: center;        /* Vertikal Center */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    gap: 30px;                  /* Jarak antara Gambar dan Teks */
+    gap: 30px;
     
-    max-width: 800px;           /* Lebar maksimal agar enak dilihat */
+    max-width: 900px;           /* Sedikit dilebarkan agar lega untuk gambar 3:1 */
     margin: 50px auto 20px auto;
     padding: 30px;
     background-color: #ffffff;
@@ -1001,7 +1001,7 @@ h3[style*="color: #ff8c00"] {
 
 /* Kolom Kiri (Gambar) */
 .promo-left {
-    flex: 1;                    /* Mengambil 1 bagian ruang */
+    flex: 1.2;                  /* Memberi ruang lebih untuk gambar yang lebar */
     width: 100%;
 }
 
@@ -1011,22 +1011,25 @@ h3[style*="color: #ff8c00"] {
     border-radius: 10px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    aspect-ratio: 4/3;          /* Menjaga rasio gambar tetap bagus */
+    /* PERBAIKAN PENTING: Ubah rasio jadi 3:1 agar gambar 900x300 utuh */
+    aspect-ratio: 3 / 1;
 }
 
 /* Kolom Kanan (Teks) */
 .promo-right {
-    flex: 1.2;                  /* Mengambil ruang sedikit lebih lebar dari gambar */
-    text-align: left;           /* Teks rata kiri (Rapi di Desktop) */
+    flex: 1;
+    text-align: left;
 }
 
+/* PERBAIKAN JUDUL DESKTOP */
 .promo-title {
     color: #e65100;
-    font-size: 1.8em;
+    font-size: 1.6em; /* Ukuran pas untuk desktop 1 baris */
     margin-top: 0;
     margin-bottom: 15px;
     line-height: 1.2;
     text-transform: uppercase;
+    white-space: nowrap; /* Paksa 1 baris di desktop */
 }
 
 .promo-desc {
@@ -1044,30 +1047,39 @@ h3[style*="color: #ff8c00"] {
     border: 1px solid #ffecb3;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Harga rata kiri */
+    justify-content: flex-start;
     gap: 15px;
 }
 
 /* --- RESPONSIVE MOBILE (HP) --- */
-/* Saat di HP, kembali menumpuk ke bawah agar tidak kekecilan */
 @media (max-width: 768px) {
     .promo-horizontal-card {
-        flex-direction: column; /* Ganti jadi menumpuk */
+        flex-direction: column;
         padding: 20px;
-        max-width: 350px;       /* Lebar disesuaikan HP */
+        max-width: 350px;
         text-align: center;
+        gap: 20px;
     }
 
     .promo-right {
-        text-align: center;     /* Teks kembali rata tengah di HP */
+        text-align: center;
         width: 100%;
     }
 
-    .promo-price-box {
-        justify-content: center; /* Harga rata tengah di HP */
-    }
-    
+    /* PERBAIKAN JUDUL MOBILE (HP) */
     .promo-title {
-        font-size: 1.5em;
+        font-size: 1.1em;    /* Font dikecilkan drastis agar muat */
+        white-space: nowrap; /* Paksa tetap 1 baris */
+        margin-bottom: 10px;
+    }
+
+    .promo-price-box {
+        justify-content: center;
+        padding: 10px; /* Padding diperkecil di HP */
+    }
+
+    /* Gambar di HP tetap utuh */
+    .promo-left img {
+         aspect-ratio: 3 / 1; /* Memastikan di HP juga rasionya 3:1 (pendek lebar) */
     }
 }
