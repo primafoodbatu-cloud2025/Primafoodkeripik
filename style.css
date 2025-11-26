@@ -945,3 +945,39 @@ h3[style*="color: #ff8c00"] {
         height: 180px;      /* Sedikit lebih pendek di HP */
     }
 }
+
+/* ========================================= */
+/* FIX: TAMPILAN KARTU MIX LEBIH RAPAT (COMPACT) */
+/* ========================================= */
+
+.mix-card {
+    padding: 20px 15px !important; /* Sedikit kurangi padding dalam kartu */
+}
+
+/* 1. Judul Produk (Hijau/Merah/Orange) */
+.mix-card h3 {
+    margin-bottom: 0 !important;   /* Hilangkan jarak bawah judul */
+    margin-top: 10px !important;   /* Jarak wajar dari gambar */
+    line-height: 1.2 !important;
+}
+
+/* 2. Sub-Judul (Teks Italic dalam kurung) */
+.mix-card p[style*="font-style: italic"] {
+    margin-top: 2px !important;    /* Tempelkan ke judul di atasnya */
+    margin-bottom: 5px !important; /* Jarak tipis ke harga */
+    font-size: 0.85em !important;
+}
+
+/* 3. Harga Besar (Rp ...) */
+.mix-card p[style*="font-weight: 800"] {
+    margin-top: 5px !important;
+    margin-bottom: 8px !important; /* Jarak ke daftar isi */
+    line-height: 1 !important;
+}
+
+/* 4. Deskripsi Isi (Daftar Sayur: Labu, Wortel...) */
+.mix-card p[style*="line-height: 1.4"] {
+    line-height: 1.3 !important;    /* Rapatkan jarak antar baris teks kalimat */
+    margin-bottom: 15px !important; /* Jarak ke tombol pesan */
+    min-height: 40px !important;    /* Kurangi tinggi minimal agar tidak ada ruang kosong besar */
+}
