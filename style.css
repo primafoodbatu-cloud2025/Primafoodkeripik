@@ -1088,14 +1088,15 @@ h3[style*="color: #ff8c00"] {
 }
 
 /* ========================================= */
-/* KATALOG VISUAL (GRID CARD SYSTEM) */
+/* KATALOG VISUAL (COMPACT / MINI GRID) - REVISI */
 /* ========================================= */
 
-/* Container Grid (Kotak-kotak) */
+/* Container Grid (Kotak-kotak Rapat) */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsif otomatis */
-    gap: 20px;
+    /* Lebar minimal 160px -> Muat 2 kolom di HP, 6 kolom di Laptop */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 10px; /* Jarak antar kotak dirapatkan */
     margin-top: 20px;
 }
 
@@ -1103,72 +1104,82 @@ h3[style*="color: #ff8c00"] {
 .catalog-card {
     background: #fff;
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
+    height: 100%; /* Agar tinggi kartu seragam */
 }
 
 .catalog-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-color: var(--color-primary);
 }
 
-/* Gambar Produk */
+/* Gambar Produk (Pendek) */
 .catalog-img {
     width: 100%;
-    height: 200px;
+    height: 130px; /* Dikurangi drastis dari 200px */
     object-fit: cover;
     background-color: #f9f9f9;
     border-bottom: 1px solid #eee;
+    cursor: zoom-in;
 }
 
-/* Info Produk */
+/* Info Produk (Padat) */
 .catalog-info {
-    padding: 15px;
-    flex-grow: 1; /* Agar tinggi seragam */
+    padding: 10px; /* Padding dikurangi */
+    flex-grow: 1;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .catalog-name {
-    font-size: 1.1em;
+    font-size: 0.95em; /* Font judul dikecilkan */
     font-weight: 700;
     color: #333;
-    margin-bottom: 5px;
-    line-height: 1.3;
+    margin-bottom: 2px;
+    line-height: 1.2;
+    min-height: 36px; /* Menjaga agar judul 2 baris tetap rapi */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .catalog-en {
-    font-size: 0.85em;
+    font-size: 0.75em;
     color: #888;
     font-style: italic;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-/* Harga Ecer (Besar) */
+/* Harga Ecer */
 .catalog-price-ecer {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 800;
     color: var(--color-cta);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: block;
 }
 
-/* Tabel Mini Grosir di dalam Kartu */
+/* Tabel Grosir (Sangat Mungil) */
 .mini-tier-table {
     width: 100%;
-    font-size: 0.85em;
+    font-size: 0.7em; /* Huruf tabel diperkecil */
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 5px;
     background-color: #fdfdfd;
 }
 
 .mini-tier-table td {
-    padding: 4px 0;
-    border-bottom: 1px dashed #eee;
+    padding: 2px 0; /* Spasi tabel dirapatkan */
+    border-bottom: 1px solid #eee;
     color: #555;
 }
 
@@ -1179,13 +1190,29 @@ h3[style*="color: #ff8c00"] {
 }
 
 .mini-tier-label {
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 10px;
+    margin-top: 5px;
     display: block;
     font-weight: 700;
+}
+
+/* Tombol WA (Compact) */
+.wa-btn-catalog {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #25D366;
+    color: white !important;
+    padding: 6px; /* Tombol lebih tipis */
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85em;
+    margin-top: 8px;
+}
+.wa-btn-catalog:hover {
+    background-color: #128C7E;
 }
 
 /* ========================================= */
