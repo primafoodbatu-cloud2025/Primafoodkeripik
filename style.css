@@ -1118,11 +1118,19 @@ h3[style*="color: #ff8c00"] {
     border-color: var(--color-primary);
 }
 
-/* Gambar Produk (Pendek) */
+/* ========================================= */
+/* UPDATE: GAMBAR PRODUK KOTAK (1:1) */
+/* ========================================= */
+
 .catalog-img {
     width: 100%;
-    height: 130px; /* Dikurangi drastis dari 200px */
-    object-fit: cover;
+    /* HAPUS height: 130px yang lama */
+    height: auto;           
+    
+    /* KUNCI: Memaksa gambar jadi Kotak Persegi */
+    aspect-ratio: 1 / 1;    
+    
+    object-fit: cover;      /* Isi penuh kotaknya */
     background-color: #f9f9f9;
     border-bottom: 1px solid #eee;
     cursor: zoom-in;
