@@ -1276,3 +1276,19 @@ h3[style*="color: #ff8c00"] {
     from {transform: scale(0.8); opacity: 0;}
     to {transform: scale(1); opacity: 1;}
 }
+
+/* ========================================= */
+/* FIX: RAPATKAN JUDUL KATALOG (Hapus Jarak) */
+/* ========================================= */
+
+.catalog-name {
+    margin-bottom: 0px !important; /* Hilangkan jarak bawah judul */
+    min-height: auto !important;   /* PENTING: Hapus paksaan tinggi, agar mengikuti teks */
+    padding-bottom: 0px !important;
+}
+
+.catalog-en {
+    margin-top: 2px !important;    /* Tempelkan subtitle ke judul (jarak tipis 2px) */
+    line-height: 1.1 !important;   /* Rapatkan spasi baris */
+    margin-bottom: 8px !important; /* Jarak ke harga */
+}
