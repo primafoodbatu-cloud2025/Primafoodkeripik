@@ -1420,3 +1420,56 @@ h3[style*="color: #ff8c00"] {
         margin-top: 8px !important;
     }
 }
+
+/* ========================================= */
+/* FIX JUDUL KATALOG (RESPONSIF) */
+/* ========================================= */
+
+/* Tampilan Desktop (Rata Tengah) */
+.section-title {
+    text-align: center !important;
+    display: block !important; /* Agar bisa di-center */
+    margin: 0 auto 10px auto !important;
+    width: 100%;
+}
+
+/* Tampilan HP (Kecilkan Font agar Muat 1 Baris) */
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 1.2rem !important; /* Ukuran pas untuk 1 baris di HP */
+        white-space: nowrap; /* Paksa tidak turun baris */
+        overflow: hidden; /* Jaga-jaga kalau layar HP terlalu kecil */
+        text-overflow: ellipsis;
+        padding: 0 5px;
+    }
+    
+    /* Sub-judul (Best Seller) di HP */
+    .section-subtitle-best-seller {
+        font-size: 0.9em !important;
+        margin-top: -5px !important;
+    }
+}
+
+/* Styling khusus sub-judul Best Seller */
+.section-subtitle-best-seller {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    color: #c62828; /* Merah */
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+/* Deskripsi Singkat Produk di Katalog */
+.product-short-desc {
+    font-size: 0.75em;
+    color: #666;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Batasi max 2 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-style: italic;
+}
