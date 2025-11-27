@@ -50,6 +50,49 @@
         .wa-btn-catalog:hover {
             background-color: #128C7E;
         }
+
+    @media (max-width: 768px) {
+        /* 1. Kurangi Padding Container agar layar lebih lega */
+        .container {
+            padding: 0 10px !important; /* Dulu 20px, sekarang 10px */
+        }
+
+        /* 2. Paksa Grid jadi 2 Kolom murni (tanpa pixel minimal) */
+        .catalog-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important; /* Paksa bagi 2 rata */
+            gap: 8px !important;
+        }
+
+        /* 3. Penyesuaian Kartu agar muat */
+        .catalog-card {
+            min-height: auto !important;
+            height: 100% !important;
+        }
+
+        /* 4. Gambar Kotak */
+        .catalog-img {
+            height: auto !important;
+            aspect-ratio: 1 / 1 !important;
+        }
+
+        /* 5. Font Super Kecil agar tidak berantakan */
+        .catalog-info { padding: 8px !important; }
+        .catalog-name { font-size: 13px !important; min-height: 32px !important; }
+        .catalog-en { font-size: 10px !important; display: none !important; } /* Sembunyikan bhs inggris di HP biar hemat tempat */
+        .catalog-price-ecer { font-size: 14px !important; margin-bottom: 2px !important; }
+        .mini-tier-label { display: none !important; } /* Sembunyikan label "Harga Grosir" */
+        
+        /* Tabel Grosir Mungil */
+        .mini-tier-table { font-size: 9px !important; }
+        .mini-tier-table td { padding: 0 !important; }
+
+        /* Tombol */
+        .wa-btn-catalog { 
+            font-size: 11px !important; 
+            padding: 5px 0 !important; 
+        }
+    }
     </style>
 </head>
 <body>
