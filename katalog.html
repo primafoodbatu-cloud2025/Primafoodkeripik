@@ -21,23 +21,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4"> <style>
+    <link rel="stylesheet" href="style.css?v=4"> 
+    <style>
         .catalog-header {
-            background-color: #fff8e1;
-            padding: 30px 20px;
+            /* BACKGROUND GAMBAR SAMAR (Overlay Putih 90%) */
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85)), url('images/paket-borong.webp');
+            background-size: cover;
+            background-position: center;
+            
+            padding: 50px 20px;
             text-align: center;
-            border-bottom: 3px solid #e65100;
-            margin-bottom: 30px;
+            border-bottom: 5px solid #e65100; /* Garis lebih tebal dikit */
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sedikit bayangan */
         }
         .back-link {
             display: inline-block;
             margin-bottom: 15px;
             color: #2e7d32;
             text-decoration: none;
-            font-weight: 600;
-            border: 1px solid #2e7d32;
-            padding: 5px 15px;
-            border-radius: 20px;
+            font-weight: 700;
+            border: 2px solid #2e7d32;
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.8);
+        }
+        .category-section {
+            /* JARAK ANTAR KATEGORI DITAMBAH BIAR GAK MEPET */
+            padding-top: 80px !important;    /* Jarak dari garis atas ke Judul */
+            padding-bottom: 60px !important; /* Jarak dari produk bawah ke garis */
+            border-bottom: 1px dashed #ccc;
         }
         /* Deskripsi Singkat Produk */
         .product-short-desc {
@@ -74,14 +87,13 @@
         .seo-footer-text h3 { font-size: 1.1em; color: #333; margin-bottom: 10px; }
         
         /* Fix Mobile Button */
-        .wa-btn-catalog {
+       .wa-btn-catalog {
             display: block; width: 100%; text-align: center;
             background-color: #25D366; color: white; padding: 10px;
             border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px;
         }
         .wa-btn-catalog:hover { background-color: #128C7E; }
 
-        /* Fix Mobile Grid */
         @media (max-width: 768px) {
             .container { padding: 0 10px !important; }
             .catalog-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
@@ -95,7 +107,10 @@
             .mini-tier-table { font-size: 9px !important; }
             .mini-tier-table td { padding: 0 !important; }
             .wa-btn-catalog { font-size: 11px !important; padding: 5px 0 !important; }
-            .product-short-desc { display: none !important; } /* Sembunyikan deskripsi di HP agar tidak panjang */
+            .product-short-desc { display: none !important; }
+            
+            /* Tambahan agar Header di HP juga rapi */
+            .category-section { padding-top: 50px !important; padding-bottom: 40px !important; }
         }
     </style>
 </head>
@@ -103,13 +118,20 @@
 
     <header class="catalog-header">
         <div class="container">
-            <a href="index.html" class="back-link">← Kembali ke Halaman Utama</a>
-            <img src="images/logo-rilldelish.webp" alt="Logo Rilldelish" width="100" style="display:block; margin: 0 auto 20px auto;">
-            <h1 style="color: #e65100; line-height: 1.2;">KATALOG PRODUK LENGKAP</h1>
-            <p>Daftar Harga Eceran & Grosir (Update 2025)</p>
+            <a href="index.html" class="back-link">← Kembali ke Home</a>
+            
+            <img src="images/logo-rilldelish.webp" alt="Logo Grosir Keripik Rilldelish" width="120" style="display:block; margin: 0 auto 15px auto;">
+            
+            <h1 style="color: #e65100; line-height: 1.2; font-size: 2em; text-transform: uppercase; text-shadow: 1px 1px 0px #fff;">
+                PUSAT GROSIR KERIPIK BUAH & SAYUR <br>
+                (HARGA PABRIK)
+            </h1>
+            
+            <p style="color: #333; font-weight: 600; margin-top: 10px;">
+                Supplier Tangan Pertama Khas Kota Batu Malang - Melayani Partai Besar & Reseller
+            </p>
         </div>
     </header>
-
     <section id="mix" class="category-section">
         <div class="container">
             <h2 class="section-title">🔥 Paket MIX 100gr</h2>
