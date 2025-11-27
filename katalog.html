@@ -46,6 +46,13 @@
             border-radius: 30px;
             background: rgba(255,255,255,0.8);
         }
+        .promo-special-card {
+            border: 3px dashed #e65100 !important; /* Garis putus-putus tebal */
+            background-color: #fff3e0 !important;   /* Warna beda dikit */
+            transform: scale(1.02); /* Sedikit lebih besar dari yang lain */
+            z-index: 2;
+            box-shadow: 0 10px 25px rgba(230, 81, 0, 0.2) !important;
+        }
         .category-section {
             /* JARAK ANTAR KATEGORI DITAMBAH BIAR GAK MEPET */
             padding-top: 80px !important;    /* Jarak dari garis atas ke Judul */
@@ -94,23 +101,70 @@
         }
         .wa-btn-catalog:hover { background-color: #128C7E; }
 
+        /* --- UPDATE: TAMPILAN MOBILE (HP) --- */
         @media (max-width: 768px) {
             .container { padding: 0 10px !important; }
             .catalog-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+            
             .catalog-card { min-height: auto !important; height: 100% !important; }
             .catalog-img { height: auto !important; aspect-ratio: 1 / 1 !important; }
-            .catalog-info { padding: 8px !important; }
-            .catalog-name { font-size: 13px !important; min-height: 32px !important; }
-            .catalog-en { font-size: 10px !important; display: none !important; }
-            .catalog-price-ecer { font-size: 14px !important; margin-bottom: 2px !important; }
-            .mini-tier-label { display: none !important; }
-            .mini-tier-table { font-size: 9px !important; }
-            .mini-tier-table td { padding: 0 !important; }
-            .wa-btn-catalog { font-size: 11px !important; padding: 5px 0 !important; }
-            .product-short-desc { display: none !important; }
             
-            /* Tambahan agar Header di HP juga rapi */
-            .category-section { padding-top: 50px !important; padding-bottom: 40px !important; }
+            .catalog-info { padding: 8px !important; }
+            
+            /* Judul di HP */
+            .catalog-name { font-size: 13px !important; min-height: 32px !important; line-height: 1.2 !important; }
+            
+            /* Bhs Inggris tetap sembunyi biar gak penuh */
+            .catalog-en { display: none !important; } 
+            
+            .catalog-price-ecer { font-size: 14px !important; margin-bottom: 5px !important; }
+            
+            /* Sembunyikan Tabel Tier di HP (Biar gak kepanjangan) */
+            .mini-tier-label, .mini-tier-table { display: none !important; }
+            
+            .wa-btn-catalog { font-size: 11px !important; padding: 6px 0 !important; }
+
+            /* --- PERBAIKAN 1: DESKRIPSI PENDEK DITAMPILKAN --- */
+            .product-short-desc { 
+                display: -webkit-box !important; /* Munculkan kembali */
+                font-size: 10px !important;      /* Ukuran font imut */
+                line-height: 1.2 !important;
+                color: #555 !important;
+                margin-bottom: 8px !important;
+                -webkit-line-clamp: 2;           /* Maksimal 2 baris */
+            }
+            
+            /* Tambahan Jarak Header di HP */
+            .category-section { padding-top: 40px !important; padding-bottom: 30px !important; }
+
+            /* --- PERBAIKAN 2: PROMO BORONG JADI LEBAR (2 KOLOM) --- */
+            .promo-special-card {
+                grid-column: 1 / -1 !important; /* Perintah Sakti: Ambil semua kolom (full width) */
+                display: flex !important;
+                flex-direction: row !important; /* Gambar kiri, Teks kanan (Mini Horizontal) */
+                align-items: center !important;
+                text-align: left !important;
+                padding: 10px !important;
+                min-height: auto !important;
+            }
+            
+            /* Atur Gambar Promo di HP */
+            .promo-special-card img {
+                width: 120px !important;
+                height: 120px !important;
+                margin-right: 10px !important;
+                margin-bottom: 0 !important;
+            }
+            
+            /* Atur Teks Promo di HP */
+            .promo-special-card .catalog-info {
+                padding: 0 !important;
+            }
+            
+            .promo-special-card .catalog-name {
+                font-size: 15px !important; /* Judul lebih besar */
+                color: #e65100 !important;
+            }
         }
     </style>
 </head>
@@ -211,7 +265,7 @@
                     </div>
                 </div>
 
-                <div class="catalog-card" style="border: 2px dashed #e65100; background-color: #fff8e1;">
+                <div class="catalog-card promo-special-card">
                     <img src="images/paket-borong.webp" alt="Promo Borong Semua" class="catalog-img" loading="lazy" onclick="openImage(this)">
                     <div class="catalog-info">
                         <div class="catalog-name" style="color: #e65100;">🔥 PROMO BORONG SEMUA</div>
