@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Lengkap Produk - Primafood Rilldelish</title>
     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+    <title>Katalog Lengkap Grosir Keripik Buah & Sayur - Primafood Batu</title>
+    <meta name="description" content="Katalog harga grosir Keripik Sayur dan Buah Rilldelish. Supplier tangan pertama dari pabrik Batu. Cek harga eceran dan grosir di sini.">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Katalog lengkap Keripik Sayur dan Buah Rilldelish. Cek harga grosir dan eceran di sini.">
-    
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Katalog Resmi Grosir Keripik Rilldelish">
+    <meta property="og:description" content="Daftar harga lengkap Keripik Nangka, Apel, Sayur, dan Paket Mix. Harga Pabrik!">
+    <meta property="og:image" content="https://grosir.rilldelish.my.id/OG-Image.jpg">
+    <meta property="og:url" content="https://grosir.rilldelish.my.id/katalog.html">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2">
-    
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+    <link rel="stylesheet" href="style.css?v=3">
 
     <style>
-        /* Sedikit CSS Tambahan Khusus Halaman Ini */
         .catalog-header {
             background-color: #fff8e1;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             border-bottom: 3px solid #e65100;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .back-link {
             display: inline-block;
@@ -30,69 +37,68 @@
             color: #2e7d32;
             text-decoration: none;
             font-weight: 600;
+            border: 1px solid #2e7d32;
+            padding: 5px 15px;
+            border-radius: 20px;
         }
-        .category-section {
-            padding: 40px 0;
-            border-bottom: 1px dashed #ccc;
+        /* Deskripsi Singkat Produk */
+        .product-short-desc {
+            font-size: 0.75em;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-style: italic;
         }
-        .wa-btn-catalog {
+        /* Sub-judul Best Seller */
+        .section-subtitle-best-seller {
             display: block;
-            width: 100%;
             text-align: center;
-            background-color: #25D366;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
+            font-weight: 600;
+            color: #c62828;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
-        .wa-btn-catalog:hover {
-            background-color: #128C7E;
+        /* Section SEO Text */
+        .seo-footer-text {
+            background-color: #f9f9f9;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            font-size: 0.85em;
+            color: #666;
+            text-align: justify;
         }
-
-    @media (max-width: 768px) {
-        /* 1. Kurangi Padding Container agar layar lebih lega */
-        .container {
-            padding: 0 10px !important; /* Dulu 20px, sekarang 10px */
-        }
-
-        /* 2. Paksa Grid jadi 2 Kolom murni (tanpa pixel minimal) */
-        .catalog-grid {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important; /* Paksa bagi 2 rata */
-            gap: 8px !important;
-        }
-
-        /* 3. Penyesuaian Kartu agar muat */
-        .catalog-card {
-            min-height: auto !important;
-            height: 100% !important;
-        }
-
-        /* 4. Gambar Kotak */
-        .catalog-img {
-            height: auto !important;
-            aspect-ratio: 1 / 1 !important;
-        }
-
-        /* 5. Font Super Kecil agar tidak berantakan */
-        .catalog-info { padding: 8px !important; }
-        .catalog-name { font-size: 13px !important; min-height: 32px !important; }
-        .catalog-en { font-size: 10px !important; display: none !important; } /* Sembunyikan bhs inggris di HP biar hemat tempat */
-        .catalog-price-ecer { font-size: 14px !important; margin-bottom: 2px !important; }
-        .mini-tier-label { display: none !important; } /* Sembunyikan label "Harga Grosir" */
+        .seo-footer-text h3 { font-size: 1.1em; color: #333; margin-bottom: 10px; }
         
-        /* Tabel Grosir Mungil */
-        .mini-tier-table { font-size: 9px !important; }
-        .mini-tier-table td { padding: 0 !important; }
-
-        /* Tombol */
-        .wa-btn-catalog { 
-            font-size: 11px !important; 
-            padding: 5px 0 !important; 
+        /* Fix Mobile Button */
+        .wa-btn-catalog {
+            display: block; width: 100%; text-align: center;
+            background-color: #25D366; color: white; padding: 10px;
+            border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px;
         }
-    }
+        .wa-btn-catalog:hover { background-color: #128C7E; }
+
+        /* Fix Mobile Grid */
+        @media (max-width: 768px) {
+            .container { padding: 0 10px !important; }
+            .catalog-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+            .catalog-card { min-height: auto !important; height: 100% !important; }
+            .catalog-img { height: auto !important; aspect-ratio: 1 / 1 !important; }
+            .catalog-info { padding: 8px !important; }
+            .catalog-name { font-size: 13px !important; min-height: 32px !important; }
+            .catalog-en { font-size: 10px !important; display: none !important; }
+            .catalog-price-ecer { font-size: 14px !important; margin-bottom: 2px !important; }
+            .mini-tier-label { display: none !important; }
+            .mini-tier-table { font-size: 9px !important; }
+            .mini-tier-table td { padding: 0 !important; }
+            .wa-btn-catalog { font-size: 11px !important; padding: 5px 0 !important; }
+            .product-short-desc { display: none !important; } /* Sembunyikan deskripsi di HP agar tidak panjang */
+        }
     </style>
 </head>
 <body>
@@ -108,7 +114,9 @@
 
     <section id="mix" class="category-section">
         <div class="container">
-            <h2 class="section-title">🔥 Paket MIX Best Seller (100gr)</h2>
+            <h2 class="section-title">🔥 Paket MIX 100gr</h2>
+            <span class="section-subtitle-best-seller">⭐ Best Seller ⭐</span>
+            
             <div class="catalog-grid">
                 
                 <div class="catalog-card">
@@ -117,6 +125,7 @@
                         <div class="catalog-name">MIX Sweet Garden</div>
                         <span class="catalog-en">Manis Alami Sayur</span>
                         <span class="catalog-price-ecer">Rp 19.200</span>
+                        <p class="product-short-desc">Perpaduan manis legit Labu Madu, Ubi Ungu, & Jagung.</p>
                         <p style="font-size:0.85em; color:#555; margin-bottom:15px;">Isi: Labu Madu, Ubi Ungu, Wortel, Buncis, Jagung.</p>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SWEET%20GARDEN." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
@@ -128,6 +137,7 @@
                         <div class="catalog-name">MIX Savory</div>
                         <span class="catalog-en">Rempah & Jamur</span>
                         <span class="catalog-price-ecer">Rp 20.240</span>
+                        <p class="product-short-desc">Gurih nendang! Kombinasi Jamur, Brokoli, & Paprika.</p>
                         <p style="font-size:0.85em; color:#555; margin-bottom:15px;">Isi: Brokoli, Bombay, Jamur Tiram/Kuping, Cabe, Paprika.</p>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SAVORY." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
@@ -139,6 +149,7 @@
                         <div class="catalog-name">MIX Fusion</div>
                         <span class="catalog-en">Buah & Sayur</span>
                         <span class="catalog-price-ecer">Rp 20.560</span>
+                        <p class="product-short-desc">Paket komplit! Manisnya buah ketemu gurihnya sayur.</p>
                         <p style="font-size:0.85em; color:#555; margin-bottom:15px;">Isi: Apel, Pisang, Nangka, Wortel, Ubi Ungu, Okra.</p>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20FUSION." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
@@ -150,6 +161,7 @@
                         <div class="catalog-name">Paket Mix Serat</div>
                         <span class="catalog-en">Pencernaan Sehat</span>
                         <span class="catalog-price-ecer">Rp 20.080</span>
+                        <p class="product-short-desc">Tinggi serat! Gedebog Pisang & Okra untuk pencernaan.</p>
                         <p style="font-size:0.85em; color:#555; margin-bottom:15px;">Isi: Gedebog Pisang, Okra, Ubi Ungu, Labu Madu.</p>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20SERAT." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
@@ -161,6 +173,7 @@
                         <div class="catalog-name">Paket Imun Booster</div>
                         <span class="catalog-en">Premium Vitamin</span>
                         <span class="catalog-price-ecer">Rp 34.400</span>
+                        <p class="product-short-desc">Vitamin booster dari Strawberry & Sayuran pilihan.</p>
                         <p style="font-size:0.85em; color:#555; margin-bottom:15px;">Isi: Strawberry, Brokoli, Wortel, Jamur Tiram.</p>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20IMUN%20BOOSTER." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
@@ -172,6 +185,7 @@
                         <div class="catalog-name">Paket Mix Ekstrem</div>
                         <span class="catalog-en">Pedas & Gurih</span>
                         <span class="catalog-price-ecer">Rp 27.840</span>
+                        <p class="product-short-desc">Pedas nampol! Cabe Rawit & Paprika asli.</p>
                         <p style="font-size:0.85em; color:#555; margin-bottom:15px;">Isi: Cabe Rawit, Bawang Merah, Paprika, Kentang Wedges.</p>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20EKSTREM." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
@@ -194,31 +208,19 @@
 
     <section id="sayur" class="category-section">
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: 10px;">🌿 Keripik Sayur Murni</h2>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">*Klik gambar untuk melihat detail & kemasan</p>
-            
+            <h2 class="section-title">🌿 Keripik Sayur Murni</h2>
             <div class="catalog-grid">
                 
                 <div class="catalog-card">
-                    <img 
-                        src="images/wortel-1.webp" 
-                        alt="Keripik Wortel" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        /* GANTI NAMA FILE DI SINI SESUAI FOTO BAPAK */
-                        data-gallery="images/wortel-1.webp,images/wortel-2.webp,images/wortel-3.webp,images/wortel-4.webp,images/wortel-5.webp,images/wortel-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/wortel-1.webp" alt="Keripik Wortel" class="catalog-img" loading="lazy" data-gallery="images/wortel-1.webp,images/wortel-2.webp,images/wortel-3.webp,images/wortel-4.webp,images/wortel-5.webp,images/wortel-kemasan.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Wortel</div>
-                        <span class="catalog-en">Carrot Crisps</span>
                         <span class="catalog-price-ecer">Rp 20.800 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Manis alami, renyah, kaya Vitamin A. Anak-anak pasti suka!</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 187.200</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 176.800</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
+                            <tr><td>5kg+</td><td>Rp 176.800</td></tr>
                             <tr><td>25kg+</td><td>Rp 156.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Keripik%20Wortel." class="wa-btn-catalog">Tanya Stok</a>
@@ -226,24 +228,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/ubi-ungu-1.webp" 
-                        alt="Keripik Ubi Ungu" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/ubi-ungu-1.webp,images/ubi-ungu-2.webp,images/ubi-ungu-3.webp,images/ubi-ungu-4.webp,images/ubi-ungu-5.webp,images/ubi-ungu-kemasan-1.webp,images/ubi-ungu-kemasan-2.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/ubi-ungu-1.webp" alt="Keripik Ubi Ungu" class="catalog-img" loading="lazy" data-gallery="images/ubi-ungu-1.webp,images/ubi-ungu-2.webp,images/ubi-ungu-3.webp,images/ubi-ungu-4.webp,images/ubi-ungu-5.webp,images/ubi-ungu-kemasan-1.webp,images/ubi-ungu-kemasan-2.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Ubi Ungu</div>
-                        <span class="catalog-en">Purple Sweet Potato</span>
                         <span class="catalog-price-ecer">Rp 16.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Warna ungu alami, tekstur empuk & manis legit.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 136.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Ungu." class="wa-btn-catalog">Tanya Stok</a>
@@ -251,24 +244,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="ubi-madu.webp" 
-                        alt="Keripik Ubi Madu" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="ubi-madu.webp,ubi-madu-detail.webp,ubi-madu-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/ubi-madu.webp" alt="Keripik Ubi Madu" class="catalog-img" loading="lazy" data-gallery="images/ubi-madu.webp,images/ubi-madu-detail.webp,images/ubi-madu-kemasan.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Ubi Madu</div>
-                        <span class="catalog-en">Honey Sweet Potato</span>
                         <span class="catalog-price-ecer">Rp 16.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Lebih manis dari ubi biasa, favorit keluarga.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 136.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Madu." class="wa-btn-catalog">Tanya Stok</a>
@@ -276,24 +260,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/okra-krispi-1.webp" 
-                        alt="Keripik Okra" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="images/okra-1.webp,images/okra-2.webp,images/okra-3.webp,images/okra-4.webp,images/okra-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/okra-krispi-1.webp" alt="Keripik Okra" class="catalog-img" loading="lazy" data-gallery="images/okra-1.webp,images/okra-2.webp,images/okra-3.webp,images/okra-4.webp,images/okra-kemasan.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Okra</div>
-                        <span class="catalog-en">Okra Crisps</span>
                         <span class="catalog-price-ecer">Rp 40.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Superfood! Renyah, tidak berlendir, bagus untuk diet.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 360.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 340.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 320.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 340.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 300.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Okra." class="wa-btn-catalog">Tanya Stok</a>
@@ -301,24 +276,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/jagung-manis-1.webp" 
-                        alt="Keripik Jagung Manis" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="images/jagung-manis-1.webp,images/jagung-manis-2.webp,images/jagung-manis-3.webp,images/jagung-manis-4.webp,images/jagung-manis-5.webp,images/jagung-manis-kemasan-1.webp,images/jagung-manis-kemasan-2.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/jagung-manis-1.webp" alt="Keripik Jagung Manis" class="catalog-img" loading="lazy" data-gallery="images/jagung-manis-1.webp,images/jagung-manis-2.webp,images/jagung-manis-3.webp,images/jagung-manis-4.webp,images/jagung-manis-5.webp,images/jagung-manis-kemasan-1.webp,images/jagung-manis-kemasan-2.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Jagung Manis</div>
-                        <span class="catalog-en">Sweet Corn</span>
                         <span class="catalog-price-ecer">Rp 19.200 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Butiran jagung utuh yang manis dan meledak di mulut.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 172.800</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 163.200</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
+                            <tr><td>5kg+</td><td>Rp 163.200</td></tr>
                             <tr><td>25kg+</td><td>Rp 144.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Jagung%20Manis." class="wa-btn-catalog">Tanya Stok</a>
@@ -326,24 +292,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="labu-madu.webp" 
-                        alt="Keripik Labu Madu" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="labu-madu.webp,labu-madu-detail.webp,labu-madu-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/labu-madu.webp" alt="Keripik Labu Madu" class="catalog-img" loading="lazy" data-gallery="images/labu-madu.webp,images/labu-madu-detail.webp,images/labu-madu-kemasan.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Labu Madu</div>
-                        <span class="catalog-en">Butternut Squash</span>
                         <span class="catalog-price-ecer">Rp 16.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Tekstur lembut dengan rasa manis creamy alami.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 136.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Labu%20Madu." class="wa-btn-catalog">Tanya Stok</a>
@@ -351,24 +308,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="kentang.webp" 
-                        alt="Keripik Kentang" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="kentang.webp,kentang-detail.webp,kentang-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/kentang.webp" alt="Keripik Kentang" class="catalog-img" loading="lazy" data-gallery="images/kentang.webp,images/kentang-detail.webp,images/kentang-kemasan.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Kentang</div>
-                        <span class="catalog-en">Potato Crisps</span>
                         <span class="catalog-price-ecer">Rp 22.400 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Irisan tipis renyah, gurih tanpa MSG. Klasik favorit.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
+                            <tr><td>5kg+</td><td>Rp 190.400</td></tr>
                             <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Kentang." class="wa-btn-catalog">Tanya Stok</a>
@@ -376,24 +324,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="wedges.webp" 
-                        alt="Keripik Kentang Wedges" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="wedges.webp,wedges-detail.webp,wedges-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/wedges.webp" alt="Keripik Wedges" class="catalog-img" loading="lazy" data-gallery="images/wedges.webp,images/wedges-detail.webp,images/wedges-kemasan.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Wedges</div>
-                        <span class="catalog-en">Potato Wedges</span>
                         <span class="catalog-price-ecer">Rp 25.600 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Potongan tebal, bumbu meresap, kentang premium.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 230.400</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 217.600</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 204.800</td></tr>
+                            <tr><td>5kg+</td><td>Rp 217.600</td></tr>
                             <tr><td>25kg+</td><td>Rp 192.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Wedges." class="wa-btn-catalog">Tanya Stok</a>
@@ -401,24 +340,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="bawang-merah.webp" 
-                        alt="Keripik Bawang Merah" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="bawang-merah.webp,bawang-merah-detail.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/bawang-merah.webp" alt="Keripik Bawang Merah" class="catalog-img" loading="lazy" data-gallery="images/bawang-merah.webp,images/bawang-merah-detail.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Bawang Merah</div>
-                        <span class="catalog-en">Shallot Crisps</span>
                         <span class="catalog-price-ecer">Rp 44.800 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Wangi aromatik! Cocok untuk taburan atau cemilan.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 403.200</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 380.800</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 358.400</td></tr>
+                            <tr><td>5kg+</td><td>Rp 380.800</td></tr>
                             <tr><td>25kg+</td><td>Rp 336.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Merah." class="wa-btn-catalog">Tanya Stok</a>
@@ -426,24 +356,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="bawang-putih.webp" 
-                        alt="Keripik Bawang Putih" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="bawang-putih.webp,bawang-putih-detail.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/bawang-putih.webp" alt="Keripik Bawang Putih" class="catalog-img" loading="lazy" data-gallery="images/bawang-putih.webp,images/bawang-putih-detail.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Bawang Putih</div>
-                        <span class="catalog-en">Garlic Crisps</span>
                         <span class="catalog-price-ecer">Rp 48.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Gurih intens, bagus untuk kesehatan jantung.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 432.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 408.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 384.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 408.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 360.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Putih." class="wa-btn-catalog">Tanya Stok</a>
@@ -451,24 +372,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/buncis-1.webp" 
-                        alt="Keripik Buncis" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="images/buncis-1.webp,images/buncis-2.webp,images/buncis-3.webp,images/buncis-4.webp,images/buncis-5.webp,images/buncis-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/buncis.webp" alt="Keripik Buncis" class="catalog-img" loading="lazy" data-gallery="images/buncis.webp,images/buncis-detail.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Buncis</div>
-                        <span class="catalog-en">Green Bean</span>
                         <span class="catalog-price-ecer">Rp 24.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Hijau segar, tekstur unik berongga yang crunchy.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 216.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 204.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 204.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 180.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Buncis." class="wa-btn-catalog">Tanya Stok</a>
@@ -476,24 +388,15 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="edamame.webp" 
-                        alt="Keripik Edamame" 
-                        class="catalog-img" 
-                        loading="lazy"
-                        data-gallery="edamame.webp,edamame-detail.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/edamame.webp" alt="Keripik Edamame" class="catalog-img" loading="lazy" data-gallery="images/edamame.webp,images/edamame-detail.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Edamame</div>
-                        <span class="catalog-en">Edamame Crisps</span>
                         <span class="catalog-price-ecer">Rp 24.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Kacang kedelai jepang premium, gurih & sehat.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 216.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 204.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 204.000</td></tr>
                             <tr><td>25kg+</td><td>Rp 180.000</td></tr>
                         </table>
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Edamame." class="wa-btn-catalog">Tanya Stok</a>
@@ -506,233 +409,150 @@
 
     <section id="coated" class="category-section">
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: 10px;">💪 Varian Bertempung & Protein</h2>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">*Klik gambar untuk melihat detail & kemasan</p>
-            
+            <h2 class="section-title">💪 Varian Bertempung</h2>
             <div class="catalog-grid">
                 
                 <div class="catalog-card">
-                    <img 
-                        src="images/gedebog.webp" 
-                        alt="Keripik Gedebog Pisang" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/gedebog.webp,images/gedebog-detail.webp,images/gedebog-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/gedebog.webp" alt="Keripik Gedebog" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/gedebog.webp,images/gedebog-detail.webp,images/gedebog-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Gedebog Pisang</div>
-                        <span class="catalog-en">Banana Stem Crisps</span>
                         <span class="catalog-price-ecer">Rp 13.600 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">VIRAL! Pelepah pisang disulap jadi keripik gurih.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 122.400</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 115.600</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 108.800</td></tr>
+                            <tr><td>5kg+</td><td>Rp 115.600</td></tr>
                             <tr><td>25kg+</td><td>Rp 102.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Gedebog%20Pisang." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Gedebog" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/jamur-tiram.webp" 
-                        alt="Keripik Jamur Tiram" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/jamur-tiram.webp,images/jamur-tiram-detail.webp,images/jamur-tiram-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/jamur-tiram.webp" alt="Keripik Jamur Tiram" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/jamur-tiram.webp,images/jamur-tiram-detail.webp,images/jamur-tiram-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Jamur Tiram</div>
-                        <span class="catalog-en">Oyster Mushroom</span>
                         <span class="catalog-price-ecer">Rp 17.600 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Best Seller! Rasa gurih umami alami seperti ayam.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 158.400</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 149.600</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 140.800</td></tr>
+                            <tr><td>5kg+</td><td>Rp 149.600</td></tr>
                             <tr><td>25kg+</td><td>Rp 132.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Jamur%20Tiram." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20JamurTiram" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/jamur-kuping.webp" 
-                        alt="Keripik Jamur Kuping" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/jamur-kuping.webp,images/jamur-kuping-detail.webp,images/jamur-kuping-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/jamur-kuping.webp" alt="Keripik Jamur Kuping" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/jamur-kuping.webp,images/jamur-kuping-detail.webp,images/jamur-kuping-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Jamur Kuping</div>
-                        <span class="catalog-en">Black Fungus</span>
                         <span class="catalog-price-ecer">Rp 19.200 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Tekstur kenyal jadi krispi, unik & sehat.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 172.800</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 163.200</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
+                            <tr><td>5kg+</td><td>Rp 163.200</td></tr>
                             <tr><td>25kg+</td><td>Rp 144.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Jamur%20Kuping." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20JamurKuping" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/brokoli-1.webp" 
-                        alt="Keripik Brokoli" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/brokoli-1.webp,images/brokoli-2.webp,images/brokoli-3.webp,images/brokoli-4.webp,images/brokoli-5.webp,images/brokoli-6.webp,images/brokoli-kemasan-1.webp,images/brokoli-kemasan-2.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/brokoli.webp" alt="Keripik Brokoli" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/brokoli.webp,images/brokoli-detail.webp,images/brokoli-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Brokoli</div>
-                        <span class="catalog-en">Broccoli Crisps</span>
                         <span class="catalog-price-ecer">Rp 19.200 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Sayuran super dalam bentuk krispi. Enak & bergizi.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 172.800</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 163.200</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
+                            <tr><td>5kg+</td><td>Rp 163.200</td></tr>
                             <tr><td>25kg+</td><td>Rp 144.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Brokoli." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Brokoli" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
-
+                
                 <div class="catalog-card">
-                    <img 
-                        src="images/bunga-kol.webp" 
-                        alt="Keripik Bunga Kol" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/bunga-kol.webp,images/bunga-kol-detail.webp,images/bunga-kol-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/bunga-kol.webp" alt="Keripik Bunga Kol" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/bunga-kol.webp,images/bunga-kol-detail.webp,images/bunga-kol-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Bunga Kol</div>
-                        <span class="catalog-en">Cauliflower</span>
                         <span class="catalog-price-ecer">Rp 20.800 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Renyah, gurih, mirip popcorn. Tanpa bau langu.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 187.200</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 176.800</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
+                            <tr><td>5kg+</td><td>Rp 176.800</td></tr>
                             <tr><td>25kg+</td><td>Rp 156.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bunga%20Kol." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20BungaKol" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/bombay.webp" 
-                        alt="Keripik Bawang Bombay" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/bombay.webp,images/bombay-detail.webp,images/bombay-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/bombay.webp" alt="Keripik Bombay" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/bombay.webp,images/bombay-detail.webp,images/bombay-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Bombay</div>
-                        <span class="catalog-en">Onion Crisps</span>
                         <span class="catalog-price-ecer">Rp 20.800 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Aroma bawang bombay yang khas & manis.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 187.200</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 176.800</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
+                            <tr><td>5kg+</td><td>Rp 176.800</td></tr>
                             <tr><td>25kg+</td><td>Rp 156.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bombay." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Bombay" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/paprika.webp" 
-                        alt="Keripik Paprika" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/paprika.webp,images/paprika-detail.webp,images/paprika-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/paprika.webp" alt="Keripik Paprika" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/paprika.webp,images/paprika-detail.webp,images/paprika-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Paprika</div>
-                        <span class="catalog-en">Bell Pepper</span>
                         <span class="catalog-price-ecer">Rp 22.400 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Rasa unik sedikit pedas manis dengan aroma khas.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
+                            <tr><td>5kg+</td><td>Rp 190.400</td></tr>
                             <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Paprika." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Paprika" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/cabe-besar.webp" 
-                        alt="Keripik Cabe Besar" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/cabe-besar.webp,images/cabe-besar-detail.webp,images/cabe-besar-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/cabe-besar.webp" alt="Keripik Cabe Besar" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/cabe-besar.webp,images/cabe-besar-detail.webp,images/cabe-besar-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Cabe Besar</div>
-                        <span class="catalog-en">Large Chili</span>
                         <span class="catalog-price-ecer">Rp 22.400 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Pedas mantap, irisan besar. Berani coba?</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
+                            <tr><td>5kg+</td><td>Rp 190.400</td></tr>
                             <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Cabe%20Besar." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20CabeBesar" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/cabe-rawit.webp" 
-                        alt="Keripik Cabe Rawit" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/cabe-rawit.webp,images/cabe-rawit-detail.webp,images/cabe-rawit-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/cabe-rawit.webp" alt="Keripik Cabe Rawit" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/cabe-rawit.webp,images/cabe-rawit-detail.webp,images/cabe-rawit-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Cabe Rawit</div>
-                        <span class="catalog-en">Bird's Eye Chili</span>
                         <span class="catalog-price-ecer">Rp 22.400 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Tantangan pedas! Cabe asli digoreng krispi.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
+                            <tr><td>5kg+</td><td>Rp 190.400</td></tr>
                             <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Cabe%20Rawit." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20CabeRawit" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
@@ -742,158 +562,118 @@
 
     <section id="buah" class="category-section">
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: 10px;">🍓 Keripik Buah Murni</h2>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">*Klik gambar untuk melihat detail & kemasan</p>
-            
+            <h2 class="section-title">🍓 Keripik Buah Murni</h2>
             <div class="catalog-grid">
                 
                 <div class="catalog-card">
-                    <img 
-                        src="images/nangka.webp" 
-                        alt="Keripik Nangka" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/nangka.webp,images/nangka-detail.webp,images/nangka-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/nangka.webp" alt="Keripik Nangka" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/nangka.webp,images/nangka-detail.webp,images/nangka-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Nangka</div>
-                        <span class="catalog-en">Jackfruit Crisps</span>
                         <span class="catalog-price-ecer">Rp 24.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">RAJA OLEH-OLEH! Manis, wangi, & renyah. Kualitas Ekspor.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 216.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 204.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
-                            <tr><td>25kg+</td><td>Rp 180.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 204.000</td></tr>
+                            <tr><td>25kg+</td><td>Rp 192.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Nangka." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Nangka" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/apel.webp" 
-                        alt="Keripik Apel" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/apel.webp,images/apel-detail.webp,images/apel-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/apel.webp" alt="Keripik Apel" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/apel.webp,images/apel-detail.webp,images/apel-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Apel</div>
-                        <span class="catalog-en">Apple Crisps</span>
                         <span class="catalog-price-ecer">Rp 16.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Ikon Kota Batu. Rasa asam manis segar apel Malang.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                            <tr><td>25kg+</td><td>Rp 120.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 136.000</td></tr>
+                            <tr><td>25kg+</td><td>Rp 128.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Apel." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Apel" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/pisang-1.webp" 
-                        alt="Keripik Pisang" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/pisang-1.webp,images/pisang-2.webp,images/pisang-3.webp,images/pisang-4.webp,images/pisang-5.webp,images/pisang-kemasan-1.webp,images/pisang-kemasan-2.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/salak.webp" alt="Keripik Salak" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/salak.webp,images/salak-detail.webp,images/salak-kemasan.webp">
+                    <div class="catalog-info">
+                        <div class="catalog-name">Keripik Salak</div>
+                        <span class="catalog-price-ecer">Rp 16.000 <small>/100gr</small></span>
+                        <p class="product-short-desc">Rasa unik sepat manis, tekstur padat dan renyah.</p>
+                        <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
+                        <table class="mini-tier-table">
+                            <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 136.000</td></tr>
+                            <tr><td>25kg+</td><td>Rp 128.000</td></tr>
+                        </table>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Salak" class="wa-btn-catalog">Tanya Stok</a>
+                    </div>
+                </div>
+
+                <div class="catalog-card">
+                    <img src="images/pisang.webp" alt="Keripik Pisang" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/pisang.webp,images/pisang-detail.webp,images/pisang-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Pisang</div>
-                        <span class="catalog-en">Banana Crisps</span>
                         <span class="catalog-price-ecer">Rp 16.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Manis legit pisang asli, tanpa tambahan gula.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                            <tr><td>25kg+</td><td>Rp 120.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 136.000</td></tr>
+                            <tr><td>25kg+</td><td>Rp 128.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Pisang." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Pisang" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/strawberry-1.webp" 
-                        alt="Keripik Strawberry" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/strawberry-1.webp,images/strawberry-2.webp,images/strawberry-3.webp,images/strawberry-4.webp,images/strawberry-01.webp,images/strawberry-02.webp,images/strawberry-03.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/strawberry.webp" alt="Keripik Strawberry" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/strawberry.webp,images/strawberry-detail.webp,images/strawberry-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Strawberry</div>
-                        <span class="catalog-en">Strawberry</span>
                         <span class="catalog-price-ecer">Rp 80.000 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">PREMIUM! Buah utuh, rasa asam manis meledak. Mewah.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 720.000</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 680.000</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 640.000</td></tr>
-                            <tr><td>25kg+</td><td>Rp 600.000</td></tr>
+                            <tr><td>5kg+</td><td>Rp 680.000</td></tr>
+                            <tr><td>25kg+</td><td>Rp 640.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Strawberry." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Strawberry" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/buah-naga-1.webp" 
-                        alt="Keripik Buah Naga" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/buah-naga-2.webp,images/buah-naga-3.webp,images/buah-naga-4.webp,images/buah-naga-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/buah-naga.webp" alt="Keripik Buah Naga" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/buah-naga.webp,images/buah-naga-detail.webp,images/buah-naga-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Buah Naga</div>
-                        <span class="catalog-en">Dragon Fruit</span>
                         <span class="catalog-price-ecer">Rp 35.200 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Warna ungu eksotis, rasa manis, instagramable.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 316.800</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 299.200</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 281.600</td></tr>
+                            <tr><td>5kg+</td><td>Rp 299.200</td></tr>
                             <tr><td>25kg+</td><td>Rp 264.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Buah%20Naga." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20BuahNaga" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
                 <div class="catalog-card">
-                    <img 
-                        src="images/mangga.webp" 
-                        alt="Keripik Mangga" 
-                        class="catalog-img" 
-                        loading="lazy" 
-                        data-gallery="images/mangga.webp,images/mangga-detail.webp,images/mangga-kemasan.webp"
-                        onclick="openGallery(this)"
-                    >
+                    <img src="images/mangga.webp" alt="Keripik Mangga" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/mangga.webp,images/mangga-detail.webp,images/mangga-kemasan.webp">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Mangga</div>
-                        <span class="catalog-en">Mango Crisps</span>
                         <span class="catalog-price-ecer">Rp 22.400 <small>/100gr</small></span>
-                        
+                        <p class="product-short-desc">Harum mangga asli, rasa tropis yang segar.</p>
                         <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
                         <table class="mini-tier-table">
                             <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                            <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                            <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
+                            <tr><td>5kg+</td><td>Rp 190.400</td></tr>
                             <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                         </table>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Mangga." class="wa-btn-catalog">Tanya Stok</a>
+                        <a href="https://wa.me/628124966298?text=Info%20Grosir%20Mangga" class="wa-btn-catalog">Tanya Stok</a>
                     </div>
                 </div>
 
@@ -901,36 +681,78 @@
         </div>
     </section>
 
-    <footer class="site-footer" style="text-align: center; padding: 20px;">
-        <p>© 2025 Primafood Rilldelish. <a href="index.html" style="color: #ff8c00;">Kembali ke Home</a></p>
+    <div class="seo-footer-text">
+        <div class="container">
+            <h3>Pusat Grosir Keripik Sayur & Buah Tangan Pertama di Batu</h3>
+            <p>
+                Selamat datang di katalog digital <strong>Primafood Rilldelish</strong>. Kami adalah produsen dan supplier keripik sehat terpercaya yang berlokasi di Kota Batu, Jawa Timur. Produk kami diolah menggunakan teknologi <em>Vacuum Frying</em> modern, menghasilkan keripik yang renyah, tidak berminyak, dan tetap menjaga nutrisi serta warna asli buah dan sayur.
+            </p>
+            <p>
+                Kami melayani pembelian <strong>Grosir Keripik Kiloan (Bal-balan)</strong> untuk kebutuhan Toko Oleh-oleh, Reseller, Agen Snack, hingga Ekspor. Tersedia lebih dari 25 varian produk mulai dari Keripik Nangka, Apel, Salak, hingga varian unik seperti Keripik Okra, Brokoli, dan Gedebog Pisang. Dapatkan harga pabrik termurah langsung dari tangan pertama.
+            </p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-row">
+                
+                <div class="footer-col info-col">
+                    <h3 class="footer-heading">📍 Lokasi Pabrik</h3>
+                    <p class="footer-address">
+                        <strong>Rilldelish (Primafood)</strong><br>
+                        Jl. Sumbergondo No. 28, Kec. Bumiaji,<br>
+                        Kota Batu, Jawa Timur 65335.
+                    </p>
+                    <p style="font-size: 0.85em; color: #aaa; margin-top: 10px;">
+                        Buka: Senin - Sabtu (08.00 - 16.00)
+                    </p>
+                </div>
+
+                <div id="lokasi" class="footer-col map-col">
+                    <h3 class="footer-heading">🗺️ Peta</h3>
+                    <div class="map-container-small">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.053792834226!2d112.5290!3d-7.8895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7880d3702065ad%3A0x63dc53b43378999!2sJl.%20Sumbergondo%2C%20Bumiaji%2C%20Kota%20Batu%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1708450000000!5m2!1sid!2sid" title="Peta Lokasi Primafood Batu" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <a href="https://maps.google.com/?q=Jl.+Sumbergondo+No.+28,+Kec.+Bumiaji,+Kota+Batu,+Jawa+Timur+65335" target="_blank" class="map-link-text">Buka di Google Maps App ↗</a>
+                </div>
+
+                <div class="footer-col connect-col">
+                    <h3 class="footer-heading">📞 Kontak & Sosmed</h3>
+                    <div class="action-buttons">
+                        <a href="https://wa.me/628124966298" class="btn-flat wa-btn" target="_blank">Chat WhatsApp</a>
+                        <a href="https://www.tokopedia.com/primafoodbatu" class="btn-flat tokped-btn" target="_blank">Tokopedia</a>
+                    </div>
+                    <div class="social-grid">
+                        <a href="https://www.facebook.com/PrimaFoodBatu/" target="_blank" class="social-box fb">Facebook</a>
+                        <a href="https://www.instagram.com/" target="_blank" class="social-box ig">Instagram</a>
+                        <a href="https://www.tiktok.com/" target="_blank" class="social-box tt">TikTok</a>
+                        <a href="https://www.youtube.com/" target="_blank" class="social-box yt">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2025 Primafood Rilldelish. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
     </footer>
 
-   <script>
-    // --- FITUR LIGHTBOX GALLERY (MULTI IMAGE) ---
-    let currentGallery = []; // Menyimpan daftar foto
-    let currentIndex = 0;    // Menyimpan posisi foto sekarang
+    <script>
+    let currentGallery = []; 
+    let currentIndex = 0;    
 
     function openGallery(element) {
         const modal = document.getElementById("imgModal");
-        const modalImg = document.getElementById("imgExpanded");
-        
-        // 1. Ambil data gambar dari atribut data-gallery
-        // Format di HTML nanti: data-gallery="foto1.webp,foto2.webp,foto3.webp"
         const galleryRaw = element.getAttribute('data-gallery');
         
         if (galleryRaw) {
-            // Jika ada banyak foto, pisahkan berdasarkan koma
             currentGallery = galleryRaw.split(',');
         } else {
-            // Jika cuma 1 foto, ambil dari src saja
             currentGallery = [element.src];
         }
 
-        // 2. Reset ke foto pertama
         currentIndex = 0;
         updateLightboxImage();
-        
-        // 3. Tampilkan Modal
         modal.classList.add('active');
     }
 
@@ -940,46 +762,37 @@
 
     function changeSlide(n) {
         currentIndex += n;
-        
-        // Logika Loop (Kalau habis balik ke awal)
-        if (currentIndex >= currentGallery.length) {
-            currentIndex = 0;
-        } else if (currentIndex < 0) {
-            currentIndex = currentGallery.length - 1;
-        }
-        
+        if (currentIndex >= currentGallery.length) { currentIndex = 0; } 
+        else if (currentIndex < 0) { currentIndex = currentGallery.length - 1; }
         updateLightboxImage();
     }
 
     function updateLightboxImage() {
         const modalImg = document.getElementById("imgExpanded");
         const captionText = document.getElementById("caption");
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
         
-        // Set gambar
-        modalImg.src = currentGallery[currentIndex].trim(); // trim() untuk hapus spasi tak sengaja
+        modalImg.src = currentGallery[currentIndex].trim(); 
         
-        // Set teks indikator (misal: 1 / 3)
         if (currentGallery.length > 1) {
             captionText.style.display = "block";
             captionText.innerHTML = (currentIndex + 1) + " / " + currentGallery.length;
-            
-            // Tampilkan tombol panah
-            document.querySelector('.prev-btn').style.display = "block";
-            document.querySelector('.next-btn').style.display = "block";
+            prevBtn.style.display = "block";
+            nextBtn.style.display = "block";
         } else {
-            // Sembunyikan navigasi jika cuma 1 foto
             captionText.style.display = "none";
-            document.querySelector('.prev-btn').style.display = "none";
-            document.querySelector('.next-btn').style.display = "none";
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
         }
     }
-       </script>
+    </script>
 
     <div id="imgModal" class="lightbox-modal">
-        <span class="close-lightbox" onclick="closeGallery()">&times;</span>   
-        <a class="prev-btn" onclick="changeSlide(-1)">&#10094;</a>
-        <a class="next-btn" onclick="changeSlide(1)">&#10095;</a>        
-        <img class="lightbox-content" id="imgExpanded">       
+        <span class="close-lightbox" onclick="closeGallery()">×</span>
+        <a class="prev-btn" onclick="changeSlide(-1)">❮</a>
+        <a class="next-btn" onclick="changeSlide(1)">❯</a>
+        <img class="lightbox-content" id="imgExpanded">
         <div id="caption" class="gallery-counter"></div>
     </div>
 
