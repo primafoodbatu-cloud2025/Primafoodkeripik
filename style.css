@@ -1350,3 +1350,73 @@ h3[style*="color: #ff8c00"] {
     background: rgba(0,0,0,0.5);
     border-radius: 15px;
 }
+
+/* ========================================= */
+/* FIX TAMPILAN HP: KATALOG 2 KOLOM (COMPACT) */
+/* ========================================= */
+
+@media (max-width: 600px) {
+    
+    /* 1. Paksa Grid menjadi 2 Kolom Sejajar */
+    .catalog-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 Kolom, lebar sama */
+        gap: 8px !important; /* Jarak antar kotak dirapatkan */
+    }
+
+    /* 2. Atur Kartu agar tidak terlalu tinggi */
+    .catalog-card {
+        height: auto !important;
+        min-height: 320px; /* Tinggi minimal agar rapi */
+    }
+
+    /* 3. Gambar Kotak Tapi Kecil */
+    .catalog-img {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important; /* Tetap kotak 1:1 */
+        height: auto !important;
+    }
+
+    /* 4. Kecilkan Font Judul & Info agar muat */
+    .catalog-info {
+        padding: 8px !important; /* Padding dalam ditipiskan */
+    }
+
+    .catalog-name {
+        font-size: 0.85em !important; /* Judul lebih kecil */
+        line-height: 1.2 !important;
+        margin-bottom: 2px !important;
+        min-height: 34px !important; /* Space pas untuk 2 baris judul */
+    }
+
+    .catalog-en {
+        font-size: 0.7em !important; /* Bahasa inggris kecil banget */
+        margin-bottom: 4px !important;
+    }
+
+    .catalog-price-ecer {
+        font-size: 0.95em !important; /* Harga ecer pas */
+        margin-bottom: 4px !important;
+    }
+
+    /* 5. Tabel Grosir Super Mini (Agar muat di kotak kecil) */
+    .mini-tier-label {
+        font-size: 0.65em !important;
+        margin-top: 5px !important;
+    }
+
+    .mini-tier-table {
+        font-size: 0.6em !important; /* Font tabel sangat kecil tapi terbaca */
+    }
+    
+    .mini-tier-table td {
+        padding: 1px 0 !important;
+    }
+
+    /* 6. Tombol WA Kecil */
+    .wa-btn-catalog {
+        font-size: 0.8em !important;
+        padding: 5px !important;
+        margin-top: 8px !important;
+    }
+}
