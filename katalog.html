@@ -23,41 +23,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=4"> 
     <style>
+        /* --- FIX LAYAR GESER (HORIZONTAL SCROLL) --- */
+        body, html {
+            overflow-x: hidden; /* Kunci layar agar tidak geser ke kanan */
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         .catalog-header {
-            /* BACKGROUND GAMBAR SAMAR (Overlay Putih 90%) */
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85)), url('images/paket-borong.webp');
-            background-size: cover;
-            background-position: center;
-            
-            padding: 50px 20px;
+            background-color: #fff8e1;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 5px solid #e65100; /* Garis lebih tebal dikit */
-            margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sedikit bayangan */
+            border-bottom: 3px solid #e65100;
+            margin-bottom: 30px;
         }
         .back-link {
             display: inline-block;
             margin-bottom: 15px;
             color: #2e7d32;
             text-decoration: none;
-            font-weight: 700;
-            border: 2px solid #2e7d32;
-            padding: 8px 20px;
-            border-radius: 30px;
-            background: rgba(255,255,255,0.8);
-        }
-        .promo-special-card {
-            border: 3px dashed #e65100 !important; /* Garis putus-putus tebal */
-            background-color: #fff3e0 !important;   /* Warna beda dikit */
-            transform: scale(1.02); /* Sedikit lebih besar dari yang lain */
-            z-index: 2;
-            box-shadow: 0 10px 25px rgba(230, 81, 0, 0.2) !important;
-        }
-        .category-section {
-            /* JARAK ANTAR KATEGORI DITAMBAH BIAR GAK MEPET */
-            padding-top: 80px !important;    /* Jarak dari garis atas ke Judul */
-            padding-bottom: 60px !important; /* Jarak dari produk bawah ke garis */
-            border-bottom: 1px dashed #ccc;
+            font-weight: 600;
+            border: 1px solid #2e7d32;
+            padding: 5px 15px;
+            border-radius: 20px;
         }
         /* Deskripsi Singkat Produk */
         .product-short-desc {
@@ -73,98 +62,78 @@
         }
         /* Sub-judul Best Seller */
         .section-subtitle-best-seller {
-            display: block;
-            text-align: center;
-            font-weight: 600;
-            color: #c62828;
-            font-style: italic;
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            display: block; text-align: center; font-weight: 600; color: #c62828;
+            font-style: italic; margin-bottom: 20px; font-size: 1.1em;
         }
         /* Section SEO Text */
         .seo-footer-text {
-            background-color: #f9f9f9;
-            padding: 30px 20px;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            font-size: 0.85em;
-            color: #666;
-            text-align: justify;
+            background-color: #f9f9f9; padding: 30px 20px; margin-top: 40px;
+            border-top: 1px solid #eee; font-size: 0.85em; color: #666; text-align: justify;
         }
         .seo-footer-text h3 { font-size: 1.1em; color: #333; margin-bottom: 10px; }
         
         /* Fix Mobile Button */
-       .wa-btn-catalog {
+        .wa-btn-catalog {
             display: block; width: 100%; text-align: center;
             background-color: #25D366; color: white; padding: 10px;
             border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px;
         }
         .wa-btn-catalog:hover { background-color: #128C7E; }
 
-        /* --- UPDATE: TAMPILAN MOBILE (HP) --- */
+        /* --- STYLE KHUSUS PROMO BORONG (BARU) --- */
+        .promo-special-wrapper {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center; /* Tengah di Desktop */
+            width: 100%;
+        }
+        .promo-special-card {
+            width: 100%;
+            max-width: 600px; /* Lebar maksimal di Desktop agar tidak raksasa */
+            border: 3px dashed #e65100 !important;
+            background-color: #fff3e0 !important;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(230, 81, 0, 0.15) !important;
+        }
+        .promo-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 2/1; /* Gambar Promo lebih lebar (Landscape) */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* --- FIX MOBILE GRID & LAYOUT --- */
         @media (max-width: 768px) {
             .container { padding: 0 10px !important; }
+            
+            /* Grid Produk Biasa (2 Kolom) */
             .catalog-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
             
             .catalog-card { min-height: auto !important; height: 100% !important; }
             .catalog-img { height: auto !important; aspect-ratio: 1 / 1 !important; }
-            
             .catalog-info { padding: 8px !important; }
             
-            /* Judul di HP */
             .catalog-name { font-size: 13px !important; min-height: 32px !important; line-height: 1.2 !important; }
+            .catalog-en { font-size: 10px !important; display: none !important; }
+            .catalog-price-ecer { font-size: 14px !important; margin-bottom: 2px !important; }
+            .mini-tier-label { display: none !important; }
+            .mini-tier-table { font-size: 9px !important; }
+            .mini-tier-table td { padding: 0 !important; }
+            .wa-btn-catalog { font-size: 11px !important; padding: 5px 0 !important; }
             
-            /* Bhs Inggris tetap sembunyi biar gak penuh */
-            .catalog-en { display: none !important; } 
-            
-            .catalog-price-ecer { font-size: 14px !important; margin-bottom: 5px !important; }
-            
-            /* Sembunyikan Tabel Tier di HP (Biar gak kepanjangan) */
-            .mini-tier-label, .mini-tier-table { display: none !important; }
-            
-            .wa-btn-catalog { font-size: 11px !important; padding: 6px 0 !important; }
-
-            /* --- PERBAIKAN 1: DESKRIPSI PENDEK DITAMPILKAN --- */
+            /* Deskripsi Pendek Muncul di HP (Font Kecil) */
             .product-short-desc { 
-                display: -webkit-box !important; /* Munculkan kembali */
-                font-size: 10px !important;      /* Ukuran font imut */
+                display: -webkit-box !important;
+                font-size: 10px !important;
                 line-height: 1.2 !important;
-                color: #555 !important;
-                margin-bottom: 8px !important;
-                -webkit-line-clamp: 2;           /* Maksimal 2 baris */
+                margin-bottom: 5px !important;
             }
-            
-            /* Tambahan Jarak Header di HP */
-            .category-section { padding-top: 40px !important; padding-bottom: 30px !important; }
 
-            /* --- PERBAIKAN 2: PROMO BORONG JADI LEBAR (2 KOLOM) --- */
-            .promo-special-card {
-                grid-column: 1 / -1 !important; /* Perintah Sakti: Ambil semua kolom (full width) */
-                display: flex !important;
-                flex-direction: row !important; /* Gambar kiri, Teks kanan (Mini Horizontal) */
-                align-items: center !important;
-                text-align: left !important;
-                padding: 10px !important;
-                min-height: auto !important;
-            }
-            
-            /* Atur Gambar Promo di HP */
-            .promo-special-card img {
-                width: 120px !important;
-                height: 120px !important;
-                margin-right: 10px !important;
-                margin-bottom: 0 !important;
-            }
-            
-            /* Atur Teks Promo di HP */
-            .promo-special-card .catalog-info {
-                padding: 0 !important;
-            }
-            
-            .promo-special-card .catalog-name {
-                font-size: 15px !important; /* Judul lebih besar */
-                color: #e65100 !important;
-            }
+            /* Promo Card di HP (Full Lebar) */
+            .promo-special-wrapper { margin-top: 20px; }
+            .promo-special-card { max-width: 100% !important; } /* Penuhi layar HP */
+            .promo-img { aspect-ratio: 16/9 !important; } /* Gambar agak tinggi di HP */
         }
     </style>
 </head>
@@ -264,20 +233,43 @@
                         <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20EKSTREM." class="wa-btn-catalog">Pesan via WA</a>
                     </div>
                 </div>
-
-                <div class="catalog-card promo-special-card">
-                    <img src="images/paket-borong.webp" alt="Promo Borong Semua" class="catalog-img" loading="lazy" onclick="openImage(this)">
-                    <div class="catalog-info">
-                        <div class="catalog-name" style="color: #e65100;">🔥 PROMO BORONG SEMUA</div>
-                        <span class="catalog-en">Dapat 6 Varian Lengkap (600gr)</span>
-                        <span class="catalog-price-ecer" style="color: #c62828;">Rp 136.000 <s style="color:#999; font-size:0.6em; font-weight:400;">Rp 142.320</s></span>
-                        <p style="font-size:0.85em; color:#2e7d32; font-weight:bold; margin-bottom:15px;">(Lebih Hemat 5%)</p>
-                        <a href="https://wa.me/628124966298?text=Halo%20Admin%2C%20saya%20mau%20AMBIL%20PROMO%20BORONG%20SEMUA%20(600gr)." class="wa-btn-catalog" style="background-color: #e65100;">AMBIL PROMO</a>
-                    </div>
+                
+            </div>
+            <div class="promo-horizontal-card">
+                
+                <div class="promo-left">
+                    <img src="images/paket-borong.webp" alt="Promo Borong Semua Varian" loading="lazy" onclick="openImage(this)">
                 </div>
 
+                <div class="promo-right">
+                    <h3 class="promo-title">
+                        🔥 PROMO "BORONG SEMUA" 🔥
+                    </h3>
+                    
+                    <p class="promo-desc">
+                        Penasaran dengan semua rasanya? <br>
+                        Ambil paket komplit ini! Dapatkan <strong>1 bungkus dari setiap varian</strong> (Total 6 Bungkus / 600gr).
+                    </p>
+
+                    <div class="promo-price-box">
+                        <div style="text-align: right; line-height: 1.2;">
+                            <p style="font-size: 0.85em; color: #444; margin: 0;">Normal:</p>
+                            <s style="color: #444; font-size: 0.9em; font-weight: 600;">Rp 142.320</s>
+                        </div>
+                        <div style="text-align: left; border-left: 2px solid #bbb; padding-left: 15px;">
+                            <p style="font-size: 2em; font-weight: 800; color: #c62828; margin: 0; line-height: 1;">Rp 136.000</p>
+                            <p style="font-size: 0.8em; color: #1b5e20; font-weight: 800; margin: 2px 0 0 0;">(Lebih Hemat 5%)</p>
+                        </div>
+                    </div>
+
+                    <a href="#order-form" class="cta-button mix-order-btn" 
+                       data-product-name="PROMO BORONG SEMUA (6 Paket / 600gr) - Rp 136.000" 
+                       style="font-size: 1em; padding: 12px 30px; background-color: #e65100; color: #ffffff !important; width: 100%; border-radius: 50px; margin-top: 10px; text-decoration: none; display: block; font-weight: 700; box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);">
+                       AMBIL PROMO (600gr) 🛒
+                    </a>
+                </div>
             </div>
-        </div>
+            </div>
     </section>
 
     <section id="sayur" class="category-section">
@@ -430,7 +422,7 @@
                 </div>
 
                 <div class="catalog-card">
-                    <img src="images/bawang-putih-1.webp" alt="Keripik Bawang Putih" class="catalog-img" loading="lazy" data-gallery="images/bawang-putih-1.webp,images/bawang-putih-2.webp,images/bawang-putih-3.webp,images/bawang-putih-4.webp,images/bawang-putih-5.webp,images/bawang-putih-6.webp,images/bawang-putih-kemasan-1.webp,images/bawang-putih-kemasan-2.webp" onclick="openGallery(this)">
+                    <img src="images/bawang-putih-1.webp" alt="Keripik Bawang Putih" class="catalog-img" loading="lazy" data-gallery="images/bawang-putih-0.webp,images/bawang-putih-1.webp,images/bawang-putih-2.webp,images/bawang-putih-3.webp,images/bawang-putih-4.webp,images/bawang-putih-5.webp,images/bawang-putih-6.webp,images/bawang-putih-kemasan-1.webp,images/bawang-putih-kemasan-2.webp" onclick="openGallery(this)">
                     <div class="catalog-info">
                         <div class="catalog-name">Keripik Bawang Putih</div>
                         <span class="catalog-price-ecer">Rp 48.000 <small>/100gr</small></span>
