@@ -1484,3 +1484,11 @@ h3[style*="color: #ff8c00"] {
 .wa-btn-catalog:hover {
     background-color: #004d40 !important; /* Lebih gelap lagi saat hover */
 }
+
+/* Fix Jarak Header ke Konten */
+.hero-section {
+    padding-bottom: 30px !important; /* Kurangi jarak bawah header */
+}
+.problem-solution {
+    background-color: #fff !important; /* Pastikan background putih bersih */
+}
