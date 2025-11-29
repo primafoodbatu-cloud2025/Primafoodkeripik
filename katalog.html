@@ -863,8 +863,10 @@
 
     <div id="imgModal" class="lightbox-modal">
         <span class="close-lightbox" onclick="closeGallery()">×</span>
-        <a href="javascript:void(0)" class="prev-btn" onclick="changeSlide(-1)" aria-label="Previous Image">❮</a>
-        <a href="javascript:void(0)" class="next-btn" onclick="changeSlide(1)" aria-label="Next Image">❯</a>
+        
+        <button class="prev-btn" onclick="changeSlide(-1)" type="button" aria-label="Gambar Sebelumnya">❮</button>
+        <button class="next-btn" onclick="changeSlide(1)" type="button" aria-label="Gambar Selanjutnya">❯</button>
+        
         <img class="lightbox-content" id="imgExpanded">
         <div id="caption" class="gallery-counter"></div>
     </div>
