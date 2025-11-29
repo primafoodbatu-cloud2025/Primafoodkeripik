@@ -1473,3 +1473,14 @@ h3[style*="color: #ff8c00"] {
     overflow: hidden;
     font-style: italic;
 }
+
+/* ========================================= */
+/* FIX: KONTRAS TOMBOL WA KATALOG (ACCESSIBILITY) */
+/* ========================================= */
+.wa-btn-catalog {
+    background-color: #1b5e20 !important; /* Hijau Hutan Gelap (Lulus WCAG) */
+    color: #ffffff !important;
+}
+.wa-btn-catalog:hover {
+    background-color: #004d40 !important; /* Lebih gelap lagi saat hover */
+}
