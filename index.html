@@ -1255,22 +1255,21 @@ Mohon di cek dan info nomor rekening. Terima kasih!`;
 <style>
 .float-wa {
   position: fixed;
-  bottom: 20px;
+  bottom: 25px; /* Naikkan sedikit biar aman dari jempol */
   right: 20px;
-  background-color: #25d366; /* Warna Hijau WA */
+  background-color: #25d366;
   color: white;
   padding: 10px 20px;
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  z-index: 9999; /* Agar selalu di paling depan */
-  display: flex;
+  z-index: 2147483647 !important; /* Angka Maksimal + Paksa Tampil */
+  display: flex !important; /* Paksa Tampil (cegah ada kode lain yang hide) */
   align-items: center;
   gap: 10px;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 14px;
-  transition: transform 0.3s;
 }
 
 .float-wa:hover {
