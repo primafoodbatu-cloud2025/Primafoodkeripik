@@ -456,220 +456,209 @@
         </div>
     </section>
 
-    <section class="testimonial-video">
-        <div class="container" style="text-align: center;">
-            <h2 class="section-title">💖 Apa Kata Mereka? (Lihat Buktinya!)</h2>
-            <p style="font-size: 1.1em; margin-bottom: 40px;">Kami bantu mereka hidup lebih sehat tanpa mengorbankan kenikmatan ngemil.</p>
-            
-            <div style="display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 250px;">
-                    <img src="https://placehold.co/300x300/e6ffe6/38761d?text=Foto+Rina+S" alt="Testimoni Rina S" width="300" height="300" style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <p style="margin-top: 10px; font-style: italic;">"Keripik Okra ini bantu saya tetap kenyang saat diet!" - <strong>Rina S.</strong></p>
-                </div>
-                
-                <div style="flex: 1; min-width: 250px;">
-                    <img src="https://placehold.co/300x300/ffe6e6/cc0000?text=Foto+Ibu+Maya" alt="Testimoni Ibu Maya" width="300" height="300" style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <p style="margin-top: 10px; font-style: italic;">"Anak saya jadi suka sayur, ini solusi parenting!" - <strong>Ibu Maya</strong></p>
-                </div>
-            </div>
+   <section class="bulk-order">
+    <div class="container">
+        <h2 class="section-title">💰 JADILAH MITRA BISNIS KAMI!</h2>
+        <p style="text-align: center; font-size: 1.1em; margin-bottom: 20px;">Penawaran Khusus Grosir untuk Reseller & Distributor.</p>
+
+        <table class="tier-table-compact">
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Jumlah (kg)</th>
+                    <th>Diskon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1 - 4 kg</td>
+                    <td style="color: #2e7d32; font-weight: bold;">10% OFF</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #f9f9f9;">2</td>
+                    <td style="background-color: #f9f9f9;">5 - 14 kg</td>
+                    <td style="background-color: #f9f9f9; color: #2e7d32; font-weight: bold;">15% OFF</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>15 - 24 kg</td>
+                    <td style="color: #2e7d32; font-weight: bold;">20% OFF</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #f9f9f9;">4</td>
+                    <td style="background-color: #f9f9f9;">25 kg++</td>
+                    <td style="background-color: #f9f9f9; color: #c62828; font-weight: bold;">25% OFF</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p style="text-align: center; margin-top: 15px; font-size: 0.9em; font-style: italic;">*Kemasan Aluminium Foil Polos (Siap Re-branding).</p>
+    </div>
+</section>
+
+<section id="order-form" class="conversion-form">
+    <div class="container" style="max-width: 600px;">
+        <h2 class="section-title">🎁 Klaim Diskon & Sampel Disini!</h2>
+        
+        <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
+            <p style="font-weight: 700; font-size: 1.1em;">⚡ FLASH SALE AKTIF! Tambahan 5%!</p>
+            <p>Sisa Waktu: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
         </div>
-    </section>
 
-    <section id="order-form" class="conversion-form">
-        <div class="container" style="max-width: 600px;">
-            <h2 class="section-title">🎁 Klaim Diskon Khusus atau Sampel Anda di Sini!</h2>
-            
-            <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
-                <p style="font-weight: 700; font-size: 1.1em;">
-                    ⚡ FLASH SALE AKTIF! Diskon Tambahan 5% untuk Ritel!
-                </p>
-                <p>Waktu Tersisa: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
+        <p style="font-size: 1.1em; margin-bottom: 30px; text-align: center;">
+            Isi formulir di bawah, Tim kami akan hitungkan total diskon via WhatsApp.
+        </p>
+
+        <form id="whatsappForm" class="contact-form">
+            <div class="form-group">
+                <label for="nama">Nama Pemesan *</label>
+                <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
             </div>
-            <p style="font-size: 1.1em; margin-bottom: 30px;">
-                Isi formulir singkat di bawah ini, dan tim kami akan segera menghubungi Anda melalui WhatsApp untuk memproses diskon dan pesanan Anda.
-            </p>
+            <div class="form-group">
+                <label for="telepon">No. WhatsApp Aktif *</label>
+                <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required>
+            </div>
+            <div class="form-group">
+                <label for="alamat">Alamat Lengkap Pengiriman *</label>
+                <textarea id="alamat" name="alamat" rows="2" placeholder="Jalan, No. Rumah, Kecamatan, Kota/Kabupaten" required></textarea>
+            </div>
 
-            <form id="whatsappForm" class="contact-form">
-                <div class="form-group">
-                    <label for="nama">Nama Pemesan *</label>
-                    <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
-                </div>
-                <div class="form-group">
-                    <label for="telepon">No. WhatsApp Aktif *</label>
-                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required>
-                </div>
-                <div class="form-group">
-                    <label for="alamat">Alamat Lengkap Pengiriman *</label>
-                    <textarea id="alamat" name="alamat" rows="2" placeholder="Jalan, No. Rumah, Kecamatan, Kota/Kabupaten" required></textarea>
-                </div>
+            <h3 style="color: #38761d; margin-top: 30px; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Pilihan Produk (Keranjang Mini)</h3>
+            
+            <div id="product-list-container">
+                <div class="product-item" data-id="1">
+                    <div class="form-group">
+                        <label for="paket-1">Pilih Produk/Paket *</label>
+                        <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
+                            <option value="">-- PILIH OPSI ORDER ANDA --</option>
+                            <optgroup label="PILIH PAKET MIX (KEMASAN 100gr)">
+                                <option value="MIX Sweet Garden (100gr) - Rp 19.200">MIX Sweet Garden (Rp 19.200)</option>
+                                <option value="MIX Savory (100gr) - Rp 20.240">MIX Savory (Rp 20.240)</option>
+                                <option value="MIX Fusion (100gr) - Rp 20.560">MIX Fusion (Rp 20.560)</option>
+                                <option value="Paket Mix Serat (100gr) - Rp 20.080">Paket Mix Serat (Rp 20.080)</option>
+                                <option value="Paket Imun Booster (100gr) - Rp 34.400">Paket Imun Booster (Rp 34.400)</option>
+                                <option value="Paket Mix Ekstrem (100gr) - Rp 27.840">Paket Mix Ekstrem (Rp 27.840)</option>
+                                <option value="PROMO BORONG SEMUA (6 Paket / 600gr) - Rp 136.000">🔥 PROMO: BORONG SEMUA 6 VARIAN (Rp 136.000)</option>
+                            </optgroup>
+                            <optgroup label="KERIPIK SAYUR MURNI">
+                                <option value="Satuan - Keripik Wortel (Rp 20.800)">Keripik Wortel (Rp 20.800)</option>
+                                <option value="Satuan - Keripik Ubi Ungu (Rp 16.000)">Keripik Ubi Ungu (Rp 16.000)</option>
+                                <option value="Satuan - Keripik Ubi Madu (Rp 16.000)">Keripik Ubi Madu (Rp 16.000)</option>
+                                <option value="Satuan - Keripik Okra (Rp 40.000)">Keripik Okra (Rp 40.000)</option>
+                                <option value="Satuan - Keripik Jagung Manis (Rp 19.200)">Keripik Jagung Manis (Rp 19.200)</option>
+                                <option value="Satuan - Keripik Labu Madu (Rp 16.000)">Keripik Labu Madu (Rp 16.000)</option>
+                                <option value="Satuan - Keripik Kentang (Rp 22.400)">Keripik Kentang (Rp 22.400)</option>
+                                <option value="Satuan - Keripik Kentang Wedges (Rp 25.600)">Keripik Kentang Wedges (Rp 25.600)</option>
+                                <option value="Satuan - Keripik Bawang Merah (Rp 44.800)">Keripik Bawang Merah (Rp 44.800)</option>
+                                <option value="Satuan - Keripik Bawang Putih (Rp 48.000)">Keripik Bawang Putih (Rp 48.000)</option>
+                                <option value="Satuan - Keripik Buncis (Rp 24.000)">Keripik Buncis (Rp 24.000)</option>
+                                <option value="Satuan - Keripik Edamame (Rp 24.000)">Keripik Edamame (Rp 24.000)</option>
+                            </optgroup>
+                            <optgroup label="VARIAN BERTEMPUNG/PROTEIN">
+                                <option value="Satuan - Keripik Gedebog Pisang (Rp 13.600)">Keripik Gedebog Pisang (Rp 13.600)</option>
+                                <option value="Satuan - Keripik Bawang Bombay (Rp 20.800)">Keripik Bawang Bombay (Rp 20.800)</option>
+                                <option value="Satuan - Keripik Cabe Besar (Rp 22.400)">Keripik Cabe Besar (Rp 22.400)</option>
+                                <option value="Satuan - Keripik Cabe Rawit (Rp 22.400)">Keripik Cabe Rawit (Rp 22.400)</option>
+                                <option value="Satuan - Keripik Paprika (Rp 22.400)">Keripik Paprika (Rp 22.400)</option>
+                                <option value="Satuan - Keripik Jamur Tiram (Rp 17.600)">Keripik Jamur Tiram (Rp 17.600)</option>
+                                <option value="Satuan - Keripik Jamur Kuping (Rp 19.200)">Keripik Jamur Kuping (Rp 19.200)</option>
+                                <option value="Satuan - Keripik Bunga Kol (Rp 20.800)">Keripik Bunga Kol (Rp 20.800)</option>
+                                <option value="Satuan - Keripik Brokoli (Rp 19.200)">Keripik Brokoli (Rp 19.200)</option>
+                            </optgroup>
+                            <optgroup label="KERIPIK BUAH MURNI">
+                                <option value="Satuan - Keripik Pisang (Rp 16.000)">Keripik Pisang (Rp 16.000)</option>
+                                <option value="Satuan - Keripik Apel (Rp 16.000)">Keripik Apel (Rp 16.000)</option>
+                                <option value="Satuan - Keripik Nangka (Rp 24.000)">Keripik Nangka (Rp 24.000)</option>
+                                <option value="Satuan - Keripik Strawberry (Rp 80.000)">Keripik Strawberry (Rp 80.000)</option>
+                                <option value="Satuan - Keripik Buah Naga (Rp 35.200)">Keripik Buah Naga (Rp 35.200)</option>
+                                <option value="Satuan - Keripik Mangga (Rp 22.400)">Keripik Mangga (Rp 22.400)</option>
+                            </optgroup>
+                            <optgroup label="LAINNYA">
+                                <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
+                                <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
+                            </optgroup>
+                        </select>
+                    </div>
 
-                <h3 style="color: #38761d; margin-top: 30px; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Pilihan Produk (Keranjang Mini)</h3>
-                
-               <div id="product-list-container">
-                    <div class="product-item" data-id="1">
+                    <div class="form-group-inline">
                         <div class="form-group">
-                            <label for="paket-1">Pilih Produk/Paket *</label>
-                            <select id="paket-1" name="paket_pilihan[]" class="product-select" required>
-                                <option value="">-- PILIH OPSI ORDER ANDA --</option>
-                                
-                               <optgroup label="PILIH PAKET MIX (KEMASAN 100gr)">
-                                    <option value="MIX Sweet Garden (100gr) - Rp 19.200">MIX Sweet Garden (Rp 19.200)</option>
-                                    <option value="MIX Savory (100gr) - Rp 20.240">MIX Savory (Rp 20.240)</option>
-                                    <option value="MIX Fusion (100gr) - Rp 20.560">MIX Fusion (Rp 20.560)</option>
-                                    
-                                    <option value="Paket Mix Serat (100gr) - Rp 20.080">Paket Mix Serat (Rp 20.080)</option>
-                                    <option value="Paket Imun Booster (100gr) - Rp 34.400">Paket Imun Booster (Rp 34.400)</option>
-                                    <option value="Paket Mix Ekstrem (100gr) - Rp 27.840">Paket Mix Ekstrem (Rp 27.840)</option>
-                                    
-                                   <option value="PROMO BORONG SEMUA (6 Paket / 600gr) - Rp 136.000">🔥 PROMO: BORONG SEMUA 6 VARIAN (Rp 136.000)</option>
-                                </optgroup>
-
-                                <optgroup label="KERIPIK SAYUR MURNI">
-                                    <option value="Satuan - Keripik Wortel (Rp 20.800)">Keripik Wortel (Rp 20.800)</option>
-                                    <option value="Satuan - Keripik Ubi Ungu (Rp 16.000)">Keripik Ubi Ungu (Rp 16.000)</option>
-                                    <option value="Satuan - Keripik Ubi Madu (Rp 16.000)">Keripik Ubi Madu (Rp 16.000)</option>
-                                    <option value="Satuan - Keripik Okra (Rp 40.000)">Keripik Okra (Rp 40.000)</option>
-                                    <option value="Satuan - Keripik Jagung Manis (Rp 19.200)">Keripik Jagung Manis (Rp 19.200)</option>
-                                    <option value="Satuan - Keripik Labu Madu (Rp 16.000)">Keripik Labu Madu (Rp 16.000)</option>
-                                    <option value="Satuan - Keripik Kentang (Rp 22.400)">Keripik Kentang (Rp 22.400)</option>
-                                    <option value="Satuan - Keripik Kentang Wedges (Rp 25.600)">Keripik Kentang Wedges (Rp 25.600)</option>
-                                    <option value="Satuan - Keripik Bawang Merah (Rp 44.800)">Keripik Bawang Merah (Rp 44.800)</option>
-                                    <option value="Satuan - Keripik Bawang Putih (Rp 48.000)">Keripik Bawang Putih (Rp 48.000)</option>
-                                    <option value="Satuan - Keripik Buncis (Rp 24.000)">Keripik Buncis (Rp 24.000)</option>
-                                    <option value="Satuan - Keripik Edamame (Rp 24.000)">Keripik Edamame (Rp 24.000)</option>
-                                </optgroup>
-
-                                <optgroup label="VARIAN BERTEMPUNG/PROTEIN">
-                                    <option value="Satuan - Keripik Gedebog Pisang (Rp 13.600)">Keripik Gedebog Pisang (Rp 13.600)</option>
-                                    <option value="Satuan - Keripik Bawang Bombay (Rp 20.800)">Keripik Bawang Bombay (Rp 20.800)</option>
-                                    <option value="Satuan - Keripik Cabe Besar (Rp 22.400)">Keripik Cabe Besar (Rp 22.400)</option>
-                                    <option value="Satuan - Keripik Cabe Rawit (Rp 22.400)">Keripik Cabe Rawit (Rp 22.400)</option>
-                                    <option value="Satuan - Keripik Paprika (Rp 22.400)">Keripik Paprika (Rp 22.400)</option>
-                                    <option value="Satuan - Keripik Jamur Tiram (Rp 17.600)">Keripik Jamur Tiram (Rp 17.600)</option>
-                                    <option value="Satuan - Keripik Jamur Kuping (Rp 19.200)">Keripik Jamur Kuping (Rp 19.200)</option>
-                                    <option value="Satuan - Keripik Bunga Kol (Rp 20.800)">Keripik Bunga Kol (Rp 20.800)</option>
-                                    <option value="Satuan - Keripik Brokoli (Rp 19.200)">Keripik Brokoli (Rp 19.200)</option>
-                                </optgroup>
-
-                                <optgroup label="KERIPIK BUAH MURNI">
-                                    <option value="Satuan - Keripik Pisang (Rp 16.000)">Keripik Pisang (Rp 16.000)</option>
-                                    <option value="Satuan - Keripik Apel (Rp 16.000)">Keripik Apel (Rp 16.000)</option>
-                                    <option value="Satuan - Keripik Nangka (Rp 24.000)">Keripik Nangka (Rp 24.000)</option>
-                                    <option value="Satuan - Keripik Strawberry (Rp 80.000)">Keripik Strawberry (Rp 80.000)</option>
-                                    <option value="Satuan - Keripik Buah Naga (Rp 35.200)">Keripik Buah Naga (Rp 35.200)</option>
-                                    <option value="Satuan - Keripik Mangga (Rp 22.400)">Keripik Mangga (Rp 22.400)</option>
-                                </optgroup>
-
-                                <optgroup label="LAINNYA">
-                                    <option value="Satuan - Lainnya (Mohon Isi Keterangan)">Varian lain / Kosong (Mohon Isi Keterangan)</option>
-                                    <option value="Informasi Order Grosir (1kg+)">Tertarik Informasi Order Grosir (Diskon 10%++ )</option>
-                                </optgroup>
-                            </select>
+                            <label for="jumlah-1">Jumlah *</label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
+                                <select id="unit-1" name="unit_pesanan[]" class="unit-select" aria-label="Pilih Satuan Berat">
+                                    <option value="pcs">pcs (100g)</option>
+                                    <option value="kg">kg (10 pcs)</option>
+                                </select>
+                            </div>
+                            <p style="font-size: 0.85em; margin-top: 5px; color: #777;">
+                                Berat/pcs: <span class="display-item-weight">100g</span>
+                            </p>
                         </div>
-
-                        <div class="form-group-inline">
-                            <div class="form-group">
-                                <label for="jumlah-1">Jumlah *</label>
-                                <div style="display: flex; gap: 5px;">
-                                    <input type="number" id="jumlah-1" name="jumlah_pesanan[]" class="product-quantity" value="1" min="1" required>
-                                    <select id="unit-1" name="unit_pesanan[]" class="unit-select" aria-label="Pilih Satuan Berat">
-                                        <option value="pcs">pcs (100g)</option>
-                                        <option value="kg">kg (10 pcs)</option>
-                                    </select>
-                                </div>
-                                <p style="font-size: 0.85em; margin-top: 5px; color: #777;">
-                                    Berat/pcs: <span class="display-item-weight">100g</span>
-                                </p>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
-                                <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
-                                    Subtotal: <span class="display-subtotal">Rp 0</span>
-                                </p>
-                            </div>
+                        <div class="form-group">
+                            <button type="button" class="remove-product-btn" style="background-color: #f44336; display:none;">Hapus</button>
+                            <p style="text-align: right; color: #cc0000; font-weight: 600; font-size: 0.9em; margin-top: 10px;">
+                                Subtotal: <span class="display-subtotal">Rp 0</span>
+                            </p>
                         </div>
                     </div>
-                </div> <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
-                
-                <div class="form-group summary-struk">
-                    <p class="struk-line normal-price">
-                        <span class="struk-label">Harga Normal:</span>
-                        <span class="struk-nominal" id="display-normal-price">Rp 0</span>
-                    </p>
-
-                    <p class="struk-line discount-amount">
-                        <span class="struk-label">Potongan Diskon:</span>
-                        <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
-                    </p>
-                    <p id="discount-tier-note" class="struk-deskripsi"></p>
-
-                    <p class="struk-line total-weight">
-                        <span class="struk-label">Total Berat:</span>
-                        <span class="struk-nominal" id="display-total-weight">0 g</span>
-                    </p>
                 </div>
-
-                <div class="form-group struk-grand-total">
-                    <p class="struk-line grand-total-line" style="border-top: 2px solid #ccc; padding-top: 10px;">
-                        <span class="struk-label">JUMLAH BAYAR:</span>
-                        <span class="struk-nominal" id="display-grand-total">Rp 0</span> 
-                        <span class="ikon-uang">💰</span>
-                    </p>
-                    <p id="total-discount-keterangan" class="final-notes" style="text-align: left;"></p>
-                </div>
-                <div class="form-group">
-                    <label for="keterangan">Catatan / Keterangan (Opsional)</label>
-                    <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
-                </div>
-                <button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
-            </form>
-        </div>
-    </section>
-
-    <section class="bulk-order">
-        <div class="container">
-            <h2 class="section-title">💰 JANGAN HANYA JADI PEMBELI, JADILAH MITRA BISNIS SEHAT KAMI!</h2>
-            <p style="text-align: center; font-size: 1.1em; margin-bottom: 30px;">Penawaran Khusus Grosir untuk Reseller, Kafe, dan Distributor.</p>
-
-            <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
-                <thead style="background-color: #ffe4b5;">
-                    <tr>
-                        <th style="padding: 15px; border: 1px solid #ccc;">Tier</th>
-                        <th style="padding: 15px; border: 1px solid #ccc;">Jumlah Pembelian</th>
-                        <th style="padding: 15px; border: 1px solid #ccc;">Diskon yang Diberikan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ccc;">1</td>
-                        <td style="padding: 10px; border: 1px solid #ccc;">1 - 4 kg</td>
-                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #2e7d32;">10% OFF</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">2</td>
-                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">5 - 14 kg</td>
-                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #2e7d32;">15% OFF</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ccc;">3</td>
-                        <td style="padding: 10px; border: 1px solid #ccc;">15 - 24 kg</td>
-                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #2e7d32;">20% OFF</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">4</td>
-                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">25 kg ke atas</td>
-                        <td style="padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; color: #c62828;">25% OFF</td>
-                    </tr>
-                </tbody>
-            </table>
+            </div> 
+            <button type="button" id="add-product-btn" class="cta-button" style="background-color: #f39c12; margin-bottom: 20px; width: 100%;">+ Tambah Produk Lain</button>
             
-            <p style="text-align: center; margin-top: 20px; font-style: italic;">*Pengemasan menggunakan Aluminium Foil tanpa stiker (siap re-branding).</p>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://wa.me/62?text=Halo%20Primafood%20Rilldelish%21%20Saya%20berminat%20untuk%20menjadi%20reseller%20dan%20mendapatkan%20harga%20grosir.%20Mohon%20info%20katalog%20B2B%20terbaru.%20Terbaru.%20Terima%20kasih." class="cta-button" style="background-color: #008000;">DAPATKAN DAFTAR HARGA GROSIR (PABRIK) SEKARANG</a>
-                <p style="margin-top: 10px;">Hubungi Kontak B2B: **0812-4966-298**</p>
+            <div class="form-group summary-struk">
+                <p class="struk-line normal-price">
+                    <span class="struk-label">Harga Normal:</span>
+                    <span class="struk-nominal" id="display-normal-price">Rp 0</span>
+                </p>
+
+                <p class="struk-line discount-amount">
+                    <span class="struk-label">Potongan Diskon:</span>
+                    <span class="struk-nominal" id="display-discount-amount">Rp 0</span>
+                </p>
+                <p id="discount-tier-note" class="struk-deskripsi"></p>
+
+                <p class="struk-line total-weight">
+                    <span class="struk-label">Total Berat:</span>
+                    <span class="struk-nominal" id="display-total-weight">0 g</span>
+                </p>
+            </div>
+
+            <div class="form-group struk-grand-total">
+                <p class="struk-line grand-total-line" style="border-top: 2px solid #ccc; padding-top: 10px;">
+                    <span class="struk-label">JUMLAH BAYAR:</span>
+                    <span class="struk-nominal" id="display-grand-total">Rp 0</span> 
+                    <span class="ikon-uang">💰</span>
+                </p>
+                <p id="total-discount-keterangan" class="final-notes" style="text-align: left;"></p>
+            </div>
+            <div class="form-group">
+                <label for="keterangan">Catatan / Keterangan (Opsional)</label>
+                <textarea id="keterangan" name="keterangan" rows="3" placeholder="Contoh: Minta yang Keripik Wortelnya yang paling renyah."></textarea>
+            </div>
+            <button type="submit" class="cta-button">Kirim Pesanan Via WhatsApp</button>
+        </form>
+    </div>
+</section>
+
+<section class="testimonial-video">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">💖 Apa Kata Mereka?</h2>
+        <p style="font-size: 1.1em; margin-bottom: 30px;">Bukti nyata dari mitra dan pelanggan kami.</p>
+        
+        <div style="display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px;">
+                <img src="https://placehold.co/300x300/e6ffe6/38761d?text=Foto+Rina" alt="Testimoni" style="width: 100%; max-width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="margin-top: 10px; font-style: italic;">"Keripik Okra ini bantu saya tetap kenyang saat diet!" - <strong>Rina S.</strong></p>
+            </div>
+            
+            <div style="flex: 1; min-width: 250px;">
+                <img src="https://placehold.co/300x300/ffe6e6/cc0000?text=Foto+Ibu+Maya" alt="Testimoni" style="width: 100%; max-width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="margin-top: 10px; font-style: italic;">"Anak saya jadi suka sayur, ini solusi parenting!" - <strong>Ibu Maya</strong></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="faq-section">
         <div class="container" style="max-width: 800px;">
@@ -696,7 +685,7 @@
             <div class="footer-row">
                 
                 <div class="footer-col info-col">
-                    <h3 class="footer-heading">📍 Lokasi Pabrik</h3>
+                    <h3 class="footer-heading">📍 Lokasi Kantor Pemasaran</h3>
                     <div class="footer-address" style="line-height: 1.6;">
                         <strong>Primafood - Produsen Keripik Sayur dan Buah Rilldelish</strong><br>
                         Jl. Raya Sumbergondo No.28, Sumbergondo,<br>
