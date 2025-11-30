@@ -31,7 +31,7 @@ body {
     padding: 0 20px;
 }
 
-/* GLOBAL SECTION SPACING (FIX JARAK ANTAR BAGIAN) */
+/* GLOBAL SECTION SPACING */
 section {
     padding: 60px 0;
     width: 100%;
@@ -42,19 +42,16 @@ section {
 /* 2. ELEMEN UMUM (Tipografi & Tombol) */
 /* ========================================= */
 
-/* JUDUL SECTION (FIX RATA TENGAH & TIDAK POTONG) */
 .section-title {
     text-align: center;
     margin-bottom: 15px;
     font-size: 2.2em;
     color: var(--color-primary);
     border-bottom: 3px solid var(--color-secondary);
-    display: inline-block;
+    display: table !important; /* Trik agar margin auto bekerja sempurna */
     padding-bottom: 10px;
-    
-    /* Tambahan agar Rata Tengah Sempurna */
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     max-width: 100%;
 }
 
@@ -202,7 +199,122 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 }
 
 /* ========================================= */
-/* 4. KATALOG VISUAL (Grid & Card) */
+/* 4. VISUAL GRID BEST SELLER (DESAIN PREMIUM) */
+/* ========================================= */
+
+.best-seller-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 Kolom */
+    gap: 20px;
+    max-width: 1100px; 
+    margin: 0 auto;    
+    justify-content: center;
+}
+
+.bs-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Sama tinggi di desktop */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    padding-bottom: 15px;
+}
+
+.bs-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: #2e7d32;
+}
+
+.bs-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.bs-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.bs-card:hover .bs-img {
+    transform: scale(1.1);
+}
+
+.bs-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.bs-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.bs-price {
+    color: #c62828;
+    font-weight: 800;
+    font-size: 1.3em;
+    margin-bottom: 8px;
+}
+
+.bs-desc {
+    font-size: 0.85em;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.bs-wholesale-box {
+    background: #f1f8e9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: auto; 
+    border: 1px solid #c8e6c9;
+}
+
+.bs-wholesale-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.bs-btn {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #e65100;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.bs-btn:hover { background-color: #bf360c; }
+
+
+/* ========================================= */
+/* 5. KATALOG VISUAL LAMA (Grid Umum) */
 /* ========================================= */
 
 .catalog-grid {
@@ -236,7 +348,6 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     object-fit: cover;      
     background-color: #f9f9f9;
     border-bottom: 1px solid #eee;
-    cursor: zoom-in;
 }
 
 .catalog-info {
@@ -279,27 +390,6 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     display: block;
 }
 
-.catalog-desc {
-    text-align: center;
-    font-style: italic;
-    color: #444;                
-    margin-bottom: 25px;        
-    display: block;
-    font-weight: 500;
-}
-
-.product-short-desc {
-    font-size: 0.75em;
-    color: #666;
-    margin-bottom: 8px;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-style: italic;
-}
-
 .wa-btn-catalog {
     display: block;
     width: 100%;
@@ -334,7 +424,7 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 
 
 /* ========================================= */
-/* 5. PAKET MIX & PROMO */
+/* 6. PAKET MIX & PROMO */
 /* ========================================= */
 
 .package-mix {
@@ -407,7 +497,7 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 
 
 /* ========================================= */
-/* 6. TABEL TIER (COMPACT UNTUK HP) */
+/* 7. TABEL TIER (COMPACT) */
 /* ========================================= */
 
 .bulk-order {
@@ -417,11 +507,10 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     width: 100%;
 }
 
-/* Tabel Tier Compact (Ramping) */
 .tier-table-compact {
     width: 100%;
-    max-width: 800px; /* Lebar maksimal di Desktop */
-    margin: 20px auto !important; /* Rata Tengah */
+    max-width: 800px;
+    margin: 20px auto !important; 
     border-collapse: collapse !important;
     background-color: #fff !important; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -448,7 +537,7 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 
 .tier-table-compact tr:nth-child(even) td { background-color: #f9f9f9 !important; }
 
-/* Tombol Filter Kategori (Tetap sama) */
+/* Tombol Filter Kategori */
 .product-categories { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0 10px; margin-bottom: 20px; }
 .product-categories button {
     background-color: white; border: 2px solid #ccc; color: #333; padding: 10px 18px;
@@ -465,12 +554,11 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 .product-categories button.active .en-text { color: #e8f5e9; border-top: 1px solid rgba(255, 255, 255, 0.3); }
 
 /* ========================================= */
-/* 7. FORM ORDER & STRUK */
+/* 8. FORM ORDER & STRUK */
 /* ========================================= */
 
 .conversion-form { padding: 60px 0; background-color: #ffffff !important; border-top: 5px solid #fcebeb; }
 
-/* Compact Form */
 .contact-form .form-group { margin-bottom: 12px; }
 .contact-form input, .contact-form select, .contact-form textarea {
     width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 5px;
@@ -515,13 +603,12 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 
 /* FIX JARAK TESTIMONI */
 .testimonial-video {
-    margin-bottom: 60px !important; /* Memberi jarak ke FAQ */
+    margin-bottom: 60px !important; 
     padding-bottom: 40px !important;
 }
 
-
 /* ========================================= */
-/* 8. FOOTER */
+/* 9. FOOTER */
 /* ========================================= */
 .site-footer {
     background-color: #1a1a1a !important; 
@@ -571,9 +658,8 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     color: #9e9e9e !important; font-size: 0.8em;
 }
 
-
 /* ========================================= */
-/* 9. LIGHTBOX & WA FLOAT */
+/* 10. LIGHTBOX & WA FLOAT */
 /* ========================================= */
 .lightbox-modal {
     display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%;
@@ -599,19 +685,18 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 }
 @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
 
-/* TOMBOL WA MELAYANG */
 .float-wa {
   position: fixed !important; 
   bottom: 20px !important;
   right: 20px !important;
-  z-index: 2147483647 !important; /* Angka tertinggi */
+  z-index: 2147483647 !important; 
   background-color: #25d366;
   color: white;
   padding: 10px 20px;
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  display: flex !important; /* Paksa muncul */
+  display: flex !important; 
   align-items: center;
   gap: 10px;
   font-family: sans-serif;
@@ -633,86 +718,62 @@ p, .expert-quote-hero, .expert-quote-hero cite,
   }
 }
 
-
 /* ========================================= */
-/* 10. RESPONSIVE MOBILE (HP) */
+/* 11. LAYOUTING & COMPONENTS */
 /* ========================================= */
-@media (max-width: 768px) {
-    /* MENGUNCI BODY AGAR TIDAK GOYANG KANAN-KIRI */
-    body, html {
-        overflow-x: hidden !important; 
-        width: 100% !important;
-    }
 
-    /* Footer */
-    .footer-row { flex-direction: column; gap: 30px; }
-    .map-container-small { height: 180px; }
-
-    /* Header */
-    .hero-section h1 { font-size: 2.2em; }
-    .hero-section { padding: 50px 0 30px 0; }
-
-    /* Katalog Grid 2 Kolom */
-    .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
-    .catalog-card { height: auto !important; min-height: 320px; }
-    .catalog-img { width: 100% !important; aspect-ratio: 1 / 1 !important; height: auto !important; }
-    .catalog-info { padding: 8px !important; }
-    .catalog-name { font-size: 0.85em !important; line-height: 1.2 !important; margin-bottom: 2px !important; min-height: 34px !important; }
-    .catalog-en { font-size: 0.7em !important; margin-bottom: 4px !important; }
-    .catalog-price-ecer { font-size: 0.95em !important; margin-bottom: 4px !important; }
-    
-    /* Promo Horizontal Mobile */
-    .promo-horizontal-card { flex-direction: column; padding: 20px; max-width: 350px; text-align: center; gap: 20px; }
-    .promo-right { text-align: center; width: 100%; }
-    .promo-title { font-size: 1.1em; white-space: nowrap; margin-bottom: 10px; }
-    .promo-price-box { justify-content: center; padding: 10px; }
-    .promo-left img { aspect-ratio: 3 / 1; }
-    
-    /* Form Mobile */
-    .form-group-inline { flex-direction: column; align-items: stretch; gap: 0; }
-    .form-group-inline .form-group, .form-group-inline > div:last-child { width: 100% !important; margin-top: 10px; text-align: left !important; }
-    .remove-product-btn { width: 100%; margin-top: 10px !important; }
-    .form-group-inline > div:last-child { align-items: flex-start; }
-    .struk-label { width: 50% !important; min-width: 0 !important; }
-
-    /* FIX: Judul agar tidak terputus */
-    .section-title {
-        font-size: 1.6rem !important;
-        white-space: normal !important; /* Teks turun baris */
-        line-height: 1.3;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        text-align: center !important;
-    }
-    
-    /* FIX: Tabel Tier Dipaksa Mengecil (Tanpa Scroll) */
-    .tier-table-compact {
-        width: 100% !important;
-        min-width: 0 !important; /* Hapus batasan lebar */
-    }
-    
-    .tier-table-compact th, 
-    .tier-table-compact td {
-        padding: 8px 2px !important; /* Padding sangat tipis */
-        font-size: 0.75em !important; /* Font kecil */
-    }
-    
-    /* Kolom Tier (Angka 1,2,3) dibuat sempit saja */
-    .tier-table-compact th:first-child,
-    .tier-table-compact td:first-child {
-        width: 30px; 
-    }
+/* DUAL BUTTONS */
+.dual-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
 }
 
+.dual-buttons .cta-button {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    margin-top: 0 !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* TOMBOL SUBMIT FORM RATA TENGAH */
+form.contact-form button[type="submit"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 30px auto 0 auto !important;
+}
+
+/* ALIGNMENT FIX */
+.faq-section .container,
+.bulk-order .container {
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.faq-item { text-align: left !important; width: 100%; }
+.tier-table-compact { margin-left: auto !important; margin-right: auto !important; }
+
 
 /* ========================================= */
-/* 11. TABEL PRICE LIST (YANG BOLEH GESER) */
+/* 12. TABEL PRICE LIST (SCROLLABLE) */
 /* ========================================= */
-
-/* Container Pembungkus (Agar bisa Scroll Samping di HP) */
 .product-list {
     width: 100%;
-    overflow-x: auto;   /* KUNCI: Mengaktifkan scroll samping */
+    overflow-x: auto;   
     -webkit-overflow-scrolling: touch;
     padding-bottom: 10px; 
     margin-bottom: 20px;
@@ -720,12 +781,11 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 .product-list::-webkit-scrollbar { height: 6px; }
 .product-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
 
-/* Styling Tabel Catalog (Beda dengan Tier) */
 .catalog-table {
     width: 100%;
     border-collapse: collapse; 
     background-color: #fff;
-    min-width: 600px; /* PENTING: Menjaga tabel lebar ini tetap bisa discroll */
+    min-width: 600px; 
 }
 
 .catalog-table th, .catalog-table td {
@@ -742,228 +802,120 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 .catalog-table tbody tr:hover { background-color: #e8f5e9; }
 .catalog-table .en { font-size: 0.8em; font-style: italic; color: #666; font-weight: 400; display: block; margin-top: 2px; }
 
-/* ========================================= */
-/* FINAL POLISH DESKTOP (CENTERING) */
-/* ========================================= */
-
-/* 1. Paksa Judul Section Jadi Rata Tengah (Mutlak) */
-.section-title {
-    display: table !important; /* Trik agar margin auto bekerja sempurna */
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-/* 2. Paksa Tombol Submit Form ke Tengah */
-/* Kita target tombol khusus yang ada di dalam form */
-form.contact-form button[type="submit"] {
-    display: block !important;
-    width: 100% !important; /* Di HP Full Width */
-    max-width: 400px !important; /* Di Desktop tidak terlalu lebar */
-    margin: 30px auto 0 auto !important; /* Posisi Tengah */
-}
-
-/* 3. Pastikan Container FAQ & Bulk Order Rata Tengah Isi-nya */
-.faq-section .container,
-.bulk-order .container {
-    text-align: center !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Kembalikan teks dalam tabel/faq jadi rata kiri/wajar jika diperlukan */
-.faq-item { text-align: left !important; width: 100%; }
-.tier-table-compact { margin-left: auto !important; margin-right: auto !important; }
 
 /* ========================================= */
-/* DUAL BUTTONS (SAMA LEBAR) */
+/* 13. RESPONSIVE MOBILE (HP) FIX UTAMA */
 /* ========================================= */
-
-.dual-buttons {
-    display: flex;              /* Mengaktifkan mode baris */
-    gap: 15px;                  /* Jarak antar tombol */
-    justify-content: center;    /* Posisi di tengah */
-    align-items: center;
-    width: 100%;
-    max-width: 700px;           /* Lebar maksimal agar tidak terlalu panjang di PC */
-    margin: 20px auto;          /* Rata tengah halaman */
-}
-
-.dual-buttons .cta-button {
-    flex: 1;                    /* KUNCI: Memaksa kedua tombol berbagi ruang sama rata */
-    width: 100%;                /* Pastikan tombol mengisi ruang yang dibagi */
-    text-align: center;
-    white-space: nowrap;        /* Teks dilarang turun baris (di desktop) */
-    margin-top: 0 !important;   /* Reset margin lama jika ada */
-    padding-left: 5px !important;
-    padding-right: 5px !important;
-    font-size: 0.9em;           /* Ukuran font disesuaikan agar muat */
-    display: flex;              /* Agar ikon dan teks rata tengah */
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-/* RESPONSIVE DI HP (TUMPUK ATAS BAWAH) */
-@media (max-width: 600px) {
-    .dual-buttons {
-        flex-direction: column; /* Ubah jadi atas-bawah */
-        gap: 10px;
-    }
-    
-    .dual-buttons .cta-button {
-        width: 100%;           /* Lebar penuh di HP */
-        padding: 15px !important;
-        white-space: normal;   /* Izinkan teks turun baris jika kepanjangan di HP */
-    }
-}
-
-/* ============================================================ */
-/* FIX VISUAL GRID BEST SELLER (DESAIN PREMIUM & RAPI)          */
-/* ============================================================ */
-
-/* 1. Container Grid Khusus (Agar Rata Tengah Sempurna) */
-.best-seller-grid {
-    display: grid;
-    /* Desktop: Paksa 4 Kolom Rata */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px;
-    max-width: 1100px; /* Batasi lebar agar tidak terlalu mencar */
-    margin: 0 auto;    /* Posisikan di tengah layar */
-    justify-content: center;
-}
-
-/* 2. Kartu Produk (Agar Tinggi Sama Rata) */
-.bs-card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column; /* Susun atas ke bawah */
-    height: 100%; /* Paksa tinggi sama dengan sebelahnya */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-    padding-bottom: 15px;
-}
-
-.bs-card:hover {
-    transform: translateY(-5px); /* Efek naik dikit pas disentuh */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    border-color: #2e7d32;
-}
-
-/* 3. Gambar Produk (Wajib Kotak & Zoom) */
-.bs-img-wrapper {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* Wajib Kotak Persegi */
-    overflow: hidden;
-    cursor: zoom-in;
-    position: relative;
-    border-bottom: 1px solid #eee;
-}
-
-.bs-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Gambar mengisi kotak tanpa gepeng */
-    transition: transform 0.4s ease;
-}
-
-.bs-card:hover .bs-img {
-    transform: scale(1.1); /* Efek Zoom saat hover */
-}
-
-/* 4. Info Produk */
-.bs-info {
-    padding: 15px;
-    flex-grow: 1; /* Mengisi ruang kosong agar tombol rata bawah */
-    display: flex;
-    flex-direction: column;
-}
-
-.bs-name {
-    font-size: 1.1em;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 5px;
-    line-height: 1.2;
-}
-
-.bs-price {
-    color: #c62828;
-    font-weight: 800;
-    font-size: 1.3em;
-    margin-bottom: 8px;
-}
-
-.bs-desc {
-    font-size: 0.85em;
-    color: #666;
-    font-style: italic;
-    margin-bottom: 15px;
-    line-height: 1.3;
-}
-
-/* 5. Tabel Harga Grosir (Anti Berantakan di HP) */
-.bs-wholesale-box {
-    background: #f1f8e9;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    margin-top: auto; /* Dorong ke bawah */
-    border: 1px solid #c8e6c9;
-}
-
-.bs-wholesale-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85em; /* Font Desktop */
-    margin-bottom: 4px;
-    color: #444;
-}
-
-/* 6. Tombol Aksi */
-.bs-btn {
-    display: block;
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
-    background-color: #e65100;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-.bs-btn:hover { background-color: #bf360c; }
-
-
-/* =========================================== */
-/* RESPONSIVE MOBILE (FIX 2 BARIS & ALIGNMENT) */
-/* =========================================== */
 @media (max-width: 768px) {
-    .best-seller-grid {
-        grid-template-columns: repeat(2, 1fr); /* HP: 2 Kolom */
-        gap: 10px;
-        padding: 0 5px;
+    /* MENGUNCI BODY AGAR TIDAK GOYANG KANAN-KIRI */
+    body, html {
+        overflow-x: hidden !important; 
+        width: 100% !important;
     }
 
-    .bs-card { border-radius: 8px; }
-    .bs-info { padding: 10px 8px; }
+    /* FOOTER & HERO */
+    .footer-row { flex-direction: column; gap: 30px; }
+    .map-container-small { height: 180px; }
+    .hero-section h1 { font-size: 2.2em; }
+    .hero-section { padding: 50px 0 30px 0; }
 
-    .bs-name { font-size: 0.95em; min-height: 40px; } /* Judul minimal 2 baris */
-    .bs-price { font-size: 1em; }
-    .bs-desc { display: none; } /* Sembunyikan deskripsi di HP biar rapi */
+    /* KATALOG UMUM 2 KOLOM */
+    .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+    .catalog-card { height: auto !important; min-height: 320px; }
+    .catalog-img { width: 100% !important; aspect-ratio: 1 / 1 !important; height: auto !important; }
+    .catalog-info { padding: 8px !important; }
+    .catalog-name { font-size: 0.85em !important; line-height: 1.2 !important; margin-bottom: 2px !important; min-height: 34px !important; }
+    .catalog-en { font-size: 0.7em !important; margin-bottom: 4px !important; }
+    .catalog-price-ecer { font-size: 0.95em !important; margin-bottom: 4px !important; }
+    
+    /* PROMO HORIZONTAL */
+    .promo-horizontal-card { flex-direction: column; padding: 20px; max-width: 350px; text-align: center; gap: 20px; }
+    .promo-right { text-align: center; width: 100%; }
+    .promo-title { font-size: 1.1em; white-space: nowrap; margin-bottom: 10px; }
+    .promo-price-box { justify-content: center; padding: 10px; }
+    .promo-left img { aspect-ratio: 3 / 1; }
+    
+    /* FORM MOBILE */
+    .form-group-inline { flex-direction: column; align-items: stretch; gap: 0; }
+    .form-group-inline .form-group, .form-group-inline > div:last-child { width: 100% !important; margin-top: 10px; text-align: left !important; }
+    .remove-product-btn { width: 100%; margin-top: 10px !important; }
+    .form-group-inline > div:last-child { align-items: flex-start; }
+    .struk-label { width: 50% !important; min-width: 0 !important; }
 
-    /* FIX HARGA GROSIR BERANTAKAN DI HP */
-    .bs-wholesale-box { padding: 6px; }
-    .bs-wholesale-row { 
-        font-size: 0.65em; /* Font dikecilkan ekstrem agar muat */
-        white-space: nowrap; /* DILARANG TURUN BARIS */
-        gap: 5px;
+    /* FIX: Judul agar tidak terputus */
+    .section-title {
+        font-size: 1.6rem !important;
+        white-space: normal !important;
+        line-height: 1.3;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
     }
     
-    .bs-btn { font-size: 0.8em; padding: 8px; width: 100%; }
+    /* FIX: Tabel Tier Dipaksa Mengecil (Tanpa Scroll) */
+    .tier-table-compact { width: 100% !important; min-width: 0 !important; }
+    .tier-table-compact th, .tier-table-compact td { padding: 8px 2px !important; font-size: 0.75em !important; }
+    .tier-table-compact th:first-child, .tier-table-compact td:first-child { width: 30px; }
+
+    /* FIX: DUAL BUTTONS MOBILE */
+    .dual-buttons { flex-direction: column; gap: 10px; }
+    .dual-buttons .cta-button { width: 100%; padding: 15px !important; white-space: normal; }
+
+    /* ============================================== */
+    /* FIX KHUSUS BEST SELLER GRID (MOBILE FIX TOTAL) */
+    /* ============================================== */
+    .best-seller-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Tetap 2 kolom */
+        gap: 10px !important; 
+        padding: 0 5px !important;
+        align-items: start !important; /* PENTING: Agar tinggi kartu tidak saling memaksa */
+    }
+
+    .bs-card { 
+        height: auto !important; /* BIARKAN TINGGI MENGIKUTI ISI (FIX KONTEN HILANG) */
+        display: block !important; 
+        min-height: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .bs-img-wrapper {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+    }
+
+    .bs-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; 
+        transform: none !important;
+    }
+
+    .bs-info { padding: 8px 6px !important; display: block !important; }
+    .bs-name { 
+        font-size: 0.85em !important; 
+        line-height: 1.2 !important;
+        height: 34px !important; 
+        overflow: hidden !important;
+        margin-bottom: 4px !important;
+    }
+    .bs-price { font-size: 0.95em !important; margin-bottom: 5px !important; }
+    .bs-desc { display: none !important; } /* Hidden di HP */
+
+    .bs-wholesale-box { 
+        padding: 5px !important; 
+        margin-bottom: 8px !important;
+        background-color: #f4fce8 !important;
+    }
+    .bs-wholesale-row { 
+        font-size: 0.65em !important;
+        white-space: normal !important;
+        line-height: 1.3 !important;
+    }
+    .bs-btn { 
+        font-size: 0.75em !important; 
+        padding: 6px 0 !important; 
+        width: 100% !important; 
+        margin-top: 5px !important;
+    }
 }
