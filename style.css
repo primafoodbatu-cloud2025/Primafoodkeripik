@@ -774,3 +774,46 @@ form.contact-form button[type="submit"] {
 /* Kembalikan teks dalam tabel/faq jadi rata kiri/wajar jika diperlukan */
 .faq-item { text-align: left !important; width: 100%; }
 .tier-table-compact { margin-left: auto !important; margin-right: auto !important; }
+
+/* ========================================= */
+/* DUAL BUTTONS (SAMA LEBAR) */
+/* ========================================= */
+
+.dual-buttons {
+    display: flex;              /* Mengaktifkan mode baris */
+    gap: 15px;                  /* Jarak antar tombol */
+    justify-content: center;    /* Posisi di tengah */
+    align-items: center;
+    width: 100%;
+    max-width: 700px;           /* Lebar maksimal agar tidak terlalu panjang di PC */
+    margin: 20px auto;          /* Rata tengah halaman */
+}
+
+.dual-buttons .cta-button {
+    flex: 1;                    /* KUNCI: Memaksa kedua tombol berbagi ruang sama rata */
+    width: 100%;                /* Pastikan tombol mengisi ruang yang dibagi */
+    text-align: center;
+    white-space: nowrap;        /* Teks dilarang turun baris (di desktop) */
+    margin-top: 0 !important;   /* Reset margin lama jika ada */
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    font-size: 0.9em;           /* Ukuran font disesuaikan agar muat */
+    display: flex;              /* Agar ikon dan teks rata tengah */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* RESPONSIVE DI HP (TUMPUK ATAS BAWAH) */
+@media (max-width: 600px) {
+    .dual-buttons {
+        flex-direction: column; /* Ubah jadi atas-bawah */
+        gap: 10px;
+    }
+    
+    .dual-buttons .cta-button {
+        width: 100%;           /* Lebar penuh di HP */
+        padding: 15px !important;
+        white-space: normal;   /* Izinkan teks turun baris jika kepanjangan di HP */
+    }
+}
