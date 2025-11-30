@@ -330,13 +330,6 @@
             </div>
         </div>
         
-        <script>
-        function openImage(element) {
-            // Jika Anda ingin fitur klik gambar membesar (Lightbox sederhana)
-            // Bisa tambahkan kode lightbox di sini, atau biarkan efek hover CSS saja
-        }
-        </script>
-        
         <h3 class="section-subtitle-best-seller">📋 Atau Lihat Daftar Harga Lengkap:</h3>
         
         <div class="product-categories" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
@@ -1418,6 +1411,68 @@ Mohon di cek dan info nomor rekening. Terima kasih!`;
   height: 24px;
 }
 </style>
+    <div id="imageModal" class="lightbox-modal" onclick="closeImage()">
+  <span class="close-lightbox" onclick="closeImage()">&times;</span>
+  <img class="lightbox-content" id="img01">
+</div>
+
+    <script>
+    // --- FUNGSI BUKA GAMBAR (ZOOM) ---
+    function openImage(element) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("img01");
+        
+        // Cari tag <img> di dalam elemen yang diklik
+        var imgSource = element.querySelector('img'); 
+        
+        if (imgSource) {
+            modal.style.display = "flex"; // Munculkan layar hitam
+            setTimeout(function() {
+                modal.classList.add("active"); // Efek fade-in
+            }, 10);
+            modalImg.src = imgSource.src; // Ambil gambar dan taruh di tengah
+        }
+    }
+
+    // --- FUNGSI TUTUP GAMBAR ---
+    function closeImage() {
+        var modal = document.getElementById("imageModal");
+        modal.classList.remove("active");
+        setTimeout(function() {
+            modal.style.display = "none";
+        }, 300);
+    }
+
+    // --- FUNGSI TIMER FLASH SALE ---
+    function startTimer(duration, display) {
+        var timer = duration, hours, minutes, seconds;
+        setInterval(function () {
+            hours = parseInt(timer / 3600, 10);
+            minutes = parseInt((timer % 3600) / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = hours + ":" + minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration; 
+            }
+        }, 1000);
+    }
+
+    // Jalankan Timer saat website selesai loading
+    window.onload = function () {
+        var threeHours = 60 * 60 * 3, // Set waktu 3 jam
+            display = document.querySelector('#countdown-timer');
+        if(display) {
+            startTimer(threeHours, display);
+            document.getElementById('flash-sale-banner').style.display = 'block';
+        }
+    };
+</script>
 </body>
 </html>
 </html>
