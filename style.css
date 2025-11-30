@@ -640,9 +640,16 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 
 
 /* ========================================= */
-/* 10. RESPONSIVE MOBILE (HP) */
+/* 10. RESPONSIVE MOBILE (HP) - VERSI FINAL LOCK */
 /* ========================================= */
 @media (max-width: 768px) {
+    /* MENGUNCI BODY AGAR TIDAK GOYANG KANAN-KIRI */
+    body, html {
+        overflow-x: hidden !important; /* Kunci layar utama */
+        width: 100% !important;
+        position: relative;
+    }
+
     /* Footer */
     .footer-row { flex-direction: column; gap: 30px; }
     .map-container-small { height: 180px; }
@@ -672,7 +679,7 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     .promo-left img { aspect-ratio: 3 / 1; }
     
     /* Judul Section Mobile */
-    .section-title { font-size: 1.2rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px; }
+    .section-title { font-size: 1.2rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px; max-width: 100%; }
     .section-subtitle-best-seller { font-size: 0.9em !important; margin-top: -5px !important; }
     
     /* Form Mobile */
@@ -683,40 +690,39 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     .struk-label { width: 50% !important; min-width: 0 !important; }
 
     /* ==================================================== */
-    /* PERBAIKAN TABEL HARGA (SCROLL SAMPING) - FINAL FIX */
+    /* FIX FINAL TABEL (HANYA TABEL YANG GESER, BODY DIAM) */
     /* ==================================================== */
     
-    /* 1. Container Pembungkus (Dibuat Scrollable) */
+    /* 1. Container Pembungkus */
     .bulk-order { 
-        padding: 30px 0 !important; 
-        width: 100vw !important;     /* Lebar penuh layar HP */
-        overflow-x: auto !important; /* Aktifkan scroll samping */
-        -webkit-overflow-scrolling: touch; /* Biar scroll licin di iPhone */
-        padding-left: 10px !important; 
-        padding-right: 10px !important;
+        padding: 30px 10px !important; /* Padding disatukan disini */
+        width: 100% !important;        /* JANGAN 100vw, tapi 100% dari body */
+        max-width: 100% !important;
+        overflow-x: auto !important;   /* Aktifkan scroll hanya di kotak ini */
+        -webkit-overflow-scrolling: touch; 
         display: block !important;
+        box-sizing: border-box !important; /* Pastikan padding tidak nambah lebar */
     }
     
-    /* Styling Scrollbar (Biar kelihatan user bisa geser) */
+    /* Styling Scrollbar */
     .bulk-order::-webkit-scrollbar {
-        height: 6px;
+        height: 4px; /* Scrollbar tipis saja */
     }
     .bulk-order::-webkit-scrollbar-thumb {
         background: #ccc;
         border-radius: 10px;
     }
 
-    /* 2. Tabelnya (Dibiarkan Melebar) */
+    /* 2. Tabel di dalam */
     .bulk-order table { 
-        width: auto !important;     /* Jangan dipaksa 100%, biarkan melebar sesuai isi */
-        min-width: 600px !important; /* Paksa minimal lebar 600px biar teks lega */
+        width: auto !important;      /* Biarkan melebar sepuasnya */
+        min-width: 600px !important; /* Paksa lebar minimal agar teks tidak hancur */
         margin: 0 !important;
-        font-size: 0.8em !important; /* Font sedikit dibesarkan agar terbaca */
     }
 
     .bulk-order th, .bulk-order td { 
-        padding: 8px 4px !important; /* Padding dirapikan */
-        white-space: nowrap;         /* Cegah teks turun baris berantakan */
+        white-space: nowrap; /* Teks dilarang turun baris */
+        padding: 8px 5px !important;
     }
 }
 
