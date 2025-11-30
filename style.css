@@ -49,12 +49,12 @@ body {
 
 .section-subtitle {
     text-align: center;
-    margin-top: 0;         
-    margin-bottom: 40px;   
+    margin-top: 0;          
+    margin-bottom: 40px;    
     font-size: 1.1em;
     color: #444; 
-    max-width: 800px;      
-    margin-left: auto;     
+    max-width: 800px;       
+    margin-left: auto;      
     margin-right: auto;
 }
 
@@ -230,7 +230,7 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 /* Gambar Produk */
 .catalog-img {
     width: 100%;
-    height: auto;           
+    height: auto;            
     aspect-ratio: 1 / 1;    /* Wajib Kotak 1:1 */
     object-fit: cover;      
     background-color: #f9f9f9;
@@ -282,8 +282,8 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 .catalog-desc {
     text-align: center;
     font-style: italic;
-    color: #444;              
-    margin-bottom: 25px;      
+    color: #444;               
+    margin-bottom: 25px;       
     display: block;
     font-weight: 500;
 }
@@ -344,12 +344,12 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 /* Judul Kategori Katalog */
 .catalog-title-green, .catalog-title-orange, .catalog-title-red {
     text-align: center;
-    margin-top: 50px;         
-    margin-bottom: 20px;      
+    margin-top: 50px;           
+    margin-bottom: 20px;       
     font-size: 1.5em;
-    display: inline-block;    
+    display: inline-block;     
     border-bottom: 3px solid #000000; 
-    padding-bottom: 10px;     
+    padding-bottom: 10px;      
     width: auto;
 }
 .catalog-title-green { color: var(--color-primary); }
@@ -393,8 +393,8 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     height: auto;
     aspect-ratio: 4 / 3;    /* Rasio 4:3 untuk Mix */
     object-fit: cover;
-    border-radius: 8px;     
-    margin-bottom: 15px;    
+    border-radius: 8px;      
+    margin-bottom: 15px;     
     border: 1px solid #eee; 
     background-color: #f9f9f9; 
 }
@@ -536,7 +536,7 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 /* ========================================= */
 .site-footer {
     background-color: #1a1a1a !important; 
-    color: #eeeeee !important;           
+    color: #eeeeee !important;            
     padding: 40px 0 20px 0;
     font-size: 0.9em;
     text-align: left;
@@ -654,4 +654,57 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     .remove-product-btn { width: 100%; margin-top: 10px !important; }
     .form-group-inline > div:last-child { align-items: flex-start; }
     .struk-label { width: 50% !important; min-width: 0 !important; }
+
+    /* PERBAIKAN TABEL HARGA AGAR TIDAK BERANTAKAN DI HP */
+    .bulk-order table { 
+        width: 100% !important; 
+        font-size: 0.7em !important; 
+        margin: 10px auto !important; 
+    }
+    .bulk-order th, .bulk-order td { 
+        padding: 5px 2px !important; /* Perkecil padding sel */
+    }
+    .bulk-order { 
+        padding: 30px 0 !important; /* Kurangi padding section */
+    }
+}
+
+
+/* ========================================= */
+/* 11. TOMBOL WA MELAYANG (ANTI-BANDEL) */
+/* ========================================= */
+.float-wa {
+  position: fixed !important; 
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important; /* Angka tertinggi */
+  background-color: #25d366;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  display: flex !important; /* Paksa muncul */
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.float-wa img {
+  width: 24px !important;
+  height: 24px !important;
+  display: block !important;
+}
+
+/* Memastikan tampil di HP */
+@media only screen and (max-width: 768px) {
+  .float-wa {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    bottom: 20px !important; 
+    right: 20px !important;
+  }
 }
