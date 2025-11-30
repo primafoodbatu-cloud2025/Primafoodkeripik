@@ -741,3 +741,36 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 .catalog-table tbody tr:nth-child(even) { background-color: #f9f9f9; }
 .catalog-table tbody tr:hover { background-color: #e8f5e9; }
 .catalog-table .en { font-size: 0.8em; font-style: italic; color: #666; font-weight: 400; display: block; margin-top: 2px; }
+
+/* ========================================= */
+/* FINAL POLISH DESKTOP (CENTERING) */
+/* ========================================= */
+
+/* 1. Paksa Judul Section Jadi Rata Tengah (Mutlak) */
+.section-title {
+    display: table !important; /* Trik agar margin auto bekerja sempurna */
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* 2. Paksa Tombol Submit Form ke Tengah */
+/* Kita target tombol khusus yang ada di dalam form */
+form.contact-form button[type="submit"] {
+    display: block !important;
+    width: 100% !important; /* Di HP Full Width */
+    max-width: 400px !important; /* Di Desktop tidak terlalu lebar */
+    margin: 30px auto 0 auto !important; /* Posisi Tengah */
+}
+
+/* 3. Pastikan Container FAQ & Bulk Order Rata Tengah Isi-nya */
+.faq-section .container,
+.bulk-order .container {
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Kembalikan teks dalam tabel/faq jadi rata kiri/wajar jika diperlukan */
+.faq-item { text-align: left !important; width: 100%; }
+.tier-table-compact { margin-left: auto !important; margin-right: auto !important; }
