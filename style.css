@@ -640,90 +640,69 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 
 
 /* ========================================= */
-/* 10. RESPONSIVE MOBILE (HP) - VERSI FINAL LOCK */
+/* 10. RESPONSIVE MOBILE (HP) - FIXED JUDUL & TABEL */
 /* ========================================= */
 @media (max-width: 768px) {
-    /* MENGUNCI BODY AGAR TIDAK GOYANG KANAN-KIRI */
+    /* Kunci layar agar tidak goyang, tapi izinkan text wrapping */
     body, html {
-        overflow-x: hidden !important; /* Kunci layar utama */
+        overflow-x: hidden !important; 
         width: 100% !important;
-        position: relative;
     }
 
-    /* Footer */
-    .footer-row { flex-direction: column; gap: 30px; }
-    .map-container-small { height: 180px; }
-
-    /* Header */
-    .hero-section h1 { font-size: 2.2em; }
-    .hero-section { padding: 50px 0 30px 0; }
-
-    /* Katalog Grid 2 Kolom */
-    .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
-    .catalog-card { height: auto !important; min-height: 320px; }
-    .catalog-img { width: 100% !important; aspect-ratio: 1 / 1 !important; height: auto !important; }
-    .catalog-info { padding: 8px !important; }
-    .catalog-name { font-size: 0.85em !important; line-height: 1.2 !important; margin-bottom: 2px !important; min-height: 34px !important; }
-    .catalog-en { font-size: 0.7em !important; margin-bottom: 4px !important; }
-    .catalog-price-ecer { font-size: 0.95em !important; margin-bottom: 4px !important; }
-    .mini-tier-label { font-size: 0.65em !important; margin-top: 5px !important; }
-    .mini-tier-table { font-size: 0.6em !important; }
-    .mini-tier-table td { padding: 1px 0 !important; }
-    .wa-btn-catalog { font-size: 0.8em !important; padding: 5px !important; margin-top: 8px !important; }
-
-    /* Promo Horizontal Mobile */
-    .promo-horizontal-card { flex-direction: column; padding: 20px; max-width: 350px; text-align: center; gap: 20px; }
-    .promo-right { text-align: center; width: 100%; }
-    .promo-title { font-size: 1.1em; white-space: nowrap; margin-bottom: 10px; }
-    .promo-price-box { justify-content: center; padding: 10px; }
-    .promo-left img { aspect-ratio: 3 / 1; }
-    
-    /* Judul Section Mobile */
-    .section-title { font-size: 1.2rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px; max-width: 100%; }
-    .section-subtitle-best-seller { font-size: 0.9em !important; margin-top: -5px !important; }
-    
-    /* Form Mobile */
-    .form-group-inline { flex-direction: column; align-items: stretch; gap: 0; }
-    .form-group-inline .form-group, .form-group-inline > div:last-child { width: 100% !important; margin-top: 10px; text-align: left !important; }
-    .remove-product-btn { width: 100%; margin-top: 10px !important; }
-    .form-group-inline > div:last-child { align-items: flex-start; }
-    .struk-label { width: 50% !important; min-width: 0 !important; }
-
-    /* ==================================================== */
-    /* FIX FINAL TABEL (HANYA TABEL YANG GESER, BODY DIAM) */
-    /* ==================================================== */
-    
-    /* 1. Container Pembungkus */
-    .bulk-order { 
-        padding: 30px 10px !important; /* Padding disatukan disini */
-        width: 100% !important;        /* JANGAN 100vw, tapi 100% dari body */
+    /* FIX JUDUL YANG TERPUTUS */
+    .section-title { 
+        font-size: 1.5rem !important; /* Ukuran font disesuaikan HP */
+        white-space: normal !important; /* Izinkan teks turun baris */
+        word-wrap: break-word !important; /* Potong kata jika kepanjangan */
+        line-height: 1.3 !important;
         max-width: 100% !important;
-        overflow-x: auto !important;   /* Aktifkan scroll hanya di kotak ini */
-        -webkit-overflow-scrolling: touch; 
         display: block !important;
-        box-sizing: border-box !important; /* Pastikan padding tidak nambah lebar */
+        margin-left: auto;
+        margin-right: auto;
     }
+
+    /* FIX TABEL TIER AGAR TIDAK PERLU GESER (COMPACT) */
+    .tier-table-compact {
+        width: 100% !important;
+        border-collapse: collapse;
+        font-size: 0.8em !important; /* Font dikecilkan */
+        margin: 0 auto;
+    }
+    .tier-table-compact th, .tier-table-compact td {
+        padding: 6px 3px !important; /* Padding diminimalkan */
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+    .bulk-order {
+        padding: 30px 10px !important;
+    }
+
+    /* Footer & Element Lain */
+    .footer-row { flex-direction: column; gap: 30px; }
+    .hero-section h1 { font-size: 2.2em; }
+    .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
     
-    /* Styling Scrollbar */
-    .bulk-order::-webkit-scrollbar {
-        height: 4px; /* Scrollbar tipis saja */
-    }
-    .bulk-order::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 10px;
-    }
+    /* Katalog yang tetap butuh scroll (Price List Besar) */
+    .product-list { overflow-x: auto !important; }
+    .catalog-table { min-width: 600px !important; }
+}
 
-    /* 2. Tabel di dalam */
-    .bulk-order table { 
-        width: auto !important;      /* Biarkan melebar sepuasnya */
-        min-width: 600px !important; /* Paksa lebar minimal agar teks tidak hancur */
-        margin: 0 !important;
-    }
-
-    .bulk-order th, .bulk-order td { 
-        white-space: nowrap; /* Teks dilarang turun baris */
-        padding: 8px 5px !important;
-    }
+/* STYLE TAMBAHAN KHUSUS TABEL TIER COMPACT (Taruh di luar media query juga boleh) */
+.tier-table-compact {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: white;
+}
+.tier-table-compact th {
+    background-color: #ffe4b5;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.tier-table-compact td {
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
 /* ========================================= */
