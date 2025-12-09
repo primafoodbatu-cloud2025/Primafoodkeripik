@@ -116,61 +116,60 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 /* ========================================= */
 
 .hero-section {
-    /* 1. Set Background Kuning Tua (Mustard/Honey) */
-    background-color: #F4C430; /* Kode warna Saffron/Mustard */
-    background-image: none; /* Hapus background image lama jika ada */
+    /* 1. Background Kuning Mustard */
+    background-color: #F4C430; 
+    background-image: none; 
     
-    /* 2. Positioning untuk Sobekan Kertas */
-    position: relative; 
-    padding: 100px 0 180px 0; /* Padding bawah diperbesar agar konten tidak tertutup sobekan */
+    position: relative;
+    z-index: 1;
     text-align: center;
-    z-index: 1; /* Pastikan hero di layer aman */
+    
+    /* PADDING DESKTOP: */
+    /* Padding bawah harus > 150px (tinggi gambar) agar konten tidak tertutup sobekan */
+    padding: 100px 0 220px 0; 
 }
-/* 3. Membuat Efek Sobekan Kertas di Bawah */
+
+/* ELEMEN SOBEKAN KERTAS (Pseudoelement ::after) */
 .hero-section::after {
     content: "";
     position: absolute;
-    bottom: -2px; /* Minus sedikit agar tidak ada celah putih */
+    bottom: -1px; /* Menutup celah garis putih di bawah */
     left: 0;
     width: 100%;
-    height: 235px; /* Sesuaikan dengan tinggi gambar sobekan kertas Anda */
-    
-    /* Masukkan path gambar Anda disini */
-    background-image: url('images/sobekan-kertas.webp'); 
-    
-    background-size: cover; /* Agar gambar memenuhi lebar layar */
-    background-repeat: no-repeat;
-    background-position: top center;
     z-index: 2;
-    pointer-events: none; /* Agar sobekan tidak menghalangi klik */
+    pointer-events: none; /* Agar klik tembus ke bawah jika perlu */
+
+    /* --- PENGATURAN GAMBAR (OPTIMAL 1920x150) --- */
+    background-image: url('images/sobekan-kertas.webp'); 
+    background-repeat: no-repeat;
+    
+    /* Memaksa gambar memenuhi lebar layar, tapi tingginya dikunci */
+    background-size: 100% 100%; 
+
+    /* TINGGI DESKTOP: */
+    /* Kita kunci di 150px sesuai ukuran asli gambar Anda agar tajam */
+    height: 150px; 
 }
-/* 4. Penyesuaian Warna Teks di Atas Kuning (PENTING) */
+
+/* --- WARNA TEKS AGAR KONTRAS DI ATAS KUNING --- */
 .hero-section h1 {
-    color: #4B3621 !important; /* Cokelat Kopi (Agar kontras & premium) */
-    text-shadow: 0px 2px 0px rgba(255,255,255, 0.4); /* Efek timbul sedikit */
-    font-size: 2.5em; /* Sedikit diperkecil agar pas di mobile */
+    color: #4B3621 !important; /* Cokelat Kopi */
+    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
     font-weight: 800;
-    line-height: 1.1;
 }
 
-.hero-section h2 {
+.hero-section h2, .hero-section p {
     color: #212121 !important; /* Hitam Pekat */
-    font-weight: 600;
-    margin-top: 15px;
-}
-
-.hero-section p {
-    color: #333 !important;
     font-weight: 500;
 }
 
-/* 5. Update Kotak Business Desc agar Pop-Up */
+/* --- BOX DESC WARNA PUTIH --- */
 .business-desc {
-    background-color: #ffffff !important; /* Ganti jadi Putih agar bersih */
-    border: 2px solid #4B3621 !important; /* Border Cokelat */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    background-color: #ffffff !important;
+    border: 2px solid #F4C430 !important; /* Border kuning senada */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
     position: relative;
-    z-index: 3; /* Agar di atas elemen lain */
+    z-index: 3; /* Agar tampil di atas layer sobekan kertas */
 }
 
 .expert-quote-hero {
@@ -853,8 +852,18 @@ form.contact-form button[type="submit"] {
     /* FOOTER & HERO */
     .footer-row { flex-direction: column; gap: 30px; }
     .map-container-small { height: 180px; }
-    .hero-section h1 { font-size: 2.2em; }
-    .hero-section { padding: 50px 0 30px 0; }
+    .hero-section h1 {
+        font-size: 2em !important; /* Ukuran font disesuaikan di HP */
+    }
+    .hero-section::after {
+        /* TINGGI HP: */
+        /* Tinggi 150px terlalu makan tempat di HP. Kita kecilkan jadi 60px-80px */
+        height: 70px; 
+    }
+    .hero-section {
+        /* Di HP padding dikurangi biar tidak terlalu kosong */
+        padding: 60px 0 130px 0; 
+    }
 
     /* KATALOG UMUM 2 KOLOM */
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
