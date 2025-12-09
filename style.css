@@ -281,7 +281,102 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     display: inline-block;
 }
 
+/* ========================================= */
+/* SECTION 3: SELLING POINT (KUNING & MIRING) */
+/* ========================================= */
+
 .research-proof {
+    /* 1. Kembali ke Warna Hero (Mustard) */
+    background-color: #F4C430 !important; 
+    position: relative;
+    z-index: 1;
+    
+    /* PENTING: Padding atas besar untuk kompensasi kertas sobek */
+    padding-top: 100px !important; 
+    padding-bottom: 80px !important;
+    
+    /* Margin atas agar tidak menumpuk dengan section sebelumnya */
+    margin-top: 100px !important; 
+}
+
+/* 2. PASANG SOBEKAN KERTAS TERBALIK (DI ATAS SECTION) */
+.research-proof::before {
+    content: "";
+    position: absolute;
+    /* Tarik ke atas setinggi ukuran gambar agar nangkring di perbatasan */
+    top: -149px; 
+    left: 0;
+    width: 100%;
+    
+    /* Setting Gambar */
+    height: 150px;
+    background-image: url('images/sobekan-kertas-terbalik.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 3. JUDUL SECTION (Warna Cokelat agar kontras di kuning) */
+.research-proof .section-title {
+    color: #4B3621 !important; 
+    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
+    border-bottom-color: #4B3621 !important;
+}
+
+/* 4. STYLING KARTU "MIRING" (PLAYFUL EFFECT) */
+.benefit-card {
+    background: #ffffff;
+    border: 3px solid #4B3621; /* Border tebal seperti kartu mainan */
+    border-radius: 15px; /* Sudut lebih bulat */
+    padding: 25px !important;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.15); /* Bayangan kasar (Hard Shadow) ala Pop Art */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    position: relative; /* Agar z-index bekerja */
+}
+
+/* --- LOGIKA MIRING-MIRING (NTH-CHILD) --- */
+
+/* Kartu 1: Miring Kiri */
+.benefit-wrapper .benefit-card:nth-child(1) {
+    transform: rotate(-3deg) translateY(10px);
+    z-index: 1;
+}
+
+/* Kartu 2: Miring Kanan (Sedikit menonjol) */
+.benefit-wrapper .benefit-card:nth-child(2) {
+    transform: rotate(2deg) translateY(-10px); /* Naik sedikit */
+    z-index: 2; /* Tumpuk di atas jika dempet */
+    border-color: #c62828; /* Aksen merah khusus yang tengah biar beda */
+}
+
+/* Kartu 3: Miring Kiri Lagi */
+.benefit-wrapper .benefit-card:nth-child(3) {
+    transform: rotate(-2deg) translateY(15px);
+    z-index: 1;
+}
+
+/* EFEK HOVER (INTERAKTIF) */
+/* Saat mouse masuk, kartu jadi lurus & membesar sedikit */
+.benefit-card:hover {
+    transform: scale(1.05) rotate(0deg) !important; /* Paksa lurus */
+    z-index: 10 !important; /* Selalu paling atas saat di-hover */
+    box-shadow: 12px 12px 0px rgba(0,0,0,0.2);
+    background-color: #fffde7; /* Warna kertas agak kuning saat hover */
+}
+
+/* Isi Teks Kartu */
+.benefit-card h3 {
+    color: #c62828; /* Judul Merah */
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+} {
     padding: 60px 0;
     background-color: var(--color-bg-light);
 }
@@ -943,7 +1038,27 @@ form.contact-form button[type="submit"] {
         /* Di HP padding dikurangi biar tidak terlalu kosong */
         padding: 60px 0 130px 0;
     }
-   
+    /* Sesuaikan tinggi sobekan kertas di HP */
+    .research-proof {
+        margin-top: 60px !important;
+        padding-top: 60px !important;
+    }
+    
+    .research-proof::before {
+        height: 70px; /* Samakan dengan tinggi sobekan Hero HP */
+        top: -69px; 
+    }
+
+    /* Di HP, kartu JANGAN miring (berantakan nanti) */
+    /* Kita buat lurus vertikal saja */
+    .benefit-wrapper .benefit-card:nth-child(1),
+    .benefit-wrapper .benefit-card:nth-child(2),
+    .benefit-wrapper .benefit-card:nth-child(3) {
+        transform: rotate(0deg) translateY(0) !important;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
 
     /* KATALOG UMUM 2 KOLOM */
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
