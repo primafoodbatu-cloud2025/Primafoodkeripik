@@ -1040,24 +1040,20 @@ form.contact-form button[type="submit"] {
     }
     /* Sesuaikan tinggi sobekan kertas di HP */
     .research-proof {
-        margin-top: 60px !important;
-        padding-top: 60px !important;
+        padding-top: 100px !important;
     }
-    
     .research-proof::before {
-        height: 70px; /* Samakan dengan tinggi sobekan Hero HP */
-        top: -69px; 
+        height: 80px; /* Ukuran kertas mengecil di HP */
+        top: -78px;   /* Posisi menyesuaikan tinggi baru */
     }
 
-    /* Di HP, kartu JANGAN miring (berantakan nanti) */
-    /* Kita buat lurus vertikal saja */
-    .benefit-wrapper .benefit-card:nth-child(1),
-    .benefit-wrapper .benefit-card:nth-child(2),
-    .benefit-wrapper .benefit-card:nth-child(3) {
-        transform: rotate(0deg) translateY(0) !important;
-        margin-bottom: 20px;
-        width: 100%;
-        max-width: 100%;
+    /* Kartu di HP Tetap Miring (Sesuai Request), tapi kita atur lebarnya */
+    .benefit-card {
+        width: 90% !important; /* Agar tidak terlalu lebar keluar layar */
+        margin-left: auto;
+        margin-right: auto;
+        /* Tambah jarak bawah karena posisi miring memakan ruang vertikal */
+        margin-bottom: 40px !important; 
     }
 
     /* KATALOG UMUM 2 KOLOM */
