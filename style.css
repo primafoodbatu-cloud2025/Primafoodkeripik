@@ -282,112 +282,107 @@ p, .expert-quote-hero, .expert-quote-hero cite,
 }
 
 /* ========================================= */
-/* SECTION 3: SELLING POINT (KUNING & MIRING) */
+/* REVISI FINAL: SECTION 3 (SEAMLESS & MIRING HP) */
 /* ========================================= */
 
 .research-proof {
-    /* 1. Kembali ke Warna Hero (Mustard) */
-    background-color: #F4C430 !important; 
+    /* Background Kuning Hero */
+    background-color: #F4C430 !important;
     position: relative;
-    z-index: 1;
     
-    /* PENTING: Padding atas besar untuk kompensasi kertas sobek */
-    padding-top: 100px !important; 
+    /* KUNCI 1: Z-Index lebih tinggi dari Section 2 */
+    z-index: 5 !important; 
+
+    /* KUNCI 2: Tarik ke atas menutupi Section 2 */
+    /* Kita tarik -2px agar tidak ada garis rambut putih */
+    margin-top: -2px !important;
+
+    /* Padding agar isi konten tidak tertutup gambar kertas di atas */
+    padding-top: 140px !important;
     padding-bottom: 80px !important;
-    
-    /* Margin atas agar tidak menumpuk dengan section sebelumnya */
-    margin-top: 100px !important; 
 }
 
-/* 2. PASANG SOBEKAN KERTAS TERBALIK (DI ATAS SECTION) */
+/* GAMBAR SOBEKAN KERTAS (TERBALIK) */
 .research-proof::before {
     content: "";
     position: absolute;
-    /* Tarik ke atas setinggi ukuran gambar agar nangkring di perbatasan */
-    top: -149px; 
     left: 0;
     width: 100%;
     
-    /* Setting Gambar */
-    height: 150px;
+    /* SETTINGAN DESKTOP */
+    /* Tinggi gambar sobekan */
+    height: 150px; 
+    
+    /* Posisi: Naikkan setinggi gambarnya dikurangi 1px overlap */
+    /* Ini memastikan gambar 'duduk' persis di bibir section kuning */
+    top: -149px; 
+    
     background-image: url('images/sobekan-kertas-terbalik.webp');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    
+    background-size: 100% 100%; /* Paksa gambar memenuhi lebar */
     pointer-events: none;
-    z-index: 2;
+    z-index: 6; /* Gambar harus di layer paling atas */
 }
 
-/* 3. JUDUL SECTION (Warna Cokelat agar kontras di kuning) */
+/* JUDUL */
 .research-proof .section-title {
     color: #4B3621 !important; 
     text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
     border-bottom-color: #4B3621 !important;
+    position: relative;
+    z-index: 10;
 }
 
-/* 4. STYLING KARTU "MIRING" (PLAYFUL EFFECT) */
+/* ========================================= */
+/* STYLE KOTAK (BENEFIT CARD) - DESKTOP & HP */
+/* ========================================= */
 .benefit-card {
     background: #ffffff;
-    border: 3px solid #4B3621; /* Border tebal seperti kartu mainan */
-    border-radius: 15px; /* Sudut lebih bulat */
+    border: 3px solid #4B3621;
+    border-radius: 15px;
     padding: 25px !important;
-    box-shadow: 8px 8px 0px rgba(0,0,0,0.15); /* Bayangan kasar (Hard Shadow) ala Pop Art */
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
+    
+    /* Bayangan Tebal (Pop Art Style) */
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    position: relative; /* Agar z-index bekerja */
+    position: relative;
+    
+    /* Jarak bawah aman agar saat miring tidak nabrak */
+    margin-bottom: 30px; 
 }
 
-/* --- LOGIKA MIRING-MIRING (NTH-CHILD) --- */
-
-/* Kartu 1: Miring Kiri */
+/* EFEK MIRING (Global: Desktop & HP sama) */
 .benefit-wrapper .benefit-card:nth-child(1) {
-    transform: rotate(-3deg) translateY(10px);
+    transform: rotate(-3deg);
     z-index: 1;
 }
 
-/* Kartu 2: Miring Kanan (Sedikit menonjol) */
 .benefit-wrapper .benefit-card:nth-child(2) {
-    transform: rotate(2deg) translateY(-10px); /* Naik sedikit */
-    z-index: 2; /* Tumpuk di atas jika dempet */
-    border-color: #c62828; /* Aksen merah khusus yang tengah biar beda */
+    transform: rotate(2deg) translateY(-10px); /* Yang tengah agak naik */
+    z-index: 2;
+    border-color: #c62828; /* Aksen Merah */
 }
 
-/* Kartu 3: Miring Kiri Lagi */
 .benefit-wrapper .benefit-card:nth-child(3) {
-    transform: rotate(-2deg) translateY(15px);
+    transform: rotate(-2deg);
     z-index: 1;
 }
 
-/* EFEK HOVER (INTERAKTIF) */
-/* Saat mouse masuk, kartu jadi lurus & membesar sedikit */
+/* EFEK HOVER: Lurus saat disentuh */
 .benefit-card:hover {
-    transform: scale(1.05) rotate(0deg) !important; /* Paksa lurus */
-    z-index: 10 !important; /* Selalu paling atas saat di-hover */
-    box-shadow: 12px 12px 0px rgba(0,0,0,0.2);
-    background-color: #fffde7; /* Warna kertas agak kuning saat hover */
+    transform: scale(1.05) rotate(0deg) !important;
+    z-index: 20 !important;
+    box-shadow: 12px 12px 0px rgba(0,0,0,0.2) !important;
+    background-color: #fffde7;
 }
 
-/* Isi Teks Kartu */
 .benefit-card h3 {
-    color: #c62828; /* Judul Merah */
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-size: 1.3em;
-} {
-    padding: 60px 0;
-    background-color: var(--color-bg-light);
-}
-
-.benefit-card {
-    flex: 1;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    min-width: 280px;
+    color: #c62828; font-weight: 800; text-transform: uppercase;
+    margin-bottom: 10px; font-size: 1.3em;
 }
 
 .production-video {
@@ -1038,22 +1033,32 @@ form.contact-form button[type="submit"] {
         /* Di HP padding dikurangi biar tidak terlalu kosong */
         padding: 60px 0 130px 0;
     }
-    /* Sesuaikan tinggi sobekan kertas di HP */
-    .research-proof {
-        padding-top: 100px !important;
-    }
+    /* 1. KOREKSI POSISI GAMBAR KERTAS DI HP */
     .research-proof::before {
-        height: 80px; /* Ukuran kertas mengecil di HP */
-        top: -78px;   /* Posisi menyesuaikan tinggi baru */
+        /* Di HP, gambar kita kecilkan tingginya agar proporsional */
+        height: 60px !important; 
+        /* Top harus minus tinggi gambar (-60px) + overlap 1px = -59px */
+        top: -59px !important; 
     }
 
-    /* Kartu di HP Tetap Miring (Sesuai Request), tapi kita atur lebarnya */
+    /* 2. KOREKSI PADDING SECTION DI HP */
+    .research-proof {
+        /* Padding dikurangi karena gambar kertasnya memendek */
+        padding-top: 80px !important; 
+    }
+    
+    /* 3. AGAR KOTAK MIRING TIDAK KELUAR LAYAR HP */
     .benefit-card {
-        width: 90% !important; /* Agar tidak terlalu lebar keluar layar */
+        width: 85% !important; /* Perkecil lebar agar rotasi aman */
         margin-left: auto;
         margin-right: auto;
-        /* Tambah jarak bawah karena posisi miring memakan ruang vertikal */
-        margin-bottom: 40px !important; 
+        margin-bottom: 40px !important; /* Jarak antar kotak diperbesar */
+    }
+    
+    /* Reset transformasi berlebihan di HP agar tulisan terbaca */
+    .benefit-wrapper .benefit-card:nth-child(2) {
+        /* Hilangkan translateY berlebih, cukup rotate saja */
+        transform: rotate(2deg); 
     }
 
     /* KATALOG UMUM 2 KOLOM */
