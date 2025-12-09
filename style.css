@@ -156,11 +156,35 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     color: #4B3621 !important; /* Cokelat Kopi */
     text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
     font-weight: 800;
+    line-height: 1.05 !important; /* Jarak antar baris judul diperkecil */
+    margin-bottom: 8px !important; /* Jarak ke teks bawahnya */
+    padding-bottom: 0 !important;
 }
 
 .hero-section h2, .hero-section p {
     color: #212121 !important; /* Hitam Pekat */
     font-weight: 500;
+    margin-top: 0 !important; /* Hapus jarak atas */
+    margin-bottom: 8px !important; /* Jarak ke paragraf */
+    line-height: 1.2 !important; 
+    font-size: 1.3em !important; /* Sedikit dikecilkan agar seimbang */
+}
+.hero-section p {
+    margin-top: 0 !important;
+    margin-bottom: 15px !important; /* Jarak ke Tombol */
+    line-height: 1.4 !important;
+}
+
+/* 4. Merapatkan Jarak Area Tombol */
+/* Selector ini menargetkan DIV pembungkus tombol yang ada tepat setelah tag <p> */
+.hero-section p + div {
+    margin-top: 10px !important; /* Mengubah jarak 30px lama menjadi 10px */
+    gap: 10px !important; /* Jarak antar tombol kiri & kanan lebih dekat */
+    margin-bottom: 25px !important; /* Jarak dari tombol ke kotak 'Business Desc' bawah */
+}
+.hero-section .cta-button {
+    margin-top: 0 !important; /* Hapus margin bawaan tombol jika ada */
+    padding: 12px 25px !important; /* Padding tombol sedikit dirampingkan */
 }
 
 /* --- BOX DESC WARNA PUTIH --- */
