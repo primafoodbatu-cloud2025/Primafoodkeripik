@@ -209,21 +209,76 @@ p, .expert-quote-hero, .expert-quote-hero cite,
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.expert-quote-problem {
-    margin: 20px 0;
-    padding: 15px;
-    border-left: 5px solid #c62828;
-    background: #fffafa;
-    font-style: italic;
-    font-size: 1.1em;
-    border-radius: 4px;
-    text-align: left !important;
-}
+/* ========================================= */
+/* SECTION 2: PROBLEM SOLUTION (Kuning Muda) */
+/* ========================================= */
 
 .problem-solution {
-    padding: 60px 0;
-    background-color: #fff;
-    text-align: center;
+    /* 1. Background Kuning Muda (Cream/Butter) */
+    /* Kode #FFF8E1 adalah kuning sangat muda yang hangat, enak dibaca */
+    background-color: #FFF8E1 !important; 
+    
+    /* Padding disesuaikan agar tidak terlalu jauh dari sobekan kertas */
+    padding-top: 20px !important; 
+    padding-bottom: 60px !important;
+    
+    position: relative;
+    z-index: 0; /* Pastikan posisinya di bawah layer Hero */
+}
+
+/* 2. Mempercantik Kotak Quote (Agar Pop-up di background kuning) */
+.expert-quote-problem {
+    background: #ffffff !important; /* Tetap putih agar kontras dengan kuning muda */
+    border-left: 5px solid #c62828 !important; /* Aksen merah tetap dipertahankan */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important; /* Bayangan halus */
+    padding: 20px 25px !important;
+    margin: 25px auto !important;
+    border-radius: 8px !important;
+    font-style: italic;
+    color: #444 !important;
+    max-width: 750px; /* Batasi lebar agar enak dibaca */
+}
+
+.expert-quote-problem cite {
+    display: block;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 0.85em;
+    color: #c62828; /* Warna merah bata untuk sumber quote */
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+/* 3. Merapikan List Keuntungan (✅) */
+/* Kita targetkan UL yang ada di dalam section ini */
+.problem-solution ul {
+    background-color: #ffffff; /* Beri background putih pada list agar rapi */
+    padding: 30px 30px 30px 50px !important; /* Padding kiri lebih besar untuk bullet */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px dashed #F4C430; /* Garis putus-putus kuning tua sebagai pemanis */
+}
+
+.problem-solution li {
+    margin-bottom: 15px; /* Jarak antar poin */
+    color: #333;
+}
+
+/* 4. Judul Section agar Konsisten */
+.problem-solution .section-title {
+    color: #4B3621 !important; /* Samakan dengan warna judul Hero (Cokelat Kopi) */
+    border-bottom-color: #F4C430 !important; /* Garis bawah kuning tua */
+}
+
+/* 5. Teks 'Momentum Terbaik' */
+/* Menargetkan paragraf italic khusus */
+.problem-solution p[style*="font-style: italic"] {
+    color: #2e7d32 !important; /* Hijau Hutan (Brand Color) agar beda */
+    font-weight: 600;
+    background: rgba(46, 125, 50, 0.1); /* Highlight hijau tipis */
+    padding: 15px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .research-proof {
