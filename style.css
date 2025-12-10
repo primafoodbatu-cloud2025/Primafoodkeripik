@@ -228,3 +228,78 @@ p, .benefit-card p, cite { color: #444 !important; }
     .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-1deg); margin-top: 0; }
 }
+
+/* ========================================= */
+/* SECTION 4: PRODUCTION VIDEO (CREAM)       */
+/* ========================================= */
+
+.production-video {
+    background-color: #FFF8E1 !important; /* Warna Cream (Sama dengan Sec 2) */
+    position: relative;
+    z-index: 1; /* Layer paling bawah */
+    
+    /* TEKNIK JAHIT: Tarik sedikit (-2px) agar menyatu dengan section atas */
+    margin-top: -2px !important; 
+    
+    /* Padding diatur agar konten tidak ketutup kertas */
+    padding-top: 60px !important; 
+    padding-bottom: 80px !important;
+}
+
+/* GAMBAR KERTAS DI ATAS (Batas dengan Section 3) */
+.production-video::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    
+    /* DESKTOP: Tinggi 150px (Standar Sobekan Anda) */
+    height: 150px;
+    
+    /* POSISI: Naik ke atas (-149px) untuk menutupi kaki Section 3 */
+    /* Ini membuat ilusi bahwa Section 3 yang robek di bawah */
+    top: -149px; 
+    
+    background-image: url('images/sobekan-kertas.webp'); /* Pakai sobekan hero */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* --- STYLING VIDEO CONTAINER (Supaya Cantik) --- */
+.video-embed {
+    background: #000; /* Background hitam saat loading */
+    border: 5px solid #fff; /* Frame putih foto */
+    border-radius: 15px; /* Sudut tumpul */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Bayangan */
+    overflow: hidden;
+    position: relative;
+    
+    /* Aspek Rasio Video agar responsif */
+    aspect-ratio: 16 / 9; 
+    height: auto !important; /* Override inline style HTML */
+}
+
+/* Pastikan iframe mengisi penuh kotak */
+.video-embed iframe {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* --- RESPONSIVE HP (MOBILE) --- */
+@media (max-width: 768px) {
+    .production-video {
+        padding-top: 40px !important;
+    }
+
+    .production-video::before {
+        height: 60px !important; /* Kecilkan gambar di HP */
+        top: -59px !important;   /* Sesuaikan posisi */
+    }
+    
+    /* Video full width di HP */
+    .video-embed {
+        border-width: 3px;
+    }
+}
