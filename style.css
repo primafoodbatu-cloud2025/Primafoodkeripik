@@ -38,12 +38,18 @@ p, .benefit-card p, cite { color: #444 !important; }
 /* ========================================= */
 /* 4. SECTION 2: PROBLEM SOLUTION (CREAM) - UPDATED */
 /* ========================================= */
-.problem-solution { 
-    background-color: #FFF8E1 !important; 
+.problem-solution {
+    background-color: #FFF8E1 !important;
+    position: relative;
+    z-index: 1;
+    
     padding-top: 20px !important;
-    /* Padding bawah diperbesar agar konten aman dari tarikan section bawahnya */
-    padding-bottom: 120px !important; 
-    position: relative; z-index: 1; margin-top: -2px !important; 
+    
+    /* REVISI: Saya kurangi drastis dari 120px menjadi 50px */
+    /* Agar tulisan terakhir tidak kejauhan dari batas bawah */
+    padding-bottom: 50px !important; 
+    
+    margin-top: -2px !important;
 }
 .expert-quote-problem { background: #fff !important; border-left: 5px solid #c62828 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important; padding: 20px; margin: 25px auto !important; border-radius: 8px; font-style: italic; max-width: 750px; }
 .expert-quote-problem cite { display: block; margin-top: 10px; font-weight: 700; font-size: 0.85em; color: #c62828; text-transform: uppercase; font-style: normal; }
