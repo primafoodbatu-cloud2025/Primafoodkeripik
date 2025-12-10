@@ -1,5 +1,5 @@
 /* ========================================= */
-/* 1. SETUP DASAR & VARIABEL (Compact)       */
+/* 1. SETUP DASAR & VARIABEL                 */
 /* ========================================= */
 :root {
     --color-primary: #2e7d32; --color-secondary: #e65100;
@@ -12,7 +12,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--color-
 section { padding: 60px 0; width: 100%; position: relative; }
 
 /* ========================================= */
-/* 2. TIPOGRAFI & TOMBOL (COMPACT STYLE)     */
+/* 2. TIPOGRAFI & TOMBOL UMUM                */
 /* ========================================= */
 .section-title { 
     text-align: center; margin-bottom: 15px; font-size: 2.2em; 
@@ -22,17 +22,16 @@ section { padding: 60px 0; width: 100%; position: relative; }
 }
 .section-subtitle { text-align: center; margin: 0 auto 40px auto; font-size: 1.1em; color: #444; max-width: 800px; line-height: 1.3 !important; }
 
-/* Tombol CTA */
 .cta-button { background-color: var(--color-cta); color: white !important; padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 8px; display: inline-block; margin-top: 20px; transition: 0.3s; text-transform: uppercase; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; }
 .cta-button:hover { background-color: #b71c1c; transform: translateY(-2px); }
 .cta-button[style*="#e65100"] { background-color: #bf360c !important; }
 .cta-button[style*="#e65100"]:hover { background-color: #d84315 !important; }
 
-/* Teks Rapat */
+/* Teks Global Rapat */
 p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; margin-bottom: 12px !important; }
 
 /* ========================================= */
-/* 3. HERO SECTION (KUNING & SOBEKAN BAWAH)  */
+/* 3. HERO SECTION (LANDING PAGE)            */
 /* ========================================= */
 .hero-section { background-color: #F4C430; position: relative; z-index: 1; text-align: center; padding: 100px 0 220px 0; }
 .hero-section::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 2; pointer-events: none; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; height: 150px; }
@@ -45,12 +44,9 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .expert-quote-hero { background: rgba(255,255,255,0.85); color: var(--color-primary); padding: 15px 25px; margin: 25px auto; max-width: 75%; border-left: 5px solid var(--color-secondary); font-style: italic; border-radius: 4px; }
 
 /* ========================================= */
-/* 4. SECTION 2: PROBLEM SOLUTION (CREAM)    */
+/* 4. SECTION 2: PROBLEM (CREAM)             */
 /* ========================================= */
-.problem-solution { 
-    background-color: #FFF8E1 !important; position: relative; z-index: 1; 
-    padding-top: 20px !important; padding-bottom: 50px !important; margin-top: -2px !important; 
-}
+.problem-solution { background-color: #FFF8E1 !important; position: relative; z-index: 1; padding-top: 20px !important; padding-bottom: 50px !important; margin-top: -2px !important; }
 .expert-quote-problem { background: #fff !important; border-left: 5px solid #c62828 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important; padding: 20px; margin: 25px auto !important; border-radius: 8px; font-style: italic; max-width: 750px; }
 .expert-quote-problem cite { display: block; margin-top: 10px; font-weight: 700; font-size: 0.85em; color: #c62828; text-transform: uppercase; font-style: normal; }
 .problem-solution ul { background-color: #fff; padding: 30px 30px 30px 50px !important; border-radius: 12px; border: 1px dashed #F4C430; }
@@ -60,23 +56,13 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* ========================================= */
 /* 5. SECTION 3: SELLING POINT (KUNING)      */
 /* ========================================= */
-.research-proof {
-    background-color: #F4C430 !important; position: relative; z-index: 5; 
-    margin-top: 0 !important; padding-top: 180px !important; padding-bottom: 200px !important; 
-}
+.research-proof { background-color: #F4C430 !important; position: relative; z-index: 5; margin-top: 0 !important; padding-top: 180px !important; padding-bottom: 200px !important; }
 .research-proof::before { content: ""; position: absolute; left: 0; width: 100%; height: 150px; top: -1px !important; background-image: url('images/sobekan-kertas-terbalik.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
 .research-proof::after { content: ""; position: absolute; left: 0; width: 100%; height: 150px; bottom: -1px !important; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
-
 .research-proof .section-title { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); border-bottom-color: #4B3621 !important; position: relative; z-index: 10; margin-bottom: 50px !important; }
 
-/* Grid Benefit */
 .benefit-wrapper { display: flex !important; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 30px; width: 100%; position: relative; z-index: 10; }
-.benefit-card {
-    background: #ffffff; border: 3px solid #4B3621; border-radius: 15px; padding: 25px !important;
-    box-shadow: 6px 6px 0px rgba(0,0,0,0.15) !important; transition: transform 0.2s ease;
-    flex: 1; min-width: 280px; max-width: 350px; position: relative; margin-bottom: 0;
-}
-/* Miring Desktop */
+.benefit-card { background: #ffffff; border: 3px solid #4B3621; border-radius: 15px; padding: 25px !important; box-shadow: 6px 6px 0px rgba(0,0,0,0.15) !important; transition: transform 0.2s ease; flex: 1; min-width: 280px; max-width: 350px; position: relative; margin-bottom: 0; }
 .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-2deg); margin-top: 15px; }
 .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg) translateY(-10px); border-color: #c62828; }
 .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 15px; }
@@ -86,30 +72,20 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* ========================================= */
 /* 6. SECTION 4: VIDEO (CREAM)               */
 /* ========================================= */
-.production-video {
-    background-color: #FFF8E1 !important; position: relative; z-index: 1; 
-    margin-top: -2px !important; padding-top: 60px !important; padding-bottom: 80px !important;
-}
-.video-embed {
-    background: #000; border: 5px solid #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    overflow: hidden; position: relative; aspect-ratio: 16 / 9; height: auto !important;
-}
+.production-video { background-color: #FFF8E1 !important; position: relative; z-index: 1; margin-top: -2px !important; padding-top: 60px !important; padding-bottom: 80px !important; }
+.video-embed { background: #000; border: 5px solid #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; position: relative; aspect-ratio: 16 / 9; height: auto !important; }
 .video-embed iframe { width: 100% !important; height: 100% !important; }
 
 /* ========================================= */
 /* 7. SECTION 5: PRICELIST (KUNING)          */
 /* ========================================= */
-.single-product-catalog {
-    background-color: #F4C430 !important; position: relative; z-index: 5;
-    margin-top: 0 !important; padding-top: 180px !important; padding-bottom: 200px !important;
-}
+.single-product-catalog { background-color: #F4C430 !important; position: relative; z-index: 5; margin-top: 0 !important; padding-top: 180px !important; padding-bottom: 200px !important; }
 .single-product-catalog::before { content: ""; position: absolute; left: 0; width: 100%; height: 150px; top: -1px !important; background-image: url('images/sobekan-kertas-terbalik.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
 .single-product-catalog::after { content: ""; position: absolute; left: 0; width: 100%; height: 150px; bottom: -1px !important; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
-
 .single-product-catalog .section-title { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); border-bottom-color: #4B3621 !important; }
 .white-paper-box { background-color: #fff !important; border-radius: 15px; box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important; border: 3px solid #4B3621; padding: 30px !important; max-width: 1000px; margin: 0 auto 50px auto !important; }
 
-/* Grid 4 Kolom (Best Seller) */
+/* GRID BEST SELLER (Landing Page Only) */
 .best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; justify-content: center; }
 .bs-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; padding-bottom: 15px; margin: 0 !important; width: 100% !important; }
 .bs-card:hover { transform: translateY(-5px); border-color: #2e7d32; }
@@ -125,51 +101,49 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .bs-btn { display: block; width: 100%; margin-top: 10px; padding: 8px; text-align: center; background: #e65100; color: #fff; font-weight: bold; border-radius: 6px; text-decoration: none; font-size: 0.9em; }
 
 .section-subtitle-best-seller { display: block; text-align: center; font-weight: 800; color: #4B3621 !important; font-style: normal; margin-top: 40px; margin-bottom: 20px; font-size: 1.8em !important; text-transform: uppercase; text-shadow: 0 1px 0 rgba(255,255,255,0.4); }
+
+/* ========================================= */
+/* KHUSUS HALAMAN KATALOG (KATALOG.HTML)     */
+/* ========================================= */
 .product-categories { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 15px !important; margin-bottom: 30px; }
 .category-btn { background-color: #fff !important; border: 3px solid #4B3621 !important; color: #4B3621 !important; padding: 12px 25px !important; border-radius: 50px !important; font-weight: 800 !important; cursor: pointer; transition: all 0.2s; font-size: 1em !important; min-width: 200px; line-height: 1.2 !important; box-shadow: 0 4px 0 rgba(0,0,0,0.1); }
 .category-btn .en-text { display: block; font-size: 0.8em; font-weight: 400; color: #888; margin-top: 2px; }
 .category-btn.active, .category-btn:hover { background-color: #c62828 !important; color: #fff !important; border-color: #c62828 !important; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.2); }
 .category-btn.active .en-text { color: #ffccbc !important; }
 
-/* Table Style */
-.product-list { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
-.catalog-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.catalog-table th { background-color: #4B3621 !important; color: #fff !important; padding: 12px; border: 1px solid #6d4c41; }
-.catalog-table td { border: 1px solid #ccc; padding: 10px; color: #333; }
-.catalog-table tr:nth-child(even) { background-color: #fff3e0; } 
-.catalog-table tr:hover { background-color: #ffcc80; }
+/* GRID KATALOG (Auto Fill - Beda dengan Best Seller) */
+.catalog-grid { 
+    display: grid; 
+    /* Desktop: Isi otomatis sesuai lebar layar */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 15px; margin-top: 20px; 
+}
+.catalog-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; transition: 0.2s; display: flex; flex-direction: column; height: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.catalog-card:hover { transform: translateY(-2px); border-color: var(--color-primary); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.catalog-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background-color: #f9f9f9; border-bottom: 1px solid #eee; }
+.catalog-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; text-align: left; }
+.catalog-name { font-size: 1em; font-weight: 700; color: #333; margin-bottom: 2px; min-height: 40px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2; }
+.catalog-price-ecer { font-size: 1.1em; font-weight: 800; color: var(--color-cta); margin-top: 5px; }
+.wa-btn-catalog { display: block; width: 100%; text-align: center; background: #1b5e20 !important; color: #fff !important; padding: 8px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.9em; margin-top: 10px; }
+
+/* Judul Warna Warni Katalog */
+.catalog-title-green { color: var(--color-primary); text-align: center; margin-top: 50px; font-size: 1.5em; border-bottom: 3px solid #000; display: inline-block; padding-bottom: 5px; }
+.catalog-title-orange { color: var(--color-secondary); text-align: center; margin-top: 50px; font-size: 1.5em; border-bottom: 3px solid #000; display: inline-block; padding-bottom: 5px; }
+.catalog-title-red { color: #c62828; text-align: center; margin-top: 50px; font-size: 1.5em; border-bottom: 3px solid #000; display: inline-block; padding-bottom: 5px; }
 
 /* ========================================= */
-/* 8. SECTION 6: PAKET MIX (CREAM & FIXES)   */
+/* 8. SECTION 6: PAKET MIX (CREAM)           */
 /* ========================================= */
-.package-mix {
-    background-color: #FFF8E1 !important; /* CREAM */
-    position: relative; z-index: 1; 
-    margin-top: -2px !important; 
-    padding-top: 80px !important; padding-bottom: 80px !important;
-}
+.package-mix { background-color: #FFF8E1 !important; position: relative; z-index: 1; margin-top: -2px !important; padding-top: 80px !important; padding-bottom: 80px !important; }
 .package-mix .section-title { color: var(--color-primary) !important; text-shadow: none; border-bottom-color: var(--color-secondary) !important; margin-bottom: 30px !important; }
 .package-mix .section-subtitle { color: #444 !important; font-weight: normal; margin-bottom: 40px; }
 
-/* GRID 3 Kolom Desktop */
+/* Grid Mix */
 .mix-grid-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; position: relative; z-index: 10; max-width: 1100px; margin: 0 auto; }
-.mix-card {
-    background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
-    padding: 20px !important; display: flex; flex-direction: column; height: 100%; 
-    border-top-width: 4px !important; transition: transform 0.3s;
-}
+.mix-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); padding: 20px !important; display: flex; flex-direction: column; height: 100%; border-top-width: 4px !important; transition: transform 0.3s; }
 .mix-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-
-/* FIX GAMBAR: LANDSCAPE 4:3 & CONTAIN */
-.mix-card .product-img { 
-    width: 100%; 
-    aspect-ratio: 4/3 !important; /* LANDSCAPE */
-    object-fit: contain !important; /* Gambar utuh */
-    background-color: #fff; 
-    border-radius: 8px; margin-bottom: 10px; border: 1px solid #eee;
-}
-
-/* Alignment tombol dan teks */
+/* Gambar Mix (Landscape) */
+.mix-card .product-img { width: 100%; aspect-ratio: 4/3 !important; object-fit: contain !important; background-color: #fff; border-radius: 8px; margin-bottom: 10px; border: 1px solid #eee; }
 .mix-card h3 { font-size: 1.3em !important; margin: 10px 0 5px 0 !important; font-weight: 800; line-height: 1.2; }
 .mix-card .cta-button { margin-top: auto !important; width: 100%; font-size: 0.9em; padding: 10px; }
 
@@ -180,17 +154,13 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* ========================================= */
 /* 9. SECTION 7: BULK ORDER (KUNING)         */
 /* ========================================= */
-.bulk-order {
-    background-color: #F4C430 !important; position: relative; z-index: 5;
-    margin-top: 0 !important; padding-top: 180px !important; padding-bottom: 150px !important;
-}
+.bulk-order { background-color: #F4C430 !important; position: relative; z-index: 5; margin-top: 0 !important; padding-top: 180px !important; padding-bottom: 150px !important; }
 .bulk-order::before { content: ""; position: absolute; left: 0; width: 100%; height: 150px; top: -1px !important; background-image: url('images/sobekan-kertas-terbalik.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
 .bulk-order::after { content: ""; position: absolute; left: 0; width: 100%; height: 150px; bottom: -1px !important; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
-
 .bulk-order .section-title { color: #4B3621 !important; border-bottom-color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); position: relative; z-index: 10; }
 .bulk-order p { color: #212121 !important; position: relative; z-index: 10; }
 
-/* Tabel Bulk (FIX DESKTOP) */
+/* Tabel Bulk */
 .tier-table-compact { width: 100% !important; max-width: 900px !important; margin: 20px auto !important; background-color: #fff !important; border-radius: 12px; overflow: hidden; border: 3px solid #4B3621 !important; box-shadow: 0 8px 15px rgba(0,0,0,0.15) !important; position: relative; z-index: 10; }
 .tier-table-compact thead { background-color: #4B3621 !important; color: #fff !important; }
 .tier-table-compact th { color: #fff !important; border: 1px solid #6d4c41 !important; padding: 15px !important; font-size: 1.1em; }
@@ -199,10 +169,7 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* ========================================= */
 /* 10. SECTION 8: FORM ORDER (CREAM)         */
 /* ========================================= */
-.form-section-cream {
-    background-color: #FFF8E1 !important; position: relative; z-index: 1;
-    margin-top: -2px !important; padding-top: 80px !important; padding-bottom: 80px !important;
-}
+.form-section-cream { background-color: #FFF8E1 !important; position: relative; z-index: 1; margin-top: -2px !important; padding-top: 80px !important; padding-bottom: 80px !important; }
 .conversion-form .cta-button { width: 100% !important; display: block !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; padding: 15px !important; font-size: 1em !important; border-radius: 8px !important; }
 #add-product-btn { background-color: #f39c12 !important; color: #fff !important; margin-bottom: 20px !important; }
 #add-product-btn:hover { background-color: #e67e22 !important; }
@@ -254,7 +221,7 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .bs-btn { font-size: 0.8em; padding: 6px; }
     .category-btn { width: 100% !important; border-radius: 10px !important; }
     
-    /* Section 6 (Mix) Fix - 2 Kolom Kecil & Pop-up */
+    /* Section 6 (Mix) Fix */
     .package-mix { padding-top: 60px !important; padding-bottom: 60px !important; }
     .mix-grid-wrapper { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 5px; }
     /* Agar kartu kecil muat di 2 kolom HP */
@@ -274,13 +241,13 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .bulk-order::before { height: 60px !important; top: -1px !important; }
     .bulk-order::after { height: 60px !important; bottom: -1px !important; }
     /* Fix Table Menyempit */
-    .tier-table-compact { display: block; width: 100%; overflow-x: auto; white-space: nowrap; }
+    .tier-table-compact { width: 100% !important; display: block !important; overflow-x: auto; white-space: nowrap; }
     .tier-table-compact th, .tier-table-compact td { padding: 10px 8px !important; font-size: 0.85em !important; }
     
     /* Section 8 (Form) Fix */
     .form-section-cream { padding-top: 40px !important; }
     
-    /* Lainnya */
+    /* Katalog Fix (Beda Grid dgn Best Seller) */
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
     .footer-row { flex-direction: column; }
 }
