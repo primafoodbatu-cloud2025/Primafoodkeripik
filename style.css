@@ -285,3 +285,146 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
     .footer-row { flex-direction: column; }
 }
+/* ============================================================ */
+/* FIX KHUSUS & FINAL UNTUK HALAMAN KATALOG (KATALOG.HTML)      */
+/* Tempel kode ini di baris paling bawah CSS Anda               */
+/* ============================================================ */
+
+/* 1. TOMBOL KATEGORI (Agar tidak gepeng/kacau) */
+.product-categories {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px !important;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    background-color: #fff !important;
+    border: 2px solid #4B3621 !important;
+    color: #4B3621 !important;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    font-size: 0.9em !important;
+    line-height: 1.2 !important;
+    flex: 1;
+    min-width: 140px; /* Lebar minimal biar teks aman */
+    max-width: 250px;
+}
+.category-btn.active { 
+    background-color: #2e7d32 !important; 
+    color: #fff !important; 
+    border-color: #2e7d32 !important; 
+}
+.category-btn .en-text { display: block; font-size: 0.8em; font-weight: 400; margin-top: 2px; }
+
+
+/* 2. GRID KATALOG (DESKTOP: Tidak akan membesar raksasa) */
+.catalog-grid { 
+    display: grid !important; 
+    /* KUNCI: auto-fill dengan min-width 170px. 
+       Ini mencegah kartu jadi raksasa memenuhi layar. */
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important; 
+    gap: 15px !important; 
+    margin-top: 20px; 
+    width: 100%;
+}
+
+/* 3. KARTU PRODUK KATALOG */
+.catalog-card { 
+    background: #fff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    min-height: 320px; /* Tinggi minimal agar seragam */
+}
+
+/* 4. GAMBAR PRODUK (Wajib Kotak 1:1) */
+.catalog-img { 
+    width: 100% !important; 
+    aspect-ratio: 1 / 1 !important; 
+    object-fit: cover !important; 
+    background-color: #f9f9f9; 
+    border-bottom: 1px solid #eee; 
+    height: auto !important;
+}
+
+/* 5. INFO PRODUK */
+.catalog-info { 
+    padding: 10px !important; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    text-align: left; 
+}
+
+.catalog-name { 
+    font-size: 0.95em !important; 
+    font-weight: 700; 
+    color: #333; 
+    margin-bottom: 4px; 
+    line-height: 1.2; 
+    min-height: 38px; /* Jaga tinggi judul 2 baris */
+    overflow: hidden; 
+}
+
+.catalog-price-ecer { 
+    font-size: 1.1em !important; 
+    font-weight: 800; 
+    color: #c62828; 
+    margin-top: auto; 
+}
+
+.wa-btn-catalog { 
+    display: block; width: 100%; text-align: center; 
+    background-color: #25d366 !important; color: #fff !important; 
+    padding: 8px; border-radius: 4px; text-decoration: none; 
+    font-weight: bold; font-size: 0.85em; margin-top: 10px; 
+}
+
+/* Judul Kategori Warna-warni */
+.catalog-title-green { color: #2e7d32; text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #2e7d32; display: inline-block; padding-bottom: 5px; }
+.catalog-title-orange { color: #e65100; text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #e65100; display: inline-block; padding-bottom: 5px; }
+.catalog-title-red { color: #c62828; text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #c62828; display: inline-block; padding-bottom: 5px; }
+
+
+/* ============================================================ */
+/* FIX MOBILE KHUSUS KATALOG (WAJIB 2 KOLOM)                    */
+/* ============================================================ */
+@media (max-width: 768px) {
+    
+    /* Paksa Grid 2 Kolom di HP */
+    .catalog-grid { 
+        display: grid !important; 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 10px !important; 
+        padding: 0 5px;
+    }
+
+    .catalog-card {
+        min-height: 280px !important; 
+    }
+
+    .catalog-info {
+        padding: 8px !important;
+    }
+
+    .catalog-name {
+        font-size: 0.85em !important;
+        min-height: 34px !important; 
+    }
+    
+    /* Tombol Kategori di HP (2 per baris) */
+    .category-btn {
+        padding: 8px 10px !important;
+        font-size: 0.8em !important;
+        min-width: 40% !important; 
+    }
+}
