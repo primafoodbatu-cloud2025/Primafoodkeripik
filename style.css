@@ -185,35 +185,43 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
 
 /* ========================================= */
 /* 11. RESPONSIVE MOBILE FIXES (HP)          */
+/* (Pastikan ini ada di PALING BAWAH CSS)    */
 /* ========================================= */
 @media (max-width: 768px) {
+    /* Kunci Layar */
     body, html { overflow-x: hidden !important; width: 100% !important; }
+    
+    /* Font Judul Global HP */
     .section-title { font-size: 1.6em !important; line-height: 1.1 !important; }
     
-    /* Hero Fix */
+    /* --- HERO FIX --- */
     .hero-section { padding-top: 80px !important; padding-bottom: 120px !important; }
     .hero-section::after { height: 70px; }
     .hero-section img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 110px !important; margin: 0 auto 15px auto !important; }
     
-    /* Section 3 Fix */
+    /* --- SECTION 3 FIX (KUNING) --- */
     .research-proof { padding-top: 80px !important; padding-bottom: 100px !important; margin-top: 0 !important; }
     .research-proof::before { height: 60px !important; top: -1px !important; }
     .research-proof::after { height: 60px !important; bottom: -1px !important; }
+    
+    /* Kotak Benefit (Miring & Rapat) */
     .benefit-wrapper { display: block !important; padding: 0 10px; }
     .benefit-card { width: 90% !important; margin: 0 auto 30px auto !important; }
     .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-1deg); margin-top: 0; }
     
-    /* Section 4 Fix */
+    /* --- SECTION 4 FIX (VIDEO) --- */
     .production-video { padding-top: 40px !important; }
     .video-embed { border-width: 3px; }
     
-    /* Section 5 Fix */
+    /* --- SECTION 5 FIX (PRICE LIST) --- */
     .single-product-catalog { padding-top: 80px !important; padding-bottom: 100px !important; }
     .single-product-catalog::before { height: 60px !important; top: -1px !important; }
     .single-product-catalog::after { height: 60px !important; bottom: -1px !important; }
     .white-paper-box { padding: 15px !important; width: 100% !important; border-width: 2px; }
+    
+    /* Best Seller Grid (2 Kolom) */
     .best-seller-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
     .bs-card { width: 100% !important; margin: 0 !important; }
     .bs-name { font-size: 0.9em; height: 40px; overflow: hidden; }
@@ -221,66 +229,80 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .bs-btn { font-size: 0.8em; padding: 6px; }
     .category-btn { width: 100% !important; border-radius: 10px !important; }
     
-    /* Section 6 (Mix) Fix */
+    /* --- SECTION 6 FIX (PAKET MIX) --- */
     .package-mix { padding-top: 60px !important; padding-bottom: 60px !important; }
-    .mix-grid-wrapper { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 5px; }
-   /* 1. Atur Wadah Gambar Jadi 4:3 (Landscape) */
-.mix-card .product-img {
-    width: 100% !important;
-    aspect-ratio: 4 / 3 !important; /* KUNCI: Membuat gambar melebar, bukan kotak */
-    object-fit: contain !important; /* Agar gambar produk terlihat UTUH (tidak ter-zoom/potong) */
-    background-color: #fff; /* Warna dasar putih jika ada sisa ruang */
-    border-radius: 6px !important;
-    margin-bottom: 8px !important;
-    height: auto !important; /* Reset height agar ikut aspect-ratio */
-}
+    
+    /* Grid 2 Kolom untuk Mix */
+    .mix-grid-wrapper { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 10px !important; 
+        padding: 0 5px; 
+    }
+    
+    /* Style Kartu Mix (Compact) */
+    .mix-card { 
+        padding: 10px !important;
+        min-height: 0 !important; 
+        height: 100% !important; /* Agar tinggi sama rata */
+        display: flex;
+        flex-direction: column;
+    }
 
-/* 2. Rapikan Kartu/Kotaknya */
-.mix-card {
-    padding: 10px !important; /* Padding dikurangi biar muat 2 kolom */
-    min-height: 0 !important; /* Biarkan tinggi mengikuti isi */
-    height: auto !important;  /* Jangan dipaksa tinggi 100% */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Isi mulai dari atas */
-}
+    /* Gambar Mix (Landscape 4:3) */
+    .mix-card .product-img {
+        width: 100% !important;
+        aspect-ratio: 4 / 3 !important; /* Landscape */
+        object-fit: contain !important; /* Gambar utuh, sisa putih */
+        background-color: #fff;
+        border-radius: 6px !important;
+        margin-bottom: 8px !important;
+        height: auto !important;
+    }
 
-/* 3. Atur Teks Judul & Harga agar Rata */
-.mix-card h3 {
-    font-size: 0.9em !important; /* Judul pas 1-2 baris */
-    margin: 5px 0 !important;
-    min-height: 35px; /* Tinggi minimal judul agar sejajar */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.2 !important;
-}
+    /* Teks Judul & Harga Mix */
+    .mix-card h3 { 
+        font-size: 0.9em !important; 
+        margin: 5px 0 !important;
+        min-height: 35px; /* Penjaga tinggi judul agar sejajar */
+        display: flex; align-items: center; justify-content: center;
+        line-height: 1.2 !important;
+    }
     .mix-card p[style*="font-size: 1.6em"] { font-size: 1.2em !important; margin: 3px 0 !important; font-weight: 800; color: #c62828; }
     .mix-card p[style*="font-style: italic"] { font-size: 0.75em !important; margin-bottom: 3px !important; }
     .mix-card p[style*="min-height: 60px"] { font-size: 0.75em !important; line-height: 1.2 !important; min-height: auto !important; margin-bottom: 8px !important; }
-    .mix-order-btn {
-    margin-top: auto !important; /* Dorong tombol ke paling bawah */
-    padding: 8px 0 !important;
-    width: 100% !important;
-    font-size: 0.8em !important;
-}
     
+    /* Tombol Pesan Mix (Selalu di Bawah) */
+    .mix-order-btn {
+        margin-top: auto !important; 
+        padding: 8px 0 !important;
+        width: 100% !important;
+        font-size: 0.8em !important;
+    }
+    
+    /* Promo Borong Semua */
     .promo-horizontal-card { margin-top: 30px !important; flex-direction: column; text-align: center; }
     .promo-left { width: 100%; }
     .promo-left img { width: 100%; height: auto; }
     
-    /* Section 7 Fix (Table) */
+    /* --- SECTION 7 FIX (BULK ORDER) --- */
     .bulk-order { padding-top: 80px !important; padding-bottom: 80px !important; }
     .bulk-order::before { height: 60px !important; top: -1px !important; }
     .bulk-order::after { height: 60px !important; bottom: -1px !important; }
-    /* Fix Table Menyempit */
-    .tier-table-compact { width: 100% !important; display: block !important; overflow-x: auto; white-space: nowrap; }
+    
+    /* Tabel Scrollable di HP */
+    .tier-table-compact { 
+        width: 100% !important; 
+        display: block !important; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+    }
     .tier-table-compact th, .tier-table-compact td { padding: 10px 8px !important; font-size: 0.85em !important; }
     
-    /* Section 8 (Form) Fix */
+    /* --- SECTION 8 FIX (FORM) --- */
     .form-section-cream { padding-top: 40px !important; }
     
-    /* Katalog Fix (Beda Grid dgn Best Seller) */
+    /* --- LAINNYA --- */
+    /* Katalog Halaman Lain */
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
     .footer-row { flex-direction: column; }
 }
