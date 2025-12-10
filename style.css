@@ -218,19 +218,21 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
     .best-seller-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
 }
 /* ========================================= */
-/* SECTION 5: PRICE LIST (KUNING TUA)        */
+/* UPDATE SECTION 5: PRICE LIST (KUNING TUA) */
+/* (Tambahan sobekan bawah agar nyambung ke cream) */
 /* ========================================= */
 
 .single-product-catalog {
-    background-color: #F4C430 !important; /* Kuning Mustard */
+    background-color: #F4C430 !important;
     position: relative;
     z-index: 5;
     margin-top: 0 !important; 
     padding-top: 180px !important; 
-    padding-bottom: 100px !important;
+    /* UPDATE: Padding bawah diperbesar untuk sobekan */
+    padding-bottom: 200px !important; 
 }
 
-/* GAMBAR SOBEKAN KERTAS (ATAS) */
+/* SOBEKAN ATAS (Terbalik - Nyambung ke Cream atas) */
 .single-product-catalog::before {
     content: ""; position: absolute; left: 0; width: 100%;
     height: 150px; top: -1px !important; 
@@ -239,50 +241,20 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
     pointer-events: none; z-index: 6;
 }
 
-/* Judul Section Cokelat */
-.single-product-catalog .section-title {
-    color: #4B3621 !important;
-    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
-    border-bottom-color: #4B3621 !important;
+/* UPDATE: TAMBAHAN SOBEKAN BAWAH (Normal - Nyambung ke Cream bawah) */
+.single-product-catalog::after {
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; bottom: -1px !important;
+    background-image: url('images/sobekan-kertas.webp'); 
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
 }
 
-/* KOTAK PUTIH PEMBUNGKUS BEST SELLER */
-.white-paper-box {
-    background-color: #fff !important;
-    border-radius: 15px; 
-    box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important;
-    border: 3px solid #4B3621;
-    padding: 30px !important;
-    max-width: 1000px;
-    margin: 0 auto 50px auto !important;
-}
-
-/* --- PERBAIKAN 1: GRID BEST SELLER (Auto Rata) --- */
-.best-seller-grid {
-    display: grid;
-    /* Desktop: 4 Kolom Rata */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px; /* Jarak antar kotak */
-    width: 100%;
-    justify-content: center;
-}
-
-.bs-card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    padding-bottom: 15px;
-    /* Reset Margin agar Grid yang mengatur jarak */
-    margin: 0 !important; 
-    width: 100% !important;
-}
-
+/* (Sisa CSS Section 5 lainnya seperti .white-paper-box, dll tetap sama, tidak perlu diubah) */
+.single-product-catalog .section-title { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); border-bottom-color: #4B3621 !important; }
+.white-paper-box { background-color: #fff !important; border-radius: 15px; box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important; border: 3px solid #4B3621; padding: 30px !important; max-width: 1000px; margin: 0 auto 50px auto !important; }
+.best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; justify-content: center; }
+.bs-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; padding-bottom: 15px; margin: 0 !important; width: 100% !important; }
 .bs-card:hover { transform: translateY(-5px); border-color: #2e7d32; }
 .bs-img-wrapper { width: 100%; aspect-ratio: 1/1; position: relative; border-bottom: 1px solid #eee; overflow: hidden; }
 .bs-img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
@@ -294,71 +266,34 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .bs-wholesale-box { background: #f1f8e9; padding: 8px; border-radius: 6px; margin-top: auto; border: 1px solid #c8e6c9; }
 .bs-wholesale-row { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px; color: #444; }
 .bs-btn { display: block; width: 100%; margin-top: 10px; padding: 8px; text-align: center; background: #e65100; color: #fff; font-weight: bold; border-radius: 6px; text-decoration: none; font-size: 0.9em; }
-
-
-/* --- PERBAIKAN 2: JUDUL DAFTAR HARGA LENGKAP (Dibesarkan) --- */
-.section-subtitle-best-seller {
-    display: block;
-    text-align: center;
-    font-weight: 800;
-    color: #4B3621 !important; /* Cokelat agar kontras di kuning */
-    font-style: normal;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-size: 1.8em !important; /* DIBESARKAN */
-    text-transform: uppercase;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
-}
-
-/* --- PERBAIKAN 3: TOMBOL KATEGORI (Agar Rapi) --- */
-.product-categories {
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px !important;
-    margin-bottom: 30px;
-}
-
-.category-btn {
-    background-color: #fff !important;
-    border: 3px solid #4B3621 !important; /* Border Cokelat Tebal */
-    color: #4B3621 !important;
-    padding: 12px 25px !important;
-    border-radius: 50px !important; /* Bentuk Kapsul */
-    font-weight: 800 !important;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 1em !important;
-    min-width: 200px; /* Agar tidak gepeng */
-    line-height: 1.2 !important;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
-}
-
-.category-btn .en-text {
-    display: block;
-    font-size: 0.8em;
-    font-weight: 400;
-    color: #888;
-    margin-top: 2px;
-}
-
-.category-btn.active, .category-btn:hover {
-    background-color: #c62828 !important; /* Merah Menyala */
-    color: #fff !important;
-    border-color: #c62828 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
-}
+.section-subtitle-best-seller { display: block; text-align: center; font-weight: 800; color: #4B3621 !important; font-style: normal; margin-top: 40px; margin-bottom: 20px; font-size: 1.8em !important; text-transform: uppercase; text-shadow: 0 1px 0 rgba(255,255,255,0.4); }
+.product-categories { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 15px !important; margin-bottom: 30px; }
+.category-btn { background-color: #fff !important; border: 3px solid #4B3621 !important; color: #4B3621 !important; padding: 12px 25px !important; border-radius: 50px !important; font-weight: 800 !important; cursor: pointer; transition: all 0.2s; font-size: 1em !important; min-width: 200px; line-height: 1.2 !important; box-shadow: 0 4px 0 rgba(0,0,0,0.1); }
+.category-btn .en-text { display: block; font-size: 0.8em; font-weight: 400; color: #888; margin-top: 2px; }
+.category-btn.active, .category-btn:hover { background-color: #c62828 !important; color: #fff !important; border-color: #c62828 !important; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.2); }
 .category-btn.active .en-text { color: #ffccbc !important; }
-
-
-/* --- TABLE & LIST HARGA --- */
 .product-list { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
 .catalog-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .catalog-table th { background-color: #4B3621 !important; color: #fff !important; padding: 12px; border: 1px solid #6d4c41; }
 .catalog-table td { border: 1px solid #ccc; padding: 10px; color: #333; }
 .catalog-table tr:nth-child(even) { background-color: #fff3e0; } 
 .catalog-table tr:hover { background-color: #ffcc80; }
+
+/* UPDATE RESPONSIVE SECTION 5 HP */
+@media (max-width: 768px) {
+    .single-product-catalog { padding-top: 80px !important; padding-bottom: 100px !important; }
+    .single-product-catalog::before { height: 60px !important; top: -1px !important; }
+    /* Tambahan untuk sobekan bawah di HP */
+    .single-product-catalog::after { height: 60px !important; bottom: -1px !important; }
+
+    .white-paper-box { padding: 15px !important; width: 100% !important; border-width: 2px; }
+    .best-seller-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+    .bs-card { width: 100% !important; margin: 0 !important; }
+    .bs-name { font-size: 0.9em; height: 40px; overflow: hidden; }
+    .bs-wholesale-row { font-size: 0.7em; }
+    .bs-btn { font-size: 0.8em; padding: 6px; }
+    .category-btn { width: 100% !important; border-radius: 10px !important; }
+}
 
 
 /* ========================================= */
@@ -395,99 +330,88 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 }
 
 /* ========================================= */
-/* SECTION 6: PAKET MIX (KUNING & SOBEKAN)   */
+/* SECTION 6: PAKET MIX (CREAM - REVISI)     */
 /* ========================================= */
 
 .package-mix {
-    background-color: #F4C430 !important; /* Kuning Tua (Sama dengan Hero) */
+    background-color: #FFF8E1 !important; /* UBAH JADI CREAM/KUNING MUDA */
     position: relative;
-    z-index: 5;
-    margin-top: 0 !important; 
+    z-index: 1; /* Layer bawah, tertimpa section kuning atas/bawah */
+    margin-top: -2px !important; /* Jahit rapat */
     
-    /* Padding Besar untuk menampung sobekan atas & bawah */
-    padding-top: 180px !important; 
-    padding-bottom: 200px !important; 
+    /* Padding normal karena tidak ada kertasnya sendiri */
+    padding-top: 80px !important; 
+    padding-bottom: 80px !important;
 }
 
-/* SOBEKAN ATAS (Terbalik - Nyambung ke Cream) */
-.package-mix::before {
-    content: ""; position: absolute; left: 0; width: 100%;
-    height: 150px; top: -1px !important; 
-    background-image: url('images/sobekan-kertas-terbalik.webp');
-    background-repeat: no-repeat; background-size: 100% 100%;
-    pointer-events: none; z-index: 6;
-}
+/* NOTE: Tidak ada ::before dan ::after di sini, 
+   karena batas kertas disediakan oleh section kuning di atas/bawahnya */
 
-/* SOBEKAN BAWAH (Normal - Penutup) */
-.package-mix::after {
-    content: ""; position: absolute; left: 0; width: 100%;
-    height: 150px; bottom: -1px !important;
-    background-image: url('images/sobekan-kertas.webp'); 
-    background-repeat: no-repeat; background-size: 100% 100%;
-    pointer-events: none; z-index: 6;
-}
-
-/* Judul di atas Kuning */
+/* Judul kembali ke warna default/primary karena background terang */
 .package-mix .section-title {
-    color: #4B3621 !important;
-    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
-    border-bottom-color: #4B3621 !important;
-    margin-bottom: 50px !important;
-    position: relative; z-index: 10;
+    color: var(--color-primary) !important; /* Balik ke Hijau/Default */
+    text-shadow: none;
+    border-bottom-color: var(--color-secondary) !important;
+    margin-bottom: 30px !important;
 }
 .package-mix .section-subtitle {
-    color: #4B3621 !important;
-    font-weight: 600;
+    color: #444 !important; /* Balik ke abu tua */
+    font-weight: normal;
     margin-bottom: 40px;
-    position: relative; z-index: 10;
 }
 
-/* --- GRID PAKET MIX (RAPI) --- */
+/* --- GRID PAKET MIX (DESKTOP Tetap 3 Kolom) --- */
 .mix-grid-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Kolom di Desktop */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
     position: relative; z-index: 10;
     max-width: 1100px; margin: 0 auto;
 }
 
+/* Style Card */
 .mix-card {
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Bayangan diperhalus utk background cream */
     padding: 20px !important;
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-top-width: 5px !important; /* Border atas warna-warni dipertebal */
+    border-top-width: 4px !important;
     transition: transform 0.3s;
 }
-.mix-card:hover { transform: translateY(-5px); }
-
-/* Teks dalam kartu */
-.mix-card h3 { font-size: 1.4em !important; margin: 10px 0 5px 0 !important; font-weight: 800; }
-.mix-card p { margin-bottom: 10px !important; }
+.mix-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.mix-card h3 { font-size: 1.3em !important; margin: 10px 0 5px 0 !important; font-weight: 800; line-height: 1.2; }
 .mix-card .product-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
 
-/* PROMO HORIZONTAL (BORONG SEMUA) */
+/* PROMO HORIZONTAL */
 .promo-horizontal-card {
-    position: relative; z-index: 10; /* Agar di atas background */
+    position: relative; z-index: 10;
     margin-top: 60px !important;
     background: #fff;
-    border: 3px dashed #c62828 !important; /* Border putus-putus merah */
+    border: 3px dashed #c62828 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* --- RESPONSIVE HP --- */
+/* --- RESPONSIVE HP (MOBILE - REVISI 2 KOLOM) --- */
 @media (max-width: 768px) {
-    .package-mix { padding-top: 80px !important; padding-bottom: 100px !important; }
+    .package-mix { padding-top: 60px !important; padding-bottom: 60px !important; }
     
-    .package-mix::before { height: 60px !important; top: -1px !important; }
-    .package-mix::after { height: 60px !important; bottom: -1px !important; }
-    
+    /* UBAH GRID JADI 2 KOLOM */
     .mix-grid-wrapper {
-        grid-template-columns: 1fr !important; /* 1 Kolom di HP */
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr) !important; /* JADI 2 KOLOM */
+        gap: 10px !important; /* Gap dirapatkan agar muat */
+        padding: 0 5px;
     }
     
-    .promo-horizontal-card { margin-top: 40px !important; }
+    /* Penyesuaian isi kartu agar muat di 2 kolom sempit */
+    .mix-card { padding: 12px !important; }
+    .mix-card h3 { font-size: 1em !important; } /* Judul diperkecil */
+    .mix-card p[style*="font-size: 1.6em"] { font-size: 1.3em !important; margin: 5px 0 !important; } /* Harga diperkecil */
+    .mix-card p[style*="font-style: italic"] { font-size: 0.8em !important; } /* Subtitle kecil */
+    .mix-card p[style*="min-height: 60px"] { font-size: 0.8em !important; line-height: 1.3 !important; min-height: auto !important; margin-bottom: 10px !important; } /* Deskripsi diperkecil & auto height */
+    .mix-order-btn { padding: 8px 10px !important; font-size: 0.8em !important; margin-top: auto; } /* Tombol diperkecil */
+
+    .promo-horizontal-card { margin-top: 30px !important; }
 }
