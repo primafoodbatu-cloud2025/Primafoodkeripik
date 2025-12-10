@@ -53,44 +53,95 @@ p, .benefit-card p, cite { color: #444 !important; }
 
 
 /* ========================================= */
-/* 5. SECTION 3: REVISI (TARIKAN EKSTREM & RAPAT) - UPDATED */
+/* PERBAIKAN TOTAL SECTION 3 (METODE STABIL) */
 /* ========================================= */
+
 .research-proof {
     background-color: #F4C430 !important;
     position: relative;
-    z-index: 10 !important; /* Layer paling atas */
-    /* Tarik ke atas 30px AGAR CELAH PUTIH HILANG TOTAL */
-    margin-top: -30px !important; 
-    /* Padding atas dikurangi agar judul lebih rapat ke atas */
-    padding-top: 120px !important;
+    z-index: 5; /* Layer di atas section Cream */
+    
+    /* KEMBALIKAN POSISI NORMAL (JANGAN DITARIK) */
+    margin-top: 0 !important; 
+    
+    /* Padding normal agar judul tidak kepotong */
+    padding-top: 60px !important; 
     padding-bottom: 80px !important;
 }
 
-/* Gambar Kertas Terbalik (Atas) */
+/* GAMBAR KERTAS (KITA TEMPEL MANUAL DI ATAS) */
 .research-proof::before {
-    content: ""; position: absolute; left: 0; width: 100%;
-    /* DESKTOP: Tinggi 150px, Overlap 2px (148px) */
-    height: 150px; top: -148px; 
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    
+    /* UKURAN DESKTOP */
+    height: 150px; 
+    
+    /* LOGIKA BARU: Letakkan kertas TEPAT DI ATAS Section Kuning */
+    /* Nilainya minus tinggi gambar (-150px) + 1px overlap */
+    top: -149px; 
+    
     background-image: url('images/sobekan-kertas-terbalik.webp');
-    background-repeat: no-repeat; background-size: 100% 100%;
-    pointer-events: none; z-index: 11;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 6;
 }
-.research-proof .section-title { color: #4B3621 !important; text-shadow: 0 1px 0 rgba(255,255,255,0.3); border-bottom-color: #4B3621 !important; position: relative; z-index: 12; }
 
-/* KOTAK (BENEFIT CARD) - MIRING & BAYANGAN */
-.benefit-card {
-    background: #ffffff; border: 3px solid #4B3621; border-radius: 15px; padding: 25px !important;
-    box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    flex: 1; min-width: 280px; max-width: 350px; position: relative;
-    margin-bottom: 40px; /* Jarak Desktop */
+/* JUDUL SECTION */
+.research-proof .section-title {
+    color: #4B3621 !important;
+    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
+    border-bottom-color: #4B3621 !important;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 40px !important; /* Beri jarak ke kotak */
 }
-/* Rotasi Tetap (Desktop & HP) */
-.benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-3deg); z-index: 1; }
-.benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(2deg) translateY(-10px); z-index: 2; border-color: #c62828; }
-.benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); z-index: 1; }
-/* Hover Effect */
-.benefit-card:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 20 !important; box-shadow: 12px 12px 0px rgba(0,0,0,0.2) !important; background-color: #fffde7; }
+
+/* --- PERBAIKAN LAYOUT KOTAK (GRID SYSTEM) --- */
+
+/* PENTING: Ini yang bikin kotak berbaris ke samping di Desktop */
+.benefit-wrapper {
+    display: flex !important; /* Wajib Flexbox */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* STYLE KOTAK (BENEFIT CARD) */
+.benefit-card {
+    background: #ffffff;
+    border: 3px solid #4B3621;
+    border-radius: 15px;
+    padding: 25px !important;
+    
+    /* Bayangan kita sederhanakan agar tidak berat */
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.15) !important;
+    
+    transition: transform 0.2s ease; /* Animasi dipercepat biar ringan */
+    flex: 1; /* Agar lebar merata */
+    min-width: 280px;
+    max-width: 350px;
+    position: relative;
+}
+
+/* EFEK MIRING (DESKTOP) */
+.benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-2deg); margin-top: 10px; }
+.benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg) translateY(-10px); border-color: #c62828; }
+.benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 10px; }
+
+/* HOVER */
+.benefit-card:hover {
+    transform: scale(1.02) rotate(0deg) !important;
+    z-index: 20;
+    background-color: #fffde7;
+}
+
 .benefit-card h3 { color: #c62828; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; font-size: 1.3em; }
 
 
@@ -142,26 +193,31 @@ p, .benefit-card p, cite { color: #444 !important; }
     .hero-section::after { height: 70px; }
     .hero-section img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 110px !important; margin: 0 auto 15px auto !important; }
     
-    /* Section 3 Fix (Gap, Image Size & Spacing) */
-    .research-proof { 
-        /* Padding atas di HP dikurangi drastis agar judul rapat */
-        padding-top: 50px !important; 
-        margin-top: -5px !important; /* Tetap minus agar rapat */
+   /* 1. KOREKSI GAMBAR KERTAS DI HP */
+    .research-proof::before {
+        height: 60px !important; /* Perkecil gambar */
+        top: -59px !important;   /* Tempel pas di atas */
     }
-    .research-proof::before { height: 60px !important; top: -58px !important; }
     
-    /* KOTAK DI HP: Rapat & Miring */
-    .benefit-card { 
-        width: 85% !important; 
-        /* Jarak antar kotak di HP dirapatkan jadi 20px */
-        margin: 0 auto 20px auto !important; 
+    /* 2. KOREKSI JUDUL DI HP */
+    .research-proof {
+        padding-top: 30px !important; /* Jarak aman judul ke kertas */
     }
-    /* Memastikan rotasi tetap berjalan di HP */
-    .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(2deg) !important; }
     
-    /* Lain-lain */
-    .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
-    .promo-horizontal-card { flex-direction: column; text-align: center; }
-    .footer-row { flex-direction: column; }
-    .best-seller-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+    /* 3. PERBAIKI LAYOUT KOTAK DI HP */
+    .benefit-wrapper {
+        display: block !important; /* Ubah jadi block biasa agar turun ke bawah */
+        padding: 0 10px;
+    }
+
+    .benefit-card {
+        width: 100% !important; 
+        max-width: 100% !important;
+        margin: 0 auto 25px auto !important; /* Jarak antar kotak */
+    }
+
+    /* 4. EFEK MIRING DI HP (SEDIKIT SAJA BIAR RAPI) */
+    .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-1deg); }
+    .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg); }
+    .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-1deg); }
 }
