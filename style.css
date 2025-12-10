@@ -12,19 +12,42 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--color-
 section { padding: 60px 0; width: 100%; position: relative; }
 
 /* ========================================= */
-/* 2. TIPOGRAFI & TOMBOL (Compact)           */
+/* 2. TIPOGRAFI JUDUL (SANGAT RAPAT)         */
 /* ========================================= */
-/* Note: Margin bottom judul diset 15px, margin top 0 (kecuali di-override di HTML) */
-.section-title { text-align: center; margin-bottom: 15px; font-size: 2.2em; color: var(--color-primary); border-bottom: 3px solid var(--color-secondary); display: table !important; padding-bottom: 10px; margin: 0 auto 15px auto !important; max-width: 100%; }
-.section-subtitle { text-align: center; margin: 0 auto 40px auto; font-size: 1.1em; color: #444; max-width: 800px; }
 
-/* Tombol */
+/* JUDUL UMUM (Section Title) */
+.section-title { 
+    text-align: center; 
+    margin-bottom: 15px; 
+    font-size: 2.2em; 
+    color: var(--color-primary); 
+    border-bottom: 3px solid var(--color-secondary); 
+    display: table !important; 
+    padding-bottom: 10px; 
+    margin: 0 auto 15px auto !important; 
+    max-width: 100%; 
+    
+    /* UPDATE: Dibuat sangat rapat (1.05) */
+    line-height: 1.05 !important; 
+}
+
+/* Sub-Judul Umum */
+.section-subtitle { 
+    text-align: center; 
+    margin: 0 auto 40px auto; 
+    font-size: 1.1em; 
+    color: #444; 
+    max-width: 800px; 
+    line-height: 1.3 !important; 
+}
+
+/* Tombol CTA */
 .cta-button { background-color: var(--color-cta); color: white !important; padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 8px; display: inline-block; margin-top: 20px; transition: 0.3s; text-transform: uppercase; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; }
 .cta-button:hover { background-color: #b71c1c; transform: translateY(-2px); }
 .cta-button[style*="#e65100"] { background-color: #bf360c !important; }
 .cta-button[style*="#e65100"]:hover { background-color: #d84315 !important; }
 
-/* Spasi Paragraf Rapat */
+/* Paragraf & Text Lain (Rapat Standar) */
 p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; margin-bottom: 12px !important; }
 
 /* ========================================= */
@@ -32,7 +55,15 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* ========================================= */
 .hero-section { background-color: #F4C430; position: relative; z-index: 1; text-align: center; padding: 100px 0 220px 0; }
 .hero-section::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 2; pointer-events: none; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; height: 150px; }
-.hero-section h1 { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255,0.3); font-weight: 800; line-height: 1.05 !important; margin-bottom: 8px !important; }
+
+/* Judul Hero (Rapat) */
+.hero-section h1 { 
+    color: #4B3621 !important; 
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.3); 
+    font-weight: 800; 
+    line-height: 1.05 !important; /* Sangat Rapat */
+    margin-bottom: 8px !important; 
+}
 .hero-section h2, .hero-section p { color: #212121 !important; margin-bottom: 8px !important; line-height: 1.2 !important; font-size: 1.3em !important; }
 .hero-section p { margin-bottom: 15px !important; line-height: 1.4 !important; font-size: 1.1em !important; }
 .hero-section p + div { margin-top: 10px !important; gap: 10px !important; margin-bottom: 25px !important; }
@@ -67,23 +98,9 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
     padding-bottom: 200px !important; 
 }
 
-/* Kertas Atas (Terbalik) */
-.research-proof::before {
-    content: ""; position: absolute; left: 0; width: 100%;
-    height: 150px; top: -1px !important; 
-    background-image: url('images/sobekan-kertas-terbalik.webp');
-    background-repeat: no-repeat; background-size: 100% 100%;
-    pointer-events: none; z-index: 6;
-}
-
-/* Kertas Bawah (Normal) */
-.research-proof::after {
-    content: ""; position: absolute; left: 0; width: 100%;
-    height: 150px; bottom: -1px !important;
-    background-image: url('images/sobekan-kertas.webp'); 
-    background-repeat: no-repeat; background-size: 100% 100%;
-    pointer-events: none; z-index: 6;
-}
+/* Kertas Atas & Bawah */
+.research-proof::before { content: ""; position: absolute; left: 0; width: 100%; height: 150px; top: -1px !important; background-image: url('images/sobekan-kertas-terbalik.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
+.research-proof::after { content: ""; position: absolute; left: 0; width: 100%; height: 150px; bottom: -1px !important; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 6; }
 
 .research-proof .section-title { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); border-bottom-color: #4B3621 !important; position: relative; z-index: 10; margin-bottom: 50px !important; }
 
@@ -100,7 +117,16 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg) translateY(-10px); border-color: #c62828; }
 .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 15px; }
 .benefit-card:hover { transform: scale(1.02) rotate(0deg) !important; z-index: 20; background-color: #fffde7; }
-.benefit-card h3 { color: #c62828; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; font-size: 1.3em; }
+
+/* Judul Kartu Rapat */
+.benefit-card h3 { 
+    color: #c62828; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    margin-bottom: 10px; 
+    font-size: 1.3em; 
+    line-height: 1.1 !important; /* Rapat */
+}
 
 /* ========================================= */
 /* 6. SECTION 4: PRODUCTION VIDEO (CREAM)    */
@@ -129,7 +155,7 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .bs-img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
 .bs-card:hover .bs-img { transform: scale(1.1); }
 .bs-info { padding: 15px; flex-grow: 1; }
-.bs-name { font-weight: 700; margin-bottom: 5px; } .bs-price { color: #c62828; font-weight: 800; font-size: 1.3em; margin-bottom: 8px; }
+.bs-name { font-weight: 700; margin-bottom: 5px; line-height: 1.2; } .bs-price { color: #c62828; font-weight: 800; font-size: 1.3em; margin-bottom: 8px; }
 .bs-wholesale-box { background: #f1f8e9; padding: 10px; border-radius: 8px; margin-top: auto; border: 1px solid #c8e6c9; }
 .bs-btn { display: block; width: 90%; margin: 10px auto 0; padding: 10px; text-align: center; background: #e65100; color: #fff; font-weight: bold; border-radius: 6px; text-decoration: none; }
 .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-top: 20px; }
@@ -137,7 +163,7 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .catalog-card:hover { transform: translateY(-2px); border-color: var(--color-primary); }
 .catalog-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
 .catalog-info { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-.catalog-name { font-size: 0.95em; font-weight: 700; margin-bottom: 0; min-height: 36px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.catalog-name { font-size: 0.95em; font-weight: 700; margin-bottom: 0; min-height: 36px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2; }
 .catalog-price-ecer { font-size: 1em; font-weight: 800; color: var(--color-cta); }
 .wa-btn-catalog { display: block; width: 100%; text-align: center; background: #1b5e20 !important; color: #fff !important; padding: 6px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.85em; margin-top: 8px; }
 .catalog-title-green { color: var(--color-primary); text-align: center; margin-top: 50px; font-size: 1.5em; border-bottom: 3px solid #000; display: inline-block; }
@@ -160,6 +186,9 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* ========================================= */
 @media (max-width: 768px) {
     body, html { overflow-x: hidden !important; width: 100% !important; }
+    
+    /* Judul di HP: Lebih rapat lagi font-nya */
+    .section-title { font-size: 1.6em !important; line-height: 1.1 !important; }
     
     /* Hero Fix */
     .hero-section { padding-top: 80px !important; padding-bottom: 120px !important; }
