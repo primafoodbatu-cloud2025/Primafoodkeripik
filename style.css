@@ -1,5 +1,5 @@
 /* ========================================= */
-/* 1. SETUP DASAR & VARIABEL (Compact) */
+/* 1. SETUP DASAR & VARIABEL */
 /* ========================================= */
 :root {
     --color-primary: #2e7d32; --color-secondary: #e65100;
@@ -12,7 +12,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--color-
 section { padding: 60px 0; width: 100%; position: relative; }
 
 /* ========================================= */
-/* 2. TIPOGRAFI & TOMBOL (Compact) */
+/* 2. TIPOGRAFI & TOMBOL */
 /* ========================================= */
 .section-title { text-align: center; margin-bottom: 15px; font-size: 2.2em; color: var(--color-primary); border-bottom: 3px solid var(--color-secondary); display: table !important; padding-bottom: 10px; margin: 0 auto !important; max-width: 100%; }
 .section-subtitle { text-align: center; margin: 0 auto 40px auto; font-size: 1.1em; color: #444; max-width: 800px; }
@@ -23,7 +23,7 @@ section { padding: 60px 0; width: 100%; position: relative; }
 p, .benefit-card p, cite { color: #444 !important; }
 
 /* ========================================= */
-/* 3. HERO SECTION (KUNING & SOBEKAN) */
+/* 3. HERO SECTION (KUNING & SOBEKAN BAWAH) */
 /* ========================================= */
 .hero-section { background-color: #F4C430; position: relative; z-index: 1; text-align: center; padding: 100px 0 220px 0; }
 .hero-section::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 2; pointer-events: none; background-image: url('images/sobekan-kertas.webp'); background-repeat: no-repeat; background-size: 100% 100%; height: 150px; }
@@ -34,21 +34,14 @@ p, .benefit-card p, cite { color: #444 !important; }
 .business-desc { background-color: #fff !important; border: 2px solid #F4C430 !important; box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important; position: relative; z-index: 3; }
 .expert-quote-hero { background: rgba(255,255,255,0.85); color: var(--color-primary); padding: 15px 25px; margin: 25px auto; max-width: 75%; border-left: 5px solid var(--color-secondary); font-style: italic; border-radius: 4px; }
 
-
 /* ========================================= */
-/* 4. SECTION 2: PROBLEM SOLUTION (CREAM) - UPDATED */
+/* 4. SECTION 2: PROBLEM SOLUTION (CREAM)    */
 /* ========================================= */
-.problem-solution {
-    background-color: #FFF8E1 !important;
-    position: relative;
-    z-index: 1;
-    
+.problem-solution { 
+    background-color: #FFF8E1 !important; 
+    position: relative; z-index: 1; 
     padding-top: 20px !important;
-    
-    /* REVISI: Saya kurangi drastis dari 120px menjadi 50px */
-    /* Agar tulisan terakhir tidak kejauhan dari batas bawah */
     padding-bottom: 50px !important; 
-    
     margin-top: -2px !important;
 }
 .expert-quote-problem { background: #fff !important; border-left: 5px solid #c62828 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important; padding: 20px; margin: 25px auto !important; border-radius: 8px; font-style: italic; max-width: 750px; }
@@ -57,100 +50,78 @@ p, .benefit-card p, cite { color: #444 !important; }
 .problem-solution li { margin-bottom: 15px; color: #333; }
 .problem-solution p[style*="font-style: italic"] { color: #2e7d32 !important; font-weight: 600; background: rgba(46,125,50,0.1); padding: 15px; border-radius: 8px; display: inline-block; }
 
-
 /* ========================================= */
-/* FIX FINAL & STABIL: SECTION 3             */
+/* 5. SECTION 3: SELLING POINT (KUNING FULL) */
 /* ========================================= */
-
 .research-proof {
     background-color: #F4C430 !important;
     position: relative;
-    z-index: 5;
-    
-    /* PENTING: Jangan ditarik ke atas (0px). Biarkan mengalir natural */
-    /* Ini mencegah layout tabrakan dengan section atas */
+    z-index: 5; /* Layer lebih tinggi dari Section 2 & 4 */
     margin-top: 0 !important; 
     
-    /* Padding Atas Besar: Agar judul tidak tertutup gambar kertas */
+    /* Padding Atas & Bawah Besar: Untuk tempat sobekan kertas */
     padding-top: 180px !important; 
-    padding-bottom: 80px !important;
+    padding-bottom: 200px !important; /* Bawah dibesarkan agar konten tidak ketutup sobekan bawah */
 }
 
-/* GAMBAR KERTAS SOBEKAN (LOGIKA BARU) */
+/* SOBEKAN ATAS (Terbalik - Nyambung ke Cream Atas) */
 .research-proof::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    
-    /* UKURAN DESKTOP */
-    height: 150px; 
-    
-    /* KUNCI PERBAIKAN: */
-    /* Set TOP ke -1px. Artinya gambar duduk persis di dalam kotak kuning bagian atas. */
-    /* Bagian atas gambar (krem padat) akan menyatu dengan Section 2. */
-    /* Bagian bawah gambar (sobekan) akan menutupi warna kuning. */
-    top: -1px !important; 
-    
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; top: -1px !important; 
     background-image: url('images/sobekan-kertas-terbalik.webp');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    pointer-events: none;
-    z-index: 6;
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
 }
 
-/* JUDUL SECTION */
-.research-proof .section-title {
-    color: #4B3621 !important;
-    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
-    border-bottom-color: #4B3621 !important;
-    position: relative;
-    z-index: 10;
-    margin-bottom: 50px !important; /* Jarak aman ke kotak */
+/* SOBEKAN BAWAH (Normal - Nyambung ke Cream Bawah) */
+/* Ini yang memperbaiki masalah "Tidak Terlihat" */
+.research-proof::after {
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; bottom: -1px !important;
+    background-image: url('images/sobekan-kertas.webp'); /* Gambar Normal */
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
 }
 
-/* --- LAYOUT KOTAK (GRID SYSTEM) --- */
-.benefit-wrapper {
-    /* Wajib FLEX agar berbaris ke samping di desktop */
-    display: flex !important; 
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
-    width: 100%;
-    position: relative;
-    z-index: 10;
-}
+.research-proof .section-title { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); border-bottom-color: #4B3621 !important; position: relative; z-index: 10; margin-bottom: 50px !important; }
 
-/* STYLE KOTAK (BENEFIT CARD) */
+/* LAYOUT KOTAK */
+.benefit-wrapper { display: flex !important; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 30px; width: 100%; position: relative; z-index: 10; }
 .benefit-card {
-    background: #ffffff;
-    border: 3px solid #4B3621;
-    border-radius: 15px;
-    padding: 25px !important;
-    
-    /* Bayangan: Dibuat simpel agar tidak berat */
+    background: #ffffff; border: 3px solid #4B3621; border-radius: 15px; padding: 25px !important;
     box-shadow: 6px 6px 0px rgba(0,0,0,0.15) !important;
-    
     transition: transform 0.2s ease;
-    flex: 1; 
-    min-width: 280px;
-    max-width: 350px;
-    position: relative;
-    margin-bottom: 0; 
+    flex: 1; min-width: 280px; max-width: 350px; position: relative; margin-bottom: 0;
 }
-
-/* EFEK MIRING DESKTOP (ZIG-ZAG) */
+/* Miring Desktop */
 .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-2deg); margin-top: 15px; }
 .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg) translateY(-10px); border-color: #c62828; }
 .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 15px; }
-
-/* HOVER (LURUSKAN SAAT DISENTUH) */
+/* Hover */
 .benefit-card:hover { transform: scale(1.02) rotate(0deg) !important; z-index: 20; background-color: #fffde7; }
 .benefit-card h3 { color: #c62828; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; font-size: 1.3em; }
 
 /* ========================================= */
-/* 6. KATALOG, BEST SELLER & LAINNYA (Compact) */
+/* 6. SECTION 4: PRODUCTION VIDEO (CREAM)    */
+/* ========================================= */
+.production-video {
+    background-color: #FFF8E1 !important;
+    position: relative;
+    z-index: 1; /* Layer bawah, tertimpa sobekan Section 3 */
+    margin-top: -2px !important; /* Jahit rapat */
+    padding-top: 60px !important;
+    padding-bottom: 80px !important;
+}
+
+.video-embed {
+    background: #000; border: 5px solid #fff; border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    overflow: hidden; position: relative; aspect-ratio: 16 / 9; height: auto !important;
+}
+.video-embed iframe { width: 100% !important; height: 100% !important; }
+
+/* ========================================= */
+/* 7. KOMPONEN LAIN (KATALOG, DLL)           */
 /* ========================================= */
 .best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; justify-content: center; }
 .bs-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; padding-bottom: 15px; }
@@ -185,9 +156,8 @@ p, .benefit-card p, cite { color: #444 !important; }
 .float-wa { position: fixed !important; bottom: 20px !important; right: 20px !important; z-index: 9999; background: #25d366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); display: flex !important; gap: 10px; font-weight: bold; }
 .float-wa img { width: 24px !important; height: 24px !important; }
 
-
 /* ========================================= */
-/* 7. RESPONSIVE MOBILE FIXES (REVISI RAPAT) - UPDATED */
+/* 8. RESPONSIVE MOBILE FIXES (ALL IN ONE)   */
 /* ========================================= */
 @media (max-width: 768px) {
     body, html { overflow-x: hidden !important; width: 100% !important; }
@@ -197,109 +167,25 @@ p, .benefit-card p, cite { color: #444 !important; }
     .hero-section::after { height: 70px; }
     .hero-section img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 110px !important; margin: 0 auto 15px auto !important; }
     
-  /* 1. KOREKSI GAMBAR DI HP */
-    .research-proof::before {
-        height: 60px !important; /* Gambar diperkecil */
-        top: -1px !important;    /* Tetap tempel di atas */
-    }
+    /* Section 3 Fix (HP) */
+    .research-proof { padding-top: 80px !important; padding-bottom: 100px !important; margin-top: 0 !important; }
+    .research-proof::before { height: 60px !important; top: -1px !important; }
+    .research-proof::after { height: 60px !important; bottom: -1px !important; }
     
-    /* 2. KOREKSI PADDING SECTION DI HP */
-    .research-proof {
-        /* Padding dikurangi tapi cukup untuk menampung gambar 60px + Judul */
-        padding-top: 80px !important; 
-    }
-    
-    /* 3. LAYOUT KOTAK DI HP (TURUN KE BAWAH) */
-    .benefit-wrapper {
-        display: block !important; /* Susun ke bawah */
-        padding: 0 10px;
-    }
-
-    .benefit-card {
-        width: 100% !important; 
-        max-width: 100% !important;
-        /* Beri jarak antar kotak agar bayangan/miring tidak saling tumpuk */
-        margin: 0 auto 30px auto !important; 
-    }
-
-    /* 4. MIRING SEDIKIT DI HP (AGAR TETAP ESTETIK) */
-    /* Kita buat miringnya sedikit saja agar teks tetap enak dibaca */
+    /* Kotak HP: Miring & Rapat */
+    .benefit-wrapper { display: block !important; padding: 0 10px; }
+    .benefit-card { width: 90% !important; margin: 0 auto 30px auto !important; }
     .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-1deg); margin-top: 0; }
-}
-
-/* ========================================= */
-/* SECTION 4: PRODUCTION VIDEO (CREAM)       */
-/* ========================================= */
-
-.production-video {
-    background-color: #FFF8E1 !important; /* Warna Cream (Sama dengan Sec 2) */
-    position: relative;
-    z-index: 1; /* Layer paling bawah */
     
-    /* TEKNIK JAHIT: Tarik sedikit (-2px) agar menyatu dengan section atas */
-    margin-top: -2px !important; 
+    /* Section 4 & Video HP */
+    .production-video { padding-top: 40px !important; }
+    .video-embed { border-width: 3px; }
     
-    /* Padding diatur agar konten tidak ketutup kertas */
-    padding-top: 60px !important; 
-    padding-bottom: 80px !important;
-}
-
-/* GAMBAR KERTAS DI ATAS (Batas dengan Section 3) */
-.production-video::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    
-    /* DESKTOP: Tinggi 150px (Standar Sobekan Anda) */
-    height: 150px;
-    
-    /* POSISI: Naik ke atas (-149px) untuk menutupi kaki Section 3 */
-    /* Ini membuat ilusi bahwa Section 3 yang robek di bawah */
-    top: -149px; 
-    
-    background-image: url('images/sobekan-kertas.webp'); /* Pakai sobekan hero */
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* --- STYLING VIDEO CONTAINER (Supaya Cantik) --- */
-.video-embed {
-    background: #000; /* Background hitam saat loading */
-    border: 5px solid #fff; /* Frame putih foto */
-    border-radius: 15px; /* Sudut tumpul */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Bayangan */
-    overflow: hidden;
-    position: relative;
-    
-    /* Aspek Rasio Video agar responsif */
-    aspect-ratio: 16 / 9; 
-    height: auto !important; /* Override inline style HTML */
-}
-
-/* Pastikan iframe mengisi penuh kotak */
-.video-embed iframe {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-/* --- RESPONSIVE HP (MOBILE) --- */
-@media (max-width: 768px) {
-    .production-video {
-        padding-top: 40px !important;
-    }
-
-    .production-video::before {
-        height: 60px !important; /* Kecilkan gambar di HP */
-        top: -59px !important;   /* Sesuaikan posisi */
-    }
-    
-    /* Video full width di HP */
-    .video-embed {
-        border-width: 3px;
-    }
+    /* Lain-lain */
+    .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+    .promo-horizontal-card { flex-direction: column; text-align: center; }
+    .footer-row { flex-direction: column; }
+    .best-seller-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
 }
