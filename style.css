@@ -286,17 +286,18 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .footer-row { flex-direction: column; }
 }
 /* ============================================================ */
-/* FIX KHUSUS & FINAL UNTUK HALAMAN KATALOG (KATALOG.HTML)      */
-/* Tempel kode ini di baris paling bawah CSS Anda               */
+/* FIX FINAL KATALOG: DESKTOP RATA & HP 2 KOLOM                 */
+/* (Tempel kode ini di baris paling bawah CSS Anda)             */
 /* ============================================================ */
 
-/* 1. TOMBOL KATEGORI (Agar tidak gepeng/kacau) */
+/* 1. TOMBOL KATEGORI */
 .product-categories {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px !important;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .category-btn {
@@ -308,95 +309,111 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     font-weight: 700 !important;
     cursor: pointer;
     font-size: 0.9em !important;
-    line-height: 1.2 !important;
     flex: 1;
-    min-width: 140px; /* Lebar minimal biar teks aman */
+    min-width: 140px;
     max-width: 250px;
+    text-align: center;
 }
-.category-btn.active { 
-    background-color: #2e7d32 !important; 
-    color: #fff !important; 
-    border-color: #2e7d32 !important; 
-}
+.category-btn.active { background-color: #2e7d32 !important; color: #fff !important; border-color: #2e7d32 !important; }
 .category-btn .en-text { display: block; font-size: 0.8em; font-weight: 400; margin-top: 2px; }
 
 
-/* 2. GRID KATALOG (DESKTOP: Tidak akan membesar raksasa) */
+/* 2. GRID KATALOG (DESKTOP) */
 .catalog-grid { 
     display: grid !important; 
-    /* KUNCI: auto-fill dengan min-width 170px. 
-       Ini mencegah kartu jadi raksasa memenuhi layar. */
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important; 
-    gap: 15px !important; 
+    /* Min-width 190px agar kartu di desktop tidak kekecilan/gepeng */
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)) !important; 
+    gap: 20px !important; 
     margin-top: 20px; 
     width: 100%;
 }
 
-/* 3. KARTU PRODUK KATALOG */
+/* 3. KARTU PRODUK (FIX RATA) */
 .catalog-card { 
     background: #fff; 
     border: 1px solid #e0e0e0; 
     border-radius: 8px; 
     overflow: hidden; 
     display: flex; 
-    flex-direction: column; 
-    height: 100%; 
+    flex-direction: column; /* Susun ke bawah */
+    height: 100%; /* Paksa tinggi penuh mengikuti grid */
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-    min-height: 320px; /* Tinggi minimal agar seragam */
 }
 
-/* 4. GAMBAR PRODUK (Wajib Kotak 1:1) */
+.catalog-card:hover { transform: translateY(-3px); border-color: #2e7d32; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+/* GAMBAR (KOTAK 1:1) */
 .catalog-img { 
-    width: 100% !important; 
+    width: 100%; 
     aspect-ratio: 1 / 1 !important; 
     object-fit: cover !important; 
     background-color: #f9f9f9; 
     border-bottom: 1px solid #eee; 
-    height: auto !important;
 }
 
-/* 5. INFO PRODUK */
+/* INFO PRODUK (FLEXBOX ALIGNMENT) */
 .catalog-info { 
-    padding: 10px !important; 
-    flex-grow: 1; 
+    padding: 12px !important; 
+    flex-grow: 1; /* Mengisi sisa ruang */
     display: flex; 
     flex-direction: column; 
-    justify-content: space-between; 
+    justify-content: flex-start; 
     text-align: left; 
 }
 
+/* JUDUL PRODUK (KUNCI AGAR RATA) */
 .catalog-name { 
-    font-size: 0.95em !important; 
+    font-size: 1em !important; 
     font-weight: 700; 
     color: #333; 
     margin-bottom: 4px; 
-    line-height: 1.2; 
-    min-height: 38px; /* Jaga tinggi judul 2 baris */
+    line-height: 1.25 !important; 
+    
+    /* FIX TINGGI: Wajib 2 baris (sekitar 40-42px) walaupun teks pendek */
+    min-height: 42px !important; 
+    
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
     overflow: hidden; 
 }
 
+/* Bahasa Inggris */
+.catalog-en {
+    font-size: 0.75em;
+    color: #999;
+    font-style: italic;
+    margin-bottom: 8px;
+    display: block;
+    min-height: 18px; /* Jaga-jaga biar rata juga */
+}
+
+/* Harga */
 .catalog-price-ecer { 
     font-size: 1.1em !important; 
     font-weight: 800; 
     color: #c62828; 
-    margin-top: auto; 
+    margin-top: 5px; 
 }
 
+/* TOMBOL WA (Selalu di Bawah) */
 .wa-btn-catalog { 
+    margin-top: auto !important; /* Mendorong tombol ke dasar kartu */
     display: block; width: 100%; text-align: center; 
     background-color: #25d366 !important; color: #fff !important; 
     padding: 8px; border-radius: 4px; text-decoration: none; 
-    font-weight: bold; font-size: 0.85em; margin-top: 10px; 
+    font-weight: bold; font-size: 0.9em; 
 }
 
-/* Judul Kategori Warna-warni */
-.catalog-title-green { color: #2e7d32; text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #2e7d32; display: inline-block; padding-bottom: 5px; }
-.catalog-title-orange { color: #e65100; text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #e65100; display: inline-block; padding-bottom: 5px; }
-.catalog-title-red { color: #c62828; text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #c62828; display: inline-block; padding-bottom: 5px; }
+/* Judul Kategori */
+.catalog-title-green, .catalog-title-orange, .catalog-title-red { text-align: center; margin-top: 40px; margin-bottom: 15px; font-size: 1.4em; display: inline-block; padding-bottom: 5px; border-bottom: 2px solid; }
+.catalog-title-green { color: #2e7d32; border-color: #2e7d32; }
+.catalog-title-orange { color: #e65100; border-color: #e65100; }
+.catalog-title-red { color: #c62828; border-color: #c62828; }
 
 
 /* ============================================================ */
-/* FIX MOBILE KHUSUS KATALOG (WAJIB 2 KOLOM)                    */
+/* RESPONSIVE MOBILE KHUSUS KATALOG (WAJIB 2 KOLOM)             */
 /* ============================================================ */
 @media (max-width: 768px) {
     
@@ -406,22 +423,40 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
         grid-template-columns: repeat(2, 1fr) !important; 
         gap: 10px !important; 
         padding: 0 5px;
+        margin-top: 15px;
     }
 
     .catalog-card {
-        min-height: 280px !important; 
+        min-height: 0 !important; /* Reset tinggi min di HP */
     }
 
     .catalog-info {
-        padding: 8px !important;
+        padding: 10px !important;
     }
 
+    /* Font Lebih Kecil di HP */
     .catalog-name {
         font-size: 0.85em !important;
-        min-height: 34px !important; 
+        min-height: 35px !important; /* Sesuaikan tinggi 2 baris teks kecil */
+        margin-bottom: 2px;
     }
     
-    /* Tombol Kategori di HP (2 per baris) */
+    .catalog-en {
+        font-size: 0.7em;
+        margin-bottom: 5px;
+        min-height: 0; /* Di HP biarkan natural */
+    }
+    
+    .catalog-price-ecer {
+        font-size: 0.95em !important;
+    }
+
+    .wa-btn-catalog {
+        padding: 6px;
+        font-size: 0.8em;
+    }
+
+    /* Tombol Kategori di HP */
     .category-btn {
         padding: 8px 10px !important;
         font-size: 0.8em !important;
