@@ -224,13 +224,46 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     /* Section 6 (Mix) Fix */
     .package-mix { padding-top: 60px !important; padding-bottom: 60px !important; }
     .mix-grid-wrapper { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 5px; }
-    /* Agar kartu kecil muat di 2 kolom HP */
-    .mix-card { padding: 8px !important; box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important; min-width: 0 !important; } 
-    .mix-card h3 { font-size: 0.95em !important; margin: 5px 0 !important; }
+   /* 1. Atur Wadah Gambar Jadi 4:3 (Landscape) */
+.mix-card .product-img {
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important; /* KUNCI: Membuat gambar melebar, bukan kotak */
+    object-fit: contain !important; /* Agar gambar produk terlihat UTUH (tidak ter-zoom/potong) */
+    background-color: #fff; /* Warna dasar putih jika ada sisa ruang */
+    border-radius: 6px !important;
+    margin-bottom: 8px !important;
+    height: auto !important; /* Reset height agar ikut aspect-ratio */
+}
+
+/* 2. Rapikan Kartu/Kotaknya */
+.mix-card {
+    padding: 10px !important; /* Padding dikurangi biar muat 2 kolom */
+    min-height: 0 !important; /* Biarkan tinggi mengikuti isi */
+    height: auto !important;  /* Jangan dipaksa tinggi 100% */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Isi mulai dari atas */
+}
+
+/* 3. Atur Teks Judul & Harga agar Rata */
+.mix-card h3 {
+    font-size: 0.9em !important; /* Judul pas 1-2 baris */
+    margin: 5px 0 !important;
+    min-height: 35px; /* Tinggi minimal judul agar sejajar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2 !important;
+}
     .mix-card p[style*="font-size: 1.6em"] { font-size: 1.2em !important; margin: 3px 0 !important; font-weight: 800; color: #c62828; }
     .mix-card p[style*="font-style: italic"] { font-size: 0.75em !important; margin-bottom: 3px !important; }
     .mix-card p[style*="min-height: 60px"] { font-size: 0.75em !important; line-height: 1.2 !important; min-height: auto !important; margin-bottom: 8px !important; }
-    .mix-order-btn { padding: 6px 5px !important; font-size: 0.75em !important; margin-top: auto; width: 100% !important; }
+    .mix-order-btn {
+    margin-top: auto !important; /* Dorong tombol ke paling bawah */
+    padding: 8px 0 !important;
+    width: 100% !important;
+    font-size: 0.8em !important;
+}
     
     .promo-horizontal-card { margin-top: 30px !important; flex-direction: column; text-align: center; }
     .promo-left { width: 100%; }
