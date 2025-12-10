@@ -1,5 +1,5 @@
 /* ========================================= */
-/* 1. SETUP DASAR, VARIABEL & RESET          */
+/* 1. SETUP DASAR & VARIABEL (Compact)       */
 /* ========================================= */
 :root {
     --color-primary: #2e7d32; --color-secondary: #e65100;
@@ -12,7 +12,7 @@ body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--color-
 section { padding: 60px 0; width: 100%; position: relative; }
 
 /* ========================================= */
-/* 2. TIPOGRAFI & TOMBOL                     */
+/* 2. TIPOGRAFI & TOMBOL (COMPACT STYLE)     */
 /* ========================================= */
 .section-title { 
     text-align: center; margin-bottom: 15px; font-size: 2.2em; 
@@ -76,6 +76,7 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
     box-shadow: 6px 6px 0px rgba(0,0,0,0.15) !important; transition: transform 0.2s ease;
     flex: 1; min-width: 280px; max-width: 350px; position: relative; margin-bottom: 0;
 }
+/* Miring Desktop */
 .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-2deg); margin-top: 15px; }
 .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg) translateY(-10px); border-color: #c62828; }
 .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 15px; }
@@ -108,7 +109,7 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .single-product-catalog .section-title { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255, 0.3); border-bottom-color: #4B3621 !important; }
 .white-paper-box { background-color: #fff !important; border-radius: 15px; box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important; border: 3px solid #4B3621; padding: 30px !important; max-width: 1000px; margin: 0 auto 50px auto !important; }
 
-/* Grid Best Seller */
+/* Grid 4 Kolom (Best Seller) */
 .best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; justify-content: center; }
 .bs-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; padding-bottom: 15px; margin: 0 !important; width: 100% !important; }
 .bs-card:hover { transform: translateY(-5px); border-color: #2e7d32; }
@@ -130,6 +131,7 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .category-btn.active, .category-btn:hover { background-color: #c62828 !important; color: #fff !important; border-color: #c62828 !important; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.2); }
 .category-btn.active .en-text { color: #ffccbc !important; }
 
+/* Table Style */
 .product-list { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
 .catalog-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .catalog-table th { background-color: #4B3621 !important; color: #fff !important; padding: 12px; border: 1px solid #6d4c41; }
@@ -141,8 +143,10 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 /* 8. SECTION 6: PAKET MIX (CREAM & FIXES)   */
 /* ========================================= */
 .package-mix {
-    background-color: #FFF8E1 !important; position: relative; z-index: 1; 
-    margin-top: -2px !important; padding-top: 80px !important; padding-bottom: 80px !important;
+    background-color: #FFF8E1 !important; /* CREAM */
+    position: relative; z-index: 1; 
+    margin-top: -2px !important; 
+    padding-top: 80px !important; padding-bottom: 80px !important;
 }
 .package-mix .section-title { color: var(--color-primary) !important; text-shadow: none; border-bottom-color: var(--color-secondary) !important; margin-bottom: 30px !important; }
 .package-mix .section-subtitle { color: #444 !important; font-weight: normal; margin-bottom: 40px; }
@@ -154,14 +158,17 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
     padding: 20px !important; display: flex; flex-direction: column; height: 100%; 
     border-top-width: 4px !important; transition: transform 0.3s;
 }
-/* FIX GAMBAR (Agar tidak kepotong/zoom) */
+.mix-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+
+/* FIX GAMBAR: LANDSCAPE 4:3 & CONTAIN */
 .mix-card .product-img { 
     width: 100%; 
-    aspect-ratio: 1/1 !important; /* Buat Kotak */
-    object-fit: contain !important; /* Tampilkan utuh (ada space putih) */
-    background-color: #fff; /* Space putih diberi warna */
+    aspect-ratio: 4/3 !important; /* LANDSCAPE */
+    object-fit: contain !important; /* Gambar utuh */
+    background-color: #fff; 
     border-radius: 8px; margin-bottom: 10px; border: 1px solid #eee;
 }
+
 /* Alignment tombol dan teks */
 .mix-card h3 { font-size: 1.3em !important; margin: 10px 0 5px 0 !important; font-weight: 800; line-height: 1.2; }
 .mix-card .cta-button { margin-top: auto !important; width: 100%; font-size: 0.9em; padding: 10px; }
@@ -267,8 +274,8 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .bulk-order::before { height: 60px !important; top: -1px !important; }
     .bulk-order::after { height: 60px !important; bottom: -1px !important; }
     /* Fix Table Menyempit */
-    .tier-table-compact { width: 100% !important; display: table !important; overflow-x: auto; }
-    .tier-table-compact th, .tier-table-compact td { padding: 10px 4px !important; font-size: 0.8em !important; }
+    .tier-table-compact { display: block; width: 100%; overflow-x: auto; white-space: nowrap; }
+    .tier-table-compact th, .tier-table-compact td { padding: 10px 8px !important; font-size: 0.85em !important; }
     
     /* Section 8 (Form) Fix */
     .form-section-cream { padding-top: 40px !important; }
