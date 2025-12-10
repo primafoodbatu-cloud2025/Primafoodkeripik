@@ -173,6 +173,7 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
 
 /* ========================================= */
 /* 11. RESPONSIVE MOBILE FIXES (HP)          */
+/* (Final V5 - Compact Height & Performance) */
 /* ========================================= */
 @media (max-width: 768px) {
     body, html { overflow-x: hidden !important; width: 100% !important; }
@@ -189,9 +190,10 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .research-proof::after { height: 60px !important; bottom: -1px !important; }
     .benefit-wrapper { display: block !important; padding: 0 10px; }
     .benefit-card { width: 90% !important; margin: 0 auto 30px auto !important; }
-    .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-1deg); margin-top: 0; }
-    .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg); margin-top: 0; }
-    .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-1deg); margin-top: 0; }
+    /* Rotasi dimatikan sedikit agar rendering lebih cepat */
+    .benefit-wrapper .benefit-card:nth-child(1),
+    .benefit-wrapper .benefit-card:nth-child(2),
+    .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(0deg); margin-top: 0; }
     
     /* Section 4 Fix */
     .production-video { padding-top: 40px !important; }
@@ -204,21 +206,58 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .white-paper-box { padding: 15px !important; width: 100% !important; border-width: 2px; }
     .best-seller-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
     .bs-card { width: 100% !important; margin: 0 !important; }
-    .bs-name { font-size: 0.9em; height: 40px; overflow: hidden; }
+    .bs-name { font-size: 0.85em; height: 35px; overflow: hidden; margin-bottom: 2px; }
     .bs-wholesale-row { font-size: 0.7em; }
     .bs-btn { font-size: 0.8em; padding: 6px; }
     .category-btn { width: 100% !important; border-radius: 10px !important; }
     
-    /* Section 6 (Mix) Fix */
+    /* --- SECTION 6 (MIX FRUIT) FIX TINGGI --- */
     .package-mix { padding-top: 60px !important; padding-bottom: 60px !important; }
-    .mix-grid-wrapper { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 5px; }
-    /* Agar kartu kecil muat di 2 kolom HP */
-    .mix-card { padding: 8px !important; box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important; min-width: 0 !important; } 
-    .mix-card h3 { font-size: 0.95em !important; margin: 5px 0 !important; }
-    .mix-card p[style*="font-size: 1.6em"] { font-size: 1.2em !important; margin: 3px 0 !important; font-weight: 800; color: #c62828; }
-    .mix-card p[style*="font-style: italic"] { font-size: 0.75em !important; margin-bottom: 3px !important; }
-    .mix-card p[style*="min-height: 60px"] { font-size: 0.75em !important; line-height: 1.2 !important; min-height: auto !important; margin-bottom: 8px !important; }
-    .mix-order-btn { padding: 6px 5px !important; font-size: 0.75em !important; margin-top: auto; width: 100% !important; }
+    .mix-grid-wrapper { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; padding: 0 5px; }
+    
+    .mix-card { 
+        padding: 8px !important; 
+        /* Bayangan Sederhana (Performance Fix) */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important; 
+        min-width: 0 !important;
+    } 
+    
+    /* Judul Kartu */
+    .mix-card h3 { 
+        font-size: 0.85em !important; 
+        margin: 5px 0 2px 0 !important; 
+        min-height: 30px; /* Dikurangi tingginya */
+        align-items: start; /* Rata atas biar ga banyak space */
+    }
+    
+    /* Harga */
+    .mix-card p[style*="font-size: 1.6em"] { 
+        font-size: 1.1em !important; 
+        margin: 2px 0 !important; 
+        font-weight: 800; color: #c62828; 
+    }
+    
+    /* Subtitle (Kecil) */
+    .mix-card p[style*="font-style: italic"] { 
+        font-size: 0.7em !important; 
+        margin-bottom: 2px !important; 
+        line-height: 1.1 !important;
+    }
+    
+    /* Deskripsi Isi (PENYEBAB TINGGI) */
+    .mix-card p[style*="min-height: 60px"] { 
+        font-size: 0.7em !important; 
+        line-height: 1.2 !important; 
+        min-height: 0 !important; /* Paksa jadi 0/auto */
+        height: auto !important;
+        margin-bottom: 8px !important; 
+    }
+    
+    .mix-order-btn { 
+        padding: 6px 5px !important; 
+        font-size: 0.75em !important; 
+        margin-top: auto; width: 100% !important; 
+    }
     
     .promo-horizontal-card { margin-top: 30px !important; flex-direction: column; text-align: center; }
     .promo-left { width: 100%; }
