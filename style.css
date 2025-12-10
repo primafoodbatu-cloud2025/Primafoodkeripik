@@ -415,3 +415,95 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 
     .promo-horizontal-card { margin-top: 30px !important; }
 }
+/* ========================================= */
+/* SECTION 7: BULK ORDER (KUNING TUA)        */
+/* ========================================= */
+
+.bulk-order {
+    background-color: #F4C430 !important; /* Kuning Mustard */
+    position: relative;
+    z-index: 5; /* Layer di atas section Cream */
+    
+    margin-top: 0 !important;
+    
+    /* Padding besar untuk menampung kertas atas & bawah */
+    padding-top: 180px !important;
+    padding-bottom: 150px !important;
+}
+
+/* SOBEKAN ATAS (Terbalik - Nyambung ke Cream) */
+.bulk-order::before {
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; top: -1px !important;
+    background-image: url('images/sobekan-kertas-terbalik.webp');
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
+}
+
+/* SOBEKAN BAWAH (Normal - Penutup) */
+.bulk-order::after {
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; bottom: -1px !important;
+    background-image: url('images/sobekan-kertas.webp');
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
+}
+
+/* Judul & Teks (Warna Cokelat agar kontras di Kuning) */
+.bulk-order .section-title {
+    color: #4B3621 !important;
+    border-bottom-color: #4B3621 !important;
+    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
+    position: relative; z-index: 10;
+}
+.bulk-order p {
+    color: #212121 !important;
+    position: relative; z-index: 10;
+}
+
+/* --- UPDATE TABEL TIER (Agar Cantik di Background Kuning) --- */
+.tier-table-compact {
+    background-color: #fff !important; /* Tabel Putih */
+    border-radius: 12px;
+    overflow: hidden; /* Agar sudut tumpul terlihat */
+    border: 3px solid #4B3621 !important; /* Border Cokelat Tebal */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15) !important; /* Bayangan Timbul */
+    position: relative; z-index: 10;
+}
+
+/* Header Tabel Cokelat */
+.tier-table-compact thead { 
+    background-color: #4B3621 !important; 
+    color: #fff !important; 
+}
+.tier-table-compact th {
+    color: #fff !important;
+    border: 1px solid #6d4c41 !important; /* Garis pemisah header halus */
+    padding: 15px !important;
+    font-size: 1.1em;
+}
+
+/* Body Tabel */
+.tier-table-compact td {
+    border: 1px solid #ddd !important;
+    font-size: 1em !important;
+    padding: 15px !important;
+}
+
+/* --- RESPONSIVE HP (MOBILE) --- */
+@media (max-width: 768px) {
+    .bulk-order {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+    }
+    
+    .bulk-order::before { height: 60px !important; top: -1px !important; }
+    .bulk-order::after { height: 60px !important; bottom: -1px !important; }
+    
+    /* Tabel di HP */
+    .tier-table-compact th, 
+    .tier-table-compact td {
+        padding: 10px 5px !important; /* Padding diperkecil */
+        font-size: 0.9em !important;
+    }
+}
