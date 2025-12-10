@@ -53,8 +53,7 @@ p, .benefit-card p, cite { color: #444 !important; }
 
 
 /* ========================================= */
-/* FIX SECTION 3 (METODE STABIL & RINGAN)    */
-/* Copy kode ini untuk menggantikan css section 3 yang lama */
+/* FIX FINAL & STABIL: SECTION 3             */
 /* ========================================= */
 
 .research-proof {
@@ -62,15 +61,16 @@ p, .benefit-card p, cite { color: #444 !important; }
     position: relative;
     z-index: 5;
     
-    /* PENTING: Jangan ditarik minus agar layout tidak rusak */
+    /* PENTING: Jangan ditarik ke atas (0px). Biarkan mengalir natural */
+    /* Ini mencegah layout tabrakan dengan section atas */
     margin-top: 0 !important; 
     
-    /* Padding standar agar judul aman */
-    padding-top: 60px !important; 
+    /* Padding Atas Besar: Agar judul tidak tertutup gambar kertas */
+    padding-top: 180px !important; 
     padding-bottom: 80px !important;
 }
 
-/* GAMBAR KERTAS (TEMPEL DI ATAS) */
+/* GAMBAR KERTAS SOBEKAN (LOGIKA BARU) */
 .research-proof::before {
     content: "";
     position: absolute;
@@ -80,9 +80,11 @@ p, .benefit-card p, cite { color: #444 !important; }
     /* UKURAN DESKTOP */
     height: 150px; 
     
-    /* POSISI: Tempel persis di atas section kuning */
-    /* -149px artinya naik setinggi gambar dikurangi 1px overlap */
-    top: -149px; 
+    /* KUNCI PERBAIKAN: */
+    /* Set TOP ke -1px. Artinya gambar duduk persis di dalam kotak kuning bagian atas. */
+    /* Bagian atas gambar (krem padat) akan menyatu dengan Section 2. */
+    /* Bagian bawah gambar (sobekan) akan menutupi warna kuning. */
+    top: -1px !important; 
     
     background-image: url('images/sobekan-kertas-terbalik.webp');
     background-repeat: no-repeat;
@@ -91,17 +93,17 @@ p, .benefit-card p, cite { color: #444 !important; }
     z-index: 6;
 }
 
-/* JUDUL */
+/* JUDUL SECTION */
 .research-proof .section-title {
     color: #4B3621 !important;
     text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
     border-bottom-color: #4B3621 !important;
     position: relative;
     z-index: 10;
-    margin-bottom: 40px !important;
+    margin-bottom: 50px !important; /* Jarak aman ke kotak */
 }
 
-/* --- PERBAIKAN LAYOUT KOTAK (GRID FIX) --- */
+/* --- LAYOUT KOTAK (GRID SYSTEM) --- */
 .benefit-wrapper {
     /* Wajib FLEX agar berbaris ke samping di desktop */
     display: flex !important; 
@@ -114,33 +116,32 @@ p, .benefit-card p, cite { color: #444 !important; }
     z-index: 10;
 }
 
-/* STYLE KOTAK */
+/* STYLE KOTAK (BENEFIT CARD) */
 .benefit-card {
     background: #ffffff;
     border: 3px solid #4B3621;
     border-radius: 15px;
     padding: 25px !important;
     
-    /* Bayangan diperingan agar rendering cepat */
+    /* Bayangan: Dibuat simpel agar tidak berat */
     box-shadow: 6px 6px 0px rgba(0,0,0,0.15) !important;
     
     transition: transform 0.2s ease;
-    flex: 1; /* Agar lebar kotak seragam */
+    flex: 1; 
     min-width: 280px;
     max-width: 350px;
     position: relative;
-    margin-bottom: 0; /* Reset margin aneh */
+    margin-bottom: 0; 
 }
 
-/* EFEK MIRING DESKTOP */
-.benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-2deg); margin-top: 10px; }
+/* EFEK MIRING DESKTOP (ZIG-ZAG) */
+.benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-2deg); margin-top: 15px; }
 .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg) translateY(-10px); border-color: #c62828; }
-.benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 10px; }
+.benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-2deg); margin-top: 15px; }
 
-/* HOVER */
+/* HOVER (LURUSKAN SAAT DISENTUH) */
 .benefit-card:hover { transform: scale(1.02) rotate(0deg) !important; z-index: 20; background-color: #fffde7; }
 .benefit-card h3 { color: #c62828; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; font-size: 1.3em; }
-
 
 /* ========================================= */
 /* 6. KATALOG, BEST SELLER & LAINNYA (Compact) */
@@ -190,26 +191,34 @@ p, .benefit-card p, cite { color: #444 !important; }
     .hero-section::after { height: 70px; }
     .hero-section img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 110px !important; margin: 0 auto 15px auto !important; }
     
-  /* 1. KOREKSI POSISI GAMBAR DI HP */
+  /* 1. KOREKSI GAMBAR DI HP */
     .research-proof::before {
-        height: 60px !important; /* Perkecil gambar */
-        top: -59px !important;   /* Sesuaikan posisi */
+        height: 60px !important; /* Gambar diperkecil */
+        top: -1px !important;    /* Tetap tempel di atas */
     }
     
-    /* 2. LAYOUT KOTAK DI HP (TURUN KE BAWAH) */
+    /* 2. KOREKSI PADDING SECTION DI HP */
+    .research-proof {
+        /* Padding dikurangi tapi cukup untuk menampung gambar 60px + Judul */
+        padding-top: 80px !important; 
+    }
+    
+    /* 3. LAYOUT KOTAK DI HP (TURUN KE BAWAH) */
     .benefit-wrapper {
-        display: block !important; /* Ubah ke block agar turun ke bawah */
+        display: block !important; /* Susun ke bawah */
         padding: 0 10px;
     }
 
     .benefit-card {
         width: 100% !important; 
         max-width: 100% !important;
-        margin: 0 auto 25px auto !important; /* Beri jarak antar kotak */
+        /* Beri jarak antar kotak agar bayangan/miring tidak saling tumpuk */
+        margin: 0 auto 30px auto !important; 
     }
 
-    /* 3. MIRING SEDIKIT DI HP (Agar tetap estetik) */
-    .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-1deg); }
+    /* 4. MIRING SEDIKIT DI HP (AGAR TETAP ESTETIK) */
+    /* Kita buat miringnya sedikit saja agar teks tetap enak dibaca */
+    .benefit-wrapper .benefit-card:nth-child(1) { transform: rotate(-1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(2) { transform: rotate(1deg); margin-top: 0; }
     .benefit-wrapper .benefit-card:nth-child(3) { transform: rotate(-1deg); margin-top: 0; }
 }
