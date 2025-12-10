@@ -463,3 +463,36 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
         min-width: 40% !important; 
     }
 }
+/* ============================================================ */
+/* FIX KHUSUS SECTION MIX FRUIT (LANDING PAGE) - RASIO 4:3      */
+/* Tempel kode ini di BARIS PALING BAWAH file CSS Anda          */
+/* ============================================================ */
+
+/* Menargetkan gambar di dalam kartu Mix Fruit */
+.package-mix .mix-card .product-img {
+    width: 100% !important;
+    
+    /* KUNCI: Mengubah bentuk jadi Landscape 4:3 */
+    aspect-ratio: 4 / 3 !important; 
+    
+    /* PENTING: Pilih salah satu mode di bawah ini */
+    
+    /* MODE A: 'cover' (Disarankan agar rapi) 
+       Gambar akan memenuhi kotak 4:3. 
+       Kelebihan: Terlihat penuh dan rapi. 
+       Kekurangan: Bagian atas/bawah gambar mungkin sedikit terpotong jika gambar asli tidak 4:3. */
+    object-fit: cover !important;
+
+    /* MODE B: 'contain' (Alternatif jika tidak ingin ada yang terpotong)
+       Gambar akan tampil utuh di dalam kotak 4:3.
+       Kelebihan: Gambar terlihat 100% utuh.
+       Kekurangan: Mungkin ada sisa ruang kosong (putih) di samping kiri-kanan jika gambar asli terlalu tinggi.
+       JIKA MAU PAKAI MODE B, HAPUS 'object-fit: cover' DI ATAS DAN GUNAKAN INI:
+       /* object-fit: contain !important; */ 
+
+    border-radius: 8px; 
+    margin-bottom: 15px; /* Jarak antara gambar dan judul */
+    border: 1px solid #eee;
+    height: auto !important; /* Reset tinggi agar aspect-ratio bekerja */
+    background-color: #fff; /* Warna background jika pakai mode 'contain' */
+}
