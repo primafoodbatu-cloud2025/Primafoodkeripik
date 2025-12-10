@@ -224,37 +224,22 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 .single-product-catalog {
     background-color: #F4C430 !important; /* Kuning Mustard */
     position: relative;
-    z-index: 5; /* Layer di atas section Cream sebelumnya */
-    
-    /* Reset margin agar tidak overlap berantakan */
+    z-index: 5;
     margin-top: 0 !important; 
-    
-    /* Padding atas besar untuk kompensasi gambar kertas */
     padding-top: 180px !important; 
     padding-bottom: 100px !important;
 }
 
 /* GAMBAR SOBEKAN KERTAS (ATAS) */
 .single-product-catalog::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    
-    /* UKURAN DESKTOP */
-    height: 150px; 
-    
-    /* POSISI: Tempel persis di atas (Jahit) */
-    top: -1px !important; 
-    
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; top: -1px !important; 
     background-image: url('images/sobekan-kertas-terbalik.webp');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    pointer-events: none;
-    z-index: 6;
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
 }
 
-/* Judul di atas Kuning harus Cokelat */
+/* Judul Section Cokelat */
 .single-product-catalog .section-title {
     color: #4B3621 !important;
     text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
@@ -262,82 +247,149 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
 }
 
 /* KOTAK PUTIH PEMBUNGKUS BEST SELLER */
-/* (Class yang baru Anda tambahkan di HTML) */
 .white-paper-box {
-    border-radius: 15px; /* Sudut tumpul */
-    box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important; /* Bayangan Pop-Up */
-    border: 3px solid #4B3621; /* Border Cokelat agar tegas */
-    padding: 30px !important; /* Padding dalam diperbesar */
-    max-width: 1000px;
-    margin: 0 auto 50px auto !important; /* Rata tengah */
-}
-
-/* TABEL HARGA (Agar Rapi & Scrollable di HP) */
-.catalog-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.catalog-table th {
-    background-color: #4B3621 !important; /* Header Tabel Cokelat */
-    color: #fff !important;
-    padding: 12px;
-    border: 1px solid #6d4c41;
-}
-.catalog-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    color: #333;
-}
-/* Baris Ganjil/Genap agar mudah dibaca */
-.catalog-table tr:nth-child(even) { background-color: #fff3e0; } 
-.catalog-table tr:hover { background-color: #ffcc80; }
-
-/* TOMBOL KATEGORI */
-.category-btn {
-    border: 2px solid #4B3621 !important;
     background-color: #fff !important;
-    color: #4B3621 !important;
-    font-weight: 800 !important;
+    border-radius: 15px; 
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.15) !important;
+    border: 3px solid #4B3621;
+    padding: 30px !important;
+    max-width: 1000px;
+    margin: 0 auto 50px auto !important;
 }
+
+/* --- PERBAIKAN 1: GRID BEST SELLER (Auto Rata) --- */
+.best-seller-grid {
+    display: grid;
+    /* Desktop: 4 Kolom Rata */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; /* Jarak antar kotak */
+    width: 100%;
+    justify-content: center;
+}
+
+.bs-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    padding-bottom: 15px;
+    /* Reset Margin agar Grid yang mengatur jarak */
+    margin: 0 !important; 
+    width: 100% !important;
+}
+
+.bs-card:hover { transform: translateY(-5px); border-color: #2e7d32; }
+.bs-img-wrapper { width: 100%; aspect-ratio: 1/1; position: relative; border-bottom: 1px solid #eee; overflow: hidden; }
+.bs-img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+.bs-card:hover .bs-img { transform: scale(1.1); }
+.bs-info { padding: 10px; flex-grow: 1; text-align: left; }
+.bs-name { font-weight: 700; margin-bottom: 5px; line-height: 1.2; font-size: 1em; color: #333; }
+.bs-price { color: #c62828; font-weight: 800; font-size: 1.2em; margin-bottom: 8px; }
+.bs-desc { font-size: 0.8em; color: #666; margin-bottom: 10px; line-height: 1.3; }
+.bs-wholesale-box { background: #f1f8e9; padding: 8px; border-radius: 6px; margin-top: auto; border: 1px solid #c8e6c9; }
+.bs-wholesale-row { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px; color: #444; }
+.bs-btn { display: block; width: 100%; margin-top: 10px; padding: 8px; text-align: center; background: #e65100; color: #fff; font-weight: bold; border-radius: 6px; text-decoration: none; font-size: 0.9em; }
+
+
+/* --- PERBAIKAN 2: JUDUL DAFTAR HARGA LENGKAP (Dibesarkan) --- */
+.section-subtitle-best-seller {
+    display: block;
+    text-align: center;
+    font-weight: 800;
+    color: #4B3621 !important; /* Cokelat agar kontras di kuning */
+    font-style: normal;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.8em !important; /* DIBESARKAN */
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* --- PERBAIKAN 3: TOMBOL KATEGORI (Agar Rapi) --- */
+.product-categories {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px !important;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    background-color: #fff !important;
+    border: 3px solid #4B3621 !important; /* Border Cokelat Tebal */
+    color: #4B3621 !important;
+    padding: 12px 25px !important;
+    border-radius: 50px !important; /* Bentuk Kapsul */
+    font-weight: 800 !important;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1em !important;
+    min-width: 200px; /* Agar tidak gepeng */
+    line-height: 1.2 !important;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.category-btn .en-text {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #888;
+    margin-top: 2px;
+}
+
 .category-btn.active, .category-btn:hover {
-    background-color: #c62828 !important; /* Merah saat aktif */
+    background-color: #c62828 !important; /* Merah Menyala */
     color: #fff !important;
     border-color: #c62828 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
 }
+.category-btn.active .en-text { color: #ffccbc !important; }
+
+
+/* --- TABLE & LIST HARGA --- */
+.product-list { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
+.catalog-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.catalog-table th { background-color: #4B3621 !important; color: #fff !important; padding: 12px; border: 1px solid #6d4c41; }
+.catalog-table td { border: 1px solid #ccc; padding: 10px; color: #333; }
+.catalog-table tr:nth-child(even) { background-color: #fff3e0; } 
+.catalog-table tr:hover { background-color: #ffcc80; }
+
 
 /* ========================================= */
-/* RESPONSIVE HP (MOBILE)                    */
+/* FIX RESPONSIVE SECTION 5 (HP)             */
 /* ========================================= */
 @media (max-width: 768px) {
-    /* 1. Gambar Kertas Mengecil */
-    .single-product-catalog::before {
-        height: 60px !important;
-        top: -1px !important;
+    /* 1. Gambar Sobekan Mengecil */
+    .single-product-catalog { padding-top: 80px !important; }
+    .single-product-catalog::before { height: 60px !important; top: -1px !important; }
+
+    /* 2. Box Putih HP */
+    .white-paper-box { padding: 15px !important; width: 100% !important; border-width: 2px; }
+
+    /* 3. FIX GRID HP: 2 Kolom Rata Kiri-Kanan */
+    .best-seller-grid {
+        grid-template-columns: 1fr 1fr !important; /* 2 Kolom rata */
+        gap: 10px !important;
     }
     
-    /* 2. Padding Section */
-    .single-product-catalog {
-        padding-top: 80px !important;
-    }
-    
-    /* 3. Kotak Putih Best Seller */
-    .white-paper-box {
-        padding: 15px !important;
+    .bs-card {
         width: 100% !important;
-        border-width: 2px;
-        box-shadow: 4px 4px 0px rgba(0,0,0,0.15) !important;
+        margin: 0 !important; /* Hapus margin aneh */
     }
     
-    /* 4. Tabel bisa di-scroll ke samping (PENTING) */
-    .product-list {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 10px;
+    .bs-name { font-size: 0.9em; height: 40px; overflow: hidden; } /* Judul max 2 baris */
+    .bs-wholesale-row { font-size: 0.7em; }
+    .bs-btn { font-size: 0.8em; padding: 6px; }
+
+    /* 4. Tombol Kategori di HP */
+    .category-btn {
+        width: 100% !important; /* Full width di HP biar gampang dipencet */
+        border-radius: 10px !important; /* Jadi kotak tumpul */
     }
 }
