@@ -780,88 +780,124 @@ section { padding: 80px 0; width: 100%; position: relative; }
 }
 
 /* ========================================================= */
-/* 🛠️ FIX FINAL V2: PROMO BORONG (SIDE-BY-SIDE FULL)         */
+/* 🛠️ FIX FINAL V3: PROMO BORONG (FULL WIDTH & CENTERED)     */
 /* ========================================================= */
 
 .promo-horizontal-card {
     display: flex !important;
-    flex-direction: row !important; /* DESKTOP: Tetap Samping-sampingan */
-    align-items: stretch !important; /* Tinggi Kiri & Kanan Sama Rata */
+    flex-direction: row !important; /* Desktop: Kiri-Kanan */
+    
+    /* 1. AGAR TINGGI KIRI & KANAN SAMA RATA */
+    align-items: stretch !important; 
+    
     background: #fff;
     border: 3px dashed #c62828;
     border-radius: 15px;
-    margin-top: 40px;
-    overflow: hidden; /* Agar sudut gambar ikut melengkung */
-    padding: 0 !important; /* Hapus padding container agar gambar mentok */
-    width: 100%;
-    max-width: 1000px; /* Lebarkan sedikit container utamanya */
-    margin-left: auto; 
-    margin-right: auto;
+    margin-top: 50px;
+    overflow: hidden; 
+    padding: 0 !important;
+    
+    /* 2. AGAR MEMENUHI 1 KOLOM DESKTOP (FULL WIDTH) */
+    width: 100% !important;
+    max-width: 100% !important; /* Hapus batasan lebar */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* 1. KOLOM KIRI (GAMBAR) */
+/* --- BAGIAN KIRI (GAMBAR) --- */
 .promo-left {
-    flex: 1.2 !important; /* Beri porsi lebih lebar untuk gambar (Rasio 900x300) */
+    /* Beri porsi lebih besar (60%) karena gambarnya wide (900x300) */
+    flex: 6 !important; 
     display: flex !important;
-    background-color: #fff; /* Warna dasar putih */
-    min-height: 250px; /* Tinggi minimal agar gagah di desktop */
     position: relative;
+    background-color: #f0f0f0;
+    min-height: 300px; /* Tinggi minimum biar gagah */
 }
 
 .promo-left img {
     width: 100% !important;
-    height: 100% !important; /* Paksa tinggi ngikutin kolom teks */
+    height: 100% !important; /* Paksa tinggi mengikuti container */
     
-    /* KUNCI AGAR PENUH 1 KOLOM */
-    object-fit: cover !important; /* Zoom gambar biar penuh kotak tanpa gepeng */
+    /* KUNCI: Gambar memenuhi area tanpa gepeng */
+    object-fit: cover !important; 
+    object-position: center !important; /* Fokus tengah gambar */
     
     margin: 0 !important;
-    border-radius: 0 !important; /* Radius ikut container utama */
     display: block !important;
 }
 
-/* 2. KOLOM KANAN (TEKS) */
+/* --- BAGIAN KANAN (TEKS) --- */
 .promo-right {
-    flex: 1 !important; /* Porsi teks */
-    padding: 30px !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Teks rata tengah secara vertikal */
+    flex: 4 !important; /* Porsi teks 40% */
+    padding: 40px !important; /* Padding lega */
+    
+    /* 3. AGAR ISI TEKS BENAR-BENAR DI TENGAH VERTIKAL (DESKTOP & HP) */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* Center Vertikal */
+    align-items: center !important;     /* Center Horizontal */
+    text-align: center !important;
 }
 
-/* 3. FIX HARGA PROMO */
+.promo-title {
+    font-size: 1.8em;
+    color: #c62828;
+    margin-bottom: 10px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.promo-desc {
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Kotak Harga */
 .promo-price-box {
-    margin: 20px auto !important;
+    margin-bottom: 25px !important;
     width: fit-content !important;
+    /* Pastikan flexbox harga rapi */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff3e0;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid #ffe0b2;
 }
-
 
 /* ========================================= */
-/* 📱 KHUSUS HP (GAMBAR LEBAR PENUH)         */
+/* 📱 KHUSUS HP (GAMBAR FULL LEBAR)          */
 /* ========================================= */
 @media (max-width: 768px) {
     .promo-horizontal-card {
-        flex-direction: column !important; /* HP: Susun ke bawah */
-        height: auto !important; /* Tinggi bebas */
+        flex-direction: column !important; /* HP: Atas-Bawah */
+        height: auto !important;
+        margin-top: 30px !important;
     }
 
-    /* FIX GAMBAR NYEMPIL DI HP */
+    /* BAGIAN GAMBAR DI HP */
     .promo-left {
-        width: 100% !important; /* Lebar WAJIB 100% */
-        flex: none !important;
+        width: 100% !important; /* Lebar Penuh */
+        flex: none !important;  /* Jangan stretching */
         height: auto !important;
         min-height: 0 !important;
     }
 
     .promo-left img {
-        width: 100% !important; /* Paksa gambar selebar layar HP */
+        width: 100% !important;
         height: auto !important; /* Tinggi menyesuaikan rasio asli */
-        max-width: none !important; /* Hapus batasan lebar lama */
         object-fit: contain !important; /* Tampilkan gambar utuh di HP */
     }
 
+    /* BAGIAN TEKS DI HP */
     .promo-right {
         width: 100% !important;
-        padding: 20px 15px !important;
+        padding: 30px 20px !important; /* Padding seimbang Atas/Bawah Kiri/Kanan */
+        
+        /* Pastikan tetap rata tengah vertikal */
+        justify-content: center !important; 
     }
+    
+    .promo-title { font-size: 1.5em; }
 }
