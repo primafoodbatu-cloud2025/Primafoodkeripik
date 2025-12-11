@@ -778,3 +778,81 @@ section { padding: 80px 0; width: 100%; position: relative; }
         max-height: 200px !important; /* Jangan terlalu tinggi di HP */
     }
 }
+
+/* ========================================================= */
+/* 🏷️ FIX FINAL: PROMO BORONG (BANNER FULL WIDTH 900x300)    */
+/* (Tempel di Paling Bawah File CSS)                         */
+/* ========================================================= */
+
+.promo-horizontal-card {
+    display: flex !important;
+    flex-direction: column !important; /* SUSUN KE BAWAH (Banner Atas, Teks Bawah) */
+    padding: 0 !important; /* Hapus padding agar gambar mentok ke pinggir */
+    align-items: center !important;
+    text-align: center !important;
+    
+    /* Batasi lebar sesuai ukuran asli gambar agar tajam */
+    max-width: 900px !important; 
+    width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Agar sudut tumpul gambar ikut container */
+}
+
+/* 1. BAGIAN GAMBAR (BANNER ATAS) */
+.promo-left {
+    width: 100% !important;
+    flex: none !important; /* Jangan menyusut */
+    padding: 0 !important; /* Pastikan tidak ada jarak putih */
+    background-color: #f9f9f9; /* Background cadangan */
+}
+
+.promo-left img {
+    width: 100% !important;
+    height: auto !important; /* Jaga rasio 900x300 (Jangan dicrop/gepeng) */
+    max-height: none !important; /* Hapus batasan tinggi lama */
+    min-height: 0 !important;
+    object-fit: contain !important; /* Tampilkan utuh */
+    border-radius: 0 !important; /* Radius ikut container utama saja */
+    display: block !important; /* Hilangkan celah garis bawah gambar */
+}
+
+/* 2. BAGIAN TEKS (BAWAH) */
+.promo-right {
+    width: 100% !important;
+    padding: 25px 30px !important; /* Beri jarak teks yang lega dari pinggir */
+    background: #fff;
+}
+
+/* 3. FIX HARGA PROMO (Agar Rata Tengah Rapih) */
+.promo-price-box {
+    margin: 20px auto !important; /* Tengah */
+    justify-content: center !important;
+    width: fit-content !important;
+}
+
+/* ========================================= */
+/* 📱 KHUSUS HP (GAMBAR LEBIH PENUH)         */
+/* ========================================= */
+@media (max-width: 768px) {
+    .promo-horizontal-card {
+        width: 100% !important;
+        border-radius: 10px !important; /* Sedikit kurangi lengkungan di HP */
+        margin-top: 30px !important;
+        border-width: 2px !important; /* Border garis putus tidak terlalu tebal */
+    }
+
+    .promo-left img {
+        width: 100% !important;
+        /* Di HP gambar akan otomatis mengecil mengikuti lebar layar */
+        /* Tapi tetap full dari ujung kiri ke ujung kanan container */
+    }
+
+    .promo-right {
+        padding: 20px 15px !important; /* Padding teks agak rapat di HP */
+    }
+    
+    .promo-title {
+        font-size: 1.5em !important;
+    }
+}
