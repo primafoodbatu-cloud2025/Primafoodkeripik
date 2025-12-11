@@ -1123,3 +1123,58 @@ section { padding: 80px 0; width: 100%; position: relative; }
         padding: 10px !important;
     }
 }
+
+/* ========================================================= */
+/* 📈 FIX FONT SIZE TABEL HARGA (TIER) AGAR LEBIH BESAR      */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. Label "Harga Grosir (Per Kg)" */
+.mini-tier-label {
+    font-size: 0.95em !important; /* Diperbesar */
+    font-weight: 700 !important;
+    color: #2e7d32 !important;    /* Hijau Rilldelish */
+    display: block !important;
+    margin-top: 12px !important;
+    margin-bottom: 5px !important;
+}
+
+/* 2. Tabel Harga Tier (Desktop & Umum) */
+.mini-tier-table {
+    font-size: 0.95em !important; /* Diperbesar (Standar baca nyaman) */
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 15px !important;
+    background-color: #f9f9f9;    /* Background sedikit abu biar tabel menonjol */
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.mini-tier-table td {
+    padding: 6px 8px !important;  /* Jarak antar teks lebih lega */
+    color: #333 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+/* Kolom Kanan (Nominal Rupiah) dibuat Tebal & Merah */
+.mini-tier-table td:last-child {
+    font-weight: 700 !important;
+    color: #c62828 !important;    /* Merah Bata */
+    text-align: right !important; /* Rata Kanan */
+}
+
+/* 3. FIX KHUSUS HP (Agar tidak kekecilan tapi tetap muat) */
+@media (max-width: 768px) {
+    .mini-tier-label {
+        font-size: 0.9em !important; /* Ukuran HP pas */
+        margin-top: 8px !important;
+    }
+
+    .mini-tier-table {
+        font-size: 0.85em !important; /* Jauh lebih besar dari sebelumnya (yg cuma 9px) */
+    }
+
+    .mini-tier-table td {
+        padding: 4px 5px !important; /* Padding rapat biar muat 2 kolom */
+    }
+}
