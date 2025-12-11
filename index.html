@@ -62,7 +62,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.5">
+    <link rel="stylesheet" href="style.css?v=3.7">
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -1565,6 +1565,68 @@ Mohon di cek dan info nomor rekening. Terima kasih!`;
             startTimer(threeHours, display);
         }
     });
+        // --- LOGIKA TESTIMONIAL SLIDER ---
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.testimonial-card');
+    const track = document.querySelector('.testimonial-track');
+    const dotsContainer = document.getElementById('sliderDots');
+    const totalSlides = slides.length;
+    let slideInterval;
+
+    // 1. Buat Dots Indikator otomatis sesuai jumlah slide
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    // 2. Fungsi Pindah Slide
+    function updateSlidePosition() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update Dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateSlidePosition();
+        resetTimer(); // Reset timer biar ga loncat
+    }
+
+    function moveSlide(direction) {
+        currentSlide += direction;
+        
+        // Loop kembali jika mentok
+        if (currentSlide < 0) {
+            currentSlide = totalSlides - 1;
+        } else if (currentSlide >= totalSlides) {
+            currentSlide = 0;
+        }
+        
+        updateSlidePosition();
+        resetTimer();
+    }
+
+    // 3. Autoplay (Otomatis geser setiap 5 detik)
+    function startSlideTimer() {
+        slideInterval = setInterval(() => {
+            moveSlide(1);
+        }, 5000); 
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
+        startSlideTimer();
+    }
+
+    // Jalankan timer pertama kali
+    startSlideTimer();
 </script>
 </body>
 </html>
