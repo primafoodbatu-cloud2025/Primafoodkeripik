@@ -295,3 +295,18 @@ section { padding: 80px 0; width: 100%; position: relative; }
         max-width: 300px !important; /* Video sedikit lebih kecil di HP */
     }
 }
+
+/* ========================================= */
+/* FIX VIDEO FULL SCREEN DI DALAM KOTAK      */
+/* ========================================= */
+
+.vertical-video-box video {
+    width: 100% !important;
+    height: 100% !important;
+    
+    /* KUNCI UTAMA: Agar video zoom-to-fill (Rapat) */
+    object-fit: cover !important; 
+    
+    display: block;
+    border-radius: 12px; /* Ikuti radius container */
+}
