@@ -1448,35 +1448,62 @@ Mohon di cek dan info nomor rekening. Terima kasih!`;
         }, 300);
     }
 
-    // --- FUNGSI TIMER FLASH SALE ---
-    function startTimer(duration, display) {
-        var timer = duration, hours, minutes, seconds;
-        setInterval(function () {
-            hours = parseInt(timer / 3600, 10);
-            minutes = parseInt((timer % 3600) / 60, 10);
-            seconds = parseInt(timer % 60, 10);
+   // Variabel global untuk menyimpan ID timer agar tidak tumpang tindih
+    let flashSaleInterval; 
 
+    function startTimer(durationInSeconds, display) {
+        // 1. Tentukan waktu selesai (sekarang + durasi)
+        let startTime = Date.now();
+        let endTime = startTime + (durationInSeconds * 1000);
+
+        // 2. Fungsi update tampilan
+        function updateDisplay() {
+            let now = Date.now();
+            let timeLeft = endTime - now;
+
+            // Jika waktu habis, reset ulang (Looping)
+            if (timeLeft <= 0) {
+                startTime = Date.now();
+                endTime = startTime + (durationInSeconds * 1000);
+                timeLeft = durationInSeconds * 1000;
+            }
+
+            // Konversi milidetik ke Jam:Menit:Detik
+            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Tambahkan "0" di depan jika angka satuan (09, 08, dst)
             hours = hours < 10 ? "0" + hours : hours;
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
             display.textContent = hours + ":" + minutes + ":" + seconds;
+        }
 
-            if (--timer < 0) {
-                timer = duration; 
-            }
-        }, 1000);
+        // 3. Jalankan fungsi update pertama kali (langsung, jangan tunggu 1 detik)
+        updateDisplay(); 
+
+        // 4. Bersihkan timer lama jika ada (Mencegah bug maju-mundur)
+        if (flashSaleInterval) clearInterval(flashSaleInterval);
+
+        // 5. Set interval baru
+        flashSaleInterval = setInterval(updateDisplay, 1000);
     }
 
-    // Jalankan Timer saat website selesai loading
-    window.onload = function () {
-        var threeHours = 60 * 60 * 3, // Set waktu 3 jam
-            display = document.querySelector('#countdown-timer');
-        if(display) {
+    // Jalankan saat halaman selesai dimuat
+    document.addEventListener("DOMContentLoaded", function() {
+        var threeHours = 60 * 60 * 3; // Durasi 3 Jam
+        var display = document.querySelector('#countdown-timer');
+        var banner = document.getElementById('flash-sale-banner');
+
+        if (display && banner) {
+            // Tampilkan banner
+            banner.style.display = 'block';
+            // Mulai timer
             startTimer(threeHours, display);
-            document.getElementById('flash-sale-banner').style.display = 'block';
         }
-    };
+    });
 </script>
 </body>
 </html>
