@@ -959,3 +959,69 @@ section { padding: 80px 0; width: 100%; position: relative; }
         padding: 0 !important;
     }
 }
+
+/* ========================================================= */
+/* 🚑 FIX DARURAT: PERBAIKAN GAMBAR KATALOG & GRID           */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. RESET GAMBAR KATALOG (Agar Tidak Terbang/Menutupi Layar) */
+.catalog-img {
+    position: relative !important; /* KUNCI: Kembalikan ke posisi normal */
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important; /* Paksa kotak */
+    object-fit: cover !important;
+    top: auto !important;
+    left: auto !important;
+    display: block !important;
+    margin: 0 !important;
+}
+
+/* Khusus Gambar Mix di Katalog (Landscape 4:3) */
+#mix .catalog-img {
+    aspect-ratio: 4 / 3 !important;
+}
+
+/* 2. FIX GRID PAKET MIX DI KATALOG (Agar 6 Kolom di Desktop) */
+#mix .catalog-grid {
+    display: grid !important;
+    /* Desktop: 6 Kolom Jajar */
+    grid-template-columns: repeat(6, 1fr) !important; 
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+/* 3. FIX TAMPILAN KARTU DI KATALOG */
+#mix .catalog-card {
+    height: 100% !important;
+    min-height: 350px !important; /* Tinggi minimal agar rapi */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important; /* Potong jika ada yang keluar */
+    position: relative !important; /* Pastikan jadi acuan koordinat */
+}
+
+/* 4. FIX RESPONSIVE HP (2 Kolom) */
+@media (max-width: 768px) {
+    /* Grid Mix jadi 2 Kolom */
+    #mix .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+    
+    /* Reset tinggi minimal di HP */
+    #mix .catalog-card {
+        min-height: auto !important;
+    }
+    
+    /* Font size penyesuaian */
+    #mix .catalog-name { font-size: 0.8em !important; min-height: 35px; line-height: 1.2; }
+    
+    /* Gambar Promo di Katalog HP (Biar gak nyempil) */
+    .catalog-header {
+        background-size: cover !important;
+        background-position: center !important;
+    }
+}
