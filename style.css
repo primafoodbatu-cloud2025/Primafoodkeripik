@@ -70,16 +70,47 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .problem-solution, .production-video, .package-mix, .faq-section { background: var(--bg-cream); margin-top: -2px; padding: 60px 0 80px; }
 .problem-solution { padding: 40px 0 60px; }
 
-/* Content Widgets & Benefit Box */
+/* Content Widgets (Quote, Box, dll) */
 .expert-quote-problem { background: #fff; border-left: 5px solid var(--col-cta); padding: 20px; margin: 25px auto; border-radius: 8px; font-style: italic; max-width: 750px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-.video-embed { background: #000; border: 5px solid #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; aspect-ratio: 16/9; }
-.video-embed iframe { width: 100%; height: 100%; }
 .white-paper-box { background: #fff; border-radius: 15px; border: 3px solid var(--bg-brown); padding: 30px; max-width: 1000px; margin: 0 auto 50px; }
 .promo-horizontal-card { display: flex; align-items: center; gap: 20px; background: #fff; border: 3px dashed var(--col-cta); padding: 20px; border-radius: 12px; margin-top: 40px; }
 .promo-left { flex: 1; } .promo-right { flex: 2; text-align: left; }
 .promo-left img { width: 100%; height: auto; object-fit: contain; border-radius: 10px; max-height: 300px; }
 
-/* Benefit Box (Kotak Keuntungan) */
+/* ========================================= */
+/* 5. SELLING POINTS (STICKY NOTES STYLE)    */
+/* ========================================= */
+.benefit-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 50px; padding: 0 10px; }
+.benefit-card {
+  background: #fff; width: 320px; padding: 25px; border: 3px solid #4B3621;
+  border-radius: 15px; box-shadow: 8px 8px 0px rgba(0,0,0,0.15); transition: transform 0.3s;
+  position: relative; z-index: 10; /* Z-index tinggi agar tidak tertutup */
+}
+.benefit-card:hover { transform: rotate(0deg) scale(1.05) !important; z-index: 50; box-shadow: 10px 10px 0px rgba(0,0,0,0.2); }
+.rotate-left { transform: rotate(-3deg); }
+.rotate-right { transform: rotate(3deg); margin-top: 20px; }
+.benefit-card h3 { color: var(--col-pri); border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.3em; }
+.benefit-card p { font-size: 0.95em; line-height: 1.5; color: #444; text-align: left; margin-bottom: 15px; }
+.highlight-text { background-color: #ffebee; color: #c62828; font-weight: 800; padding: 0 4px; border-radius: 4px; }
+.card-quote { font-style: italic; background: #FFF8E1; padding: 10px; border-radius: 8px; font-size: 0.85em !important; color: #795548 !important; border-left: 4px solid var(--col-sec); }
+
+/* ========================================= */
+/* 6. VIDEO SECTION (FIX 9:16 & KLIK)        */
+/* ========================================= */
+.vertical-video-box {
+  max-width: 360px !important; aspect-ratio: 9 / 16 !important; margin: 0 auto;
+  border-radius: 20px !important; border: 8px solid #000; background: #000;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  position: relative; z-index: 50 !important; /* PENTING: Agar bisa diklik */
+  overflow: hidden;
+}
+.vertical-video-box video, .vertical-video-box iframe {
+  width: 100% !important; height: 100% !important; object-fit: cover !important; display: block;
+}
+
+/* ========================================= */
+/* 7. BENEFIT BOX (KEUNTUNGAN MITRA)         */
+/* ========================================= */
 .benefit-box { background: #fff; border-radius: 12px; padding: 30px 40px; text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border-left: 6px solid var(--col-pri); margin: 0 auto; max-width: 700px; position: relative; }
 .benefit-list { list-style: none; margin: 0; padding: 0; }
 .benefit-list li { margin-bottom: 20px; padding-left: 35px; position: relative; font-size: 1.05em; line-height: 1.5; color: #444; }
@@ -87,7 +118,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .benefit-list li strong { color: var(--col-pri); font-size: 1.1em; }
 
 /* ========================================= */
-/* 5. CARDS, GRIDS & TABLES                  */
+/* 8. CARDS, GRIDS & TABLES                  */
 /* ========================================= */
 .best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .mix-grid-wrapper, #mix .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
@@ -128,7 +159,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .float-wa { position: fixed; bottom: 25px; right: 25px; z-index: 9999; background: #25d366; color: #fff; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
 /* ========================================= */
-/* 6. MOBILE RESPONSIVE (Unified Block)      */
+/* 9. MOBILE RESPONSIVE (Unified Block)      */
 /* ========================================= */
 @media (max-width: 768px) {
   /* Layout Adjustments */
@@ -143,6 +174,15 @@ section { padding: 80px 0; width: 100%; position: relative; }
   .hero-section p { font-size: 0.9em !important; padding: 0 15px; }
   .section-title { font-size: 1.6em !important; }
   .hero-section div[style*="flex"] { flex-direction: column !important; gap: 10px !important; width: 100%; padding: 0 20px; }
+
+  /* Selling Points Mobile */
+  .benefit-wrapper { gap: 30px; }
+  .benefit-card { width: 100%; max-width: 350px; }
+  .rotate-left { transform: rotate(-2deg); }
+  .rotate-right { transform: rotate(2deg); margin-top: 0; }
+
+  /* Video Mobile */
+  .vertical-video-box { max-width: 300px !important; }
 
   /* Grid & Cards (Force 2 Columns) */
   .mix-grid-wrapper, .best-seller-grid, .catalog-grid, #mix .catalog-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 5px; }
@@ -175,145 +215,4 @@ section { padding: 80px 0; width: 100%; position: relative; }
   .site-footer { padding-bottom: 80px; text-align: center; }
   .footer-row { flex-direction: column; gap: 30px; }
   .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
-}
-
-/* ========================================= */
-/* 1. KOTAK SELLING POINT (MIRING-MIRING)    */
-/* ========================================= */
-
-.benefit-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px; /* Jarak antar kartu */
-    margin-top: 50px;
-    padding: 0 10px;
-}
-
-.benefit-card {
-    background: #fff;
-    width: 320px; /* Lebar kartu pas */
-    padding: 25px;
-    border: 3px solid #4B3621; /* Border Coklat agar tegas seperti kartu */
-    border-radius: 15px;       /* Sudut tumpul */
-    box-shadow: 8px 8px 0px rgba(0,0,0,0.15); /* Bayangan kasar ala stiker */
-    transition: transform 0.3s;
-    position: relative;
-    z-index: 1;
-}
-
-/* Efek Hover: Kartu jadi lurus saat disentuh */
-.benefit-card:hover {
-    transform: rotate(0deg) scale(1.05) !important;
-    z-index: 10;
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
-}
-
-/* Mengatur Kemiringan (Desktop & HP) */
-.rotate-left { transform: rotate(-3deg); }
-.rotate-right { transform: rotate(3deg); margin-top: 20px; /* Turun sedikit biar dinamis */ }
-
-/* Styling Teks dalam Kartu */
-.benefit-card h3 {
-    color: var(--col-pri);
-    border-bottom: 2px dashed #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-}
-
-.benefit-card p {
-    font-size: 0.95em;
-    line-height: 1.5;
-    color: #444;
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-/* Highlight Text (Warna Kontras) */
-.highlight-text {
-    background-color: #ffebee; /* Background merah muda tipis */
-    color: #c62828;            /* Teks Merah Gelap */
-    font-weight: 800;
-    padding: 0 4px;
-    border-radius: 4px;
-}
-
-.card-quote {
-    font-style: italic;
-    background: #FFF8E1;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.85em !important;
-    color: #795548 !important;
-    border-left: 4px solid var(--col-sec);
-}
-
-/* ========================================= */
-/* 2. FIX VIDEO VERTIKAL (9:16)              */
-/* ========================================= */
-
-.vertical-video-box {
-    /* Ukuran HP Standar (Agar rapat) */
-    max-width: 360px !important; 
-    
-    /* Rasio Aspek 9:16 (Potrait/Tegak) */
-    aspect-ratio: 9 / 16 !important; 
-    
-    margin: 0 auto;
-    border-radius: 20px !important; /* Sudut lebih bulat ala HP */
-    border: 8px solid #000;         /* Frame hitam ala HP */
-    background: #000;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
-}
-
-.vertical-video-box iframe, 
-.vertical-video-box video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ========================================= */
-/* RESPONSIVE MOBILE FIX                     */
-/* ========================================= */
-@media (max-width: 768px) {
-    .benefit-wrapper {
-        gap: 30px; /* Jarak vertikal di HP */
-    }
-    
-    .benefit-card {
-        width: 100%; /* Full width di HP */
-        max-width: 350px;
-    }
-
-    /* Di HP kemiringan dikurangi sedikit agar tidak nabrak layar */
-    .rotate-left { transform: rotate(-2deg); }
-    .rotate-right { transform: rotate(2deg); margin-top: 0; }
-    
-    .vertical-video-box {
-        max-width: 300px !important; /* Video sedikit lebih kecil di HP */
-    }
-}
-
-/* ========================================= */
-/* FIX VIDEO FULL SCREEN DI DALAM KOTAK      */
-/* ========================================= */
-
-.vertical-video-box video {
-    width: 100% !important;
-    height: 100% !important;
-    
-    /* KUNCI UTAMA: Agar video zoom-to-fill (Rapat) */
-    object-fit: cover !important; 
-    
-    display: block;
-    border-radius: 12px; /* Ikuti radius container */
-}
-/* ========================================= */
-/* FIX KLIK VIDEO (Z-INDEX)                  */
-/* ========================================= */
-.video-embed {
-    position: relative !important; 
-    z-index: 50 !important; /* Pastikan di atas sobekan kertas */
 }
