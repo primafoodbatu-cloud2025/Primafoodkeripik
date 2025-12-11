@@ -514,3 +514,78 @@ section { padding: 80px 0; width: 100%; position: relative; }
         min-height: 35px;
     }
 }
+
+/* ========================================================= */
+/* 🛠️ FIX FINAL TAHAP 2: TOMBOL RATA, KONTEN HP & WARNA      */
+/* (Tempel di Paling Bawah File CSS)                         */
+/* ========================================================= */
+
+/* --- 1. FIX TOMBOL GEMUK/KURUS DI DESKTOP --- */
+/* Kita paksa semua tombol punya tinggi yang sama persis */
+.mix-order-btn {
+    margin-top: auto !important;
+    width: 100% !important;
+    height: 45px !important; /* TINGGI TETAP */
+    padding: 0 10px !important; /* Reset padding */
+    
+    /* Gunakan Flexbox untuk menengahkan teks di dalam tombol */
+    display: flex !important;
+    align-items: center !important; /* Tengah Vertikal */
+    justify-content: center !important; /* Tengah Horizontal */
+    
+    line-height: 1 !important; /* Rapatkan baris teks tombol */
+    box-sizing: border-box !important;
+}
+
+/* --- 2. FIX AKSESIBILITAS WARNA (AGAR LOLOS CEK) --- */
+/* Gelapkan warna teks bahasa Inggris (.sub-en) */
+.sub-en { 
+    color: #444 !important; /* Abu tua (Kontras aman) */
+    font-weight: 500 !important; /* Sedikit pertebal */
+}
+
+/* Gelapkan deskripsi di bawah judul kategori (.catalog-desc) */
+.catalog-desc {
+    color: #333 !important; /* Hampir hitam (Sangat aman) */
+    font-weight: 500 !important;
+}
+
+
+/* ========================================= */
+/* 📱 FIX TAMPILAN HP (MOBILE)               */
+/* ========================================= */
+@media (max-width: 768px) {
+    
+    /* --- PERBAIKAN KONTEN YANG HILANG --- */
+    /* Pastikan semua paragraf secara default MUNCUL dulu */
+    .mix-card p { 
+        display: block !important; 
+        margin-bottom: 5px !important;
+    }
+
+    /* HANYA sembunyikan paragraf yang punya class 'mix-desc' (Isi Rincian) */
+    /* Syarat: Anda harus sudah update HTML di Langkah 1 */
+    .mix-card .mix-desc { 
+        display: none !important; 
+    }
+
+    /* Styling ulang subtitle (teks miring) di HP */
+    .mix-card p[style*="font-style: italic"] {
+        font-size: 0.75em !important;
+        height: auto !important;
+        margin-bottom: 5px !important;
+        color: #555 !important; /* Gelapkan sedikit */
+    }
+    
+    /* Styling ulang Harga di HP */
+    .mix-card p[style*="font-weight: 800"] {
+        font-size: 1.2em !important;
+        margin: 5px 0 10px 0 !important;
+    }
+
+    /* Sesuaikan tinggi tombol di HP */
+    .mix-order-btn {
+        height: 40px !important; /* Sedikit lebih pendek di HP */
+        font-size: 0.8em !important;
+    }
+}
