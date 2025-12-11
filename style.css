@@ -589,3 +589,80 @@ section { padding: 80px 0; width: 100%; position: relative; }
         font-size: 0.8em !important;
     }
 }
+
+/* ========================================================= */
+/* 🛠️ FIX FINAL TAHAP 3: TOMBOL, WARNA, TABEL ZEBRA          */
+/* (Paste kode ini di Baris PALING BAWAH file CSS Anda)      */
+/* ========================================================= */
+
+/* --- 1. TOMBOL PAKET MIX (Font Kecil & 1 Baris) --- */
+.mix-order-btn {
+    font-size: 0.75em !important; /* Font diperkecil */
+    padding: 8px 5px !important;  /* Padding dirapatkan */
+    height: auto !important;      /* Tinggi menyesuaikan isi */
+    min-height: 0 !important;
+    white-space: nowrap !important; /* PAKSA 1 BARIS (Tidak boleh turun baris) */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; /* Jika kepanjangan, potong rapi (...) */
+    margin-top: auto !important;
+}
+
+/* --- 2. ISIAN PRODUK DI HP (MUNCUL KEMBALI) --- */
+@media (max-width: 768px) {
+    /* Pastikan deskripsi isi paket MUNCUL di HP */
+    .mix-card p.mix-desc, 
+    .mix-card p {
+        display: block !important;
+        font-size: 0.75em !important; /* Font kecil biar muat */
+        line-height: 1.2 !important;
+        margin-bottom: 8px !important;
+        color: #333 !important;
+    }
+    
+    /* Atur ulang tinggi kartu di HP agar muat teksnya */
+    .mix-card {
+        height: auto !important;
+        min-height: 280px !important; /* Beri ruang minimal */
+    }
+}
+
+/* --- 3. FIX AKSESIBILITAS WARNA (JUDUL & DESKRIPSI) --- */
+/* Judul Kategori: Gunakan warna yang lebih Gelap/Tua */
+.catalog-title-green { color: #1b5e20 !important; border-color: #1b5e20 !important; } /* Hijau Tua */
+.catalog-title-orange { color: #e65100 !important; border-color: #e65100 !important; } /* Orange Tua */
+.catalog-title-red { color: #b71c1c !important; border-color: #b71c1c !important; }    /* Merah Tua */
+
+/* Teks Inggris & Deskripsi: Ubah jadi Hampir Hitam */
+.sub-en { 
+    color: #212121 !important; /* Hitam Arang */
+    font-weight: 600 !important; 
+}
+.catalog-desc {
+    color: #000000 !important; /* Hitam Pekat */
+    font-weight: 500 !important;
+    font-size: 0.95em !important;
+}
+
+/* --- 4. TABEL ZEBRA (SELANG-SELING KEREN) --- */
+/* Baris Ganjil (Putih) */
+.catalog-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Baris Genap (Hijau Muda Segar - Agar tulisan tetap terbaca jelas) */
+.catalog-table tbody tr:nth-child(even) {
+    background-color: #DCEDC8; /* Hijau Soft */
+}
+
+/* Warna Teks di Tabel (Agar Kontras) */
+.catalog-table td {
+    color: #212121 !important; /* Teks Hitam Jelas */
+    font-weight: 500;
+}
+
+/* Khusus Kolom Harga Ecer (Kolom ke-2) kita beri warna Merah Tebal */
+.catalog-table td:nth-child(2) {
+    color: #c62828 !important; /* Merah */
+    font-weight: 800;
+    background-color: #fff3e0; /* Background agak orange dikit biar highlight */
+}
