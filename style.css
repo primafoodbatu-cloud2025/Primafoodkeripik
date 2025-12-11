@@ -1178,3 +1178,40 @@ section { padding: 80px 0; width: 100%; position: relative; }
         padding: 4px 5px !important; /* Padding rapat biar muat 2 kolom */
     }
 }
+
+/* ========================================================= */
+/* 🚑 FIX DARURAT: HARGA TIER HILANG/TERPOTONG               */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. PAKSA KARTU MEMANJANG (Auto Height) */
+.catalog-card {
+    height: auto !important;      /* Tinggi mengikuti isi konten */
+    min-height: 100% !important;  /* Minimal setinggi teman sebelahnya */
+    overflow: visible !important; /* JANGAN POTONG isi yang kepanjangan */
+    padding-bottom: 15px !important; /* Beri napas di bawah */
+}
+
+/* 2. PASTIKAN TABEL MUNCUL SEMUA BARISNYA */
+.mini-tier-table {
+    display: table !important;
+    height: auto !important;
+}
+
+.mini-tier-table tr {
+    display: table-row !important;
+    visibility: visible !important;
+}
+
+/* 3. ATUR ULANG TOMBOL WA (Agar tidak menindih tabel) */
+.wa-btn-catalog {
+    position: relative !important; /* Kembalikan ke posisi normal */
+    margin-top: 15px !important;   /* Beri jarak dari tabel */
+    z-index: 10;
+}
+
+/* 4. FIX FINAL: GRID ALIGNMENT (Agar kartu tetap rapi sejajar) */
+/* Pastikan grid desktop tetap menarik kartu agar sama tinggi */
+.catalog-grid {
+    align-items: stretch !important;
+}
