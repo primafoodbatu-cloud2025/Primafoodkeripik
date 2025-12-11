@@ -51,7 +51,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
 /* ========================================= */
 .hero-section {
   display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
-  padding-top: 20px !important; padding-bottom: 80px !important; /* Fix Jarak */
+  padding-top: 20px !important; padding-bottom: 80px !important; 
   background-color: var(--bg-yell); margin-top: -2px;
 }
 .hero-section img { margin-bottom: 10px !important; width: 120px !important; height: 120px !important; }
@@ -70,7 +70,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .problem-solution, .production-video, .package-mix, .faq-section { background: var(--bg-cream); margin-top: -2px; padding: 60px 0 80px; }
 .problem-solution { padding: 40px 0 60px; }
 
-/* Content Widgets */
+/* Content Widgets & Benefit Box */
 .expert-quote-problem { background: #fff; border-left: 5px solid var(--col-cta); padding: 20px; margin: 25px auto; border-radius: 8px; font-style: italic; max-width: 750px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .video-embed { background: #000; border: 5px solid #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; aspect-ratio: 16/9; }
 .video-embed iframe { width: 100%; height: 100%; }
@@ -79,15 +79,21 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .promo-left { flex: 1; } .promo-right { flex: 2; text-align: left; }
 .promo-left img { width: 100%; height: auto; object-fit: contain; border-radius: 10px; max-height: 300px; }
 
+/* Benefit Box (Kotak Keuntungan) */
+.benefit-box { background: #fff; border-radius: 12px; padding: 30px 40px; text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border-left: 6px solid var(--col-pri); margin: 0 auto; max-width: 700px; position: relative; }
+.benefit-list { list-style: none; margin: 0; padding: 0; }
+.benefit-list li { margin-bottom: 20px; padding-left: 35px; position: relative; font-size: 1.05em; line-height: 1.5; color: #444; }
+.benefit-list li::before { content: "✅"; position: absolute; left: 0; top: 2px; font-size: 1.2em; }
+.benefit-list li strong { color: var(--col-pri); font-size: 1.1em; }
+
 /* ========================================= */
 /* 5. CARDS, GRIDS & TABLES                  */
 /* ========================================= */
-/* Grids */
 .best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .mix-grid-wrapper, #mix .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
 
-/* Cards */
+/* Cards Styling */
 .bs-card, .mix-card, .catalog-card {
   background: #fff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
   height: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; padding: 15px; border: 1px solid #e0e0e0;
@@ -110,7 +116,6 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .catalog-table, .tier-table-compact { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.9em; margin-bottom: 20px; }
 .catalog-table th, .tier-table-compact th { background: var(--bg-brown); color: #fff; padding: 10px; border: 1px solid #6d4c41; text-align: center; }
 .catalog-table td, .tier-table-compact td { border: 1px solid #ccc; padding: 10px; text-align: center; color: #333; }
-/* Mini Table (Inside Cards) */
 .mini-tier-table { width: 100% !important; display: table !important; margin-bottom: 10px; }
 .mini-tier-table td { font-size: 0.8em; padding: 3px 0; border: none; border-bottom: 1px solid #eee; }
 .mini-tier-table tr:last-child td { border-bottom: none; font-weight: bold; color: var(--col-cta); }
@@ -123,7 +128,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .float-wa { position: fixed; bottom: 25px; right: 25px; z-index: 9999; background: #25d366; color: #fff; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
 /* ========================================= */
-/* 6. MOBILE RESPONSIVE (ALL FIXES)          */
+/* 6. MOBILE RESPONSIVE (Unified Block)      */
 /* ========================================= */
 @media (max-width: 768px) {
   /* Layout Adjustments */
@@ -132,7 +137,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
   .faq-section { padding: 40px 0 60px; }
   .hero-section::after, .research-proof::before, .research-proof::after, .single-product-catalog::before, .single-product-catalog::after, .bulk-order::before, .bulk-order::after, .testimonial-section::before, .testimonial-section::after, .faq-section::after { height: 35px !important; }
 
-  /* Hero & Text Specifics */
+  /* Hero Specifics */
   .hero-title { font-size: 1.5em !important; margin-bottom: 5px !important; }
   .hero-subtitle { font-size: 0.95em !important; line-height: 1.25 !important; margin-bottom: 15px !important; }
   .hero-section p { font-size: 0.9em !important; padding: 0 15px; }
@@ -151,7 +156,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
   .mix-card .product-img, #mix .catalog-img { aspect-ratio: 4/3 !important; object-fit: contain; height: auto !important; }
   .cta-button, .bs-btn, .wa-btn-catalog { padding: 8px 10px !important; font-size: 0.8em !important; width: 100%; }
 
-  /* Table Fixes (Scroll & Mini Tables) */
+  /* Table Fixes */
   .product-list { width: 100%; overflow-x: auto; display: block; -webkit-overflow-scrolling: touch; }
   .catalog-table, .tier-table-compact { min-width: 500px; }
   .catalog-card table.mini-tier-table, .bs-card table.mini-tier-table, .mix-card table.mini-tier-table {
@@ -160,68 +165,14 @@ section { padding: 80px 0; width: 100%; position: relative; }
   .mini-tier-table td { font-size: 0.75em !important; padding: 2px 0 !important; white-space: normal !important; word-wrap: break-word !important; }
   .catalog-info, .bs-info { overflow: hidden !important; }
 
+  /* Benefit Box Mobile */
+  .benefit-box { padding: 20px; border-left-width: 4px; }
+  .benefit-list li { font-size: 0.95em; margin-bottom: 15px; }
+
   /* Promo & Footer */
   .promo-horizontal-card { flex-direction: column; text-align: center; padding: 15px; }
   .promo-left img { max-width: 200px !important; margin: 0 auto; }
   .site-footer { padding-bottom: 80px; text-align: center; }
   .footer-row { flex-direction: column; gap: 30px; }
   .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
-}
-
-/* ========================================= */
-/* VARIASI KOTAK KEUNTUNGAN (BENEFIT BOX)    */
-/* ========================================= */
-
-.benefit-box {
-    background-color: #fff;       /* Warna latar putih bersih */
-    border-radius: 12px;          /* Sudut membulat */
-    padding: 30px 40px;           /* Jarak dalam yang lega */
-    text-align: left;             /* RATA KIRI SESUAI REQUEST */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Bayangan lembut */
-    border-left: 6px solid var(--col-pri); /* Aksen garis hijau di kiri */
-    margin: 0 auto;               /* Posisi box di tengah layar */
-    max-width: 700px;             /* Lebar maksimal agar enak dibaca */
-    position: relative;
-}
-
-/* Menghilangkan bullet point bawaan dan ganti custom */
-.benefit-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.benefit-list li {
-    margin-bottom: 20px;          /* Jarak antar poin */
-    padding-left: 35px;           /* Memberi ruang untuk ikon ceklis */
-    position: relative;
-    font-size: 1.05em;
-    line-height: 1.5;
-    color: #444;
-}
-
-/* Membuat Ikon Ceklis (✅) Custom */
-.benefit-list li::before {
-    content: "✅";                /* Ikon Ceklis */
-    position: absolute;
-    left: 0;
-    top: 2px;
-    font-size: 1.2em;
-}
-
-.benefit-list li strong {
-    color: var(--col-pri);        /* Judul poin berwarna hijau */
-    font-size: 1.1em;
-}
-
-/* Responsif untuk HP */
-@media (max-width: 768px) {
-    .benefit-box {
-        padding: 20px;            /* Padding lebih kecil di HP */
-        border-left-width: 4px;
-    }
-    .benefit-list li {
-        font-size: 0.95em;        /* Font sedikit mengecil */
-        margin-bottom: 15px;
-    }
 }
