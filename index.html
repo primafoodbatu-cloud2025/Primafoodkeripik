@@ -62,7 +62,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.4">
+    <link rel="stylesheet" href="style.css?v=3.5">
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -761,22 +761,83 @@
     </div>
 </section>
 
-<section class="testimonial-video">
+<section class="testimonial-section">
     <div class="container" style="text-align: center;">
-        <h2 class="section-title">💖 Apa Kata Mereka?</h2>
-        <p style="font-size: 1.1em; margin-bottom: 30px;">Bukti nyata dari mitra dan pelanggan kami.</p>
         
-        <div style="display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px;">
-                <img src="https://placehold.co/300x300/e6ffe6/38761d?text=Foto+Rina" alt="Testimoni" style="width: 100%; max-width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <p style="margin-top: 10px; font-style: italic;">"Keripik Okra ini bantu saya tetap kenyang saat diet!" - <strong>Rina S.</strong></p>
+        <h2 class="section-title">💖 APA KATA MEREKA?</h2>
+        <p class="section-subtitle">Bukti nyata kepuasan pelanggan & mitra reseller Rilldelish.</p>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-track">
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Awalnya ragu mau nyoba Okra, takut berlendir. Ternyata Rilldelish bikinnya beda! Renyah banget, gurih, gak ada lendirnya sama sekali. Camilan diet favorit!"</p>
+                    <div class="testi-author">— Rina S. (Jakarta), <span class="testi-role">Customer Diet</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Solusi banget buat anakku yang GTM makan sayur. Dikasih Keripik Bayam & Wortel Rilldelish langsung lahap. Aman tanpa MSG jadi tenang ngasihnya."</p>
+                    <div class="testi-author">— Bunda Maya (Surabaya), <span class="testi-role">Ibu Rumah Tangga</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Baru seminggu pajang di toko oleh-oleh saya, stok Mix Fruit langsung ludes. Kemasannya premium, turis suka banget buat bawa pulang."</p>
+                    <div class="testi-author">— Pak Budi (Batu), <span class="testi-role">Pemilik Toko Oleh-oleh</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Keripik Nangkanya juara! Manisnya asli buah, bukan manis gula atau pemanis buatan. Potongannya juga gede-gede gak hancur."</p>
+                    <div class="testi-author">— Sarah (Bandung), <span class="testi-role">Pecinta Snack</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Ambil paket grosir 5kg buat repacking merk sendiri. Marginnya lumayan banget, kualitas stabil, pengiriman ke luar pulau aman pake bubble tebal."</p>
+                    <div class="testi-author">— Andi (Makassar), <span class="testi-role">Reseller / Repacker</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Teksturnya beda sama keripik curah di pasar. Ini beneran garing tapi gak berminyak di tenggorokan. Fix langganan!"</p>
+                    <div class="testi-author">— Citra (Malang), <span class="testi-role">Customer</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Suka banget sama varian Pedas Manis-nya. Pedasnya nendang tapi nagih. Cocok banget buat temen nonton drakor."</p>
+                    <div class="testi-author">— Vina (Semarang), <span class="testi-role">Mahasiswi</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Pelayanan ramah, admin fast response. Tanya-tanya soal expired date dan komposisi dijelasin detail banget. Top service!"</p>
+                    <div class="testi-author">— Ibu Lilis (Bekasi), <span class="testi-role">Customer</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Brokolinya masih hijau seger warnanya, gak gosong. Rasanya original sayur banget. Suka!"</p>
+                    <div class="testi-author">— Diana (Bali), <span class="testi-role">Vegan Foodie</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testi-text">"Udah coba bandingin sama merk lain, Rilldelish paling berasa 'buah' nya. Gak kebanyakan tepung."</p>
+                    <div class="testi-author">— Hartono (Solo), <span class="testi-role">Customer</span></div>
+                </div>
+
             </div>
+
+            <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
             
-            <div style="flex: 1; min-width: 250px;">
-                <img src="https://placehold.co/300x300/ffe6e6/cc0000?text=Foto+Ibu+Maya" alt="Testimoni" style="width: 100%; max-width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <p style="margin-top: 10px; font-style: italic;">"Anak saya jadi suka sayur, ini solusi parenting!" - <strong>Ibu Maya</strong></p>
-            </div>
+            <div class="slider-dots" id="sliderDots"></div>
         </div>
+
     </div>
 </section>
 
