@@ -429,3 +429,41 @@ section { padding: 80px 0; width: 100%; position: relative; } /* Padding standar
 .catalog-table {
     min-width: 500px !important; /* Hanya tabel besar yang dipaksa lebar */
 }
+
+/* ================================================================= */
+/* 🚑 FIX DARURAT FINAL: TABEL TIER (KECIL) DI HP AGAR TIDAK MELEBAR */
+/* (Pastikan kode ini berada di BARIS PALING BAWAH file CSS)         */
+/* ================================================================= */
+
+@media (max-width: 768px) {
+    
+    /* 1. KITA PAKSA TABEL KECIL MENGIKUTI LEBAR KARTU */
+    /* Menggunakan selector spesifik agar lebih kuat dari aturan lain */
+    .catalog-card table.mini-tier-table,
+    .bs-card table.mini-tier-table,
+    .mix-card table.mini-tier-table {
+        min-width: 0 !important;       /* HAPUS paksaan lebar 500px */
+        width: 100% !important;        /* Wajib 100% dari lebar kartu */
+        max-width: 100% !important;    /* Jangan pernah melebihi kartu */
+        display: table !important;     /* Pastikan bentuknya tabel */
+        table-layout: fixed !important; /* Bagi kolom secara rata & paksa teks turun */
+        box-shadow: none !important;   /* Hilangkan bayangan jika ada */
+        margin: 5px 0 !important;
+    }
+
+    /* 2. KITA KECILKAN HURUF & SPASI DI DALAMNYA */
+    .catalog-card table.mini-tier-table td,
+    .bs-card table.mini-tier-table td,
+    .mix-card table.mini-tier-table td {
+        font-size: 0.75em !important;   /* Font kecil agar muat */
+        padding: 2px 0 !important;      /* Jarak antar teks rapat */
+        white-space: normal !important; /* Teks WAJIB turun ke bawah jika kepanjangan */
+        word-wrap: break-word !important; /* Paksa potong kata jika terlalu panjang */
+        height: auto !important;
+    }
+    
+    /* 3. Pastikan Container Kartu tidak menahan overflow */
+    .catalog-info, .bs-info {
+        overflow: hidden !important; /* Potong apapun yang memaksa keluar */
+    }
+}
