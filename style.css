@@ -382,3 +382,135 @@ section { padding: 80px 0; width: 100%; position: relative; }
     position: relative; 
     z-index: 2; 
 }
+
+/* ========================================================= */
+/* 🛠️ FIX FINAL: MIX PACKAGES & GAP (HP/DESKTOP)             */
+/* ========================================================= */
+
+/* 1. FIX GORESAN/CELAH DI BAWAH TABEL (HP & DESKTOP) */
+.single-product-catalog {
+    position: relative;
+    z-index: 1;
+    /* Pastikan background sobekan di section ini overlap ke bawah */
+}
+.single-product-catalog::after {
+    bottom: -2px !important; /* Turunkan sedikit biar nutup celah */
+    height: 60px !important; /* Pastikan tinggi cukup */
+    background-size: 101% 100% !important; /* Lebarkan dikit biar gak ada celah samping */
+}
+.package-mix {
+    position: relative;
+    z-index: 2; /* Layer di atas section sebelumnya */
+    margin-top: -40px !important; /* Tarik ke atas lebih banyak */
+    padding-top: 80px !important; 
+    background-color: #FFF8E1 !important; /* Samakan background */
+}
+
+/* 2. FIX GRID LAYOUT (6 Kolom Desktop, 2 Kolom HP) */
+.mix-grid-wrapper {
+    display: grid;
+    /* Desktop: 6 Kolom Jajar */
+    grid-template-columns: repeat(6, 1fr) !important; 
+    gap: 15px !important;
+    align-items: stretch; /* Paksa tinggi kartu sama rata */
+    width: 100%;
+}
+
+/* 3. FIX KARTU, GAMBAR & TOMBOL RATA */
+.mix-card {
+    display: flex !important;
+    flex-direction: column !important; /* Susun ke bawah */
+    justify-content: space-between !important; /* Konten rata atas-bawah */
+    height: 100% !important; /* Tinggi kartu mengikuti grid */
+    min-height: 100%;
+    padding: 15px !important;
+    box-sizing: border-box;
+}
+
+/* Fix Gambar (4:3) */
+.mix-card .product-img {
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important; /* Rasio Wajib 4:3 */
+    object-fit: contain !important; /* Gambar utuh tidak terpotong */
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    height: auto !important;
+}
+
+/* Konten Teks (Judul, Harga, Deskripsi) */
+/* Kita bungkus dalam div imajiner agar menekan tombol ke bawah */
+.mix-card h3 {
+    font-size: 0.95em !important;
+    line-height: 1.2;
+    min-height: 40px; /* Standarisasi tinggi judul */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.mix-card p {
+    margin-bottom: 5px;
+}
+
+/* Fix Tombol (Agar Rata Bawah & Tidak Gemuk/Kurus) */
+.mix-order-btn {
+    margin-top: auto !important; /* KUNCI: Dorong tombol mentok ke bawah */
+    width: 100% !important;      /* Lebar penuh */
+    padding: 10px 5px !important; /* Padding konsisten */
+    font-size: 0.85em !important;
+    line-height: normal !important;
+    min-height: 40px; /* Tinggi tombol seragam */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================= */
+/* 📱 KHUSUS HP (Tampilan 2 Kolom Rapi)      */
+/* ========================================= */
+@media (max-width: 768px) {
+    /* Paksa 2 Kolom */
+    .mix-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    /* Reset Padding Kartu di HP */
+    .mix-card {
+        padding: 10px !important;
+    }
+
+    /* Sembunyikan Deskripsi Panjang di HP (Biar Rapi & Sejajar) */
+    .mix-card p { display: none !important; }
+    
+    /* Tampilkan HANYA Harga & Judul */
+    .mix-card h3 { 
+        font-size: 0.8em !important; 
+        min-height: 35px; /* Judul minimal 2 baris */
+        align-items: start;
+        margin-bottom: 2px;
+    }
+    
+    /* Paksa Harga Muncul (Override display:none di atas) */
+    .mix-card p[style*="font-weight: 800"] {
+        display: block !important;
+        font-size: 1.1em !important;
+        margin: 0 0 10px 0 !important;
+    }
+
+    /* Subtitle Italic (Keterangan singkat) */
+    .mix-card p[style*="font-style: italic"] {
+        display: block !important;
+        font-size: 0.7em !important;
+        margin-bottom: 5px !important;
+        height: 20px; overflow: hidden; /* Batasi 1 baris */
+    }
+
+    /* Tombol di HP */
+    .mix-order-btn {
+        font-size: 0.75em !important;
+        padding: 8px 0 !important;
+        min-height: 35px;
+    }
+}
