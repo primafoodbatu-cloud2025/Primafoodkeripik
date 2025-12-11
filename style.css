@@ -496,3 +496,54 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     height: auto !important; /* Reset tinggi agar aspect-ratio bekerja */
     background-color: #fff; /* Warna background jika pakai mode 'contain' */
 }
+/* ========================================= */
+/* FIX TAMPILAN STRUK (RAPAT & KECIL)        */
+/* ========================================= */
+
+.summary-struk {
+    background-color: #f9f9f9 !important; /* Background abu tipis */
+    padding: 15px !important;
+    border-radius: 8px;
+    border: 1px dashed #ccc; /* Garis putus-putus ala struk */
+    margin-bottom: 20px;
+}
+
+/* Mengatur semua baris tulisan di dalam struk */
+.summary-struk p {
+    margin-bottom: 5px !important; /* Jarak antar baris sangat rapat */
+    font-size: 0.9em !important;   /* Font dikecilkan sedikit */
+    line-height: 1.3 !important;   /* Tinggi baris dipadatkan */
+    color: #444 !important;
+    display: flex;
+    justify-content: space-between; /* Kiri - Kanan mentok */
+}
+
+/* Label (Sebelah Kiri: Harga Normal, dll) */
+.struk-label {
+    font-weight: 500;
+    color: #666 !important;
+}
+
+/* Angka (Sebelah Kanan) */
+.struk-nominal {
+    font-weight: 700;
+    color: #333 !important;
+}
+
+/* Khusus Tulisan Keterangan Diskon (Hijau) */
+#discount-tier-note, .struk-deskripsi {
+    font-size: 0.85em !important; /* Lebih kecil lagi */
+    color: #2e7d32 !important;    /* Warna Hijau */
+    font-style: italic;
+    margin-top: 2px !important;
+    margin-bottom: 8px !important;
+    text-align: right;            /* Rata kanan */
+    display: block !important;    /* Agar bisa rata kanan */
+}
+
+/* Total Berat */
+.total-weight {
+    border-top: 1px solid #eee; /* Garis pemisah halus */
+    padding-top: 5px;
+    margin-top: 5px !important;
+}
