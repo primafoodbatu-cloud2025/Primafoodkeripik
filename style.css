@@ -698,4 +698,95 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     
     .testimonial-card { padding: 30px 20px; }
     .testi-text { font-size: 1em !important; }
+
+/* ========================================= */
+/* SECTION 10: FAQ (CREAM)                   */
+/* ========================================= */
+
+.faq-section {
+    background-color: #FFF8E1 !important; /* Warna Cream */
+    position: relative;
+    z-index: 1; /* Layer bawah */
+    
+    /* Jahit ke section testimoni di atasnya */
+    margin-top: -2px !important; 
+    
+    padding-top: 60px !important;
+    padding-bottom: 120px !important; /* Ruang lebih untuk sobekan bawah */
 }
+
+/* SOBEKAN BAWAH (Normal - Untuk transisi ke Footer) */
+.faq-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    
+    /* Ukuran Desktop */
+    height: 150px; 
+    
+    /* Tempel di paling bawah */
+    bottom: -1px !important; 
+    
+    background-image: url('images/sobekan-kertas.webp'); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* JUDUL */
+.faq-section .section-title {
+    color: #4B3621 !important; /* Cokelat */
+    border-bottom-color: #e65100 !important; /* Garis Oranye */
+    margin-bottom: 40px !important;
+}
+
+/* STYLE ITEM FAQ (Kotak Putih Bersih) */
+.faq-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Bayangan halus */
+    border-left: 5px solid #2e7d32; /* Aksen Hijau di kiri */
+    text-align: left;
+}
+
+.faq-item h3 {
+    color: #2e7d32; /* Hijau Brand */
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.faq-item p {
+    font-size: 0.95em;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* --- RESPONSIVE HP (FAQ) --- */
+@media (max-width: 768px) {
+    .faq-section {
+        padding-top: 40px !important;
+        padding-bottom: 80px !important;
+    }
+    
+    .faq-section::after {
+        height: 60px !important; /* Sobekan mengecil */
+        bottom: -1px !important;
+    }
+    
+    .faq-item {
+        padding: 15px;
+    }
+    
+    .faq-item h3 {
+        font-size: 1em;
+    }
+}
+}
+
