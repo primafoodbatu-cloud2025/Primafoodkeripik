@@ -275,3 +275,76 @@ p, .benefit-card p, cite { color: #444 !important; line-height: 1.4 !important; 
     .social-grid { grid-template-columns: repeat(4, 1fr); }
     .float-wa { bottom: 20px !important; right: 20px !important; padding: 10px 20px; font-size: 0.9em; }
 }
+
+/* ============================================================ */
+/* 🚑 CSS PENYELAMAT LAYOUT (FIX GRID & KOLOM)                 */
+/* TEMPEL DI BARIS PALING BAWAH FILE CSS ANDA                   */
+/* ============================================================ */
+
+/* 1. RESET GLOBAL GRID (Agar tidak memanjang 1 kolom) */
+.catalog-grid {
+    display: grid !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* ------------------------------------------------------------ */
+/* 2. KHUSUS SECTION PAKET MIX (#mix)                           */
+/* ------------------------------------------------------------ */
+
+/* TAMPILAN DESKTOP (PC/LAPTOP) - WAJIB 3 KOLOM */
+#mix .catalog-grid {
+    /* Membagi layar menjadi 3 bagian sama rata */
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 25px !important;
+}
+
+/* GAMBAR PAKET MIX (LANDSCAPE 4:3) */
+#mix .catalog-card .catalog-img {
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important; /* Bentuk Landscape */
+    object-fit: contain !important; /* Gambar utuh tidak terpotong */
+    background-color: #fff;
+    height: auto !important;
+}
+
+/* ------------------------------------------------------------ */
+/* 3. KHUSUS TAMPILAN HP (MOBILE)                               */
+/* ------------------------------------------------------------ */
+@media (max-width: 768px) {
+    
+    /* MEMAKSA GRID MENJADI 2 KOLOM DI HP (Kiri-Kanan) */
+    .catalog-grid, 
+    #mix .catalog-grid, 
+    #sayur .catalog-grid, 
+    #buah .catalog-grid, 
+    #coated .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* KUNCI 2 KOLOM */
+        gap: 10px !important;
+        padding: 0 5px !important;
+    }
+
+    /* Memastikan Kartu tidak melebar 100% sendirian */
+    .catalog-card {
+        width: 100% !important; 
+        min-width: 0 !important; /* Mencegah overflow */
+        margin: 0 !important;
+    }
+
+    /* Penyesuaian Font di HP agar muat di kotak kecil */
+    .catalog-name {
+        font-size: 0.85em !important;
+        min-height: 35px !important; 
+        line-height: 1.2 !important;
+    }
+
+    .catalog-price-ecer {
+        font-size: 0.95em !important;
+    }
+
+    /* Khusus Gambar Mix di HP (Landscape Kecil) */
+    #mix .catalog-card .catalog-img {
+        aspect-ratio: 4 / 3 !important;
+        object-fit: contain !important;
+    }
+}
