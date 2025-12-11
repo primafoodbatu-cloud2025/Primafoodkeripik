@@ -382,3 +382,65 @@ section { padding: 80px 0; width: 100%; position: relative; }
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
 }
+
+/* ========================================================= */
+/* 🚑 FIX INDEX.HTML: MIX OVERFLOW, TABEL MEWAH & FONT HP    */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. FIX PAKET MIX MELEBAR (OVERFLOW) */
+/* Masalah: Ada inline style 'min-width:300px' di HTML Index yang harus dimatikan */
+.mix-grid-wrapper .mix-card {
+    min-width: 0 !important;  /* Hapus paksaan lebar 300px */
+    width: 100% !important;   /* Ikuti lebar grid yang sudah diatur */
+    flex: 1 1 auto !important;
+}
+
+/* 2. TABEL DAFTAR HARGA (MEWAH & BINGKAI) */
+.catalog-table {
+    border: 2px solid #5D4037 !important; /* Bingkai Coklat Tua Tebal */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; /* Bayangan Timbul */
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border-collapse: separate !important; /* Agar radius jalan */
+    border-spacing: 0;
+}
+
+/* Header Tabel Mewah */
+.catalog-table thead th {
+    background-color: #5D4037 !important; /* Header Coklat Premium */
+    color: #fff !important;
+    border-bottom: 3px solid #3E2723 !important;
+    padding: 12px 8px !important;
+    letter-spacing: 0.5px;
+}
+
+/* Garis Pemisah Antar Kolom & Baris */
+.catalog-table td {
+    border-right: 1px solid #e0e0e0 !important; /* Garis tipis vertikal */
+    border-bottom: 1px solid #e0e0e0 !important; /* Garis tipis horizontal */
+}
+.catalog-table td:last-child {
+    border-right: none !important; /* Hilangkan garis di ujung kanan */
+}
+
+/* 3. FIX HARGA TIER KEBESARAN DI HP (Best Seller) */
+@media (max-width: 768px) {
+    /* Khusus tabel/box harga di dalam kartu Best Seller (.bs-card) */
+    .bs-card .mini-tier-table, 
+    .bs-card .bs-wholesale-box { 
+        font-size: 0.65em !important; /* Kecilkan font khusus di sini */
+        padding: 5px !important;
+        margin-top: 5px !important;
+    }
+
+    .bs-card .mini-tier-table td {
+        padding: 1px 2px !important; /* Rapatkan jarak agar muat */
+    }
+
+    /* Pastikan Grid Mix di HP Index tetap 2 kolom rapi */
+    .mix-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+}
