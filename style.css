@@ -1215,3 +1215,33 @@ section { padding: 80px 0; width: 100%; position: relative; }
 .catalog-grid {
     align-items: stretch !important;
 }
+
+
+/* ========================================================= */
+/* 🚀 FIX FINAL: JARAK JUDUL KATEGORI (KATALOG) LEBIH RAPAT  */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. Kurangi Jarak Atas Section Kategori */
+.category-section {
+    padding-top: 30px !important; /* Sebelumnya 80px, sekarang jadi rapat */
+    padding-bottom: 50px !important; /* Jarak bawah secukupnya */
+}
+
+/* 2. Pastikan Judul Benar-benar Mentok Atas */
+.category-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 30px !important; /* Beri jarak sedikit ke kartu di bawahnya */
+}
+
+/* 3. Khusus HP: Lebih Rapat Lagi */
+@media (max-width: 768px) {
+    .category-section {
+        padding-top: 20px !important;
+    }
+    
+    .category-section .section-title {
+        margin-bottom: 20px !important;
+        font-size: 1.5em !important; /* Ukuran font pas di HP */
+    }
+}
