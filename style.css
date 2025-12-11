@@ -701,21 +701,22 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
 
 /* ========================================= */
 /* SECTION 10: FAQ (CREAM)                   */
+/* (Tempel di paling bawah CSS)              */
 /* ========================================= */
 
 .faq-section {
-    background-color: #FFF8E1 !important; /* Warna Cream */
+    background-color: #FFF8E1 !important; /* Warna Cream/Kuning Muda */
     position: relative;
-    z-index: 1; /* Layer bawah */
+    z-index: 1; /* Layer Bawah (Tertimpa sobekan section atas) */
     
-    /* Jahit ke section testimoni di atasnya */
+    /* Jahit Rapat ke Section Atas */
     margin-top: -2px !important; 
     
     padding-top: 60px !important;
-    padding-bottom: 120px !important; /* Ruang lebih untuk sobekan bawah */
+    padding-bottom: 120px !important; /* Ruang untuk sobekan bawah */
 }
 
-/* SOBEKAN BAWAH (Normal - Untuk transisi ke Footer) */
+/* SOBEKAN BAWAH (Normal - Transisi ke Footer) */
 .faq-section::after {
     content: "";
     position: absolute;
@@ -735,26 +736,26 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     z-index: 2;
 }
 
-/* JUDUL */
+/* JUDUL FAQ */
 .faq-section .section-title {
     color: #4B3621 !important; /* Cokelat */
-    border-bottom-color: #e65100 !important; /* Garis Oranye */
+    border-bottom-color: #e65100 !important;
     margin-bottom: 40px !important;
 }
 
-/* STYLE ITEM FAQ (Kotak Putih Bersih) */
+/* STYLE ITEM FAQ (Kotak Putih) */
 .faq-item {
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Bayangan halus */
-    border-left: 5px solid #2e7d32; /* Aksen Hijau di kiri */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 5px solid #2e7d32; /* Aksen Hijau */
     text-align: left;
 }
 
 .faq-item h3 {
-    color: #2e7d32; /* Hijau Brand */
+    color: #2e7d32;
     font-size: 1.1em;
     font-weight: 700;
     margin-bottom: 10px;
@@ -764,7 +765,7 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
 .faq-item p {
     font-size: 0.95em;
     color: #444;
-    line-height: 1.5;
+    line-height: 1.5 !important;
     margin-bottom: 0;
 }
 
@@ -776,17 +777,10 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     }
     
     .faq-section::after {
-        height: 60px !important; /* Sobekan mengecil */
+        height: 60px !important; /* Sobekan mengecil di HP */
         bottom: -1px !important;
     }
     
-    .faq-item {
-        padding: 15px;
-    }
-    
-    .faq-item h3 {
-        font-size: 1em;
-    }
+    .faq-item { padding: 15px; }
+    .faq-item h3 { font-size: 1em; }
 }
-}
-
