@@ -666,3 +666,115 @@ section { padding: 80px 0; width: 100%; position: relative; }
     font-weight: 800;
     background-color: #fff3e0; /* Background agak orange dikit biar highlight */
 }
+
+/* ========================================================= */
+/* 💎 FIX FINAL TAHAP 4: LUXURY LOOK & DETAIL FINISHING      */
+/* ========================================================= */
+
+/* --- 1. TOMBOL KATEGORI MEWAH (GRADIENT & SEPARATOR) --- */
+.category-btn {
+    /* Style Dasar Mewah (Silver/Putih) */
+    background: linear-gradient(145deg, #ffffff, #f0f0f0) !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    color: #444 !important;
+    padding: 15px 30px !important; /* Lebih lega */
+}
+
+/* Style Garis Pemisah (Bahasa) */
+.category-btn .en-text {
+    border-top: 1px solid rgba(0,0,0,0.1); /* Garis tipis */
+    width: 100%;
+    margin-top: 5px !important;
+    padding-top: 3px !important;
+    font-size: 0.75em !important;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* STATE ACTIVE (Saat Diklik - Gradient Mewah) */
+
+/* Hijau Mewah */
+.category-btn.active[data-category="pure-veggie"] {
+    background: linear-gradient(to bottom right, #43a047, #1b5e20) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 5px 15px rgba(27, 94, 32, 0.4) !important;
+}
+.category-btn.active[data-category="pure-veggie"] .en-text { border-top-color: rgba(255,255,255,0.3); }
+
+/* Orange Mewah */
+.category-btn.active[data-category="coated"] {
+    background: linear-gradient(to bottom right, #fb8c00, #e65100) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 5px 15px rgba(230, 81, 0, 0.4) !important;
+}
+.category-btn.active[data-category="coated"] .en-text { border-top-color: rgba(255,255,255,0.3); }
+
+/* Merah Mewah */
+.category-btn.active[data-category="fruit"] {
+    background: linear-gradient(to bottom right, #e53935, #b71c1c) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 5px 15px rgba(183, 28, 28, 0.4) !important;
+}
+.category-btn.active[data-category="fruit"] .en-text { border-top-color: rgba(255,255,255,0.3); }
+
+
+/* --- 2. NAMA PRODUK DI TABEL (PEMISAH INDO - INGGRIS) --- */
+/* Nama Indonesia (Baris 1) */
+.catalog-table td:first-child {
+    font-weight: 700 !important;
+    color: #212121 !important;
+    text-align: left !important; /* Rata kiri biar rapi */
+}
+
+/* Nama Inggris (Baris 2) - Target class .en di dalam HTML */
+.catalog-table td .en {
+    display: block !important; /* Turun baris */
+    border-top: 1px dashed #bbb !important; /* Garis putus-putus */
+    margin-top: 4px !important;
+    padding-top: 2px !important;
+    font-size: 0.8em !important; /* Lebih kecil */
+    color: #666 !important;      /* Abu-abu (Beda warna) */
+    font-style: italic !important;
+    font-weight: 400 !important;
+}
+
+
+/* --- 3. FIX WARNA BACKGROUND TABEL HARGA (RESET KE BELANG) --- */
+/* Kita hapus background orange/krem di kolom ke-2, kembalikan ke transparan */
+/* Agar mengikuti warna belang-belang barisnya (Zebra) */
+.catalog-table td:nth-child(2) {
+    background-color: transparent !important; 
+    /* Teks tetap merah tebal */
+    color: #c62828 !important;
+    font-weight: 800 !important;
+}
+
+
+/* --- 4. FIX GAMBAR PROMO BORONG (PENUH/FULL) --- */
+.promo-left {
+    padding: 0 !important; /* Hilangkan padding container kiri */
+    overflow: hidden;      /* Agar radius gambar terjaga */
+    height: 100%;
+    display: flex;
+}
+
+.promo-left img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 250px;     /* Tinggi minimal agar terlihat gagah */
+    object-fit: cover !important; /* KUNCI: Memaksa gambar memenuhi kotak tanpa sisa */
+    border-radius: 10px !important;
+    margin: 0 !important;
+}
+
+/* Fix Mobile untuk Gambar Borong */
+@media (max-width: 768px) {
+    .promo-left img {
+        min-height: auto !important;
+        max-height: 200px !important; /* Jangan terlalu tinggi di HP */
+    }
+}
