@@ -843,3 +843,96 @@ section { padding: 80px 0; width: 100%; position: relative; }
     .prev-btn { left: 0; }
     .next-btn { right: 0; }
 }
+
+/* ========================================================= */
+/* ❓ FIX FINAL: FAQ MEWAH (ACCORDION STYLE)                 */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+.faq-section {
+    background-color: var(--bg-cream) !important; /* Krem Lembut */
+    padding: 80px 0 !important;
+}
+
+/* Container FAQ */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar pertanyaan */
+}
+
+/* Kartu FAQ */
+.faq-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Bayangan Halus */
+    border: 1px solid #e0e0e0; /* Garis tipis */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Efek Hover & Aktif */
+.faq-item:hover, 
+.faq-item.active {
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1); /* Bayangan Hijau Halus */
+    border-color: var(--col-pri); /* Border jadi Hijau saat aktif */
+}
+
+/* Header Pertanyaan (Bisa Diklik) */
+.faq-question {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #fff;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #4B3621; /* Coklat Tua (Mewah) */
+    line-height: 1.4;
+    text-align: left; /* Rata Kiri */
+    flex: 1; /* Isi ruang */
+    padding-right: 15px;
+}
+
+/* Tombol Plus (+) */
+.faq-toggle {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: var(--col-pri);
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+/* Rotasi Tombol Plus jadi X saat aktif */
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg); 
+    color: #c62828; /* Berubah Merah */
+}
+
+/* Isi Jawaban (Tersembunyi Awalnya) */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Animasi Slide */
+    background-color: #fbfbfb; /* Abu sangat muda */
+}
+
+.faq-answer p {
+    padding: 0 20px 20px 20px;
+    margin: 0;
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .faq-question { padding: 15px; }
+    .faq-question h3 { font-size: 0.95em; }
+}
