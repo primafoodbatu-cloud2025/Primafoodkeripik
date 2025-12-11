@@ -444,3 +444,85 @@ section { padding: 80px 0; width: 100%; position: relative; }
         gap: 10px !important;
     }
 }
+
+/* ========================================================= */
+/* 💎 FIX FINAL: TABEL MITRA (LUXURY & NO SCROLL)            */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. CONTAINER TABEL (Agar Mewah & Rata Tengah) */
+.tier-table-compact {
+    width: 100% !important;
+    max-width: 600px !important; /* Batasi lebar di Desktop biar elegan */
+    margin: 30px auto !important; /* Posisi Tengah */
+    
+    /* Matikan Scroll Samping (Override Global) */
+    min-width: 0 !important; 
+    display: table !important;
+    
+    /* Styling Frame Mewah */
+    border-collapse: separate !important; /* Agar radius sudut jalan */
+    border-spacing: 0 !important;
+    border: 2px solid #4B3621 !important; /* Bingkai Coklat Tua */
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important; /* Bayangan Timbul Besar */
+    background-color: #fff !important;
+}
+
+/* 2. HEADER TABEL (Emas & Coklat) */
+.tier-table-compact thead th {
+    background: linear-gradient(135deg, #4B3621 0%, #3E2723 100%) !important; /* Gradasi Coklat Mewah */
+    color: #FFD700 !important; /* TEKS WARNA EMAS */
+    padding: 15px !important;
+    font-size: 1.1em !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 4px solid #FFD700 !important; /* Garis Emas Tebal di bawah Header */
+    text-align: center !important;
+}
+
+/* 3. ISI TABEL (Rapi & Jelas) */
+.tier-table-compact td {
+    padding: 15px !important;
+    text-align: center !important;
+    border-bottom: 1px solid #eee !important;
+    font-size: 1em !important;
+    color: #333 !important;
+    background-color: #fff !important; /* Reset background inline html */
+}
+
+/* 4. VARIASI BARIS (Zebra Halus) */
+.tier-table-compact tbody tr:nth-child(even) td {
+    background-color: #fcfcfc !important; /* Abu sangat muda */
+}
+
+/* 5. HIGHLIGHT BARIS TERAKHIR (Diskon Terbesar) */
+.tier-table-compact tbody tr:last-child td {
+    background-color: #FFF8E1 !important; /* Kuning Emas Muda */
+    font-weight: bold !important;
+    color: #c62828 !important; /* Teks Merah */
+    border-bottom: none !important;
+}
+
+/* 6. KOLOM DISKON (Penebalan) */
+.tier-table-compact td:last-child {
+    font-weight: 800 !important;
+    font-size: 1.1em !important;
+}
+
+/* ========================================= */
+/* 📱 KHUSUS HP (TETAP RAPI TANPA GESER)     */
+/* ========================================= */
+@media (max-width: 768px) {
+    .tier-table-compact {
+        width: 100% !important;
+        font-size: 0.9em !important; /* Kecilkan dikit biar muat */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    }
+    
+    .tier-table-compact td, 
+    .tier-table-compact th {
+        padding: 10px 5px !important; /* Rapatkan padding */
+    }
+}
