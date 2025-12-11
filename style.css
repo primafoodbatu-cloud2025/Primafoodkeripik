@@ -1,937 +1,183 @@
 /* ========================================= */
-
-/* 1. SETUP DASAR & VARIABEL                 */
-
+/* 1. SETUP & UTILITIES                      */
 /* ========================================= */
-
 :root {
-
-    --color-primary: #2e7d32; 
-
-    --color-secondary: #e65100;
-
-    --color-cta: #c62828; 
-
-    --color-text: #212121;
-
-    --color-bg-light: #f7f7f7; 
-
+  --col-pri: #2e7d32;
+  --col-sec: #e65100;
+  --col-cta: #c62828;
+  --col-txt: #212121;
+  --bg-yell: #F4C430;
+  --bg-cream: #FFF8E1;
+  --bg-brown: #4B3621;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--color-text); background-color: #fff; width: 100%; overflow-x: hidden; }
-
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--col-txt); background: #fff; width: 100%; overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 80px 0; width: 100%; position: relative; }
 
-section { padding: 80px 0; width: 100%; position: relative; } /* Padding standar section */
-
-
-
-/* ========================================= */
-
-/* 2. TIPOGRAFI & TOMBOL                     */
-
-/* ========================================= */
-
+/* Tipografi */
 .section-title { 
-
-    text-align: center; margin-bottom: 20px; font-size: 2.2em; 
-
-    color: var(--color-primary); border-bottom: 3px solid var(--color-secondary); 
-
-    display: table !important; padding-bottom: 10px; margin: 0 auto 20px auto !important; 
-
-    max-width: 100%; line-height: 1.1 !important; 
-
+  text-align: center; margin: 0 auto 20px; font-size: 2.2em; 
+  color: var(--col-pri); border-bottom: 3px solid var(--col-sec); 
+  display: table !important; padding-bottom: 10px; line-height: 1.1; 
 }
+.section-subtitle { text-align: center; margin: 0 auto 40px; font-size: 1.1em; color: #444; max-width: 800px; }
 
-.section-subtitle { text-align: center; margin: 0 auto 40px auto; font-size: 1.1em; color: #444; max-width: 800px; }
-
-
-
-.cta-button { 
-
-    background-color: var(--color-cta); color: white !important; 
-
-    padding: 12px 25px; text-decoration: none; font-weight: 700; 
-
-    border-radius: 50px; display: inline-block; margin-top: auto; /* Push bottom */
-
-    transition: 0.3s; text-transform: uppercase; border: none; cursor: pointer;
-
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-
+/* Tombol (Global Style) */
+.cta-button, .bs-btn, .mix-order-btn, .wa-btn-catalog {
+  background: var(--col-cta); color: #fff !important; padding: 12px 25px;
+  text-decoration: none; font-weight: 700; border-radius: 50px;
+  display: inline-block; transition: 0.3s; text-transform: uppercase;
+  border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center; width: 100%; box-sizing: border-box;
 }
-
-.cta-button:hover { background-color: #b71c1c; transform: translateY(-2px); }
-
-
+.cta-button:hover, .bs-btn:hover, .mix-order-btn:hover { background: #b71c1c; transform: translateY(-2px); }
+.bs-btn { background: var(--col-sec); margin-top: auto; font-size: 0.9em; padding: 10px; border-radius: 6px; }
 
 /* ========================================= */
-
-/* 3. SETTINGAN SOBEKAN KERTAS (GLOBAL)      */
-
+/* 2. DEKORASI SOBEKAN KERTAS                */
 /* ========================================= */
-
-/* Kita buat class/selector khusus untuk efek sobekan agar rapi */
-
-.hero-section::after, 
-
+.hero-section::after, .faq-section::after,
 .research-proof::before, .research-proof::after,
-
 .single-product-catalog::before, .single-product-catalog::after,
-
-.package-mix::before, .package-mix::after, /* Jika diperlukan di Mix */
-
 .bulk-order::before, .bulk-order::after,
-
-.testimonial-section::before, .testimonial-section::after,
-
-.faq-section::after {
-
-    content: ""; position: absolute; left: 0; width: 100%; 
-
-    background-repeat: no-repeat; background-size: 100% 100%; 
-
-    pointer-events: none; z-index: 5;
-
-    height: 100px; /* Tinggi standar Desktop (tidak terlalu gondrong) */
-
+.testimonial-section::before, .testimonial-section::after {
+  content: ""; position: absolute; left: 0; width: 100%; height: 100px;
+  background-repeat: no-repeat; background-size: 100% 100%; pointer-events: none; z-index: 5;
 }
-
-
-
-/* Posisi Atas (Sobekan Terbalik) */
-
+/* Sobekan Terbalik (Top) */
 .research-proof::before, .single-product-catalog::before, .bulk-order::before, .testimonial-section::before {
-
-    top: -1px; background-image: url('images/sobekan-kertas-terbalik.webp');
-
+  top: -1px; background-image: url('images/sobekan-kertas-terbalik.webp');
+}
+/* Sobekan Normal (Bottom) */
+.hero-section::after, .research-proof::after, .single-product-catalog::after, 
+.bulk-order::after, .testimonial-section::after, .faq-section::after {
+  bottom: -1px; background-image: url('images/sobekan-kertas.webp');
 }
 
-/* Posisi Bawah (Sobekan Normal) */
-
-.hero-section::after, .research-proof::after, .single-product-catalog::after, .bulk-order::after, .testimonial-section::after, .faq-section::after {
-
-    bottom: -1px; background-image: url('images/sobekan-kertas.webp');
-
+/* ========================================= */
+/* 3. LAYOUT & SECTIONS                      */
+/* ========================================= */
+/* Group Background Colors */
+.hero-section, .research-proof, .single-product-catalog, .bulk-order, .testimonial-section {
+  background-color: var(--bg-yell); padding-top: 150px; padding-bottom: 150px; margin-top: -2px;
 }
+.hero-section { padding: 120px 0 180px; } /* Override khusus Hero */
+.problem-solution, .production-video, .package-mix, .faq-section {
+  background-color: var(--bg-cream); margin-top: -2px; padding-top: 60px; padding-bottom: 80px;
+}
+.problem-solution { padding-top: 40px; padding-bottom: 60px; }
 
-
-
-/* ========================================= */
-
-/* 4. LAYOUT SECTIONS                        */
-
-/* ========================================= */
-
-.hero-section { background-color: #F4C430; padding: 120px 0 180px 0; }
-
-.hero-section h1 { color: #4B3621 !important; text-shadow: 0px 1px 0px rgba(255,255,255,0.3); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-
-
-
-.problem-solution { background-color: #FFF8E1; padding-top: 40px; padding-bottom: 60px; margin-top: -2px; }
-
-.expert-quote-problem { background: #fff; border-left: 5px solid #c62828; padding: 20px; margin: 25px auto; border-radius: 8px; font-style: italic; max-width: 750px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-
-
-
-.research-proof { background-color: #F4C430; padding-top: 150px; padding-bottom: 150px; margin-top: -2px; }
-
-
-
-.production-video { background-color: #FFF8E1; margin-top: -2px; padding-top: 60px; padding-bottom: 80px; }
-
-.video-embed { background: #000; border: 5px solid #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; aspect-ratio: 16 / 9; }
-
+/* Konten Spesifik */
+.hero-section h1 { color: var(--bg-brown) !important; text-shadow: 0 1px 0 rgba(255,255,255,0.3); font-weight: 800; margin-bottom: 10px; }
+.expert-quote-problem { background: #fff; border-left: 5px solid var(--col-cta); padding: 20px; margin: 25px auto; border-radius: 8px; font-style: italic; max-width: 750px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.video-embed { background: #000; border: 5px solid #fff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; aspect-ratio: 16/9; }
 .video-embed iframe { width: 100%; height: 100%; }
+.white-paper-box { background: #fff; border-radius: 15px; box-shadow: 8px 8px 0 rgba(0,0,0,0.15); border: 3px solid var(--bg-brown); padding: 30px; max-width: 1000px; margin: 0 auto 50px; }
 
+/* Promo Horizontal (Desktop) */
+.promo-horizontal-card { display: flex; align-items: center; gap: 20px; background: #fff; border: 3px dashed var(--col-cta); padding: 20px; border-radius: 12px; margin-top: 40px; }
+.promo-left { flex: 1; } .promo-right { flex: 2; text-align: left; }
+.promo-left img { width: 100%; height: auto; object-fit: contain; border-radius: 10px; max-height: 300px; }
 
-
-.single-product-catalog { background-color: #F4C430; padding-top: 150px; padding-bottom: 150px; margin-top: -2px; }
-
-.white-paper-box { background-color: #fff; border-radius: 15px; box-shadow: 8px 8px 0px rgba(0,0,0,0.15); border: 3px solid #4B3621; padding: 30px; max-width: 1000px; margin: 0 auto 50px auto; }
-
-
-
-/* Grid Best Seller */
-
+/* ========================================= */
+/* 4. CARDS & GRIDS (Consolidated)           */
+/* ========================================= */
+/* Grid Containers */
 .best-seller-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.mix-grid-wrapper, #mix .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; width: 100%; }
 
-/* Penataan Isi Kartu Best Seller */
-
-.bs-card { 
-
-    background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; 
-
-    display: flex; flex-direction: column; /* Flexbox Vertical */
-
-    height: 100%; /* Tinggi Penuh */
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s;
-
-    padding-bottom: 15px;
-
+/* Base Card Style */
+.bs-card, .mix-card, .catalog-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column; height: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s;
+  padding: 15px; border: 1px solid #e0e0e0;
 }
+.mix-card, .catalog-card { padding: 20px !important; border-top: 4px solid var(--col-sec); border-left: none; border-right: none; border-bottom: none; }
+.bs-card:hover, .mix-card:hover, .catalog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); border-color: var(--col-pri); }
 
-.bs-card:hover { transform: translateY(-5px); border-color: #2e7d32; }
+/* Images inside Cards */
+.bs-img-wrapper, .catalog-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-bottom: 1px solid #eee; }
+.mix-card .product-img, #mix .catalog-img { width: 100%; aspect-ratio: 4/3 !important; object-fit: contain; background: #fff; border: 1px solid #eee; border-radius: 8px; margin-bottom: 15px; }
 
-.bs-img-wrapper { width: 100%; aspect-ratio: 1/1; position: relative; border-bottom: 1px solid #eee; }
-
-.bs-img { width: 100%; height: 100%; object-fit: cover; }
-
-.bs-info { 
-
-    padding: 15px; 
-
-    flex-grow: 1; /* Mengisi ruang kosong */
-
-    display: flex; flex-direction: column; justify-content: space-between; /* Konten rata atas-bawah */
-
-}
-
-.bs-name { 
-
-    font-weight: 700; margin-bottom: 5px; line-height: 1.2; font-size: 1.1em; color: #333; 
-
-    min-height: 45px; /* Standarisasi tinggi judul (2 baris) */
-
-}
-
-.bs-price { color: #c62828; font-weight: 800; font-size: 1.3em; margin-bottom: 5px; }
-
-.bs-desc { font-size: 0.85em; color: #666; margin-bottom: 10px; line-height: 1.3; min-height: 36px; }
-
+/* Card Info & Text */
+.bs-info, .catalog-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px; }
+.bs-name, .mix-card h3, .catalog-name { font-weight: 700; margin-bottom: 5px; line-height: 1.2; font-size: 1.1em; color: #333; min-height: 45px; }
+.mix-card h3 { font-size: 1.25em !important; display: flex; align-items: flex-start; justify-content: center; min-height: 40px; }
+.bs-price, .catalog-price-ecer { color: var(--col-cta); font-weight: 800; font-size: 1.3em; margin-bottom: 5px; }
+.bs-desc, .product-short-desc { font-size: 0.85em; color: #666; margin-bottom: 10px; line-height: 1.3; min-height: 36px; }
 .bs-wholesale-box { background: #f1f8e9; padding: 10px; border-radius: 6px; margin-top: auto; border: 1px solid #c8e6c9; margin-bottom: 15px; }
-
 .bs-wholesale-row { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px; color: #444; }
 
-.bs-btn { width: 100%; text-align: center; background: #e65100; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.9em; display: block; margin-top: auto; }
-
-
-
-
-
 /* ========================================= */
-
-/* 5. SECTION PAKET MIX (LAYOUT GRID FIX)    */
-
+/* 5. TABLES                                 */
 /* ========================================= */
-
-.package-mix { background-color: #FFF8E1 !important; margin-top: -2px; padding-top: 80px; padding-bottom: 80px; }
-
-
-
-/* Wrapper untuk Index.html (3 Kolom di Desktop) */
-
-.mix-grid-wrapper { 
-
-    display: grid !important; 
-
-    grid-template-columns: repeat(3, 1fr) !important; 
-
-    gap: 30px; 
-
-}
-
-
-
-/* Wrapper untuk Katalog.html (ID #mix) (3 Kolom di Desktop) */
-
-#mix .catalog-grid {
-
-    display: grid !important;
-
-    grid-template-columns: repeat(3, 1fr) !important;
-
-    gap: 25px;
-
-}
-
-
-
-/* Kartu Paket Mix (Agar Rapi) */
-
-.mix-card, .catalog-card {
-
-    background: #fff; border-radius: 12px; 
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
-
-    padding: 20px !important; 
-
-    display: flex; flex-direction: column; /* Flexbox Vertical */
-
-    height: 100%; /* Tinggi sama rata */
-
-    border-top: 4px solid var(--color-secondary); 
-
-    transition: transform 0.3s;
-
-}
-
-.mix-card:hover, .catalog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-
-
-
-/* GAMBAR (Landscape 4:3) */
-
-.mix-card .product-img, 
-
-#mix .catalog-img { 
-
-    width: 100%; 
-
-    aspect-ratio: 4/3 !important; 
-
-    object-fit: contain !important; /* Gambar utuh */
-
-    background-color: #fff; border: 1px solid #eee; border-radius: 8px; margin-bottom: 15px; 
-
-}
-
-
-
-/* Tulisan di dalam Kartu Mix (Alignment) */
-
-.mix-card h3, .catalog-name { 
-
-    font-size: 1.25em !important; 
-
-    font-weight: 800; color: #333; margin-bottom: 5px; 
-
-    line-height: 1.2; 
-
-    min-height: 40px; /* Tinggi judul standar */
-
-    display: flex; align-items: flex-start; justify-content: center;
-
-}
-
-.product-short-desc {
-
-    font-size: 0.9em; color: #666; margin-bottom: 15px;
-
-    flex-grow: 1; /* Isi ruang agar tombol terdorong ke bawah */
-
-}
-
-.mix-order-btn, .wa-btn-catalog { margin-top: auto !important; width: 100%; }
-
-
-
-/* ========================================= */
-
-/* 6. GRID KATALOG SAYUR/BUAH (DEFAULT)      */
-
-/* ========================================= */
-
-.catalog-grid {
-
-    display: grid;
-
-    /* Desktop: Isi otomatis sesuai lebar layar */
-
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-
-    gap: 20px; width: 100%;
-
-}
-
-.catalog-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #f9f9f9; border-bottom: 1px solid #eee; }
-
-.catalog-info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; text-align: left; }
-
-.catalog-price-ecer { font-size: 1.2em; font-weight: 800; color: #c62828; margin: 5px 0; }
-
-
-
-/* ========================================= */
-
-/* 7. SECTIONS LAINNYA                       */
-
-/* ========================================= */
-
-.bulk-order { background-color: #F4C430; padding-top: 150px; padding-bottom: 150px; margin-top: -2px; }
-
-.tier-table-compact { width: 100%; max-width: 900px; margin: 20px auto; background: #fff; border-radius: 12px; overflow: hidden; border: 3px solid #4B3621; box-shadow: 0 8px 15px rgba(0,0,0,0.15); border-collapse: collapse; }
-
-.tier-table-compact th { background: #4B3621; color: #fff; padding: 15px; border: 1px solid #6d4c41; }
-
-.tier-table-compact td { border: 1px solid #ddd; padding: 15px; text-align: center; }
-
-
-
-.faq-section { background-color: #FFF8E1; padding-top: 60px; padding-bottom: 120px; margin-top: -2px; }
-
-.faq-item { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 5px solid #2e7d32; text-align: left; }
-
-
-
-.testimonial-section { background-color: #F4C430; padding-top: 150px; padding-bottom: 150px; margin-top: -2px; overflow: hidden; }
-
-.testimonial-card { background: #fff; border-radius: 15px; padding: 40px; text-align: center; border: 3px solid #4B3621; }
-
-
-
-.site-footer { background-color: #2b1d0e; color: #ecf0f1; padding: 60px 0 20px; margin-top: -2px; }
-
+.catalog-table, .tier-table-compact { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.9em; margin-bottom: 20px; }
+.catalog-table th, .tier-table-compact th { background: var(--bg-brown); color: #fff; padding: 10px; border: 1px solid #6d4c41; text-align: center; }
+.catalog-table td, .tier-table-compact td { border: 1px solid #ccc; padding: 10px; text-align: center; color: #333; }
+
+/* Mini Tier Table (Inside Cards) */
+.mini-tier-table { width: 100% !important; display: table !important; margin-bottom: 10px; }
+.mini-tier-table td { font-size: 0.8em; padding: 3px 0; border: none; border-bottom: 1px solid #eee; }
+.mini-tier-table tr:last-child td { border-bottom: none; font-weight: bold; color: var(--col-cta); }
+
+/* FAQ, Testimonial, Footer */
+.faq-item { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 5px solid var(--col-pri); }
+.testimonial-card { background: #fff; border-radius: 15px; padding: 40px; text-align: center; border: 3px solid var(--bg-brown); }
+.site-footer { background: #2b1d0e; color: #ecf0f1; padding: 60px 0 20px; margin-top: -2px; }
 .footer-row { display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
-
-.footer-col { flex: 1; min-width: 250px; }
-
 .float-wa { position: fixed; bottom: 25px; right: 25px; z-index: 9999; background: #25d366; color: #fff; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-
-
-/* ============================================================ */
-
-/* 8. RESPONSIVE MOBILE FIXES (HP) - WAJIB PALING BAWAH         */
-
-/* ============================================================ */
-
+/* ========================================= */
+/* 6. MOBILE RESPONSIVE (Unified Block)      */
+/* ========================================= */
 @media (max-width: 768px) {
-
-    /* RESET SOBEKAN KERTAS DI HP (BIAR GAK KEGEDEAN) */
-
-    .hero-section::after, 
-
-    .research-proof::before, .research-proof::after,
-
-    .single-product-catalog::before, .single-product-catalog::after,
-
-    .bulk-order::before, .bulk-order::after,
-
-    .testimonial-section::before, .testimonial-section::after,
-
-    .faq-section::after {
-
-        height: 40px !important; /* Ukuran sobekan kecil di HP */
-
-    }
-
-
-
-    /* PADDING SECTION DI HP (BIAR GAK KOSONG MELOMPONG) */
-
-    .hero-section { padding-top: 80px; padding-bottom: 80px; }
-
-    .research-proof, .single-product-catalog, .bulk-order, .testimonial-section { padding-top: 60px; padding-bottom: 60px; }
-
-    .faq-section { padding-top: 40px; padding-bottom: 60px; }
-
-
-
-    /* --- FIX GRID 2 KOLOM (WAJIB) --- */
-
-    .mix-grid-wrapper, 
-
-    .best-seller-grid,
-
-    .catalog-grid,
-
-    #mix .catalog-grid,
-
-    #sayur .catalog-grid,
-
-    #coated .catalog-grid,
-
-    #buah .catalog-grid {
-
-        grid-template-columns: repeat(2, 1fr) !important; /* Paksa 2 Kolom */
-
-        gap: 10px !important;
-
-        padding: 0 5px !important;
-
-    }
-
-
-
-    /* Reset Kartu di HP agar muat 2 kolom */
-
-    .mix-card, .catalog-card, .bs-card {
-
-        width: 100% !important; margin: 0 !important; min-width: 0 !important;
-
-        padding: 10px !important;
-
-    }
-
-
-
-    /* Gambar Mix di HP (Landscape Kecil) */
-
-    .mix-card .product-img, #mix .catalog-img {
-
-        aspect-ratio: 4 / 3 !important;
-
-        object-fit: contain !important;
-
-        height: auto !important;
-
-    }
-
-
-
-    /* TULISAN DI HP (DIRAPIKAN) */
-
-    .section-title { font-size: 1.6em !important; line-height: 1.1; }
-
-    
-
-    .mix-card h3, .catalog-name, .bs-name {
-
-        font-size: 0.85em !important;
-
-        min-height: 36px !important; /* Tinggi judul minimal 2 baris */
-
-        margin-bottom: 5px !important;
-
-        line-height: 1.2 !important;
-
-    }
-
-
-
-    .product-short-desc, .bs-desc { 
-
-        display: none !important; /* Sembunyikan deskripsi panjang di HP biar rapi */ 
-
-    }
-
-
-
-    .catalog-price-ecer, .bs-price { 
-
-        font-size: 1em !important; 
-
-        margin-bottom: 5px !important; 
-
-    }
-
-
-
-    /* Tombol di HP */
-
-    .cta-button, .bs-btn, .wa-btn-catalog {
-
-        padding: 8px 10px !important;
-
-        font-size: 0.8em !important;
-
-        width: 100% !important;
-
-    }
-
-
-
-    /* Footer di HP */
-
-    .site-footer { padding-bottom: 80px; text-align: center; }
-
-    .footer-row { flex-direction: column; gap: 30px; }
-
-    .social-grid { grid-template-columns: repeat(4, 1fr); }
-
-    .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
-
-}
-
-
-
-/* ================================================================= */
-
-/* PERBAIKAN SPESIFIK (TABLE, PROMO IMAGE, BUTTON, & MOBILE GRID)    */
-
-/* Copy & Paste kode ini di bagian PALING BAWAH file CSS Anda.       */
-
-/* ================================================================= */
-
-
-
-/* 1. FIX TABEL HARGA (Desktop & Mobile) */
-
-.catalog-table, .tier-table-compact {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    background: #fff;
-
-    font-size: 0.9em;
-
-    margin-bottom: 20px;
-
-}
-
-
-
-.catalog-table th, .tier-table-compact th {
-
-    background-color: #4B3621 !important;
-
-    color: #fff;
-
-    padding: 10px;
-
-    border: 1px solid #6d4c41;
-
-    text-align: center;
-
-}
-
-
-
-.catalog-table td, .tier-table-compact td {
-
-    border: 1px solid #ccc;
-
-    padding: 10px;
-
-    text-align: center;
-
-    color: #333;
-
-}
-
-
-
-/* 2. FIX PROMO BORONG (Agar Gambar Tidak Gepeng & Tidak Melebar Aneh) */
-
-.promo-horizontal-card {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
-    background: #fff;
-
-    border: 3px dashed #c62828;
-
-    padding: 20px;
-
-    border-radius: 12px;
-
-    margin-top: 40px;
-
-}
-
-.promo-left { flex: 1; }
-
-.promo-right { flex: 2; text-align: left; }
-
-.promo-left img {
-
-    width: 100%;
-
-    height: auto !important; /* KUNCI AGAR TIDAK GEPENG */
-
-    object-fit: contain;
-
-    border-radius: 10px;
-
-    max-height: 300px; /* Batasi tinggi agar tidak raksasa */
-
-}
-
-
-
-/* 3. FIX TOMBOL GEMUK (Reset Padding) */
-
-.mix-order-btn, .wa-btn-catalog, .bs-btn, .cta-button {
-
-    padding: 10px 15px !important; /* Padding standar, tidak kegedean */
-
-    line-height: 1.2 !important;   /* Jarak baris rapat */
-
-    height: auto !important;       /* Tinggi mengikuti konten */
-
-    min-height: 0 !important;      /* Hilangkan min-height aneh */
-
-    display: inline-block;
-
-    width: 100%;
-
-    box-sizing: border-box;
-
-}
-
-
-
-/* ============================================================ */
-
-/* MEDIA QUERY KHUSUS HP (MAX-WIDTH 768PX)                      */
-
-/* Pastikan ini ada di PALING BAWAH file CSS                    */
-
-/* ============================================================ */
-
-@media (max-width: 768px) {
-
-    
-
-    /* A. FIX TABEL RUSAK DI HP (JADI SCROLL SAMPING) */
-
-    .product-list {
-
-        width: 100%;
-
-        overflow-x: auto; /* Aktifkan scroll horizontal */
-
-        -webkit-overflow-scrolling: touch;
-
-        display: block;
-
-    }
-
-    .catalog-table, .tier-table-compact {
-
-        width: 100%; 
-
-        min-width: 500px; /* Paksa tabel lebar agar trigger scroll */
-
-        display: table;   /* Kembalikan sifat tabel */
-
-    }
-
-    .catalog-table th, .catalog-table td {
-
-        white-space: normal; /* Teks boleh turun baris */
-
-        font-size: 0.85em;
-
-        padding: 8px 4px;
-
-    }
-
-
-
-    /* B. FIX PROMO BORONG DI HP (GAMBAR RAPI, TIDAK GEPENG) */
-
-    .promo-horizontal-card {
-
-        flex-direction: column; /* Susun ke bawah */
-
-        text-align: center;
-
-        padding: 15px;
-
-    }
-
-    .promo-left img {
-
-        max-width: 200px !important; /* Batasi lebar gambar di HP */
-
-        margin: 0 auto;              /* Tengah */
-
-        height: auto !important;     /* Jaga rasio */
-
-    }
-
-    .promo-right { text-align: center; width: 100%; }
-
-    
-
-    /* C. FIX GRID 2 KOLOM (INDEX & KATALOG) */
-
-    .catalog-grid, .best-seller-grid, .mix-grid-wrapper, #mix .catalog-grid {
-
-        display: grid !important;
-
-        grid-template-columns: repeat(2, 1fr) !important; /* Paksa 2 Kolom */
-
-        gap: 10px !important;
-
-    }
-
-
-
-    /* D. FIX KARTU DI HP */
-
-    .catalog-card, .mix-card, .bs-card {
-
-        width: 100% !important;
-
-        margin: 0 !important;
-
-    }
-
-    
-
-    /* Gambar Produk Biasa (Kotak) */
-
-    .catalog-img, .bs-img { aspect-ratio: 1/1 !important; object-fit: cover; }
-
-    
-
-    /* Gambar Mix (Landscape) */
-
-    #mix .catalog-img, .mix-card .product-img { aspect-ratio: 4/3 !important; object-fit: contain; background: #fff; }
-
-}
-
-/* ============================================================ */
-
-/* 🚑 FIX FINAL: TABEL TIER KECIL (AGAR PAS DI KARTU HP)        */
-
-/* Tempel di baris PALING BAWAH file CSS                        */
-
-/* ============================================================ */
-
-
-
-/* 1. Aturan Khusus Tabel Tier Kecil (Di dalam kartu produk) */
-
-.mini-tier-table {
-
-    width: 100% !important;
-
-    min-width: 0 !important; /* HAPUS paksaan lebar 500px */
-
-    display: table !important;
-
-    table-layout: auto !important; /* Lebar kolom menyesuaikan isi */
-
-    margin-bottom: 10px !important;
-
-    background-color: transparent !important;
-
-    box-shadow: none !important;
-
-}
-
-
-
-/* 2. Ukuran Font & Padding Tabel Kecil di HP */
-
-.mini-tier-table td {
-
-    font-size: 0.75em !important; /* Font kecil agar muat */
-
-    padding: 2px 0 !important;    /* Jarak rapat */
-
-    white-space: normal !important; /* Teks boleh turun baris jika sempit */
-
-    border: none !important;
-
-    border-bottom: 1px solid #eee !important;
-
-}
-
-
-
-.mini-tier-table tr:last-child td {
-
-    border-bottom: none !important;
-
-    font-weight: bold;
-
-    color: #c62828;
-
-}
-
-
-
-/* 3. Pastikan Container Tabel Besar Tetap Scroll (JANGAN DIUBAH) */
-
-/* Ini menjaga agar Tabel Harga Lengkap tetap aman */
-
-.product-list {
-
-    width: 100%;
-
-    overflow-x: auto;
-
-}
-
-
-
-/* 4. Khusus Tabel Besar (Catalog Table) Tetap Lebar */
-
-.catalog-table {
-
-    min-width: 500px !important; /* Hanya tabel besar yang dipaksa lebar */
-
-}
-
-
-
-/* ================================================================= */
-
-/* 🚑 FIX DARURAT FINAL: TABEL TIER (KECIL) DI HP AGAR TIDAK MELEBAR */
-
-/* (Pastikan kode ini berada di BARIS PALING BAWAH file CSS)         */
-
-/* ================================================================= */
-
-
-
-@media (max-width: 768px) {
-
-    
-
-    /* 1. KITA PAKSA TABEL KECIL MENGIKUTI LEBAR KARTU */
-
-    /* Menggunakan selector spesifik agar lebih kuat dari aturan lain */
-
-    .catalog-card table.mini-tier-table,
-
-    .bs-card table.mini-tier-table,
-
-    .mix-card table.mini-tier-table {
-
-        min-width: 0 !important;       /* HAPUS paksaan lebar 500px */
-
-        width: 100% !important;        /* Wajib 100% dari lebar kartu */
-
-        max-width: 100% !important;    /* Jangan pernah melebihi kartu */
-
-        display: table !important;     /* Pastikan bentuknya tabel */
-
-        table-layout: fixed !important; /* Bagi kolom secara rata & paksa teks turun */
-
-        box-shadow: none !important;   /* Hilangkan bayangan jika ada */
-
-        margin: 5px 0 !important;
-
-    }
-
-
-
-    /* 2. KITA KECILKAN HURUF & SPASI DI DALAMNYA */
-
-    .catalog-card table.mini-tier-table td,
-
-    .bs-card table.mini-tier-table td,
-
-    .mix-card table.mini-tier-table td {
-
-        font-size: 0.75em !important;   /* Font kecil agar muat */
-
-        padding: 2px 0 !important;      /* Jarak antar teks rapat */
-
-        white-space: normal !important; /* Teks WAJIB turun ke bawah jika kepanjangan */
-
-        word-wrap: break-word !important; /* Paksa potong kata jika terlalu panjang */
-
-        height: auto !important;
-
-    }
-
-    
-
-    /* 3. Pastikan Container Kartu tidak menahan overflow */
-
-    .catalog-info, .bs-info {
-
-        overflow: hidden !important; /* Potong apapun yang memaksa keluar */
-
-    }
-
+  /* Layout & Spacing */
+  .hero-section { padding: 80px 0; }
+  .research-proof, .single-product-catalog, .bulk-order, .testimonial-section { padding: 60px 0; }
+  .faq-section { padding: 40px 0 60px; }
+  .section-title { font-size: 1.6em !important; }
+  
+  /* Sobekan Kertas Kecil */
+  .hero-section::after, .research-proof::before, .research-proof::after, 
+  .single-product-catalog::before, .single-product-catalog::after, 
+  .bulk-order::before, .bulk-order::after, 
+  .testimonial-section::before, .testimonial-section::after, .faq-section::after { height: 40px !important; }
+
+  /* Force 2 Columns Grid */
+  .mix-grid-wrapper, .best-seller-grid, .catalog-grid, #mix .catalog-grid {
+    grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 5px;
+  }
+
+  /* Card Adjustments */
+  .mix-card, .catalog-card, .bs-card { width: 100% !important; margin: 0 !important; padding: 10px !important; }
+  .bs-name, .catalog-name, .mix-card h3 { font-size: 0.85em !important; min-height: 36px !important; margin-bottom: 5px; line-height: 1.2; }
+  .product-short-desc, .bs-desc { display: none !important; } /* Sembunyikan deskripsi */
+  .catalog-price-ecer, .bs-price { font-size: 1em !important; margin-bottom: 5px; }
+  .bs-img, .catalog-img { aspect-ratio: 1/1 !important; object-fit: cover; }
+  .mix-card .product-img, #mix .catalog-img { aspect-ratio: 4/3 !important; object-fit: contain; height: auto !important; }
+  .cta-button, .bs-btn, .wa-btn-catalog { padding: 8px 10px !important; font-size: 0.8em !important; width: 100%; }
+
+  /* Table Fixes */
+  .product-list { width: 100%; overflow-x: auto; display: block; -webkit-overflow-scrolling: touch; }
+  .catalog-table, .tier-table-compact { min-width: 500px; } /* Tabel besar wajib scroll */
+  
+  /* Mini Table (Fix agar tidak melebar di kartu) */
+  .catalog-card table.mini-tier-table, .bs-card table.mini-tier-table, .mix-card table.mini-tier-table {
+    min-width: 0 !important; width: 100% !important; table-layout: fixed !important; margin: 5px 0 !important;
+  }
+  .mini-tier-table td { font-size: 0.75em !important; padding: 2px 0 !important; white-space: normal !important; word-wrap: break-word !important; }
+  .catalog-info, .bs-info { overflow: hidden !important; }
+
+  /* Promo Horizontal Fix */
+  .promo-horizontal-card { flex-direction: column; text-align: center; padding: 15px; }
+  .promo-left img { max-width: 200px !important; margin: 0 auto; }
+  
+  /* Footer */
+  .site-footer { padding-bottom: 80px; text-align: center; }
+  .footer-row { flex-direction: column; gap: 30px; }
+  .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
 }
