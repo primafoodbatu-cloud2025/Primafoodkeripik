@@ -936,3 +936,162 @@ section { padding: 80px 0; width: 100%; position: relative; }
     .faq-question { padding: 15px; }
     .faq-question h3 { font-size: 0.95em; }
 }
+
+/* ========================================================= */
+/* 🦶 FIX FINAL: FOOTER MEWAH (COKLAT KOPI & EMAS)           */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. LAYOUT & WARNA DASAR FOOTER */
+.site-footer {
+    background-color: #2E1A11 !important; /* Coklat Kopi Sangat Gelap */
+    color: #F5F5F5 !important;            /* Putih Gading (Nyaman di mata) */
+    padding: 70px 0 30px !important;      /* Padding Lega */
+    position: relative;
+    z-index: 5;
+    border-top: 5px solid #FFD700;        /* Garis Emas Pemanis di atas */
+    font-size: 0.95em;
+}
+
+/* 2. GRID FOOTER (3 KOLOM) */
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 280px; /* Agar tidak gepeng di layar kecil */
+}
+
+/* 3. TYPOGRAPHY FOOTER */
+.footer-heading {
+    color: #FFD700 !important; /* Judul Warna Emas */
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3); /* Garis bawah transparan */
+    padding-bottom: 10px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.footer-address strong {
+    color: #fff !important; /* Nama PT Putih Terang */
+    font-size: 1.1em;
+}
+
+/* Override warna abu-abu bawaan inline html agar kontras */
+.footer-address span[style*="color: #aaa"] {
+    color: #FFECB3 !important; /* Kuning Pucat */
+    font-weight: 500 !important;
+}
+
+/* 4. MAP & LINK */
+.map-container-small {
+    width: 100%;
+    height: 180px; /* Tinggi Map */
+    border: 2px solid #5D4037; /* Bingkai Coklat Muda */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.map-link-text {
+    color: #4FC3F7 !important; /* Biru Langit Terang (Kontras di Gelap) */
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.map-link-text:hover { text-decoration: underline; color: #fff !important; }
+
+/* 5. TOMBOL KONEKSI (WA & TOKPED) */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-flat {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9em;
+    transition: 0.3s;
+}
+
+.wa-btn {
+    background-color: #25D366; color: #fff !important;
+    border: 1px solid #25D366;
+}
+.tokped-btn {
+    background-color: #42b549; color: #fff !important; /* Hijau Tokped */
+    border: 1px solid #42b549;
+}
+.btn-flat:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+/* 6. SOCIAL MEDIA GRID (Kotak-kotak) */
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Kolom */
+    gap: 10px;
+}
+
+.social-box {
+    background: rgba(255,255,255,0.1); /* Transparan Putih */
+    color: #ccc !important;
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.social-box:hover {
+    background: #fff;
+    color: #2E1A11 !important; /* Teks jadi coklat saat hover */
+    font-weight: bold;
+}
+
+/* 7. COPYRIGHT */
+.footer-copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.85em;
+    color: #8D6E63; /* Coklat Pudar */
+}
+
+/* ========================================= */
+/* 📱 KHUSUS HP (Footer Stack)               */
+/* ========================================= */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 50px 0 80px !important; /* Bawah dilebihkan utk tombol melayang */
+        text-align: center;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-heading {
+        border-bottom: none; /* Hilangkan garis di HP biar bersih */
+        text-decoration: underline; 
+        text-underline-offset: 5px;
+        text-decoration-color: #FFD700;
+    }
+
+    /* Reset Social Grid di HP jadi 4 kolom icon kecil (opsional) atau tetap 2 */
+    .social-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
