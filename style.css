@@ -526,3 +526,156 @@ section { padding: 80px 0; width: 100%; position: relative; }
         padding: 10px 5px !important; /* Rapatkan padding */
     }
 }
+
+/* ========================================================= */
+/* 📝 FIX FORM PEMESANAN (COMPACT & LUXURY)                  */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. CONTAINER FORM (MEWAH) */
+.form-section-cream {
+    background-color: #FFF8E1; /* Krem lembut */
+    padding: 60px 0;
+}
+
+.contact-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    /* Efek Timbul & Mewah */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    border: 1px solid #e0e0e0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 2. INPUT & LABEL (RAPI & JELAS) */
+.form-group {
+    margin-bottom: 15px; /* Jarak antar input diperpendek (Compact) */
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+    background-color: #fcfcfc;
+}
+
+/* Efek Fokus (Saat diklik) */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: var(--col-pri); /* Hijau */
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+/* 3. ITEM PRODUK (KERANJANG MINI) */
+.product-item {
+    background: #f1f8e9; /* Hijau sangat muda */
+    border: 1px dashed #a5d6a7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* 4. TOMBOL TAMBAH & HAPUS */
+.remove-product-btn {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* 5. STRUK BELANJA (RINGKASAN HARGA) - PENTING! */
+.summary-struk {
+    background: #fff;
+    border: 2px dashed #bbb; /* Garis putus-putus ala struk */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.struk-line {
+    display: flex;
+    justify-content: space-between; /* Kiri Kanan Rata */
+    align-items: center;
+    margin-bottom: 8px; /* Rapat */
+    font-size: 0.95em;
+    color: #444;
+}
+
+/* Label Kiri */
+.struk-label {
+    font-weight: 500;
+}
+
+/* Nominal Kanan */
+.struk-nominal {
+    font-weight: 700;
+    color: #212121;
+}
+
+/* Diskon (Warna Merah) */
+.discount-amount .struk-nominal {
+    color: #c62828;
+}
+
+/* Total Bayar (Besar & Hijau) */
+.struk-grand-total {
+    background-color: #E8F5E9; /* Hijau latar */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #C8E6C9;
+    margin-bottom: 20px;
+}
+
+.grand-total-line .struk-nominal {
+    font-size: 1.4em;
+    color: #2e7d32;
+    font-weight: 800;
+}
+
+/* 6. KOTAK FLASH SALE */
+#flash-sale-banner {
+    animation: pulse 2s infinite; /* Efek berdenyut */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* 7. RESPONSIVE HP (Form) */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 20px;
+    }
+    .struk-line {
+        font-size: 0.9em;
+    }
+    .grand-total-line .struk-nominal {
+        font-size: 1.2em;
+    }
+}
