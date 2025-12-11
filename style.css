@@ -873,3 +873,89 @@ section { padding: 80px 0; width: 100%; position: relative; }
     
     .promo-title { font-size: 1.5em; }
 }
+
+/* ========================================================= */
+/* 🔧 FIX KHUSUS HALAMAN KATALOG & PROMO IMAGE CENTER        */
+/* (Tempel di paling bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. FIX GAMBAR PROMO BORONG (RATA TENGAH VERTIKAL SEMPURNA) */
+.promo-left {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* Rata Tengah Horizontal */
+    align-items: center !important;     /* Rata Tengah Vertikal (Atas-Bawah) */
+    padding: 0 !important;
+    background-color: #fff !important;  /* Background Putih bersih */
+    height: 100% !important;
+    min-height: 250px !important;       /* Tinggi minimum agar senter terasa */
+}
+
+.promo-left img {
+    max-height: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;     /* Gambar utuh tidak terpotong */
+    margin: auto !important;            /* Paksa margin auto untuk centering tambahan */
+    display: block !important;
+}
+
+/* 2. FIX GRID PAKET MIX DI KATALOG.HTML (ID #mix) */
+/* Desktop: Paksa 6 Kolom */
+#mix .catalog-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important; /* 6 Kolom Sejajar */
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+/* Penyesuaian Kartu di dalam Grid Mix Katalog */
+#mix .catalog-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* Gambar di Mix Katalog (4:3) */
+#mix .catalog-img {
+    aspect-ratio: 4/3 !important;
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #fff;
+    border-radius: 8px;
+}
+
+/* Tombol WA di Mix Katalog (Biar Rata Bawah) */
+#mix .wa-btn-catalog {
+    margin-top: auto !important;
+}
+
+/* ========================================= */
+/* 📱 KHUSUS HP (KATALOG MIX 2 KOLOM)        */
+/* ========================================= */
+@media (max-width: 768px) {
+    /* Paksa 2 Kolom di HP untuk Mix */
+    #mix .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+    
+    /* Font size penyesuaian di HP */
+    #mix .catalog-name { font-size: 0.8em !important; min-height: 35px; }
+    #mix .catalog-price-ecer { font-size: 1.1em !important; font-weight: 800; }
+    
+    /* Tombol lebih kecil di HP */
+    #mix .wa-btn-catalog, 
+    #mix a[target="_blank"] {
+        font-size: 0.75em !important;
+        padding: 6px 0 !important;
+    }
+    
+    /* Fix Promo Image di HP */
+    .promo-left {
+        min-height: auto !important; /* Reset tinggi di HP */
+        padding: 0 !important;
+    }
+}
