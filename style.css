@@ -700,23 +700,24 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     .testi-text { font-size: 1em !important; }
 
 /* ========================================= */
-/* SECTION 10: FAQ (CREAM)                   */
-/* (Tempel di paling bawah CSS)              */
+/* SECTION 10: FAQ (CREAM / KUNING MUDA)     */
+/* (Pastikan kode ini TIDAK di dalam @media) */
 /* ========================================= */
 
+/* 1. Settingan Global (Berlaku untuk Desktop & HP) */
 .faq-section {
-    background-color: #FFF8E1 !important; /* Warna Cream/Kuning Muda */
+    background-color: #FFF8E1 !important; /* Warna Cream */
     position: relative;
-    z-index: 1; /* Layer Bawah (Tertimpa sobekan section atas) */
+    z-index: 1; /* Layer bawah */
     
-    /* Jahit Rapat ke Section Atas */
+    /* Jahit ke section testimoni di atasnya */
     margin-top: -2px !important; 
     
     padding-top: 60px !important;
     padding-bottom: 120px !important; /* Ruang untuk sobekan bawah */
 }
 
-/* SOBEKAN BAWAH (Normal - Transisi ke Footer) */
+/* 2. Sobekan Kertas Bawah (Transisi ke Footer) */
 .faq-section::after {
     content: "";
     position: absolute;
@@ -736,26 +737,26 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     z-index: 2;
 }
 
-/* JUDUL FAQ */
+/* 3. Judul Section */
 .faq-section .section-title {
     color: #4B3621 !important; /* Cokelat */
-    border-bottom-color: #e65100 !important;
+    border-bottom-color: #e65100 !important; /* Garis Oranye */
     margin-bottom: 40px !important;
 }
 
-/* STYLE ITEM FAQ (Kotak Putih) */
+/* 4. Style Kotak Pertanyaan (Putih Bersih) */
 .faq-item {
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border-left: 5px solid #2e7d32; /* Aksen Hijau */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Bayangan halus */
+    border-left: 5px solid #2e7d32; /* Aksen Hijau di kiri */
     text-align: left;
 }
 
 .faq-item h3 {
-    color: #2e7d32;
+    color: #2e7d32; /* Hijau Brand */
     font-size: 1.1em;
     font-weight: 700;
     margin-bottom: 10px;
@@ -769,7 +770,10 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     margin-bottom: 0;
 }
 
-/* --- RESPONSIVE HP (FAQ) --- */
+/* ========================================= */
+/* KHUSUS PENYESUAIAN HP (MOBILE ONLY)       */
+/* (Kode di bawah ini HANYA untuk HP)        */
+/* ========================================= */
 @media (max-width: 768px) {
     .faq-section {
         padding-top: 40px !important;
@@ -781,6 +785,11 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
         bottom: -1px !important;
     }
     
-    .faq-item { padding: 15px; }
-    .faq-item h3 { font-size: 1em; }
+    .faq-item {
+        padding: 15px;
+    }
+    
+    .faq-item h3 {
+        font-size: 1em;
+    }
 }
