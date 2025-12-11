@@ -547,3 +547,155 @@ button[type="submit"].cta-button:hover { background-color: #b71c1c !important; }
     padding-top: 5px;
     margin-top: 5px !important;
 }
+/* ========================================= */
+/* SECTION 9: TESTIMONI (SLIDESHOW)          */
+/* ========================================= */
+
+.testimonial-section {
+    background-color: #F4C430 !important; /* Kuning Mustard */
+    position: relative;
+    z-index: 5;
+    margin-top: 0 !important;
+    padding-top: 180px !important;
+    padding-bottom: 150px !important;
+    overflow: hidden; /* Agar slide tidak bocor ke samping */
+}
+
+/* SOBEKAN ATAS (Menyatu dengan Form Cream) */
+.testimonial-section::before {
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; top: -1px !important;
+    background-image: url('images/sobekan-kertas-terbalik.webp');
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
+}
+
+/* SOBEKAN BAWAH (Penutup sebelum Footer) */
+.testimonial-section::after {
+    content: ""; position: absolute; left: 0; width: 100%;
+    height: 150px; bottom: -1px !important;
+    background-image: url('images/sobekan-kertas.webp');
+    background-repeat: no-repeat; background-size: 100% 100%;
+    pointer-events: none; z-index: 6;
+}
+
+/* Judul Section */
+.testimonial-section .section-title {
+    color: #4B3621 !important;
+    text-shadow: 0px 1px 0px rgba(255,255,255, 0.3);
+    border-bottom-color: #4B3621 !important;
+    position: relative; z-index: 10;
+}
+
+/* --- SLIDESHOW CONTAINER --- */
+.testimonial-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    z-index: 10;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* KARTU TESTIMONI */
+.testimonial-card {
+    min-width: 100%; /* 1 Slide per layar */
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    border: 3px solid #4B3621;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ikon Kutipan */
+.quote-icon {
+    font-size: 3em;
+    color: #ffd700; /* Warna Emas */
+    line-height: 0.5;
+    margin-bottom: 20px;
+}
+
+.testi-text {
+    font-size: 1.2em !important;
+    font-style: italic;
+    color: #333 !important;
+    margin-bottom: 20px !important;
+    line-height: 1.5 !important;
+}
+
+.testi-author {
+    font-weight: 800;
+    color: #c62828;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.testi-role {
+    font-weight: 400;
+    color: #666;
+    text-transform: none;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* TOMBOL NAVIGASI (PANAH) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(75, 54, 33, 0.8); /* Cokelat Transparan */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 15;
+}
+.slider-btn:hover { background-color: #c62828; }
+.prev-btn { left: -50px; }
+.next-btn { right: -50px; }
+
+/* INDIKATOR DOTS */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 8px;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #4B3621;
+    opacity: 0.3;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dot.active { opacity: 1; transform: scale(1.2); background-color: #c62828; }
+
+/* RESPONSIVE HP */
+@media (max-width: 768px) {
+    .testimonial-section {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+    }
+    .testimonial-section::before { height: 60px !important; top: -1px !important; }
+    .testimonial-section::after { height: 60px !important; bottom: -1px !important; }
+    
+    /* Tombol Panah di HP disembunyikan biar bersih, pakai swipe/dots aja */
+    .slider-btn { display: none; } 
+    
+    .testimonial-card { padding: 30px 20px; }
+    .testi-text { font-size: 1em !important; }
+}
