@@ -269,3 +269,121 @@ section { padding: 80px 0; width: 100%; position: relative; } /* Padding standar
     .social-grid { grid-template-columns: repeat(4, 1fr); }
     .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
 }
+
+/* ================================================================= */
+/* PERBAIKAN SPESIFIK (TABLE, PROMO IMAGE, BUTTON, & MOBILE GRID)    */
+/* Copy & Paste kode ini di bagian PALING BAWAH file CSS Anda.       */
+/* ================================================================= */
+
+/* 1. FIX TABEL HARGA (Desktop & Mobile) */
+.catalog-table, .tier-table-compact {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.catalog-table th, .tier-table-compact th {
+    background-color: #4B3621 !important;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #6d4c41;
+    text-align: center;
+}
+
+.catalog-table td, .tier-table-compact td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    color: #333;
+}
+
+/* 2. FIX PROMO BORONG (Agar Gambar Tidak Gepeng & Tidak Melebar Aneh) */
+.promo-horizontal-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border: 3px dashed #c62828;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 40px;
+}
+.promo-left { flex: 1; }
+.promo-right { flex: 2; text-align: left; }
+.promo-left img {
+    width: 100%;
+    height: auto !important; /* KUNCI AGAR TIDAK GEPENG */
+    object-fit: contain;
+    border-radius: 10px;
+    max-height: 300px; /* Batasi tinggi agar tidak raksasa */
+}
+
+/* 3. FIX TOMBOL GEMUK (Reset Padding) */
+.mix-order-btn, .wa-btn-catalog, .bs-btn, .cta-button {
+    padding: 10px 15px !important; /* Padding standar, tidak kegedean */
+    line-height: 1.2 !important;   /* Jarak baris rapat */
+    height: auto !important;       /* Tinggi mengikuti konten */
+    min-height: 0 !important;      /* Hilangkan min-height aneh */
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ============================================================ */
+/* MEDIA QUERY KHUSUS HP (MAX-WIDTH 768PX)                      */
+/* Pastikan ini ada di PALING BAWAH file CSS                    */
+/* ============================================================ */
+@media (max-width: 768px) {
+    
+    /* A. FIX TABEL RUSAK DI HP (JADI SCROLL SAMPING) */
+    .product-list {
+        width: 100%;
+        overflow-x: auto; /* Aktifkan scroll horizontal */
+        -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+    .catalog-table, .tier-table-compact {
+        width: 100%; 
+        min-width: 500px; /* Paksa tabel lebar agar trigger scroll */
+        display: table;   /* Kembalikan sifat tabel */
+    }
+    .catalog-table th, .catalog-table td {
+        white-space: normal; /* Teks boleh turun baris */
+        font-size: 0.85em;
+        padding: 8px 4px;
+    }
+
+    /* B. FIX PROMO BORONG DI HP (GAMBAR RAPI, TIDAK GEPENG) */
+    .promo-horizontal-card {
+        flex-direction: column; /* Susun ke bawah */
+        text-align: center;
+        padding: 15px;
+    }
+    .promo-left img {
+        max-width: 200px !important; /* Batasi lebar gambar di HP */
+        margin: 0 auto;              /* Tengah */
+        height: auto !important;     /* Jaga rasio */
+    }
+    .promo-right { text-align: center; width: 100%; }
+    
+    /* C. FIX GRID 2 KOLOM (INDEX & KATALOG) */
+    .catalog-grid, .best-seller-grid, .mix-grid-wrapper, #mix .catalog-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Paksa 2 Kolom */
+        gap: 10px !important;
+    }
+
+    /* D. FIX KARTU DI HP */
+    .catalog-card, .mix-card, .bs-card {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    /* Gambar Produk Biasa (Kotak) */
+    .catalog-img, .bs-img { aspect-ratio: 1/1 !important; object-fit: cover; }
+    
+    /* Gambar Mix (Landscape) */
+    #mix .catalog-img, .mix-card .product-img { aspect-ratio: 4/3 !important; object-fit: contain; background: #fff; }
+}
