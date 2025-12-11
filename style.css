@@ -176,3 +176,122 @@ section { padding: 80px 0; width: 100%; position: relative; }
   .footer-row { flex-direction: column; gap: 30px; }
   .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
 }
+
+/* ========================================= */
+/* 1. KOTAK SELLING POINT (MIRING-MIRING)    */
+/* ========================================= */
+
+.benefit-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; /* Jarak antar kartu */
+    margin-top: 50px;
+    padding: 0 10px;
+}
+
+.benefit-card {
+    background: #fff;
+    width: 320px; /* Lebar kartu pas */
+    padding: 25px;
+    border: 3px solid #4B3621; /* Border Coklat agar tegas seperti kartu */
+    border-radius: 15px;       /* Sudut tumpul */
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.15); /* Bayangan kasar ala stiker */
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+/* Efek Hover: Kartu jadi lurus saat disentuh */
+.benefit-card:hover {
+    transform: rotate(0deg) scale(1.05) !important;
+    z-index: 10;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
+}
+
+/* Mengatur Kemiringan (Desktop & HP) */
+.rotate-left { transform: rotate(-3deg); }
+.rotate-right { transform: rotate(3deg); margin-top: 20px; /* Turun sedikit biar dinamis */ }
+
+/* Styling Teks dalam Kartu */
+.benefit-card h3 {
+    color: var(--col-pri);
+    border-bottom: 2px dashed #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.benefit-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #444;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+/* Highlight Text (Warna Kontras) */
+.highlight-text {
+    background-color: #ffebee; /* Background merah muda tipis */
+    color: #c62828;            /* Teks Merah Gelap */
+    font-weight: 800;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.card-quote {
+    font-style: italic;
+    background: #FFF8E1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85em !important;
+    color: #795548 !important;
+    border-left: 4px solid var(--col-sec);
+}
+
+/* ========================================= */
+/* 2. FIX VIDEO VERTIKAL (9:16)              */
+/* ========================================= */
+
+.vertical-video-box {
+    /* Ukuran HP Standar (Agar rapat) */
+    max-width: 360px !important; 
+    
+    /* Rasio Aspek 9:16 (Potrait/Tegak) */
+    aspect-ratio: 9 / 16 !important; 
+    
+    margin: 0 auto;
+    border-radius: 20px !important; /* Sudut lebih bulat ala HP */
+    border: 8px solid #000;         /* Frame hitam ala HP */
+    background: #000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+}
+
+.vertical-video-box iframe, 
+.vertical-video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========================================= */
+/* RESPONSIVE MOBILE FIX                     */
+/* ========================================= */
+@media (max-width: 768px) {
+    .benefit-wrapper {
+        gap: 30px; /* Jarak vertikal di HP */
+    }
+    
+    .benefit-card {
+        width: 100%; /* Full width di HP */
+        max-width: 350px;
+    }
+
+    /* Di HP kemiringan dikurangi sedikit agar tidak nabrak layar */
+    .rotate-left { transform: rotate(-2deg); }
+    .rotate-right { transform: rotate(2deg); margin-top: 0; }
+    
+    .vertical-video-box {
+        max-width: 300px !important; /* Video sedikit lebih kecil di HP */
+    }
+}
