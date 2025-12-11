@@ -679,3 +679,161 @@ section { padding: 80px 0; width: 100%; position: relative; }
         font-size: 1.2em;
     }
 }
+
+/* ========================================================= */
+/* 💖 FIX FINAL: TESTIMONIAL SLIDER (MEWAH & PREMIUM)        */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+/* 1. CONTAINER & BACKGROUND SEKSI */
+.testimonial-section {
+    background-color: #FFF8E1; /* Krem Lembut */
+    padding: 80px 0;
+    position: relative;
+    z-index: 2; /* Di atas sobekan kertas */
+}
+
+.testimonial-section .section-title {
+    color: #4B3621 !important; /* Coklat Tua */
+    border-bottom-color: #FFD700 !important; /* Garis Emas */
+}
+
+.testimonial-section .section-subtitle {
+    color: #666;
+    font-style: italic;
+}
+
+/* 2. SLIDER WRAPPER & TRACK */
+.testimonial-slider {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto 0;
+    overflow: hidden; /* KUNCI: Menyembunyikan slide yang di luar */
+    padding: 20px; /* Ruang untuk bayangan kartu */
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Animasi geser halus */
+    gap: 30px; /* Jarak antar kartu */
+}
+
+/* 3. KARTU TESTIMONIAL MEWAH */
+.testimonial-card {
+    background: #ffffff;
+    /* Flex basis: Agar di desktop tampil 2, di HP tampil 1 */
+    flex: 0 0 calc(50% - 15px); 
+    max-width: calc(50% - 15px);
+
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+
+    /* EFEK MEWAH: Bingkai Emas & Bayangan Timbul */
+    border: 2px solid #FFD700;
+    box-shadow: 0 15px 35px rgba(75, 54, 33, 0.15); 
+    transition: transform 0.3s;
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(75, 54, 33, 0.2);
+}
+
+/* 4. ISI KARTU */
+.quote-icon {
+    font-size: 4em;
+    color: rgba(255, 215, 0, 0.3); /* Emas Transparan */
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    line-height: 1;
+}
+
+.testi-text {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+    line-height: 1.6;
+}
+
+.testi-author {
+    font-weight: 800;
+    color: #4B3621; /* Coklat Tua */
+    font-size: 1.05em;
+}
+
+.testi-role {
+    display: block; /* Turun baris */
+    font-weight: 600;
+    color: #FFD700; /* Emas */
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 5. TOMBOL NAVIGASI (PANAH) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #4B3621; /* Coklat Tua */
+    color: #FFD700; /* Emas */
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex; align-items: center; justify-content: center;
+}
+.slider-btn:hover {
+    background: #FFD700;
+    color: #4B3621;
+}
+.prev-btn { left: -10px; }
+.next-btn { right: -10px; }
+
+/* 6. INDIKATOR TITIK (DOTS) */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dot.active {
+    background: #4B3621; /* Coklat Tua */
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px #FFD700; /* Cincin Emas */
+}
+
+/* ========================================= */
+/* 📱 KHUSUS HP (Tampil 1 Kartu)            */
+/* ========================================= */
+@media (max-width: 768px) {
+    .testimonial-card {
+        /* HP: Tampil 1 kartu penuh */
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding: 30px 20px;
+    }
+    .testimonial-track { gap: 0; } /* Tidak ada jarak di HP */
+    .slider-btn { width: 40px; height: 40px; font-size: 1.2em; }
+    .prev-btn { left: 0; }
+    .next-btn { right: 0; }
+}
