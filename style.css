@@ -347,3 +347,38 @@ section { padding: 80px 0; width: 100%; position: relative; }
     .footer-row { flex-direction: column; gap: 30px; }
     .float-wa { padding: 10px 15px; font-size: 0.9em; bottom: 20px; right: 20px; }
 }
+
+/* ========================================================= */
+/* 🛒 FIX TOMBOL "BELI SATUAN" (AGAR RATA & SERAGAM)         */
+/* (Tempel di Paling Bawah style.css)                        */
+/* ========================================================= */
+
+.storelink-btn {
+    display: flex !important;
+    align-items: center !important;     /* Teks Rata Tengah Vertikal */
+    justify-content: center !important; /* Teks Rata Tengah Horizontal */
+    text-align: center !important;
+    
+    width: 100% !important;
+    min-height: 50px !important;        /* KUNCI: Tinggi Minimal Tetap (Muat 2 baris) */
+    
+    background-color: #f57c00 !important; /* Orange Shopee */
+    color: #fff !important;
+    border: 1px solid #e65100 !important;
+    border-radius: 5px !important;
+    
+    padding: 5px 10px !important;
+    font-size: 0.85em !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    line-height: 1.2 !important;
+    margin-top: 8px !important;
+    box-sizing: border-box !important;
+    transition: 0.3s;
+}
+
+.storelink-btn:hover {
+    background-color: #e65100 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
+}
