@@ -387,3 +387,45 @@ section { padding: 80px 0; width: 100%; position: relative; } /* Padding standar
     /* Gambar Mix (Landscape) */
     #mix .catalog-img, .mix-card .product-img { aspect-ratio: 4/3 !important; object-fit: contain; background: #fff; }
 }
+/* ============================================================ */
+/* 🚑 FIX FINAL: TABEL TIER KECIL (AGAR PAS DI KARTU HP)        */
+/* Tempel di baris PALING BAWAH file CSS                        */
+/* ============================================================ */
+
+/* 1. Aturan Khusus Tabel Tier Kecil (Di dalam kartu produk) */
+.mini-tier-table {
+    width: 100% !important;
+    min-width: 0 !important; /* HAPUS paksaan lebar 500px */
+    display: table !important;
+    table-layout: auto !important; /* Lebar kolom menyesuaikan isi */
+    margin-bottom: 10px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 2. Ukuran Font & Padding Tabel Kecil di HP */
+.mini-tier-table td {
+    font-size: 0.75em !important; /* Font kecil agar muat */
+    padding: 2px 0 !important;    /* Jarak rapat */
+    white-space: normal !important; /* Teks boleh turun baris jika sempit */
+    border: none !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+.mini-tier-table tr:last-child td {
+    border-bottom: none !important;
+    font-weight: bold;
+    color: #c62828;
+}
+
+/* 3. Pastikan Container Tabel Besar Tetap Scroll (JANGAN DIUBAH) */
+/* Ini menjaga agar Tabel Harga Lengkap tetap aman */
+.product-list {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* 4. Khusus Tabel Besar (Catalog Table) Tetap Lebar */
+.catalog-table {
+    min-width: 500px !important; /* Hanya tabel besar yang dipaksa lebar */
+}
