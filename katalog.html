@@ -77,7 +77,7 @@
             color: var(--col-txt); 
             background: #fff; 
             width: 100%; 
-            overflow-x: hidden; /* Kunci layar agar tidak geser ke kanan */
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
         }
@@ -99,7 +99,6 @@
 
         /* --- HEADER KHUSUS KATALOG --- */
         .catalog-header {
-            /* BACKGROUND GAMBAR SAMAR (Overlay Putih 90%) */
             background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85)), url('images/paket-borong.webp');
             background-size: cover;
             background-position: center;
@@ -129,7 +128,6 @@
             align-items: stretch !important; 
         }
         
-        /* Khusus grid MIX (6 kolom di desktop) */
         #mix .catalog-grid { 
             grid-template-columns: repeat(6, 1fr) !important; 
             gap: 15px !important; 
@@ -199,12 +197,6 @@
         }
         .storelink-btn:hover { background-color: #e65100 !important; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3); }
 
-        .storelink-container {
-            margin-top: 10px; padding-top: 8px; border-top: 1px dashed #ccc; 
-            text-align: center; width: 100%; overflow: hidden;
-        }
-        .storelink-separator { font-size: 0.75em; color: #666; font-style: italic; margin-bottom: 5px; display: block; }
-
         /* --- PROMO HORIZONTAL CARD --- */
         .promo-horizontal-card {
             display: flex !important; flex-direction: row !important; align-items: stretch !important; background: #fff; 
@@ -241,6 +233,8 @@
         .prev-btn, .next-btn { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background: rgba(0,0,0,0.5); border: none; }
         .next-btn { right: 0; border-radius: 3px 0 0 3px; }
         .prev-btn { left: 0; border-radius: 0 3px 3px 0; }
+        /* Style saat tombol disabled (disembunyikan) */
+        .nav-btn-hidden { display: none !important; }
         .gallery-counter { text-align: center; color: #ccc; padding: 10px; margin-top: 10px; font-size: 14px; }
 
         /* --- FOOTER (Standalone) --- */
@@ -515,8 +509,9 @@
         <div class="catalog-grid">
             
             <div class="catalog-card">
-                <img src="images/wortel-1.webp" alt="Keripik Wortel" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/wortel-1.webp,images/wortel-2.webp,images/wortel-3.webp,images/wortel-4.webp,images/wortel-5.webp,images/wortel-kemasan.webp" onclick="openGallery(this)">
+                <img src="images/wortel-baru-1.webp" alt="Keripik Wortel" class="catalog-img" loading="lazy" width="300" height="300" 
+                     data-gallery="images/wortel-baru-1.webp,images/wortel-baru-2.webp,images/wortel-baru-3.webp,images/wortel-baru-4.webp,images/wortel-baru-5.webp,images/wortel-baru-6.webp,images/wortel-baru-7.webp,images/wortel-baru-8.webp,images/wortel-baru-9.webp" 
+                     onclick="openGallery(this)">
                 
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Wortel</div>
@@ -1177,10 +1172,14 @@
     }
 
     function changeSlide(n) {
-        currentIndex += n;
-        if (currentIndex >= currentGallery.length) { currentIndex = 0; } 
-        else if (currentIndex < 0) { currentIndex = currentGallery.length - 1; }
-        updateLightboxImage();
+        // Logika baru: Cek batas index agar tidak looping
+        let newIndex = currentIndex + n;
+        
+        // Hanya update jika index baru berada dalam rentang valid
+        if (newIndex >= 0 && newIndex < currentGallery.length) {
+            currentIndex = newIndex;
+            updateLightboxImage();
+        }
     }
 
     function updateLightboxImage() {
@@ -1194,9 +1193,26 @@
         if (currentGallery.length > 1) {
             captionText.style.display = "block";
             captionText.innerHTML = (currentIndex + 1) + " / " + currentGallery.length;
-            prevBtn.style.display = "block";
-            nextBtn.style.display = "block";
+            
+            // Logic tombol sembunyi jika di ujung
+            if (currentIndex === 0) {
+                prevBtn.classList.add('nav-btn-hidden');
+            } else {
+                prevBtn.classList.remove('nav-btn-hidden');
+            }
+
+            if (currentIndex === currentGallery.length - 1) {
+                nextBtn.classList.add('nav-btn-hidden');
+            } else {
+                nextBtn.classList.remove('nav-btn-hidden');
+            }
+            
+            // Pastikan display block (kecuali kalau ada class nav-btn-hidden)
+            prevBtn.style.display = prevBtn.classList.contains('nav-btn-hidden') ? 'none' : 'block';
+            nextBtn.style.display = nextBtn.classList.contains('nav-btn-hidden') ? 'none' : 'block';
+
         } else {
+            // Single image
             captionText.style.display = "none";
             prevBtn.style.display = "none";
             nextBtn.style.display = "none";
