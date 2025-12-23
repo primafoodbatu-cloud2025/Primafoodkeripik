@@ -179,23 +179,27 @@
         .mini-tier-table td { padding: 3px 6px !important; border-bottom: 1px solid #eee !important; color: #212121 !important; }
         .mini-tier-table td:last-child { font-weight: 700; color: var(--col-cta); text-align: right; }
 
-        /* --- BUTTONS --- */
+        /* --- BUTTONS (FIX KONTRAS WARNA) --- */
+        /* Menggunakan warna yang lebih gelap agar teks Putih terbaca jelas (WCAG Compliant) */
+        
         .wa-btn-catalog {
             display: block; width: 100%; text-align: center;
-            background-color: #25D366; color: white !important; padding: 10px;
+            background-color: #128C7E !important; /* Diubah ke Teal Gelap WA */
+            color: #ffffff !important; padding: 10px;
             border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: auto;
             border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s;
         }
-        .wa-btn-catalog:hover { background-color: #128C7E; transform: translateY(-2px); }
+        .wa-btn-catalog:hover { background-color: #075E54 !important; transform: translateY(-2px); }
 
         .storelink-btn {
             display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important;
             width: 100% !important; min-height: 50px !important; padding: 5px 10px !important; margin-top: 8px !important;
-            background-color: #f57c00 !important; color: #fff !important; border: 1px solid #e65100 !important;
+            background-color: #d84315 !important; /* Diubah ke Orange Burnt Gelap */
+            color: #ffffff !important; border: 1px solid #d84315 !important;
             border-radius: 5px !important; font-size: 0.85em !important; font-weight: 700 !important; text-decoration: none !important;
             line-height: 1.2 !important; box-sizing: border-box !important; transition: 0.3s;
         }
-        .storelink-btn:hover { background-color: #e65100 !important; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3); }
+        .storelink-btn:hover { background-color: #bf360c !important; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3); }
 
         /* --- PROMO HORIZONTAL CARD --- */
         .promo-horizontal-card {
@@ -211,7 +215,8 @@
         .promo-price-box { margin-bottom: 25px !important; width: fit-content !important; display: flex; align-items: center; gap: 20px; background: #fff3e0; padding: 15px 25px; border-radius: 10px; border: 1px solid #ffe0b2; }
 
         .mix-order-btn {
-            background: var(--col-cta); color: #fff !important; padding: 12px 30px;
+            background-color: #c62828 !important; /* Diubah ke Merah Bata Gelap */
+            color: #ffffff !important; padding: 12px 30px;
             text-decoration: none; font-weight: 700; border-radius: 50px; display: inline-block;
             transition: 0.3s; text-transform: uppercase; border: none; cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; width: 100%;
@@ -380,9 +385,9 @@
                     <p class="product-short-desc">Perpaduan manis legit Ubi Madu, Ubi Ungu, & Jagung.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Ubi Madu, Ubi Ungu, Wortel, Buncis, Jagung.</p>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SWEET%20GARDEN." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SWEET%20GARDEN." class="wa-btn-catalog" aria-label="Pesan MIX Sweet Garden via WhatsApp">Pesan via WA</a>
                     
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Sweet Garden di Storelink">
                         🛒 Beli Satuan <br> (Bisa COD) ↗
                     </a>
                 </div>
@@ -397,9 +402,9 @@
                     <p class="product-short-desc">Gurih nendang! Kombinasi Jamur, Brokoli, & Paprika.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Brokoli, Bombay, Jamur Tiram/Kuping, Cabe, Paprika.</p>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SAVORY." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SAVORY." class="wa-btn-catalog" aria-label="Pesan MIX Savory via WhatsApp">Pesan via WA</a>
 
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Savory di Storelink">
                         🛒 Beli Satuan <br> (Bisa COD) ↗
                     </a>
                 </div>
@@ -414,9 +419,9 @@
                     <p class="product-short-desc">Paket komplit! Manisnya buah ketemu gurihnya sayur.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Apel, Pisang, Nangka, Wortel, Ubi Ungu, Okra.</p>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20FUSION." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20FUSION." class="wa-btn-catalog" aria-label="Pesan MIX Fusion via WhatsApp">Pesan via WA</a>
 
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Fusion di Storelink">
                         🛒 Beli Satuan <br> (Bisa COD) ↗
                     </a>
                 </div>
@@ -431,9 +436,9 @@
                     <p class="product-short-desc">Tinggi serat! Gedebog Pisang & Okra untuk pencernaan.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Gedebog Pisang, Okra, Ubi Ungu, Ubi Madu.</p>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20SERAT." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20SERAT." class="wa-btn-catalog" aria-label="Pesan MIX Serat via WhatsApp">Pesan via WA</a>
 
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Serat di Storelink">
                         🛒 Beli Satuan <br> (Bisa COD) ↗
                     </a>
                 </div>
@@ -448,9 +453,9 @@
                     <p class="product-short-desc">Vitamin booster dari Strawberry & Sayuran pilihan.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Strawberry, Brokoli, Wortel, Jamur Tiram.</p>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20IMUN%20BOOSTER." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20IMUN%20BOOSTER." class="wa-btn-catalog" aria-label="Pesan MIX Imun Booster via WhatsApp">Pesan via WA</a>
 
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Imun Booster di Storelink">
                         🛒 Beli Satuan <br> (Bisa COD) ↗
                     </a>
                 </div>
@@ -465,9 +470,9 @@
                     <p class="product-short-desc">Pedas nampol! Cabe Rawit & Paprika asli.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Cabe Rawit, Bawang Merah, Paprika, Kentang Wedges.</p>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20EKSTREM." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20EKSTREM." class="wa-btn-catalog" aria-label="Pesan MIX Ekstrem via WhatsApp">Pesan via WA</a>
 
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Ekstrem di Storelink">
                         🛒 Beli Satuan <br> (Bisa COD) ↗
                     </a>
                 </div>
@@ -495,7 +500,7 @@
 
                 <a href="#order-form" class="mix-order-btn" 
                    data-product-name="PROMO BORONG SEMUA (6 Paket / 600gr) - Rp 146.800" 
-                   style="font-size: 1em; padding: 12px 30px; background-color: #e65100; color: #ffffff !important; width: 100%; border-radius: 50px; margin-top: 10px; text-decoration: none; display: block; font-weight: 700; box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);">
+                   style="font-size: 1em; padding: 12px 30px; background-color: #e65100; color: #ffffff !important; width: 100%; border-radius: 50px; margin-top: 10px; text-decoration: none; display: block; font-weight: 700; box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);" aria-label="Ambil Promo Borong Semua via WhatsApp">
                    AMBIL PROMO (600gr) 🛒
                 </a>
             </div>
@@ -526,8 +531,8 @@
                         <tr><td>25kg+</td><td>Rp 156.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Keripik%20Wortel." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-wortel-rilldelish-kaya-vitamin-a-cemilan-sehat-snack-diet-mata-vacuum-frying" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Keripik%20Wortel." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Wortel via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-wortel-rilldelish-kaya-vitamin-a-cemilan-sehat-snack-diet-mata-vacuum-frying" target="_blank" class="storelink-btn" aria-label="Beli Satuan Wortel di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -549,8 +554,8 @@
                         <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Ungu." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-ubi-ungu-100gr-vacuum-frying-antioksidan-tinggi-cemilan-sehat-snack-diet-rendah-lemak" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Ungu." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Ubi Ungu via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-ubi-ungu-100gr-vacuum-frying-antioksidan-tinggi-cemilan-sehat-snack-diet-rendah-lemak" target="_blank" class="storelink-btn" aria-label="Beli Satuan Ubi Ungu di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -572,8 +577,8 @@
                         <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Madu." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-ubi-madu-premium-100gr500gr-rilldelish-honey-sweet-potato-chips-manis-renyah" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Madu." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Ubi Madu via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-ubi-madu-premium-100gr500gr-rilldelish-honey-sweet-potato-chips-manis-renyah" target="_blank" class="storelink-btn" aria-label="Beli Satuan Ubi Madu di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -594,8 +599,8 @@
                         <tr><td>25kg+</td><td>Rp 300.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Okra." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-okra-bebas-lendir-rilldelish-100gr-100-cemilan-sehat-snack-sayur-vacuum-frying" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Okra." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Okra via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-okra-bebas-lendir-rilldelish-100gr-100-cemilan-sehat-snack-sayur-vacuum-frying" target="_blank" class="storelink-btn" aria-label="Beli Satuan Okra di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -616,8 +621,8 @@
                         <tr><td>25kg+</td><td>Rp 144.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Jagung%20Manis." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jagung-manis-premium-rilldelish-sweet-corn-chips-renyah-asli-batu-primafood" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Jagung%20Manis." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Jagung via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jagung-manis-premium-rilldelish-sweet-corn-chips-renyah-asli-batu-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Jagung di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -638,8 +643,8 @@
                         <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Labu%20Madu." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-labu-madu-premium-rilldelish-butternut-pumpkin-chips-asli-batu-renyah-primafood" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Labu%20Madu." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Labu Madu via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-labu-madu-premium-rilldelish-butternut-pumpkin-chips-asli-batu-renyah-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Labu Madu di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -660,8 +665,8 @@
                         <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Kentang." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-kentang-premium-rilldelish-potato-chips-asli-batu-renyah-sehat-primafood" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Kentang." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Kentang via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-kentang-premium-rilldelish-potato-chips-asli-batu-renyah-sehat-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Kentang di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -682,8 +687,8 @@
                         <tr><td>25kg+</td><td>Rp 192.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Wedges." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-kentang-wedges-premium-rilldelish-potato-wedges-asli-batu-renyah-primafood" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Wedges." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Wedges via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-kentang-wedges-premium-rilldelish-potato-wedges-asli-batu-renyah-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Wedges di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -704,8 +709,8 @@
                         <tr><td>25kg+</td><td>Rp 336.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Merah." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/bawang-merah-goreng-premium-rilldelish-fried-shallots-asli-batu-renyah-primafood" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Merah." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bawang Merah via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/bawang-merah-goreng-premium-rilldelish-fried-shallots-asli-batu-renyah-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bawang Merah di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -726,8 +731,8 @@
                         <tr><td>25kg+</td><td>Rp 360.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Putih." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bawang-putih" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Putih." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bawang Putih via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bawang-putih" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bawang Putih di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -748,8 +753,8 @@
                         <tr><td>25kg+</td><td>Rp 180.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Buncis." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-buncis-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Buncis." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Buncis via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-buncis-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Buncis di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -770,8 +775,8 @@
                         <tr><td>25kg+</td><td>Rp 180.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Edamame." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-edamame-premium-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Edamame." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Edamame via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-edamame-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Edamame di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -799,8 +804,8 @@
                         <tr><td>25kg+</td><td>Rp 102.000</td></tr>
                     </table>
                     
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Gedebog%20Pisang." class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-gedebog-pisang-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Gedebog%20Pisang." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Gedebog Pisang via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-gedebog-pisang-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Gedebog Pisang di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -817,8 +822,8 @@
                         <tr><td>15-24 kg</td><td>Rp 140.800</td></tr>
                         <tr><td>25kg+</td><td>Rp 132.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20JamurTiram" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jamur-tiram-original-renyah-gurih-non-msg-100gr-kiloan-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20JamurTiram" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Jamur Tiram via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jamur-tiram-original-renyah-gurih-non-msg-100gr-kiloan-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Jamur Tiram di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -835,8 +840,8 @@
                         <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
                         <tr><td>25kg+</td><td>Rp 144.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20JamurKuping" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jamur-kuping-krispi-original-100gr-kiloan-rilldelish-sehat-non-msg" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20JamurKuping" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Jamur Kuping via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jamur-kuping-krispi-original-100gr-kiloan-rilldelish-sehat-non-msg" target="_blank" class="storelink-btn" aria-label="Beli Satuan Jamur Kuping di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -853,8 +858,8 @@
                         <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
                         <tr><td>25kg+</td><td>Rp 144.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Brokoli" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-brokoli-crispy-100gr-rilldelish-cemilan-sehat-diet-anak-susah-makan-sayur" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Brokoli" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Brokoli via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-brokoli-crispy-100gr-rilldelish-cemilan-sehat-diet-anak-susah-makan-sayur" target="_blank" class="storelink-btn" aria-label="Beli Satuan Brokoli di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
             
@@ -871,8 +876,8 @@
                         <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
                         <tr><td>25kg+</td><td>Rp 156.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20BungaKol" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bunga-kol-krispi-cauliflower-chips-100gr-rilldelish-cemilan-diet-keto" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20BungaKol" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bunga Kol via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bunga-kol-krispi-cauliflower-chips-100gr-rilldelish-cemilan-diet-keto" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bunga Kol di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -889,8 +894,8 @@
                         <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
                         <tr><td>25kg+</td><td>Rp 156.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Bombay" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bawang-bombay-onion-rings-chips-100gr-rilldelish-snack-sehat" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Bombay" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bombay via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bawang-bombay-onion-rings-chips-100gr-rilldelish-snack-sehat" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bombay di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -907,8 +912,8 @@
                         <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
                         <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Paprika" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-paprika-asli-renyah-bell-pepper-chips-100gr-rilldelish-cemilan-unik" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Paprika" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Paprika via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-paprika-asli-renyah-bell-pepper-chips-100gr-rilldelish-cemilan-unik" target="_blank" class="storelink-btn" aria-label="Beli Satuan Paprika di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -925,8 +930,8 @@
                         <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
                         <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20CabeBesar" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-cabe-besar-merah-utuh-red-chili-chips-100gr-rilldelish-pedas-asli" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20CabeBesar" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Cabe Besar via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-cabe-besar-merah-utuh-red-chili-chips-100gr-rilldelish-pedas-asli" target="_blank" class="storelink-btn" aria-label="Beli Satuan Cabe Besar di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -943,8 +948,8 @@
                         <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
                         <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20CabeRawit" class="wa-btn-catalog">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-cabe-rawit-super-pedas-devil-chili-chips-100gr-rilldelish-snack-ekstrem" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20CabeRawit" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Cabe Rawit via WhatsApp">💬 Tanya Stok (Grosir)</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-cabe-rawit-super-pedas-devil-chili-chips-100gr-rilldelish-snack-ekstrem" target="_blank" class="storelink-btn" aria-label="Beli Satuan Cabe Rawit di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -970,7 +975,7 @@
                         <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
                         <tr><td>25kg+</td><td>Rp 180.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Nangka" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Nangka" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Nangka via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -987,7 +992,7 @@
                         <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
                         <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Apel" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Apel" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Apel via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -1004,7 +1009,7 @@
                         <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
                         <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Salak" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Salak" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Salak via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -1021,7 +1026,7 @@
                         <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
                         <tr><td>25kg+</td><td>Rp 120.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Pisang" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Pisang" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Pisang via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -1038,7 +1043,7 @@
                         <tr><td>15-24 kg</td><td>Rp 640.000</td></tr>
                         <tr><td>25kg+</td><td>Rp 600.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Strawberry" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Strawberry" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Strawberry via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -1055,7 +1060,7 @@
                         <tr><td>15-24 kg</td><td>Rp 281.600</td></tr>
                         <tr><td>25kg+</td><td>Rp 264.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20BuahNaga" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20BuahNaga" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Buah Naga via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -1072,7 +1077,7 @@
                         <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
                         <tr><td>25kg+</td><td>Rp 168.000</td></tr>
                     </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Mangga" class="wa-btn-catalog">Tanya Stok</a>
+                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Mangga" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Mangga via WhatsApp">Tanya Stok</a>
                 </div>
             </div>
 
@@ -1232,55 +1237,5 @@
         <div id="caption" class="gallery-counter"></div>
     </div>
 
-
-    <style>
-    .float-wa-container { position: fixed; bottom: 25px; right: 25px; z-index: 9999; font-family: 'Poppins', sans-serif; }
-    .float-wa-button {
-        display: flex; align-items: center; justify-content: center;
-        background-color: #25d366; color: white; text-decoration: none;
-        padding: 12px 25px; border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;
-        animation: pulse-wa 2s infinite;
-    }
-    .float-wa-button:hover { background-color: #128c7e; transform: translateY(-3px); }
-    .float-wa-icon { width: 24px; height: 24px; fill: white; margin-right: 10px; }
-    .float-wa-text { font-weight: 700; font-size: 16px; }
-    @keyframes pulse-wa {
-        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-        70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-    @media (max-width: 480px) {
-        .float-wa-button { padding: 10px 20px; }
-        .float-wa-text { font-size: 14px; }
-        .float-wa-container { bottom: 20px; right: 20px; }
-    }
-</style>
-
-<div class="float-wa-container">
-    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20sedang%20lihat%20KATALOG%20LENGKAP%20(Mau%20Tanya)..." class="float-wa-button" target="_blank">
-        <svg class="float-wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-        <span class="float-wa-text">Konsultasi Produk</span>
-    </a>
-</div>
-
-    <script>
-    // SCRIPT PENANDA OTOMATIS KHUSUS HALAMAN KATALOG
-    document.addEventListener("DOMContentLoaded", function() {
-        // 1. Cari semua link yang menuju ke wa.me
-        var allWaLinks = document.querySelectorAll('a[href*="wa.me"]');
-        
-        // 2. Loop setiap tombol
-        allWaLinks.forEach(function(link) {
-            var originalHref = link.getAttribute('href');
-            
-            // Cek apakah link ini sudah punya tanda katalog? Kalau belum, kita tambahkan.
-            // Kode %20%28DARI%20KATALOG%29 artinya: " (DARI KATALOG)"
-            if (!originalHref.includes("KATALOG")) {
-                link.setAttribute('href', originalHref + "%20%28DARI%20KATALOG%29");
-            }
-        });
-    });
-</script>
 </body>
 </html>
