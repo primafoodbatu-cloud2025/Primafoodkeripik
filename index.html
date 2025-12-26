@@ -808,7 +808,11 @@
     </footer>
 
     <script>
-    // --- 1. DATABASE HARGA MODAL ---
+    /**
+     * =========================================================
+     * BAGIAN 1: DATABASE HARGA MODAL & RESEP MIX
+     * =========================================================
+     */
     const DATA_HARGA_MODAL = {
         "Keripik Sayur": [
             { nama: "Keripik Bawang Merah", modal: 300000 },
@@ -845,7 +849,6 @@
         ]
     };
 
-    // --- 2. RESEP MIX (KOMPOSISI UNTUK RUMUS) ---
     const MIX_KOMPOSISI = {
         "MIX Sweet Garden": ["Keripik Labu Madu", "Keripik Ubi Ungu", "Keripik Wortel", "Keripik Buncis", "Keripik Jagung Manis"],
         "MIX Savory": ["Keripik Brokoli", "Keripik Bawang Bombay", "Keripik Jamur Tiram", "Keripik Jamur Kuping", "Keripik Cabe Besar", "Keripik Paprika"],
@@ -855,7 +858,11 @@
         "MIX Ekstrem Pedas": ["Keripik Cabe Rawit", "Keripik Bawang Merah", "Keripik Paprika", "Keripik Kentang Wedges"]
     };
 
-    // --- 3. FUNGSI HITUNG HARGA ---
+    /**
+     * =========================================================
+     * BAGIAN 2: LOGIKA HARGA & FORMAT
+     * =========================================================
+     */
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID')}`;
 
     function findModalPrice(namaProduk) {
@@ -866,7 +873,6 @@
         return 150000; 
     }
 
-    // Rumus Satuan: (Modal/10 + 2000) + 60%
     function hitungHargaJualSatuan(modalPerKg) {
         let modalPer100g = modalPerKg / 10;
         let basePrice = modalPer100g + 2000; 
@@ -874,27 +880,77 @@
         return Math.ceil(hargaJual / 100) * 100;
     }
 
-    // RUMUS MIX: (Total Modal Bahan 100gr + 2000) + 60%
     function hitungHargaJualMix(namaMix) {
         const komposisi = MIX_KOMPOSISI[namaMix];
         if(!komposisi) return 0;
-
         let jumlahItem = komposisi.length;
         let beratPerItem = 100 / jumlahItem; 
         let totalModalBahan = 0;
-
         komposisi.forEach(bahan => {
             let modalKg = findModalPrice(bahan);
             let modalPerGram = modalKg / 1000;
             totalModalBahan += (modalPerGram * beratPerItem);
         });
-
         let basePrice = totalModalBahan + 2000;
         let hargaJual = basePrice + (basePrice * 0.60);
         return Math.ceil(hargaJual / 100) * 100;
     }
 
-    // --- 4. RENDER TABEL & UPDATE KARTU MANUAL ---
+    /**
+     * =========================================================
+     * BAGIAN 3: RENDER DROPDOWN BERJUDUL (YANG DIUPDATE)
+     * =========================================================
+     */
+    function populateSelectOptions(selectElement) {
+        // Reset isi dropdown
+        selectElement.innerHTML = '<option value="" disabled selected>-- KLIK UNTUK PILIH PRODUK --</option>';
+
+        // 1. GROUP PAKET MIX & PROMO (Ditaruh Paling Atas)
+        const groupMix = document.createElement('optgroup');
+        groupMix.label = "=== PAKET MIX & PROMO ===";
+        
+        // Loop Mix
+        for (let namaMix in MIX_KOMPOSISI) {
+            let harga = hitungHargaJualMix(namaMix);
+            let opt = document.createElement('option');
+            opt.value = `${namaMix} - ${formatCurrency(harga)}`;
+            opt.textContent = `${namaMix} - ${formatCurrency(harga)}`;
+            groupMix.appendChild(opt);
+        }
+        
+        // Promo Borong
+        let totalPromo = 0;
+        for(let k in MIX_KOMPOSISI) totalPromo += hitungHargaJualMix(k);
+        let hargaBorong = Math.ceil((totalPromo * 0.95) / 100) * 100;
+        let optPromo = document.createElement('option');
+        optPromo.value = `PROMO BORONG SEMUA (600gr) - ${formatCurrency(hargaBorong)}`;
+        optPromo.textContent = `🔥 PROMO BORONG SEMUA (600gr) - ${formatCurrency(hargaBorong)}`;
+        groupMix.appendChild(optPromo);
+        
+        selectElement.appendChild(groupMix);
+
+        // 2. GROUP SATUAN (Loop Data Modal)
+        for (let kategori in DATA_HARGA_MODAL) {
+            const group = document.createElement('optgroup');
+            // Menjadikan Nama Kategori sebagai Judul (Upper Case)
+            group.label = `=== ${kategori.toUpperCase()} ===`; 
+
+            DATA_HARGA_MODAL[kategori].forEach(produk => {
+                let harga = hitungHargaJualSatuan(produk.modal);
+                let opt = document.createElement('option');
+                opt.value = `${produk.nama} - ${formatCurrency(harga)}`;
+                opt.textContent = `${produk.nama} - ${formatCurrency(harga)}`;
+                group.appendChild(opt);
+            });
+            selectElement.appendChild(group);
+        }
+    }
+
+    /**
+     * =========================================================
+     * BAGIAN 4: RENDER TABEL & KARTU HARGA
+     * =========================================================
+     */
     function renderTable(tbodyId, categoryKey) {
         const tbody = document.getElementById(tbodyId);
         if (!tbody) return; 
@@ -904,10 +960,10 @@
             items.forEach(prod => {
                 let hargaEcer = hitungHargaJualSatuan(prod.modal);
                 let hargaPerKg = hargaEcer * 10;
-                let t1 = hargaPerKg * 0.90; // Diskon 10%
-                let t2 = hargaPerKg * 0.85; // Diskon 15%
-                let t3 = hargaPerKg * 0.80; // Diskon 20%
-                let t4 = hargaPerKg * 0.75; // Diskon 25%
+                let t1 = hargaPerKg * 0.90; 
+                let t2 = hargaPerKg * 0.85; 
+                let t3 = hargaPerKg * 0.80; 
+                let t4 = hargaPerKg * 0.75; 
 
                 html += `<tr>
                     <td style="text-align:left; font-weight:600;">${prod.nama}</td>
@@ -919,7 +975,7 @@
                     <td style="font-weight:bold; color:#d32f2f;">${formatCurrency(t4)}</td>
                 </tr>`;
 
-                // Update Harga Best Seller (Dicocokkan dengan Nama)
+                // Update Harga Best Seller
                 if(prod.nama === "Keripik Wortel") {
                     let el = document.getElementById('price-wortel-display');
                     if(el) el.textContent = formatCurrency(hargaEcer);
@@ -938,12 +994,6 @@
     }
 
     function updateMixCardPrices() {
-        // Update Mix Fusion di Best Seller
-        let fusionPrice = hitungHargaJualMix("MIX Fusion Lengkap");
-        let fusionDisplay = document.getElementById('price-mix-display');
-        if(fusionDisplay) fusionDisplay.textContent = formatCurrency(fusionPrice);
-
-        // Update Paket Mix di Section Bawah
         const map = {
             'price-mix-sweet': 'MIX Sweet Garden',
             'price-mix-savory': 'MIX Savory',
@@ -952,7 +1002,6 @@
             'price-mix-imun': 'MIX Imun Booster',
             'price-mix-ekstrem': 'MIX Ekstrem Pedas'
         };
-
         let totalPromo = 0;
         for (let id in map) {
             let key = map[id];
@@ -961,42 +1010,23 @@
             if(el) el.textContent = formatCurrency(harga);
             totalPromo += harga;
         }
+        // Update Mix Fusion Best Seller
+        let fusion = document.getElementById('price-mix-display');
+        if(fusion) fusion.textContent = formatCurrency(hitungHargaJualMix('MIX Fusion Lengkap'));
 
         // Update Promo Borong
         let elPromo = document.getElementById('price-promo-borong');
         if(elPromo) {
-            let hargaPromo = Math.ceil((totalPromo * 0.95) / 100) * 100; // Diskon 5%
+            let hargaPromo = Math.ceil((totalPromo * 0.95) / 100) * 100; 
             elPromo.textContent = formatCurrency(hargaPromo);
         }
     }
 
-    // --- 5. DATA GLOBAL UTK DROPDOWN ---
-    function getReadyProductList() {
-        let options = [];
-        // Satuan
-        for (let kategori in DATA_HARGA_MODAL) {
-            DATA_HARGA_MODAL[kategori].forEach(produk => {
-                let harga = hitungHargaJualSatuan(produk.modal);
-                options.push({ label: `${produk.nama} - ${formatCurrency(harga)}`, value: harga });
-            });
-        }
-        // Mix
-        for (let namaMix in MIX_KOMPOSISI) {
-            let harga = hitungHargaJualMix(namaMix);
-            options.push({ label: `${namaMix} - ${formatCurrency(harga)}`, value: harga });
-        }
-        // Promo
-        let totalPromo = 0;
-        for(let k in MIX_KOMPOSISI) totalPromo += hitungHargaJualMix(k);
-        let hargaBorong = Math.ceil((totalPromo * 0.95) / 100) * 100;
-        options.push({ label: `PROMO BORONG SEMUA (600gr) - ${formatCurrency(hargaBorong)}`, value: hargaBorong });
-
-        return options;
-    }
-    const GLOBAL_PRODUCT_LIST = getReadyProductList();
-
-
-    // --- 6. LOGIKA CART & CALCULATE ---
+    /**
+     * =========================================================
+     * BAGIAN 5: LOGIKA CART & TRANSAKSI
+     * =========================================================
+     */
     let productIdCounter = 1;
     const GROSIR_DISCOUNT_RATES = { 1: 0.10, 5: 0.15, 15: 0.20, 25: 0.25 };
     const FLASH_SALE_DISCOUNT = 0.05; 
@@ -1010,16 +1040,6 @@
             return parseFloat(cleanStr);
         }
         return 0;
-    }
-
-    function populateSelectOptions(selectElement) {
-        selectElement.innerHTML = '<option value="" disabled selected>-- Pilih Produk --</option>';
-        GLOBAL_PRODUCT_LIST.forEach(prod => {
-            let option = document.createElement('option');
-            option.value = prod.label; 
-            option.textContent = prod.label;
-            selectElement.appendChild(option);
-        });
     }
 
     function calculateTotal() {
@@ -1037,17 +1057,14 @@
             const unit = unitInput.value;
             let qtyPcs = (unit === 'kg') ? qtyVal * 10 : qtyVal;
             
-            // Berat per pcs (Asumsi Mix juga 100gr)
+            // Berat
             let weightPerPcs = 100; 
             if(select.value.includes("PROMO BORONG")) weightPerPcs = 600;
-
             totalWeightGrams += (weightPerPcs * qtyPcs);
             if(item.querySelector('.display-item-weight')) item.querySelector('.display-item-weight').textContent = `${weightPerPcs} g`;
         });
 
         const totalWeightKg = Math.floor(totalWeightGrams / 1000);
-        
-        // Logika Diskon
         let globalDiscRate = 0;
         for (const threshold in GROSIR_DISCOUNT_RATES) {
             if (totalWeightKg >= parseInt(threshold)) globalDiscRate = Math.max(globalDiscRate, GROSIR_DISCOUNT_RATES[threshold]);
@@ -1058,7 +1075,6 @@
             const qtyInput = item.querySelector('.product-quantity');
             const subDisplay = item.querySelector('.display-subtotal');
             const unitInput = item.querySelector('.unit-select');
-            
             const qtyVal = parseFloat(qtyInput.value) || 0;
             const unit = unitInput.value;
             let qtyPcs = (unit === 'kg') ? qtyVal * 10 : qtyVal;
@@ -1079,12 +1095,9 @@
         document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaNormal);
         document.getElementById('display-discount-amount').textContent = formatCurrency(totalHargaNormal - finalGrandTotal);
-        
-        const wText = totalWeightGrams >= 1000 ? `${(totalWeightGrams/1000).toFixed(2)} kg` : `${totalWeightGrams} g`;
-        document.getElementById('display-total-weight').textContent = wText;
+        document.getElementById('display-total-weight').textContent = totalWeightGrams >= 1000 ? `${(totalWeightGrams/1000).toFixed(2)} kg` : `${totalWeightGrams} g`;
     }
 
-    // Add Product
     function addProductItem() {
         productIdCounter++;
         const container = document.getElementById('product-list-container');
@@ -1124,13 +1137,49 @@
         window.open(`https://api.whatsapp.com/send?phone=6285735785319&text=${encodeURIComponent(msg)}`);
     }
 
-    // --- EXECUTE ---
+    // Timer Flash Sale
+    function startCountdownTimer() {
+        const timerElement = document.getElementById('countdown-timer');
+        const bannerElement = document.getElementById('flash-sale-banner');
+        const storedEndTime = localStorage.getItem('flashSaleEndTime');
+        let flashSaleEndTime;
+        if (storedEndTime && parseInt(storedEndTime) > Date.now()) {
+            flashSaleEndTime = parseInt(storedEndTime);
+        } else {
+            flashSaleEndTime = Date.now() + (3600 * 3 * 1000);
+            localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
+        }
+        function updateTimer() {
+            const now = Date.now();
+            const distance = flashSaleEndTime - now;
+            if (distance < 0) {
+                flashSaleEndTime = Date.now() + (3600 * 3 * 1000);
+                localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
+            }
+            isFlashSaleActive = true;
+            if (bannerElement) bannerElement.style.display = 'block';
+            if (timerElement) {
+                const h = Math.floor(distance / (1000 * 60 * 60));
+                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((distance % (1000 * 60)) / 1000);
+                timerElement.textContent = `${h}:${m}:${s}`;
+            }
+            setTimeout(updateTimer, 1000);
+        }
+        updateTimer();
+    }
+
+    /**
+     * =========================================================
+     * INITIALIZE (EKSEKUSI)
+     * =========================================================
+     */
     document.addEventListener('DOMContentLoaded', function() {
         renderTable('tbody-veggie', 'Keripik Sayur');
         renderTable('tbody-coated', 'Varian Bertepung');
         renderTable('tbody-fruit', 'Keripik Buah');
         
-        updateMixCardPrices(); // PENTING: Update harga di kartu manual mix
+        updateMixCardPrices(); 
 
         const s1 = document.getElementById('paket-1'); if(s1) { populateSelectOptions(s1); s1.addEventListener('change', calculateTotal); }
         document.getElementById('jumlah-1').addEventListener('input', calculateTotal);
@@ -1138,7 +1187,6 @@
         document.getElementById('add-product-btn').addEventListener('click', addProductItem);
         document.getElementById('whatsappForm').addEventListener('submit', sendWhatsAppOrder);
         
-        // Listener Tombol Pesan di Kartu Manual
         document.querySelectorAll('.mix-order-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 let mixName = this.getAttribute('data-mix-key');
@@ -1154,6 +1202,7 @@
             });
         });
 
+        startCountdownTimer();
         calculateTotal();
 
         window.switchCategory = function(cat) {
