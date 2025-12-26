@@ -990,7 +990,119 @@
 
     <script>
     // =========================================================
-    // BAGIAN 1: KONFIGURASI & VARIABEL GLOBAL
+    // BAGIAN 1: DATABASE HARGA MODAL (Urut Abjad A-Z)
+    // =========================================================
+    // Cukup ubah harga di sini, semua harga jual & dropdown otomatis berubah.
+    // Format: "Nama Produk": Harga_Modal_Per_Kg
+    
+    const DATA_HARGA_MODAL = {
+        "Keripik Sayur": [
+            { nama: "Keripik Bawang Merah", modal: 300000 },
+            { nama: "Keripik Bawang Putih", modal: 300000 },
+            { nama: "Keripik Buncis", modal: 150000 },
+            { nama: "Keripik Edamame", modal: 150000 },
+            { nama: "Keripik Jagung Manis", modal: 120000 },
+            { nama: "Keripik Kentang", modal: 150000 },
+            { nama: "Keripik Kentang Wedges", modal: 160000 },
+            { nama: "Keripik Labu Madu", modal: 120000 },
+            { nama: "Keripik Okra", modal: 250000 },
+            { nama: "Keripik Ubi Madu", modal: 100000 },
+            { nama: "Keripik Ubi Ungu", modal: 100000 },
+            { nama: "Keripik Wortel", modal: 130000 }
+        ],
+        "Varian Bertepung": [
+            { nama: "Keripik Bawang Bombay", modal: 140000 },
+            { nama: "Keripik Brokoli", modal: 150000 },
+            { nama: "Keripik Bunga Kol", modal: 130000 },
+            { nama: "Keripik Cabe Besar", modal: 140000 },
+            { nama: "Keripik Cabe Rawit", modal: 140000 },
+            { nama: "Keripik Gedebog Pisang", modal: 85000 },
+            { nama: "Keripik Jamur Kuping", modal: 120000 },
+            { nama: "Keripik Jamur Tiram", modal: 110000 },
+            { nama: "Keripik Paprika", modal: 140000 }
+        ],
+        "Keripik Buah": [
+            { nama: "Keripik Apel", modal: 125000 },
+            { nama: "Keripik Buah Naga", modal: 220000 },
+            { nama: "Keripik Mangga", modal: 140000 },
+            { nama: "Keripik Nangka", modal: 105000 },
+            { nama: "Keripik Pisang", modal: 90000 },
+            { nama: "Keripik Strawberry", modal: 500000 }
+        ]
+    };
+
+    // =========================================================
+    // BAGIAN 2: RUMUS PENETAPAN HARGA (JANGAN UBAH INI)
+    // =========================================================
+    
+    // Rumus: (Harga Modal per 100gr + 2000) + 60%
+    function hitungHargaJual(modalPerKg) {
+        let modalPer100g = modalPerKg / 10;
+        let basePrice = modalPer100g + 2000;
+        let hargaJual = basePrice + (basePrice * 0.60); 
+        return hargaJual; // Tidak ada pembulatan
+    }
+
+    // Fungsi menghitung rata-rata untuk MIX
+    function hitungRataRataKategori(kategori) {
+        let total = 0;
+        DATA_HARGA_MODAL[kategori].forEach(item => total += item.modal);
+        return total / DATA_HARGA_MODAL[kategori].length;
+    }
+
+    // Generate Daftar Produk Siap Jual (Termasuk Mix)
+    function getReadyProductList() {
+        let options = [];
+
+        // 1. Masukkan Produk Satuan (Sudah urut A-Z dari data diatas)
+        for (let kategori in DATA_HARGA_MODAL) {
+            // Tambahkan Header Kategori (Opsional, tapi bagus untuk UX)
+            // options.push({ text: `--- ${kategori} ---`, value: "", disabled: true });
+            
+            DATA_HARGA_MODAL[kategori].forEach(produk => {
+                let harga = hitungHargaJual(produk.modal);
+                options.push({
+                    name: produk.nama,
+                    price: harga,
+                    label: `${produk.nama} - Rp ${harga.toLocaleString('id-ID')}`
+                });
+            });
+        }
+
+        // 2. Hitung & Masukkan Produk MIX (Urutkan dari termurah)
+        let mixProducts = [];
+        
+        // Mix Sayur
+        let avgSayur = hitungRataRataKategori("Keripik Sayur");
+        mixProducts.push({ name: "Paket Mix Sayur", price: hitungHargaJual(avgSayur) });
+
+        // Mix Bertepung
+        let avgTepung = hitungRataRataKategori("Varian Bertepung");
+        mixProducts.push({ name: "Paket Mix Bertepung", price: hitungHargaJual(avgTepung) });
+
+        // Mix Buah
+        let avgBuah = hitungRataRataKategori("Keripik Buah");
+        mixProducts.push({ name: "Paket Mix Buah", price: hitungHargaJual(avgBuah) });
+
+        // Urutkan Mix berdasarkan harga termurah
+        mixProducts.sort((a, b) => a.price - b.price);
+
+        // Gabungkan ke options utama
+        mixProducts.forEach(mix => {
+            options.push({
+                name: mix.name,
+                price: mix.price,
+                label: `${mix.name} - Rp ${mix.price.toLocaleString('id-ID')}`
+            });
+        });
+
+        return options;
+    }
+
+    const GLOBAL_PRODUCT_LIST = getReadyProductList();
+
+    // =========================================================
+    // BAGIAN 3: LOGIKA UTAMA (SISTEM CART & DISKON)
     // =========================================================
     let productIdCounter = 1;
 
@@ -1002,34 +1114,50 @@
         25: 0.25  // 25 kg = 25% (Maksimal)
     };
 
-    // INI LOGIKA BARU: Potongan Rp 2.000 sebelum diskon persen
-    const BASE_PRICE_CUT = 2000; 
-
-    // Konfigurasi Flash Sale
+    const BASE_PRICE_CUT = 2000;  
     const FLASH_SALE_DISCOUNT = 0.05; // 5%
-    const FLASH_SALE_DURATION = 3600 * 3; // 3 Jam (3600 detik * 3)
+    const FLASH_SALE_DURATION = 3600 * 3; 
     
     let isFlashSaleActive = false;
     let flashSaleEndTime;
     const WEIGHT_PER_PCS_GRAMS = 100;
-    const MIX_PACKAGE_WEIGHT = 200;
+    const MIX_PACKAGE_WEIGHT = 200; // Jika mix beratnya beda, sesuaikan disini
 
     // =========================================================
-    // BAGIAN 2: HELPER (FORMAT RUPIAH & AMBIL ANGKA)
+    // HELPER (FORMAT RUPIAH & AMBIL ANGKA)
     // =========================================================
     function extractPrice(value) {
         if (!value) return 0;
-        const match = value.match(/Rp\s*([\d\.]+)/);
+        // Regex diperbarui untuk menangkap angka desimal juga jika ada
+        const match = value.match(/Rp\s*([\d\.,]+)/);
         if (match && match[1]) {
-            return parseFloat(match[1].replace(/\./g, ''));
+            // Hapus titik ribuan, ganti koma desimal jadi titik (format JS number)
+            let cleanStr = match[1].replace(/\./g, '').replace(',', '.'); 
+            return parseFloat(cleanStr);
         }
         return 0;
     }
 
-    const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID', { minimumFractionDigits: 0 })}`;
+    const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID')}`;
 
     // =========================================================
-    // BAGIAN 3: MENENTUKAN TIER & DISKON
+    // POPULATE DROPDOWN OTOMATIS
+    // =========================================================
+    function populateSelectOptions(selectElement) {
+        // Kosongkan dulu kecuali opsi pertama (Pilih Produk)
+        selectElement.innerHTML = '<option value="" disabled selected>-- Pilih Produk --</option>';
+        
+        GLOBAL_PRODUCT_LIST.forEach(prod => {
+            let option = document.createElement('option');
+            // Value harus format ini agar bisa dibaca extractPrice
+            option.value = prod.label; 
+            option.textContent = prod.label;
+            selectElement.appendChild(option);
+        });
+    }
+
+    // =========================================================
+    // MENENTUKAN TIER & DISKON
     // =========================================================
     function getMaxDiscount(totalWeightKg) {
         let bestDiscount = { rate: 0, type: 'None', tier: null, range: null };
@@ -1059,8 +1187,6 @@
         
         // 2. Cek Flash Sale
         if (isFlashSaleActive) {
-             // Flash sale hanya menang jika belum dapat grosir (rate grosir 0)
-             // Karena Grosir Tier 1 (10% + potong 2000) pasti lebih murah dari Flash Sale (5%)
              if (bestDiscount.rate === 0 && totalWeightKg > 0) {
                  bestDiscount.rate = FLASH_SALE_DISCOUNT;
                  bestDiscount.type = 'Flash Sale';
@@ -1070,7 +1196,7 @@
     }
 
     // =========================================================
-    // BAGIAN 4: FUNGSI UTAMA HITUNG TOTAL (LOGIKA BARU)
+    // FUNGSI HITUNG TOTAL
     // =========================================================
     function calculateTotal() {
         let totalHargaNormal = 0; 
@@ -1080,7 +1206,7 @@
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         let totalQuantityPcs = 0;
 
-        // A. LOOP PERTAMA: Hitung Berat Total (Untuk Tentukan Tier)
+        // A. LOOP PERTAMA: Hitung Berat
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
@@ -1091,7 +1217,9 @@
             const unit = unitElement.value;
             
             let quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
-            let itemWeightPerPcs = (selectedValue.includes("Paket Mix")) ? MIX_PACKAGE_WEIGHT : WEIGHT_PER_PCS_GRAMS;
+            
+            // Cek apakah produk Mix (kata kunci 'Mix') untuk berat berbeda
+            let itemWeightPerPcs = (selectedValue.toLowerCase().includes("mix")) ? MIX_PACKAGE_WEIGHT : WEIGHT_PER_PCS_GRAMS;
             
             totalWeightGrams += (itemWeightPerPcs * quantityPcs);
             
@@ -1101,10 +1229,10 @@
 
         const totalWeightKg = Math.floor(totalWeightGrams / 1000);
         
-        // B. Ambil Status Diskon Berdasarkan Berat Total
+        // B. Ambil Status Diskon
         const { rate: globalDiscRate, type: discType, tier: discTier, range: discRange } = getMaxDiscount(totalWeightKg);
 
-        // C. LOOP KEDUA: Hitung Harga Per Item (Terapkan Logika Potong 2000)
+        // C. LOOP KEDUA: Hitung Harga
         productItems.forEach(item => {
             const selectElement = item.querySelector('.product-select');
             const quantityInput = item.querySelector('.product-quantity');
@@ -1116,19 +1244,19 @@
             const unit = unitElement.value;
             const quantityPcs = (unit === 'kg') ? quantityValue * 10 : quantityValue;
 
+            // Ambil harga asli (tanpa pembulatan) dari string value
             const hargaEcerPerPcs = extractPrice(selectedValue);
             
-            // Subtotal Normal (Harga coret)
+            // Subtotal Normal
             totalHargaNormal += (hargaEcerPerPcs * quantityPcs);
 
             let hargaDasarPerPcs = hargaEcerPerPcs;
 
-            // --- LOGIKA UTAMA YANG ANDA MINTA ---
-            // Jika Grosir: Potong 2000 dulu dari harga ecer
+            // --- LOGIKA HARGA BARU ---
+            // Jika Grosir: Potong 2000 dulu
             if (discType === 'Grosir') {
                 hargaDasarPerPcs = Math.max(0, hargaEcerPerPcs - BASE_PRICE_CUT);
             } 
-            // Jika Flash Sale atau Normal: Harga dasar tetap harga ecer
             
             // Hitung Total Item: (Harga Dasar * Qty) - Diskon Persen
             let itemTotalBeforePercent = hargaDasarPerPcs * quantityPcs;
@@ -1137,17 +1265,16 @@
             finalGrandTotal += itemFinalPrice;
             totalQuantityPcs += quantityPcs;
 
-            // Update Tampilan Subtotal di Kartu
+            // Update Tampilan Subtotal
             subtotalDisplay.textContent = formatCurrency(itemFinalPrice);
             
-            // Tampilkan info potongan di sebelah harga
             if (globalDiscRate > 0) {
                  let infoText = ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
                  if(discType === 'Grosir') infoText = ` (Potong 2rb + ${(globalDiscRate * 100).toFixed(0)}%)`;
                  subtotalDisplay.textContent += infoText;
             }
 
-            // Tombol Hapus (Hide jika cuma 1 item)
+            // Tombol Hapus
             const removeButton = item.querySelector('.remove-product-btn');
             if (productItems.length > 1) {
                 removeButton.style.display = 'inline-block';
@@ -1167,7 +1294,7 @@
         const totalWeightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams / 1000).toFixed(2).replace(/\.00$/, '')} kg` : `${totalWeightGrams} g`;
         document.getElementById('display-total-weight').textContent = totalWeightText;
 
-        // Note Diskon Kecil (Bawah Subtotal)
+        // Note Diskon
         const tierNoteElement = document.getElementById('discount-tier-note');
         if (tierNoteElement) {
             if (globalDiscRate > 0) {
@@ -1181,7 +1308,7 @@
             }
         }
 
-        // Keterangan Lengkap (Footer Struk - Tulisan Kecil)
+        // Keterangan Lengkap
         const totalKeterangan = document.getElementById('total-discount-keterangan');
         if (totalKeterangan) {
             let notes = [];
@@ -1203,7 +1330,7 @@
     }
 
     // =========================================================
-    // BAGIAN 5: TIMER FLASH SALE
+    // TIMER FLASH SALE
     // =========================================================
     function startCountdownTimer() {
         const timerElement = document.getElementById('countdown-timer');
@@ -1222,7 +1349,6 @@
             const distance = flashSaleEndTime - now;
 
             if (distance < 0) {
-                // Reset waktu (Looping timer)
                 flashSaleEndTime = Date.now() + FLASH_SALE_DURATION * 1000;
                 localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
             }
@@ -1239,14 +1365,14 @@
                     `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             }
             
-            calculateTotal(); // Update harga real-time
+            calculateTotal(); 
             setTimeout(updateTimer, 1000);
         }
         updateTimer();
     }
 
     // =========================================================
-    // BAGIAN 6: FORM ORDER (TAMBAH PRODUK & KIRIM WA)
+    // FORM ORDER (TAMBAH PRODUK & KIRIM WA)
     // =========================================================
     function addProductItem() {
         productIdCounter++;
@@ -1258,7 +1384,11 @@
         
         const select = newItem.querySelector('.product-select');
         select.id = 'paket-' + productIdCounter;
+        
+        // --- MODIFIKASI: ISI DROPDOWN ---
+        populateSelectOptions(select); // Mengisi opsi produk otomatis
         select.value = "";
+        
         select.addEventListener('change', calculateTotal);
         
         const qty = newItem.querySelector('.product-quantity');
@@ -1315,7 +1445,7 @@
         }
 
 const message = `Halo Primafood Rilldelish! 👋
-Saya ingin memesan produk (ORDER DARI GOOGLE / WEB):
+Saya ingin memesan produk (ORDER DARI WEB):
 
 👤 *DATA PEMESAN*
 Nama: ${nama}
@@ -1342,17 +1472,21 @@ Mohon info rekening. Terima kasih!`;
     }
 
     // =========================================================
-    // BAGIAN 7: INISIALISASI (SAAT HALAMAN DIMUAT)
+    // INISIALISASI (SAAT HALAMAN DIMUAT)
     // =========================================================
     document.addEventListener('DOMContentLoaded', function() {
-        // Listener Form Pertama
-        document.getElementById('paket-1').addEventListener('change', calculateTotal);
+        // 1. POPULATE OPSI PRODUK PERTAMA SECARA OTOMATIS
+        const firstSelect = document.getElementById('paket-1');
+        if(firstSelect) {
+            populateSelectOptions(firstSelect);
+            firstSelect.addEventListener('change', calculateTotal);
+        }
+
+        // Listener lain
         document.getElementById('jumlah-1').addEventListener('input', calculateTotal);
         document.getElementById('unit-1').addEventListener('change', calculateTotal);
-        
         document.getElementById('add-product-btn').addEventListener('click', addProductItem);
         
-        // Hapus Button Listener Awal
         document.querySelector('.product-item[data-id="1"] .remove-product-btn').addEventListener('click', function() {
             const c = document.getElementById('product-list-container');
             if(c.children.length > 1) { this.closest('.product-item').remove(); calculateTotal(); }
@@ -1360,17 +1494,29 @@ Mohon info rekening. Terima kasih!`;
 
         document.getElementById('whatsappForm').addEventListener('submit', sendWhatsAppOrder);
         
-        // Listener Katalog (Tombol Order di Kartu Produk)
+        // Listener Katalog (Order dari kartu produk)
         document.querySelectorAll('.order-btn, .mix-order-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const name = this.getAttribute('data-product-name');
+                const nameKey = this.getAttribute('data-product-name');
+                
+                // Cari opsi yang mengandung nama produk tersebut
                 const sel = document.getElementById('paket-1');
-                if(sel) { sel.value = name; calculateTotal(); document.getElementById('order-form').scrollIntoView({behavior:'smooth'}); }
+                if(sel) { 
+                    // Loop untuk mencari value yang pas karena value ada harganya
+                    for (let i = 0; i < sel.options.length; i++) {
+                        if (sel.options[i].text.includes(nameKey)) {
+                            sel.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    calculateTotal(); 
+                    document.getElementById('order-form').scrollIntoView({behavior:'smooth'}); 
+                }
             });
         });
 
-        // Filter Kategori Katalog
+        // Filter Kategori
         const catBtns = document.querySelectorAll('.category-btn');
         const lists = document.querySelectorAll('.product-list');
         catBtns.forEach(btn => {
@@ -1382,25 +1528,18 @@ Mohon info rekening. Terima kasih!`;
             });
         });
 
-        // Jalankan Timer & Kalkulasi Awal
         startCountdownTimer();
         calculateTotal();
         
-        // Jalankan Slider Testimonial
         if (typeof startSlideTimer === 'function') startSlideTimer();
     });
 
     // =========================================================
-    // BAGIAN 8: FUNGSI LIGHTBOX (ZOOM GAMBAR) - DIKEMBALIKAN
+    // FITUR TAMBAHAN (LIGHTBOX & SLIDER)
     // =========================================================
     function openImage(element) {
-        var modal = document.getElementById("imageModal");
-        if(!modal) modal = document.getElementById("imgModal"); // Cek ID alternatif
-        
-        var modalImg = document.getElementById("img01");
-        if(!modalImg) modalImg = document.getElementById("imgExpanded");
-
-        // Cari gambar sumber
+        var modal = document.getElementById("imageModal") || document.getElementById("imgModal");
+        var modalImg = document.getElementById("img01") || document.getElementById("imgExpanded");
         var imgSource = element.querySelector('img') || element; 
         
         if (imgSource && modal) {
@@ -1411,30 +1550,22 @@ Mohon info rekening. Terima kasih!`;
     }
 
     function closeImage() {
-        var modal = document.getElementById("imageModal");
-        if(!modal) modal = document.getElementById("imgModal");
-
+        var modal = document.getElementById("imageModal") || document.getElementById("imgModal");
         if(modal) {
             modal.classList.remove("active");
             setTimeout(() => modal.style.display = "none", 300);
         }
     }
 
-    // =========================================================
-    // BAGIAN 9: TESTIMONIAL SLIDER - DIKEMBALIKAN
-    // =========================================================
+    // Slider Logic
     let currentSlide = 0;
     let slideInterval;
-    
-    // Pastikan elemen slider ada
     const slides = document.querySelectorAll('.testimonial-card');
     const track = document.querySelector('.testimonial-track');
     const dotsContainer = document.getElementById('sliderDots');
 
     if (slides.length > 0 && track && dotsContainer) {
         const totalSlides = slides.length;
-
-        // Buat Dots
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -1442,7 +1573,6 @@ Mohon info rekening. Terima kasih!`;
             dot.addEventListener('click', () => goToSlide(index));
             dotsContainer.appendChild(dot);
         });
-
         const dots = document.querySelectorAll('.dot');
 
         function updateSlidePosition() {
@@ -1457,7 +1587,6 @@ Mohon info rekening. Terima kasih!`;
             resetTimer();
         }
 
-        // Fungsi Global untuk Tombol Panah HTML
         window.moveSlide = function(direction) {
             currentSlide += direction;
             if (currentSlide < 0) currentSlide = totalSlides - 1;
@@ -1468,9 +1597,7 @@ Mohon info rekening. Terima kasih!`;
 
         function startSlideTimer() {
             if(slideInterval) clearInterval(slideInterval);
-            slideInterval = setInterval(() => {
-                window.moveSlide(1); // Geser otomatis
-            }, 5000); 
+            slideInterval = setInterval(() => { window.moveSlide(1); }, 5000); 
         }
 
         function resetTimer() {
