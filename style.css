@@ -305,3 +305,46 @@ section { padding: 80px 0; width: 100%; position: relative; }
     .footer-heading { border-bottom: none; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #FFD700; }
     .social-grid { grid-template-columns: 1fr 1fr; }
 }
+/* Container Tabel agar bisa scroll di HP */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.catalog-table {
+    width: 100%;
+    min-width: 700px; /* Paksa lebar agar kolom tidak tergencet */
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.catalog-table th, .catalog-table td {
+    padding: 12px 8px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.catalog-table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Tombol Kategori */
+.category-btn {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.category-btn.active {
+    background-color: #1b5e20; /* Warna Hijau Utama Anda */
+    color: #fff;
+    border-color: #1b5e20;
+}
