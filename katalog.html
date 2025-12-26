@@ -128,6 +128,7 @@
             align-items: stretch !important; 
         }
         
+        /* Layout Khusus Mix (Desktop 6 Kolom, HP 2 Kolom) */
         #mix .catalog-grid { 
             grid-template-columns: repeat(6, 1fr) !important; 
             gap: 15px !important; 
@@ -179,12 +180,10 @@
         .mini-tier-table td { padding: 3px 6px !important; border-bottom: 1px solid #eee !important; color: #212121 !important; }
         .mini-tier-table td:last-child { font-weight: 700; color: var(--col-cta); text-align: right; }
 
-        /* --- BUTTONS (FIX KONTRAS WARNA) --- */
-        /* Menggunakan warna yang lebih gelap agar teks Putih terbaca jelas (WCAG Compliant) */
-        
+        /* --- BUTTONS --- */
         .wa-btn-catalog {
             display: block; width: 100%; text-align: center;
-            background-color: #128C7E !important; /* Diubah ke Teal Gelap WA */
+            background-color: #128C7E !important; 
             color: #ffffff !important; padding: 10px;
             border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: auto;
             border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s;
@@ -194,7 +193,7 @@
         .storelink-btn {
             display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important;
             width: 100% !important; min-height: 50px !important; padding: 5px 10px !important; margin-top: 8px !important;
-            background-color: #d84315 !important; /* Diubah ke Orange Burnt Gelap */
+            background-color: #d84315 !important;
             color: #ffffff !important; border: 1px solid #d84315 !important;
             border-radius: 5px !important; font-size: 0.85em !important; font-weight: 700 !important; text-decoration: none !important;
             line-height: 1.2 !important; box-sizing: border-box !important; transition: 0.3s;
@@ -215,7 +214,7 @@
         .promo-price-box { margin-bottom: 25px !important; width: fit-content !important; display: flex; align-items: center; gap: 20px; background: #fff3e0; padding: 15px 25px; border-radius: 10px; border: 1px solid #ffe0b2; }
 
         .mix-order-btn {
-            background-color: #c62828 !important; /* Diubah ke Merah Bata Gelap */
+            background-color: #c62828 !important; 
             color: #ffffff !important; padding: 12px 30px;
             text-decoration: none; font-weight: 700; border-radius: 50px; display: inline-block;
             transition: 0.3s; text-transform: uppercase; border: none; cursor: pointer;
@@ -238,7 +237,6 @@
         .prev-btn, .next-btn { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background: rgba(0,0,0,0.5); border: none; }
         .next-btn { right: 0; border-radius: 3px 0 0 3px; }
         .prev-btn { left: 0; border-radius: 0 3px 3px 0; }
-        /* Style saat tombol disabled (disembunyikan) */
         .nav-btn-hidden { display: none !important; }
         .gallery-counter { text-align: center; color: #ccc; padding: 10px; margin-top: 10px; font-size: 14px; }
 
@@ -285,9 +283,12 @@
             .container { padding: 0 10px !important; }
             
             /* Grid Produk Mobile (2 Kolom) */
-            .catalog-grid, #mix .catalog-grid { 
+            .catalog-grid { 
                 grid-template-columns: 1fr 1fr !important; 
                 gap: 8px !important; 
+            }
+            #mix .catalog-grid {
+                grid-template-columns: 1fr 1fr !important; /* Paksa 2 kolom di HP */
             }
             
             .catalog-card { height: 100% !important; padding: 8px !important; }
@@ -302,7 +303,6 @@
             .mini-tier-table td { padding: 0 !important; white-space: nowrap !important; }
             .wa-btn-catalog { font-size: 11px !important; padding: 5px 0 !important; }
             
-            /* Deskripsi Pendek HP */
             .product-short-desc { 
                 font-size: 10px !important; line-height: 1.2 !important; margin-bottom: 5px !important;
             }
@@ -321,7 +321,7 @@
         }
     </style>
 
-<script>
+    <script>
     document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             var gtmScript = document.createElement('script');
@@ -375,21 +375,16 @@
         <span class="section-subtitle-best-seller">⭐ Best Seller ⭐</span>
         
         <div class="catalog-grid">
-            
             <div class="catalog-card">
                 <img src="images/mix-sweet-garden.webp" alt="MIX Sweet Garden" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">MIX Sweet Garden</div>
                     <span class="catalog-en">Manis Alami Sayur</span>
-                    <span class="catalog-price-ecer">Rp 22.000</span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Perpaduan manis legit Ubi Madu, Ubi Ungu, & Jagung.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Ubi Madu, Ubi Ungu, Wortel, Buncis, Jagung.</p>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SWEET%20GARDEN." class="wa-btn-catalog" aria-label="Pesan MIX Sweet Garden via WhatsApp">Pesan via WA</a>
-                    
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Sweet Garden di Storelink">
-                        🛒 Beli Satuan <br> (Bisa COD) ↗
-                    </a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SWEET%20GARDEN." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
@@ -398,86 +393,63 @@
                 <div class="catalog-info">
                     <div class="catalog-name">MIX Savory</div>
                     <span class="catalog-en">Rempah & Jamur</span>
-                    <span class="catalog-price-ecer">Rp 23.500</span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Gurih nendang! Kombinasi Jamur, Brokoli, & Paprika.</p>
-                    <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Brokoli, Bombay, Jamur Tiram/Kuping, Cabe, Paprika.</p>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SAVORY." class="wa-btn-catalog" aria-label="Pesan MIX Savory via WhatsApp">Pesan via WA</a>
-
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Savory di Storelink">
-                        🛒 Beli Satuan <br> (Bisa COD) ↗
-                    </a>
+                    <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Brokoli, Bombay, Jamur Tiram, Jamur Kuping, Cabe, Paprika.</p>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20SAVORY." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/mix-fusion-baru-1.webp" alt="MIX Fusion" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/mix-fusion-baru-1.webp,images/mix-fusion-baru-2.webp,images/mix-fusion-baru-3.webp,images/mix-fusion-baru-4.webp,images/mix-fusion-baru-5.webp,images/mix-fusion-baru-6.webp,images/mix-fusion-baru-7.webp,images/mix-fusion-baru-8.webp,images/mix-fusion-baru-9.webp,images/mix-fusion-baru-10.webp" 
-                     onclick="openGallery(this)">
-                
+                <img src="images/mix-fusion-baru-1.webp" alt="MIX Fusion Lengkap" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/mix-fusion-baru-1.webp">
                 <div class="catalog-info">
-                    <div class="catalog-name">MIX Fusion</div>
+                    <div class="catalog-name">MIX Fusion Lengkap</div>
                     <span class="catalog-en">Buah & Sayur</span>
-                    <span class="catalog-price-ecer">Rp 23.500</span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Paket komplit! Manisnya buah ketemu gurihnya sayur.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Apel, Pisang, Nangka, Wortel, Ubi Ungu, Okra.</p>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20FUSION." class="wa-btn-catalog" aria-label="Pesan MIX Fusion via WhatsApp">Pesan via WA</a>
-
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-fusion-mix-buah-sayur-rilldelish-100gr" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Fusion di Storelink">
-                        🛒 Beli Satuan <br> (Bisa COD) ↗
-                    </a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20MIX%20FUSION." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-fusion-mix-buah-sayur-rilldelish-100gr" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/mix-serat.webp" alt="Paket Mix Serat" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
+                <img src="images/mix-serat.webp" alt="MIX Serat Sehat" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
                 <div class="catalog-info">
-                    <div class="catalog-name">MIX Serat</div>
+                    <div class="catalog-name">MIX Serat Sehat</div>
                     <span class="catalog-en">Pencernaan Sehat</span>
-                    <span class="catalog-price-ecer">Rp 22.500</span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Tinggi serat! Gedebog Pisang & Okra untuk pencernaan.</p>
-                    <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Gedebog Pisang, Okra, Ubi Ungu, Ubi Madu.</p>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20SERAT." class="wa-btn-catalog" aria-label="Pesan MIX Serat via WhatsApp">Pesan via WA</a>
-
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Serat di Storelink">
-                        🛒 Beli Satuan <br> (Bisa COD) ↗
-                    </a>
+                    <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Gedebog Pisang, Okra, Ubi Ungu, Labu Madu.</p>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20SERAT." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/mix-imun-boster.webp" alt="Paket Imun Booster" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
+                <img src="images/mix-imun-boster.webp" alt="MIX Imun Booster" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">MIX Imun Booster</div>
                     <span class="catalog-en">Premium Vitamin</span>
-                    <span class="catalog-price-ecer">Rp 32.500</span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Vitamin booster dari Strawberry & Sayuran pilihan.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Strawberry, Brokoli, Wortel, Jamur Tiram.</p>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20IMUN%20BOOSTER." class="wa-btn-catalog" aria-label="Pesan MIX Imun Booster via WhatsApp">Pesan via WA</a>
-
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Imun Booster di Storelink">
-                        🛒 Beli Satuan <br> (Bisa COD) ↗
-                    </a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20IMUN%20BOOSTER." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/mix-extrem.webp" alt="Paket Mix Ekstrem" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
+                <img src="images/mix-extrem.webp" alt="MIX Ekstrem Pedas" class="catalog-img" loading="lazy" width="300" height="300" onclick="openImage(this)">
                 <div class="catalog-info">
-                    <div class="catalog-name">MIX Ekstrem</div>
+                    <div class="catalog-name">MIX Ekstrem Pedas</div>
                     <span class="catalog-en">Pedas & Gurih</span>
-                    <span class="catalog-price-ecer">Rp 30.500</span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Pedas nampol! Cabe Rawit & Paprika asli.</p>
                     <p style="font-size:0.85em; color:#333; margin-bottom:15px; font-weight: 500;">Isi: Cabe Rawit, Bawang Merah, Paprika, Kentang Wedges.</p>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20EKSTREM." class="wa-btn-catalog" aria-label="Pesan MIX Ekstrem via WhatsApp">Pesan via WA</a>
-
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan MIX Ekstrem di Storelink">
-                        🛒 Beli Satuan <br> (Bisa COD) ↗
-                    </a>
+                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20pesan%20PAKET%20MIX%20EKSTREM." class="wa-btn-catalog">Pesan via WA</a>
+                    <a href="https://grosirkeripiksayur.storelink.id/keripik-mix-sayur-buah-premium-rilldelish" target="_blank" class="storelink-btn">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
                 </div>
             </div>
             
@@ -496,15 +468,13 @@
                         <s style="color: #444; font-size: 0.9em; font-weight: 600;">Rp 154.500</s>
                     </div>
                     <div style="text-align: left; border-left: 2px solid #bbb; padding-left: 15px;">
-                        <p style="font-size: 2em; font-weight: 800; color: #c62828; margin: 0; line-height: 1;">Rp 146.800</p>
+                        <p style="font-size: 2em; font-weight: 800; color: #c62828; margin: 0; line-height: 1;" id="price-promo-borong">Rp -</p>
                         <p style="font-size: 0.8em; color: #1b5e20; font-weight: 800; margin: 2px 0 0 0;">(Lebih Hemat 5%)</p>
                     </div>
                 </div>
 
-                <a href="#order-form" class="mix-order-btn" 
-                   data-product-name="PROMO BORONG SEMUA (6 Paket / 600gr) - Rp 146.800" 
-                   style="font-size: 1em; padding: 12px 30px; background-color: #e65100; color: #ffffff !important; width: 100%; border-radius: 50px; margin-top: 10px; text-decoration: none; display: block; font-weight: 700; box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);" aria-label="Ambil Promo Borong Semua via WhatsApp">
-                   AMBIL PROMO (600gr) 🛒
+                <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20ambil%20PROMO%20BORONG%20SEMUA." class="mix-order-btn" style="font-size: 1em; padding: 12px 30px; background-color: #e65100; color: #ffffff !important; width: 100%; border-radius: 50px; margin-top: 10px; text-decoration: none; display: block; font-weight: 700; box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);">
+                    AMBIL PROMO (600gr) 🛒
                 </a>
             </div>
         </div>
@@ -517,271 +487,158 @@
         <div class="catalog-grid">
             
             <div class="catalog-card">
-                <img src="images/wortel-baru-1.webp" alt="Keripik Wortel" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/wortel-baru-1.webp,images/wortel-baru-2.webp,images/wortel-baru-3.webp,images/wortel-baru-4.webp,images/wortel-baru-5.webp,images/wortel-baru-6.webp,images/wortel-baru-7.webp,images/wortel-baru-8.webp,images/wortel-baru-9.webp" 
-                     onclick="openGallery(this)">
-                
+                <img src="images/wortel-baru-1.webp" alt="Keripik Wortel" class="catalog-img" loading="lazy" onclick="openGallery(this)" data-gallery="images/wortel-baru-1.webp">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Wortel</div>
-                    <span class="catalog-price-ecer">Rp 22.800 <small>/100gr</small></span>
-                    <p class="product-short-desc">Manis alami, renyah, kaya Vitamin A. Anak-anak pasti suka!</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Manis alami, renyah, kaya Vitamin A.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 187.200</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 176.800</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
-                        <tr><td>25kg+</td><td>Rp 156.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Keripik%20Wortel." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Wortel via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-wortel-rilldelish-kaya-vitamin-a-cemilan-sehat-snack-diet-mata-vacuum-frying" target="_blank" class="storelink-btn" aria-label="Beli Satuan Wortel di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Wortel" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/ubi-ungu-baru-1.webp" alt="Keripik Ubi Ungu" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/ubi-ungu-baru-1.webp,images/ubi-ungu-baru-2.webp,images/ubi-ungu-baru-3.webp,images/ubi-ungu-baru-4.webp,images/ubi-ungu-baru-5.webp,images/ubi-ungu-baru-6.webp,images/ubi-ungu-baru-7.webp,images/ubi-ungu-baru-8.webp,images/ubi-ungu-baru-9.webp" 
-                     onclick="openGallery(this)">
-                
+                <img src="images/ubi-ungu-baru-1.webp" alt="Keripik Ubi Ungu" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Ubi Ungu</div>
-                    <span class="catalog-price-ecer">Rp 18.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Warna ungu alami, tekstur empuk & manis legit.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Warna ungu alami, tekstur empuk & manis.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 120.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Ungu." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Ubi Ungu via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-ubi-ungu-100gr-vacuum-frying-antioksidan-tinggi-cemilan-sehat-snack-diet-rendah-lemak" target="_blank" class="storelink-btn" aria-label="Beli Satuan Ubi Ungu di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20UbiUngu" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/ubi-madu-baru-1.webp" alt="Keripik Ubi Madu" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/ubi-madu-baru-1.webp,images/ubi-madu-baru-2.webp,images/ubi-madu-baru-3.webp,images/ubi-madu-baru-4.webp,images/ubi-madu-baru-5.webp,images/ubi-madu-baru-6.webp,images/ubi-madu-baru-7.webp,images/ubi-madu-baru-8.webp,images/ubi-madu-baru-9.webp" 
-                     onclick="openGallery(this)">
-                
+                <img src="images/ubi-madu-baru-1.webp" alt="Keripik Ubi Madu" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Ubi Madu</div>
-                    <span class="catalog-price-ecer">Rp 18.000 <small>/100gr</small></span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Lebih manis dari ubi biasa, favorit keluarga.</p>
-                    
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 120.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Ubi%20Madu." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Ubi Madu via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-ubi-madu-premium-100gr500gr-rilldelish-honey-sweet-potato-chips-manis-renyah" target="_blank" class="storelink-btn" aria-label="Beli Satuan Ubi Madu di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20UbiMadu" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/okra-baru-1.webp" alt="Keripik Okra" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/okra-baru-1.webp,images/okra-baru-2.webp,images/okra-baru-3.webp,images/okra-baru-4.webp,images/okra-baru-5.webp,images/okra-baru-6.webp,images/okra-baru-7.webp,images/okra-baru-8.webp,images/okra-baru-9.webp,images/okra-baru-10.webp" 
-                     onclick="openGallery(this)">
-                
+                <img src="images/okra-baru-1.webp" alt="Keripik Okra" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Okra</div>
-                    <span class="catalog-price-ecer">Rp 42.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Superfood! Renyah, tidak berlendir, bagus untuk diet.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Superfood! Renyah, tidak berlendir.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 360.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 340.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 320.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 300.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Okra." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Okra via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-okra-bebas-lendir-rilldelish-100gr-100-cemilan-sehat-snack-sayur-vacuum-frying" target="_blank" class="storelink-btn" aria-label="Beli Satuan Okra di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Okra" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/jagung-manis-1.webp" alt="Keripik Jagung Manis" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/jagung-manis-1.webp,images/jagung-manis-2.webp,images/jagung-manis-3.webp,images/jagung-manis-4.webp,images/jagung-manis-5.webp,images/jagung-manis-kemasan-1.webp,images/jagung-manis-kemasan-2.webp" onclick="openGallery(this)">
-                
+                <img src="images/jagung-manis-1.webp" alt="Keripik Jagung Manis" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Jagung Manis</div>
-                    <span class="catalog-price-ecer">Rp 21.200 <small>/100gr</small></span>
-                    <p class="product-short-desc">Butiran jagung utuh yang manis dan meledak di mulut.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Butiran jagung utuh yang manis meledak.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 172.800</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 163.200</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
-                        <tr><td>25kg+</td><td>Rp 144.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Jagung%20Manis." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Jagung via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jagung-manis-premium-rilldelish-sweet-corn-chips-renyah-asli-batu-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Jagung di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Jagung" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/labu-madu-1.webp" alt="Keripik Labu Madu" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/labu-madu.webp,images/labu-madu-detail.webp,images/labu-madu-kemasan.webp" onclick="openGallery(this)">
-                
+                <img src="images/labu-madu-1.webp" alt="Keripik Labu Madu" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Labu Madu</div>
-                    <span class="catalog-price-ecer">Rp 18.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Tekstur lembut dengan rasa manis creamy alami.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Tekstur lembut dengan rasa manis creamy.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 120.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Labu%20Madu." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Labu Madu via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-labu-madu-premium-rilldelish-butternut-pumpkin-chips-asli-batu-renyah-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Labu Madu di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20LabuMadu" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/kentang-1.webp" alt="Keripik Kentang" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/kentang-1.webp,images/kentang-2.webp,images/kentang-3.webp,images/kentang-4.webp,images/kentang-5.webp,images/kentang-kemasan-1.webp" onclick="openGallery(this)">
-                
+                <img src="images/kentang-1.webp" alt="Keripik Kentang" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Kentang</div>
-                    <span class="catalog-price-ecer">Rp 24.400 <small>/100gr</small></span>
-                    <p class="product-short-desc">Irisan tipis renyah, gurih tanpa MSG. Klasik favorit.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Irisan tipis renyah, gurih tanpa MSG.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
-                        <tr><td>25kg+</td><td>Rp 168.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Kentang." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Kentang via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-kentang-premium-rilldelish-potato-chips-asli-batu-renyah-sehat-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Kentang di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Kentang" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/kentang-wedges-1.webp" alt="Keripik Wedges" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/kentang-wedges-1.webp,images/kentang-wedges-2.webp,images/kentang-wedges-3.webp,images/kentang-wedges-4.webp,images/kentang-wedges-5.webp,images/kentang-wedges-6.webp,images/kentang-wedges-kemasan-1.webp" onclick="openGallery(this)">
-                
+                <img src="images/kentang-wedges-1.webp" alt="Keripik Kentang Wedges" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Kentang Wedges</div>
-                    <span class="catalog-price-ecer">Rp 27.600 <small>/100gr</small></span>
-                    <p class="product-short-desc">Potongan tebal, bumbu meresap, kentang premium.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Potongan tebal, bumbu meresap.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 230.400</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 217.600</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 204.800</td></tr>
-                        <tr><td>25kg+</td><td>Rp 192.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Wedges." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Wedges via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-kentang-wedges-premium-rilldelish-potato-wedges-asli-batu-renyah-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Wedges di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Wedges" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/bawang-merah-1.webp" alt="Keripik Bawang Merah" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/bawang-merah-1.webp,images/bawang-merah-2.webp,images/bawang-merah-3.webp,images/bawang-merah-4.webp,images/bawang-merah-5.webp,images/bawang-merah-6.webp,images/bawang-merah-kemasan-1.webp" onclick="openGallery(this)">
-                
+                <img src="images/bawang-merah-1.webp" alt="Keripik Bawang Merah" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Bawang Merah</div>
-                    <span class="catalog-price-ecer">Rp 46.800 <small>/100gr</small></span>
-                    <p class="product-short-desc">Wangi aromatik! Cocok untuk taburan atau cemilan.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Wangi aromatik! Cocok untuk taburan.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 403.200</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 380.800</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 358.400</td></tr>
-                        <tr><td>25kg+</td><td>Rp 336.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Merah." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bawang Merah via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/bawang-merah-goreng-premium-rilldelish-fried-shallots-asli-batu-renyah-primafood" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bawang Merah di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20BawangMerah" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/bawang-putih-baru-1.webp" alt="Keripik Bawang Putih" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/bawang-putih-baru-1.webp,images/bawang-putih-baru-2.webp,images/bawang-putih-baru-3.webp,images/bawang-putih-baru-4.webp,images/bawang-putih-baru-5.webp,images/bawang-putih-baru-6.webp,images/bawang-putih-baru-7.webp,images/bawang-putih-baru-8.webp,images/bawang-putih-baru-9.webp,images/bawang-putih-baru-10.webp" 
-                     onclick="openGallery(this)">
-                
+                <img src="images/bawang-putih-baru-1.webp" alt="Keripik Bawang Putih" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Bawang Putih</div>
-                    <span class="catalog-price-ecer">Rp 50.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Gurih intens, bagus untuk kesehatan jantung.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Gurih intens, bagus untuk kesehatan.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 432.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 408.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 384.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 360.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Bawang%20Putih." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bawang Putih via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bawang-putih" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bawang Putih di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20BawangPutih" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/buncis-1.webp" alt="Keripik Buncis" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/buncis-1.webp,images/buncis-2.webp,images/buncis-3.webp,images/buncis-4.webp,images/buncis-5.webp,images/buncis-kemasan.webp" onclick="openGallery(this)">
-                
+                <img src="images/buncis-1.webp" alt="Keripik Buncis" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Buncis</div>
-                    <span class="catalog-price-ecer">Rp 26.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Hijau segar, tekstur unik berongga yang crunchy.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Hijau segar, tekstur unik berongga.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 216.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 204.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 180.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Buncis." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Buncis via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-buncis-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Buncis di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Buncis" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/edamame-1.webp" alt="Keripik Edamame" class="catalog-img" loading="lazy" width="300" height="300" 
-                     data-gallery="images/edamame-2.webp,images/edamame-3.webp,images/edamame-4.webp,images/edamame-5.webp,images/edamame-kemasan-1.webp,images/edamame-kemasan-2.webp" onclick="openGallery(this)">
-                
+                <img src="images/edamame-1.webp" alt="Keripik Edamame" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Edamame</div>
-                    <span class="catalog-price-ecer">Rp 26.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Kacang kedelai jepang premium, gurih & sehat.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Kacang kedelai jepang premium.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 216.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 204.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 180.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Edamame." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Edamame via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-edamame-premium-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Edamame di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Edamame" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
@@ -789,172 +646,125 @@
     </div>
 </section>
 
-    <section id="coated" class="category-section">
+<section id="coated" class="category-section">
     <div class="container">
         <h2 class="section-title">💪 Varian Bertempung</h2>
         <div class="catalog-grid">
             
             <div class="catalog-card">
-                <img src="images/gedebog-pisang-1.webp" alt="Keripik Gedebog Pisang" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/gedebog-pisang-1.webp,images/gedebog-pisang-2.webp,images/gedebog-pisang-3.webp,images/gedebog-pisang-4.webp,images/gedebog-pisang-5.webp,images/gedebog-pisang-kemasan-1.webp">
+                <img src="images/gedebog-pisang-1.webp" alt="Keripik Gedebog Pisang" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Gedebog Pisang</div>
-                    <span class="catalog-price-ecer">Rp 15.600 <small>/100gr</small></span>
-                    <p class="product-short-desc">VIRAL! Pelepah pisang disulap jadi keripik gurih.</p>
-                    
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">VIRAL! Pelepah pisang disulap jadi krispi.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 122.400</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 115.600</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 108.800</td></tr>
-                        <tr><td>25kg+</td><td>Rp 102.000</td></tr>
-                    </table>
-                    
-                    <a href="https://wa.me/6285735785319?text=Halo%20Admin%2C%20saya%20mau%20tanya%20Grosir%20Gedebog%20Pisang." class="wa-btn-catalog" aria-label="Tanya Stok Grosir Gedebog Pisang via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-gedebog-pisang-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Gedebog Pisang di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Gedebog" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/jamur-tiram-1.webp" alt="Keripik Jamur Tiram" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/jamur-tiram-1.webp,images/jamur-tiram-2.webp,images/jamur-tiram-3.webp,images/jamur-tiram-4.webp,images/jamur-tiram-5.webp,images/jamur-tiram-6.webp,images/jamur-tiram-kemasan-1.webp">
+                <img src="images/jamur-tiram-1.webp" alt="Keripik Jamur Tiram" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Jamur Tiram</div>
-                    <span class="catalog-price-ecer">Rp 19.600 <small>/100gr</small></span>
-                    <p class="product-short-desc">Best Seller! Rasa gurih umami alami seperti ayam.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Best Seller! Rasa gurih umami alami.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 158.400</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 149.600</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 140.800</td></tr>
-                        <tr><td>25kg+</td><td>Rp 132.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20JamurTiram" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Jamur Tiram via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jamur-tiram-original-renyah-gurih-non-msg-100gr-kiloan-rilldelish" target="_blank" class="storelink-btn" aria-label="Beli Satuan Jamur Tiram di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20JamurTiram" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/jamur-kuping-1.webp" alt="Keripik Jamur Kuping" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/jamur-kuping-1.webp,images/jamur-kuping-2.webp,images/jamur-kuping-3.webp,images/jamur-kuping-4.webp,images/jamur-kuping-5.webp,images/jamur-kuping-6.webp,images/jamur-kuping-7.webp,images/jamur-kuping-kemasan-1.webp">
+                <img src="images/jamur-kuping-1.webp" alt="Keripik Jamur Kuping" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Jamur Kuping</div>
-                    <span class="catalog-price-ecer">Rp 21.200 <small>/100gr</small></span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Tekstur kenyal jadi krispi, unik & sehat.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 172.800</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 163.200</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
-                        <tr><td>25kg+</td><td>Rp 144.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20JamurKuping" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Jamur Kuping via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-jamur-kuping-krispi-original-100gr-kiloan-rilldelish-sehat-non-msg" target="_blank" class="storelink-btn" aria-label="Beli Satuan Jamur Kuping di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20JamurKuping" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/brokoli-1.webp" alt="Keripik Brokoli" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/brokoli-1.webp,images/brokoli-2.webp,images/brokoli-3.webp,images/brokoli-4.webp,images/brokoli-5.webp,images/brokoli-6.webp,images/brokoli-kemasan-1.webp,images/brokoli-kemasan-2.webp">
+                <img src="images/brokoli-1.webp" alt="Keripik Brokoli" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Brokoli</div>
-                    <span class="catalog-price-ecer">Rp 21.200 <small>/100gr</small></span>
-                    <p class="product-short-desc">Sayuran super dalam bentuk krispi. Enak & bergizi.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Sayuran super dalam bentuk krispi.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 172.800</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 163.200</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 153.600</td></tr>
-                        <tr><td>25kg+</td><td>Rp 144.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Brokoli" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Brokoli via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-brokoli-crispy-100gr-rilldelish-cemilan-sehat-diet-anak-susah-makan-sayur" target="_blank" class="storelink-btn" aria-label="Beli Satuan Brokoli di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Brokoli" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
-            
+
             <div class="catalog-card">
-                <img src="images/bunga-kol-1.webp" alt="Keripik Bunga Kol" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/bunga-kol-1.webp,images/bunga-kol-2.webp,images/bunga-kol-3.webp,images/bunga-kol-4.webp,images/bunga-kol-5.webp,images/bunga-kol-6.webp,images/bunga-kol-7.webp,images/bunga-kol-kemasan-1.webp,images/bunga-kol-kemasan-2.webp">
+                <img src="images/bunga-kol-1.webp" alt="Keripik Bunga Kol" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Bunga Kol</div>
-                    <span class="catalog-price-ecer">Rp 22.800 <small>/100gr</small></span>
-                    <p class="product-short-desc">Renyah, gurih, mirip popcorn. Tanpa bau langu.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Renyah, gurih, mirip popcorn.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 187.200</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 176.800</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
-                        <tr><td>25kg+</td><td>Rp 156.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20BungaKol" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bunga Kol via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bunga-kol-krispi-cauliflower-chips-100gr-rilldelish-cemilan-diet-keto" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bunga Kol di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20BungaKol" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/bombay-1.webp" alt="Keripik Bawang Bombay" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/bombay-1.webp,images/bombay-2.webp,images/bombay-3.webp,images/bombay-4.webp,images/bombay-5.webp,images/bombay-6.webp,images/bombay-kemasan-1.webp">
+                <img src="images/bombay-1.webp" alt="Keripik Bawang Bombay" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Bawang Bombay</div>
-                    <span class="catalog-price-ecer">Rp 22.800 <small>/100gr</small></span>
+                    <span class="catalog-price-ecer">Rp -</span>
                     <p class="product-short-desc">Aroma bawang bombay yang khas & manis.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 187.200</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 176.800</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 166.400</td></tr>
-                        <tr><td>25kg+</td><td>Rp 156.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Bombay" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Bombay via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-bawang-bombay-onion-rings-chips-100gr-rilldelish-snack-sehat" target="_blank" class="storelink-btn" aria-label="Beli Satuan Bombay di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Bombay" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/paprika-1.webp" alt="Keripik Paprika" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/paprika-1.webp,images/paprika-2.webp,images/paprika-3.webp.images/paprika-4.webp,images/paprika-5.webp,images/paprika-6.webp,images/paprika-7.webp,images/paprika-kemasan-1.webp">
+                <img src="images/paprika-1.webp" alt="Keripik Paprika" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Paprika</div>
-                    <span class="catalog-price-ecer">Rp 24.400 <small>/100gr</small></span>
-                    <p class="product-short-desc">Rasa unik sedikit pedas manis dengan aroma khas.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Rasa unik sedikit pedas manis.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
-                        <tr><td>25kg+</td><td>Rp 168.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Paprika" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Paprika via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-paprika-asli-renyah-bell-pepper-chips-100gr-rilldelish-cemilan-unik" target="_blank" class="storelink-btn" aria-label="Beli Satuan Paprika di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Paprika" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/cabe-besar-1.webp" alt="Keripik Cabe Besar" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/cabe-besar-1.webp,images/cabe-besar-2.webp,images/cabe-besar-3.webp,images/cabe-besar-4.webp,images/cabe-besar-5.webp,images/cabe-besar-6.webp,images/images/cabe-besar-kemasan-1.webp,cabe-besar-kemasan-2.webp">
+                <img src="images/cabe-besar-1.webp" alt="Keripik Cabe Besar" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Cabe Besar</div>
-                    <span class="catalog-price-ecer">Rp 24.400 <small>/100gr</small></span>
-                    <p class="product-short-desc">Pedas mantap, irisan besar. Berani coba?</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Pedas mantap, irisan besar.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
-                        <tr><td>25kg+</td><td>Rp 168.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20CabeBesar" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Cabe Besar via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-cabe-besar-merah-utuh-red-chili-chips-100gr-rilldelish-pedas-asli" target="_blank" class="storelink-btn" aria-label="Beli Satuan Cabe Besar di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20CabeBesar" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/cabe-rawit-1.webp" alt="Keripik Cabe Rawit" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/cabe-rawit-1.webp,images/cabe-rawit-2.webp,images/cabe-rawit-3.webp,images/cabe-rawit-4.webp,images/cabe-rawit-5.webp,images/cabe-rawit-kemasan-1.webp">
+                <img src="images/cabe-rawit-1.webp" alt="Keripik Cabe Rawit" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Cabe Rawit</div>
-                    <span class="catalog-price-ecer">Rp 24.400 <small>/100gr</small></span>
-                    <p class="product-short-desc">Tantangan pedas! Cabe asli digoreng krispi.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Tantangan pedas! Cabe asli digoreng.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
-                        <tr><td>25kg+</td><td>Rp 168.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20CabeRawit" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Cabe Rawit via WhatsApp">💬 Tanya Stok (Grosir)</a>
-                    <a href="https://grosirkeripiksayur.storelink.id/keripik-cabe-rawit-super-pedas-devil-chili-chips-100gr-rilldelish-snack-ekstrem" target="_blank" class="storelink-btn" aria-label="Beli Satuan Cabe Rawit di Storelink">🛒 Beli Satuan <br> (Bisa COD) ↗</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20CabeRawit" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
@@ -962,134 +772,106 @@
     </div>
 </section>
 
-    <section id="buah" class="category-section">
+<section id="buah" class="category-section">
     <div class="container">
         <h2 class="section-title">🍓 Keripik Buah Murni</h2>
         <div class="catalog-grid">
             
             <div class="catalog-card">
-                <img src="images/nangka-1.webp" alt="Keripik Nangka" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/nangka-1.webp,images/nangka-2.webp,images/nangka-3.webp,images/nangka-4.webp,images/nangka-5.webp,images/nangka-6.webp,images/nangka-kemasan-1.webp">
+                <img src="images/nangka-1.webp" alt="Keripik Nangka" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Nangka</div>
-                    <span class="catalog-price-ecer">Rp 26.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">RAJA OLEH-OLEH! Manis, wangi, & renyah. Kualitas Ekspor.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Manis, wangi, & renyah. Kualitas Ekspor.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 216.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 204.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 192.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 180.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Nangka" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Nangka via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Nangka" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/apel-1.webp" alt="Keripik Apel" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/apel-1.webp,images/apel-2.webp,images/apel-3.webp,images/apel-4.webp,images/apel-5.webp,images/apel-kemasan-1.webp">
+                <img src="images/apel-1.webp" alt="Keripik Apel" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Apel</div>
-                    <span class="catalog-price-ecer">Rp 18.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Ikon Kota Batu. Rasa asam manis segar apel Malang.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Rasa asam manis segar apel Malang.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 120.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Apel" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Apel via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Apel" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/salak-1.webp" alt="Keripik Salak" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/salak-1.webp,images/salak-2.webp,images/salak-3.webp,images/salak-4.webp,images/salak-5.webp,images/salak-6.webp,images/salak-kemasan-1.webp">
+                <img src="images/salak-1.webp" alt="Keripik Salak" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Salak</div>
-                    <span class="catalog-price-ecer">Rp 18.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Rasa unik sepat manis, tekstur padat dan renyah.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Rasa unik sepat manis, tekstur padat.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 120.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Salak" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Salak via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Salak" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/pisang-1.webp" alt="Keripik Pisang" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/pisang-1.webp,images/pisang-2.webp,images/pisang-3.webp,images/pisang-4.webp,images/pisang-5.webp,images/pisang-kemasan-1.webp,images/pisang-kemasan-2.webp">
+                <img src="images/pisang-1.webp" alt="Keripik Pisang" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Pisang</div>
-                    <span class="catalog-price-ecer">Rp 18.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">Manis legit pisang asli, tanpa tambahan gula.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Manis legit pisang asli.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 144.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 136.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 128.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 120.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Pisang" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Pisang via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Pisang" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/strawberry-1.webp" alt="Keripik Strawberry" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/strawberry-1.webp,images/strawberry-2.webp,images/strawberry-3.webp,images/strawberry-4.webp,images/strawberry-01.webp,images/strawberry-02.webp,images/strawberry-03.webp">
+                <img src="images/strawberry-1.webp" alt="Keripik Strawberry" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Strawberry</div>
-                    <span class="catalog-price-ecer">Rp 82.000 <small>/100gr</small></span>
-                    <p class="product-short-desc">PREMIUM! Buah utuh, rasa asam manis meledak. Mewah.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">PREMIUM! Buah utuh, rasa asam manis.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 720.000</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 680.000</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 640.000</td></tr>
-                        <tr><td>25kg+</td><td>Rp 600.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Strawberry" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Strawberry via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Strawberry" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/buah-naga-1.webp" alt="Keripik Buah Naga" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/buah-naga-1.webp,images/buah-naga-2.webp,images/buah-naga-3.webp,images/buah-naga-4.webp,images/buah-naga-kemasan.webp">
+                <img src="images/buah-naga-1.webp" alt="Keripik Buah Naga" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Buah Naga</div>
-                    <span class="catalog-price-ecer">Rp 37.200 <small>/100gr</small></span>
-                    <p class="product-short-desc">Warna ungu eksotis, rasa manis, instagramable.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Warna ungu eksotis, rasa manis.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 316.800</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 299.200</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 281.600</td></tr>
-                        <tr><td>25kg+</td><td>Rp 264.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20BuahNaga" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Buah Naga via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20BuahNaga" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
             <div class="catalog-card">
-                <img src="images/mangga-1.webp" alt="Keripik Mangga" class="catalog-img" loading="lazy" width="300" height="300" onclick="openGallery(this)" data-gallery="images/mangga.webp,images/mangga-detail.webp,images/mangga-kemasan.webp">
+                <img src="images/mangga-1.webp" alt="Keripik Mangga" class="catalog-img" loading="lazy" onclick="openGallery(this)">
                 <div class="catalog-info">
                     <div class="catalog-name">Keripik Mangga</div>
-                    <span class="catalog-price-ecer">Rp 24.400 <small>/100gr</small></span>
-                    <p class="product-short-desc">Harum mangga asli, rasa tropis yang segar.</p>
+                    <span class="catalog-price-ecer">Rp -</span>
+                    <p class="product-short-desc">Harum mangga asli, rasa tropis.</p>
                     <span class="mini-tier-label">Harga Grosir (Per Kg):</span>
-                    <table class="mini-tier-table">
-                        <tr><td>1-4 kg</td><td>Rp 201.600</td></tr>
-                        <tr><td>5-14 kg</td><td>Rp 190.400</td></tr>
-                        <tr><td>15-24 kg</td><td>Rp 179.200</td></tr>
-                        <tr><td>25kg+</td><td>Rp 168.000</td></tr>
-                    </table>
-                    <a href="https://wa.me/6285735785319?text=Info%20Grosir%20Mangga" class="wa-btn-catalog" aria-label="Tanya Stok Grosir Mangga via WhatsApp">Tanya Stok</a>
+                    <table class="mini-tier-table"></table>
+                    <a href="https://wa.me/6285735785319?text=Tanya%20Stok%20Mangga" class="wa-btn-catalog">💬 Tanya Stok</a>
+                    <a href="#" class="storelink-btn">🛒 Beli Satuan</a>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
-        
+    
     <div class="seo-footer-text">
         <div class="container">
             <h3>Pusat Grosir Keripik Sayur & Buah Tangan Pertama di Batu</h3>
@@ -1120,12 +902,12 @@
                     <h3 class="footer-heading">🗺️ Peta Google</h3>
                     <div class="map-container-small">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.60791102221!2d112.52812811083032!3d-7.831255692157205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e787fc3b7339d23%3A0xa193454399aa9ab2!2sPrimafood%20-%20Produsen%20Keripik%20Sayur%20dan%20Buah%20Rilldelish!5e0!3m2!1sid!2sid!4v1764495593611!5m2!1sid!2sid" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.463283232677!2d112.53328221437691!3d-7.846430680145892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788321033230d7%3A0xc3f9a730999557a6!2sPabrik%20Keripik%20Buah%20dan%20Sayur%20Rilldelish%20(Primafood)!5e0!3m2!1sid!2sid!4v1672322343243!5m2!1sid!2sid" 
                             title="Peta Lokasi Primafood Rilldelish" 
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-                    <a href="https://maps.app.goo.gl/J8EMo7VebSzEWAmv9" target="_blank" class="map-link-text">Buka di Google Maps App ↗</a>
+                    <a href="https://maps.app.goo.gl/xxx" target="_blank" class="map-link-text">Buka di Google Maps App ↗</a>
                 </div>
 
                 <div class="footer-col connect-col">
@@ -1184,10 +966,7 @@
     }
 
     function changeSlide(n) {
-        // Logika baru: Cek batas index agar tidak looping
         let newIndex = currentIndex + n;
-        
-        // Hanya update jika index baru berada dalam rentang valid
         if (newIndex >= 0 && newIndex < currentGallery.length) {
             currentIndex = newIndex;
             updateLightboxImage();
@@ -1206,7 +985,6 @@
             captionText.style.display = "block";
             captionText.innerHTML = (currentIndex + 1) + " / " + currentGallery.length;
             
-            // Logic tombol sembunyi jika di ujung
             if (currentIndex === 0) {
                 prevBtn.classList.add('nav-btn-hidden');
             } else {
@@ -1219,12 +997,10 @@
                 nextBtn.classList.remove('nav-btn-hidden');
             }
             
-            // Pastikan display block (kecuali kalau ada class nav-btn-hidden)
             prevBtn.style.display = prevBtn.classList.contains('nav-btn-hidden') ? 'none' : 'block';
             nextBtn.style.display = nextBtn.classList.contains('nav-btn-hidden') ? 'none' : 'block';
 
         } else {
-            // Single image
             captionText.style.display = "none";
             prevBtn.style.display = "none";
             nextBtn.style.display = "none";
@@ -1273,23 +1049,163 @@
     </a>
 </div>
 
-    <script>
-    // SCRIPT PENANDA OTOMATIS KHUSUS HALAMAN KATALOG
-    document.addEventListener("DOMContentLoaded", function() {
-        // 1. Cari semua link yang menuju ke wa.me
-        var allWaLinks = document.querySelectorAll('a[href*="wa.me"]');
+<script>
+    // --- 1. DATA HARGA MODAL ---
+    const DATA_HARGA_MODAL = {
+        "Keripik Sayur": [
+            { nama: "Keripik Bawang Merah", modal: 300000 },
+            { nama: "Keripik Bawang Putih", modal: 300000 },
+            { nama: "Keripik Buncis", modal: 150000 },
+            { nama: "Keripik Edamame", modal: 150000 },
+            { nama: "Keripik Jagung Manis", modal: 120000 },
+            { nama: "Keripik Kentang", modal: 150000 },
+            { nama: "Keripik Kentang Wedges", modal: 160000 },
+            { nama: "Keripik Labu Madu", modal: 120000 },
+            { nama: "Keripik Okra", modal: 250000 },
+            { nama: "Keripik Ubi Madu", modal: 100000 },
+            { nama: "Keripik Ubi Ungu", modal: 100000 },
+            { nama: "Keripik Wortel", modal: 130000 },
+            { nama: "Keripik Salak", modal: 140000 } // Tambahan Salak (Default Asumsi)
+        ],
+        "Varian Bertepung": [
+            { nama: "Keripik Bawang Bombay", modal: 140000 },
+            { nama: "Keripik Brokoli", modal: 150000 },
+            { nama: "Keripik Bunga Kol", modal: 130000 },
+            { nama: "Keripik Cabe Besar", modal: 140000 },
+            { nama: "Keripik Cabe Rawit", modal: 140000 },
+            { nama: "Keripik Gedebog Pisang", modal: 85000 },
+            { nama: "Keripik Jamur Kuping", modal: 120000 },
+            { nama: "Keripik Jamur Tiram", modal: 110000 },
+            { nama: "Keripik Paprika", modal: 140000 }
+        ],
+        "Keripik Buah": [
+            { nama: "Keripik Apel", modal: 125000 },
+            { nama: "Keripik Buah Naga", modal: 220000 },
+            { nama: "Keripik Mangga", modal: 140000 },
+            { nama: "Keripik Nangka", modal: 105000 },
+            { nama: "Keripik Pisang", modal: 90000 },
+            { nama: "Keripik Strawberry", modal: 500000 },
+            { nama: "Keripik Salak", modal: 140000 }
+        ]
+    };
+
+    // --- 2. RESEP MIX ---
+    const MIX_KOMPOSISI = {
+        "MIX Sweet Garden": ["Keripik Labu Madu", "Keripik Ubi Ungu", "Keripik Wortel", "Keripik Buncis", "Keripik Jagung Manis"],
+        "MIX Savory": ["Keripik Brokoli", "Keripik Bawang Bombay", "Keripik Jamur Tiram", "Keripik Jamur Kuping", "Keripik Cabe Besar", "Keripik Paprika"],
+        "MIX Fusion Lengkap": ["Keripik Apel", "Keripik Pisang", "Keripik Nangka", "Keripik Wortel", "Keripik Ubi Ungu", "Keripik Okra"],
+        "MIX Serat Sehat": ["Keripik Gedebog Pisang", "Keripik Okra", "Keripik Ubi Ungu", "Keripik Labu Madu"],
+        "MIX Imun Booster": ["Keripik Strawberry", "Keripik Brokoli", "Keripik Wortel", "Keripik Jamur Tiram"],
+        "MIX Ekstrem Pedas": ["Keripik Cabe Rawit", "Keripik Bawang Merah", "Keripik Paprika", "Keripik Kentang Wedges"]
+    };
+
+    // --- 3. FORMULA HARGA ---
+    const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID')}`;
+
+    function findModalPrice(namaProduk) {
+        // Cari di semua kategori
+        for (let kat in DATA_HARGA_MODAL) {
+            let found = DATA_HARGA_MODAL[kat].find(p => p.nama.toLowerCase() === namaProduk.toLowerCase());
+            if(found) return found.modal;
+        }
+        // Coba partial match jika exact match gagal
+        for (let kat in DATA_HARGA_MODAL) {
+            let found = DATA_HARGA_MODAL[kat].find(p => p.nama.toLowerCase().includes(namaProduk.toLowerCase()));
+            if(found) return found.modal;
+        }
+        return 150000; // Default fallback
+    }
+
+    function hitungHargaJualSatuan(modalPerKg) {
+        let modalPer100g = modalPerKg / 10;
+        let basePrice = modalPer100g + 2000; 
+        let hargaJual = basePrice + (basePrice * 0.60); 
+        return Math.ceil(hargaJual / 100) * 100;
+    }
+
+    function hitungHargaJualMix(namaMix) {
+        const komposisi = MIX_KOMPOSISI[namaMix];
+        if(!komposisi) return 0;
+        let jumlahItem = komposisi.length;
+        let beratPerItem = 100 / jumlahItem; 
+        let totalModalBahan = 0;
+        komposisi.forEach(bahan => {
+            let modalKg = findModalPrice(bahan);
+            let modalPerGram = modalKg / 1000;
+            totalModalBahan += (modalPerGram * beratPerItem);
+        });
+        let basePrice = totalModalBahan + 2000;
+        let hargaJual = basePrice + (basePrice * 0.60);
+        return Math.ceil(hargaJual / 100) * 100;
+    }
+
+    // --- 4. UPDATE DOM HTML ---
+    function updateCatalogPrices() {
+        const allCards = document.querySelectorAll('.catalog-card');
         
-        // 2. Loop setiap tombol
+        allCards.forEach(card => {
+            const nameEl = card.querySelector('.catalog-name');
+            if(!nameEl) return;
+            
+            let productName = nameEl.textContent.trim();
+            let finalPriceEcer = 0;
+
+            // Cek apakah ini produk MIX atau SATUAN
+            if (MIX_KOMPOSISI[productName]) {
+                finalPriceEcer = hitungHargaJualMix(productName);
+            } else {
+                let modal = findModalPrice(productName);
+                finalPriceEcer = hitungHargaJualSatuan(modal);
+            }
+
+            // Update Harga Ecer di Card
+            const priceEl = card.querySelector('.catalog-price-ecer');
+            if(priceEl) {
+                // Simpan text /100gr jika ada
+                priceEl.innerHTML = `${formatCurrency(finalPriceEcer)} <small>/100gr</small>`;
+            }
+
+            // Update Tabel Grosir (Jika ada tabel di card tersebut)
+            const table = card.querySelector('.mini-tier-table');
+            if (table && finalPriceEcer > 0 && !MIX_KOMPOSISI[productName]) { // Mix biasanya gak ada tabel tier di card katalog ini, tapi jaga2
+                let hargaPerKgRetail = finalPriceEcer * 10;
+                
+                let t1 = Math.ceil((hargaPerKgRetail * 0.90)/100)*100; // 10%
+                let t2 = Math.ceil((hargaPerKgRetail * 0.85)/100)*100; // 15%
+                let t3 = Math.ceil((hargaPerKgRetail * 0.80)/100)*100; // 20%
+                let t4 = Math.ceil((hargaPerKgRetail * 0.75)/100)*100; // 25%
+
+                table.innerHTML = `
+                    <tr><td>1-4 kg</td><td>${formatCurrency(t1)}</td></tr>
+                    <tr><td>5-14 kg</td><td>${formatCurrency(t2)}</td></tr>
+                    <tr><td>15-24 kg</td><td>${formatCurrency(t3)}</td></tr>
+                    <tr><td>25kg+</td><td>${formatCurrency(t4)}</td></tr>
+                `;
+            }
+        });
+
+        // Update Promo Borong
+        let totalPromo = 0;
+        for(let k in MIX_KOMPOSISI) totalPromo += hitungHargaJualMix(k);
+        let hargaBorong = Math.ceil((totalPromo * 0.95) / 100) * 100;
+        const promoEl = document.getElementById('price-promo-borong');
+        if(promoEl) promoEl.textContent = formatCurrency(hargaBorong);
+    }
+
+    // Jalankan Saat Halaman Dimuat
+    document.addEventListener("DOMContentLoaded", function() {
+        updateCatalogPrices();
+        
+        // Link WA Helper (yang lama)
+        var allWaLinks = document.querySelectorAll('a[href*="wa.me"]');
         allWaLinks.forEach(function(link) {
             var originalHref = link.getAttribute('href');
-            
-            // Cek apakah link ini sudah punya tanda katalog? Kalau belum, kita tambahkan.
-            // Kode %20%28DARI%20KATALOG%29 artinya: " (DARI KATALOG)"
             if (!originalHref.includes("KATALOG")) {
                 link.setAttribute('href', originalHref + "%20%28DARI%20KATALOG%29");
             }
         });
     });
 </script>
+
 </body>
 </html>
