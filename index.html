@@ -875,25 +875,26 @@
 
     /**
      * =========================================================
-     * BAGIAN 2: RUMUS & LOGIKA UTAMA
+     * BAGIAN 2: RUMUS HARGA & RENDER TABEL
      * =========================================================
      */
     
     // RUMUS HARGA JUAL ECER (Per 100gr)
+    // (Modal/10 + 2000 Packing) + Profit 60%
     function hitungHargaJual(modalPerKg) {
         let modalPer100g = modalPerKg / 10;
         let basePrice = modalPer100g + 2000; 
         let hargaJual = basePrice + (basePrice * 0.60); 
+        // Pembulatan ke atas (kelipatan 100)
         return Math.ceil(hargaJual / 100) * 100;
     }
 
-    // Fungsi Helper Format Rupiah
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID')}`;
 
-    // --- FUNGSI PENTING YANG SEBELUMNYA HILANG: RENDER TABEL ---
+    // --- FUNGSI RENDER TABEL (YANG DIPERBAIKI) ---
     function renderTable(tbodyId, categoryKey) {
         const tbody = document.getElementById(tbodyId);
-        if (!tbody) return; // Stop jika elemen tidak ditemukan
+        if (!tbody) return; 
 
         let html = "";
         const items = DATA_HARGA_MODAL[categoryKey];
@@ -904,18 +905,18 @@
                 let hargaEcer = hitungHargaJual(prod.modal);
                 
                 // 2. Hitung Harga Grosir (Per Kg)
-                // Rumus Grosir: (Harga Ecer - 2000) * Diskon * 10 (karena per kg)
+                // RUMUS BARU: (Harga Ecer * 10) dikurangi Diskon %
                 
-                let dasarGrosir = hargaEcer - 2000; // Potongan 2rb per pcs
+                let hargaPerKgRetail = hargaEcer * 10; 
                 
-                // Tier 1 (10%)
-                let t1 = (dasarGrosir * (1 - 0.10)) * 10;
-                // Tier 2 (15%)
-                let t2 = (dasarGrosir * (1 - 0.15)) * 10;
-                // Tier 3 (20%)
-                let t3 = (dasarGrosir * (1 - 0.20)) * 10;
-                // Tier 4 (25%)
-                let t4 = (dasarGrosir * (1 - 0.25)) * 10;
+                // Tier 1 (10% Off)
+                let t1 = hargaPerKgRetail * (1 - 0.10);
+                // Tier 2 (15% Off)
+                let t2 = hargaPerKgRetail * (1 - 0.15);
+                // Tier 3 (20% Off)
+                let t3 = hargaPerKgRetail * (1 - 0.20);
+                // Tier 4 (25% Off)
+                let t4 = hargaPerKgRetail * (1 - 0.25);
 
                 html += `
                     <tr>
@@ -980,13 +981,21 @@
 
     /**
      * =========================================================
-     * BAGIAN 3: CART & INTERAKSI
+     * BAGIAN 3: CART & INTERAKSI (LOGIKA DISKON BARU)
      * =========================================================
      */
     let productIdCounter = 1;
-    const GROSIR_DISCOUNT_RATES = { 1: 0.10, 5: 0.15, 15: 0.20, 25: 0.25 };
-    const BASE_PRICE_CUT = 2000;
-    const FLASH_SALE_DISCOUNT = 0.05;
+    
+    // PERSENTASE DISKON
+    const GROSIR_DISCOUNT_RATES = { 
+        1: 0.10,  // 10%
+        5: 0.15,  // 15%
+        15: 0.20, // 20%
+        25: 0.25  // 25%
+    };
+    
+    // CONFIG LAIN
+    const FLASH_SALE_DISCOUNT = 0.05; // 5%
     const FLASH_SALE_DURATION = 3600 * 3;
     let isFlashSaleActive = false;
     let flashSaleEndTime;
@@ -1038,6 +1047,7 @@
         return bestDiscount;
     }
 
+    // --- HITUNG TOTAL (DIPERBAIKI) ---
     function calculateTotal() {
         let totalHargaNormal = 0; 
         let totalWeightGrams = 0;
@@ -1079,18 +1089,17 @@
             const hargaEcer = extractPrice(select.value);
             totalHargaNormal += (hargaEcer * qtyPcs);
             
-            let hargaDasar = hargaEcer;
-            if (discType === 'Grosir') {
-                hargaDasar = Math.max(0, hargaEcer - BASE_PRICE_CUT);
-            }
+            // RUMUS BARU: Harga Total Item = (Harga Ecer * Qty) - Diskon Persen
+            // Tidak ada lagi pemotongan harga dasar 2000
             
-            let finalItemPrice = (hargaDasar * qtyPcs) * (1 - globalDiscRate);
+            let itemTotalNormal = hargaEcer * qtyPcs;
+            let finalItemPrice = itemTotalNormal * (1 - globalDiscRate);
+            
             finalGrandTotal += finalItemPrice;
             
             subDisplay.textContent = formatCurrency(finalItemPrice);
             if (globalDiscRate > 0) {
                  let info = ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
-                 if(discType === 'Grosir') info = ` (Potong 2rb + ${(globalDiscRate * 100).toFixed(0)}%)`;
                  subDisplay.textContent += info;
             }
             
@@ -1112,7 +1121,7 @@
         if(tierNote) {
             if(globalDiscRate > 0) {
                 tierNote.textContent = discType === 'Grosir' 
-                    ? `Grosir Tier ${discTier} (Cut Rp2rb + ${(globalDiscRate*100).toFixed(0)}% Off)` 
+                    ? `Grosir Tier ${discTier} (${(globalDiscRate*100).toFixed(0)}% Off)` 
                     : `Flash Sale 5% Off`;
                 tierNote.style.display = 'block';
             } else {
@@ -1122,7 +1131,7 @@
         
         const footerNote = document.getElementById('total-discount-keterangan');
         if(footerNote && discType === 'Grosir') {
-            footerNote.innerHTML = `* HARGA GROSIR AKTIF: Tier ${discTier} (${discRange})<br>* Rumus: (Harga Ecer - Rp 2.000) diskon ${(globalDiscRate*100).toFixed(0)}%.<br>* Belum termasuk ongkir.`;
+            footerNote.innerHTML = `* HARGA GROSIR AKTIF: Tier ${discTier} (${discRange})<br>* Diskon ${(globalDiscRate*100).toFixed(0)}% dari harga ecer.<br>* Belum termasuk ongkir.`;
         } else if (footerNote) {
              footerNote.innerHTML = `* Pesan min. 1 kg untuk harga grosir.<br>* Belum termasuk ongkir.`;
         }
@@ -1197,14 +1206,13 @@
         e.preventDefault();
         const nama = document.getElementById('nama').value;
         const total = document.getElementById('display-grand-total').textContent;
-        // ... (Simpelkan untuk brevity, pakai logika sama seperti sebelumnya)
-        // Pastikan variabel 'message' terbentuk
         
         let details = [];
         document.querySelectorAll('.product-item').forEach(item => {
             const s = item.querySelector('.product-select').value;
             const q = item.querySelector('.product-quantity').value;
-            if(s && q) details.push(`${s} (${q})`);
+            const u = item.querySelector('.unit-select').value;
+            if(s && q) details.push(`${s} (${q} ${u})`);
         });
         
         const msg = `Halo, saya ${nama}. Order: \n${details.join('\n')}\nTotal: ${total}`;
@@ -1218,7 +1226,7 @@
      */
     document.addEventListener('DOMContentLoaded', function() {
         
-        // 1. >>> INI YANG KEMARIN HILANG: PERINTAH PRINT TABEL <<<
+        // 1. PRINT TABEL (Dengan Rumus Baru)
         renderTable('tbody-veggie', 'Keripik Sayur');
         renderTable('tbody-coated', 'Varian Bertepung');
         renderTable('tbody-fruit', 'Keripik Buah');
@@ -1230,7 +1238,7 @@
             firstSelect.addEventListener('change', calculateTotal);
         }
         
-        // 3. Setup Listener Input Pertama
+        // 3. Listener Input Pertama
         const q1 = document.getElementById('jumlah-1');
         if(q1) q1.addEventListener('input', calculateTotal);
         const u1 = document.getElementById('unit-1');
