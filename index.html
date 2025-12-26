@@ -231,11 +231,8 @@
 
   <section id="pricelist" class="single-product-catalog">
     <div class="container" style="text-align: center;">
-        <h2 class="section-title">🛒 Price List Grosir (Update Otomatis)</h2>
-        <p class="section-subtitle">
-            Harga di bawah ini selalu update mengikuti harga pasar terbaru.
-        </p>
-
+        <h2 class="section-title">🛒 Price List Grosir</h2>
+        
         <div class="product-categories" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;">
             <button class="category-btn active" onclick="switchCategory('veggie')">Keripik Sayur</button>
             <button class="category-btn" onclick="switchCategory('coated')">Varian Bertepung</button>
@@ -243,18 +240,18 @@
         </div>
         
         <div id="veggie-list" class="product-list active">
-            <h3 class="catalog-title-green"><span class="emoji">🌿</span> Keripik Sayur Murni</h3>
+            <h3 class="catalog-title-green">🌿 Keripik Sayur Murni</h3>
             <div class="table-scroll">
                 <table class="catalog-table">
                     <thead>
                         <tr>
                             <th rowspan="2">Produk</th>
                             <th style="display:none">Modal</th> 
-                            <th style="background:#e8f5e9; width: 15%;">Jual Ecer</th>
-                            <th style="width: 15%;">Tier 1 (1kg)</th>
-                            <th style="width: 15%;">Tier 2 (5kg)</th>
-                            <th style="width: 15%;">Tier 3 (15kg)</th>
-                            <th style="width: 15%; color:#c62828">Tier 4 (25kg)</th>
+                            <th style="background:#e8f5e9">Jual Ecer</th>
+                            <th>Tier 1 (1kg)</th>
+                            <th>Tier 2 (5kg)</th>
+                            <th>Tier 3 (15kg)</th>
+                            <th>Tier 4 (25kg)</th>
                         </tr>
                         <tr>
                             <th style="display:none">/kg</th>
@@ -265,13 +262,15 @@
                             <th>/kg</th>
                         </tr>
                     </thead>
-                    <tbody id="tbody-veggie"></tbody>
+                    
+                    <tbody id="tbody-veggie"></tbody> 
+                    
                 </table>
             </div>
         </div>
 
         <div id="coated-list" class="product-list" style="display: none;">
-            <h3 class="catalog-title-orange"><span class="emoji">💪</span> Varian Bertepung</h3>
+            <h3 class="catalog-title-orange">💪 Varian Bertepung</h3>
             <div class="table-scroll">
                 <table class="catalog-table">
                     <thead>
@@ -293,13 +292,15 @@
                             <th>/kg</th>
                         </tr>
                     </thead>
+                    
                     <tbody id="tbody-coated"></tbody>
+                    
                 </table>
             </div>
         </div>
 
         <div id="fruit-list" class="product-list" style="display: none;">
-            <h3 class="catalog-title-red"><span class="emoji">🍓</span> Keripik Buah</h3>
+            <h3 class="catalog-title-red">🍓 Keripik Buah</h3>
             <div class="table-scroll">
                 <table class="catalog-table">
                     <thead>
@@ -321,7 +322,9 @@
                             <th>/kg</th>
                         </tr>
                     </thead>
+                    
                     <tbody id="tbody-fruit"></tbody>
+                    
                 </table>
             </div>
         </div>
