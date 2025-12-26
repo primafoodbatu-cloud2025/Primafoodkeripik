@@ -278,13 +278,7 @@
 
         <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #ccc;">
 
-        <h2 class="section-title">🥗 Paket Mix Hemat (100gr)</h2>
-        <p style="margin-bottom:20px">Komposisi: Apel, Pisang, Wortel, Ubi, Buncis (Masing-masing 20gr)</p>
-        
-        <div id="mix-card-container" class="mix-product-grid"></div>
-
-
-        <h2 class="section-title" style="margin-top:50px">📋 Price List Grosir Lengkap</h2>
+        <h2 class="section-title">📋 Price List Grosir Lengkap</h2>
         
         <div class="product-categories" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;">
             <button class="category-btn active" onclick="switchCategory('veggie')">Keripik Sayur</button>
@@ -330,112 +324,95 @@
     </div>
 </section>
     
-    <section id="mix-package" class="package-mix" style="background-color: #fbc02d; padding: 40px 0;">
+<section id="mix-package" class="package-mix" style="background-color: #fbc02d; padding: 40px 0;">
     <div class="container" style="text-align: center;">
         <h2 class="section-title" style="color: #3e2723;">🔥 6 Pilihan Paket Mix Rilldelish (Kemasan 100gr)</h2>
         <p class="section-subtitle" style="color: #4e342e; font-weight: 500;">Pilih kombinasi favoritmu! Harga transparan sesuai isi per gram.</p>
         
-        <div class="mix-grid-wrapper">
+        <div class="mix-grid-wrapper" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
             
-            <div class="mix-card" style="flex: 1; min-width: 300px; border-top: 4px solid #2e7d32; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="mix-card" style="border-top: 4px solid #2e7d32; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <img src="images/mix-sweet-garden.webp" alt="Keripik Sayur Sweet Garden" class="product-img" loading="lazy" width="300" height="240">
-                
-                <h3 style="color: #2e7d32;">MIX SWEET GARDEN</h3>
+                <h3 style="color: #2e7d32; margin-top:10px;">MIX SWEET GARDEN</h3>
                 <p style="font-size: 0.9em; font-style: italic; color: #666;">(Manis Alami Sayur)</p>
-                <p style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp 22.000</p>
+                <p id="price-mix-sweet" style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp -</p>
                 <p class="mix-desc" style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; min-height: 60px;">
                     <strong>Isi:</strong> Labu Madu, Ubi Ungu, Wortel, Buncis, Jagung Manis.
                 </p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="MIX Sweet Garden (100gr) - Rp 22.000" style="margin-top: 0; width: 100%; font-size: 0.9em;">Pesan Sweet Garden</a>
+                <button class="cta-button mix-order-btn" data-mix-key="MIX Sweet Garden">Pesan Ini</button>
             </div>
 
-            <div class="mix-card" style="flex: 1; min-width: 300px; border-top: 4px solid #e65100; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="mix-card" style="border-top: 4px solid #e65100; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <img src="images/mix-savory.webp" alt="Keripik Sayur Mix Savory" class="product-img" loading="lazy" width="300" height="240">
-                <h3 style="color: #e65100;">MIX SAVORY</h3>
+                <h3 style="color: #e65100; margin-top:10px;">MIX SAVORY</h3>
                 <p style="font-size: 0.9em; font-style: italic; color: #666;">(Rempah & Jamur)</p>
-                <p style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp 23.500</p>
+                <p id="price-mix-savory" style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp -</p>
                 <p class="mix-desc" style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; min-height: 60px;">
                     <strong>Isi:</strong> Brokoli, Bombay, Jamur Tiram, Jamur Kuping, Cabe, Paprika.
                 </p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="MIX Savory (100gr) - Rp 23.500" style="margin-top: 0; width: 100%; font-size: 0.9em;">Pesan Mix Savory</a>
+                <button class="cta-button mix-order-btn" data-mix-key="MIX Savory">Pesan Ini</button>
             </div>
 
-            <div class="mix-card" style="flex: 1; min-width: 300px; border-top: 4px solid #c2185b; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="mix-card" style="border-top: 4px solid #c2185b; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <img src="images/mix-fusion.webp" alt="Keripik Buah Sayur Mix Fusion" class="product-img" loading="lazy" width="300" height="240">
-
-                <h3 style="color: #c2185b;">MIX FUSION</h3>
+                <h3 style="color: #c2185b; margin-top:10px;">MIX FUSION</h3>
                 <p style="font-size: 0.9em; font-style: italic; color: #666;">(Buah & Sayur)</p>
-                <p style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp 23.500</p>
+                <p id="price-mix-fusion" style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp -</p>
                 <p class="mix-desc" style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; min-height: 60px;">
                     <strong>Isi:</strong> Apel, Pisang, Nangka, Wortel, Ubi Ungu, Okra.
                 </p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="MIX Fusion (100gr) - Rp 23.500" style="margin-top: 0; width: 100%; font-size: 0.9em;">Pesan Mix Fusion</a>
+                <button class="cta-button mix-order-btn" data-mix-key="MIX Fusion Lengkap">Pesan Ini</button>
             </div>
 
-            <div class="mix-card" style="flex: 1; min-width: 300px; border-top: 4px solid #795548; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="mix-card" style="border-top: 4px solid #795548; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <img src="images/mix-serat.webp" alt="Paket Keripik Serat Tinggi" class="product-img" loading="lazy" width="300" height="240">
-
-                <h3 style="color: #795548;">MIX SERAT</h3>
+                <h3 style="color: #795548; margin-top:10px;">MIX SERAT</h3>
                 <p style="font-size: 0.9em; font-style: italic; color: #666;">(Pencernaan Sehat)</p>
-                <p style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp 22.500</p>
+                <p id="price-mix-serat" style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp -</p>
                 <p class="mix-desc" style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; min-height: 60px;">
                     <strong>Isi:</strong> Gedebog Pisang, Okra, Ubi Ungu, Labu Madu.
                 </p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix Serat (100gr) - Rp 22.500" style="margin-top: 0; width: 100%; font-size: 0.9em;">Pesan Paket Serat</a>
+                <button class="cta-button mix-order-btn" data-mix-key="MIX Serat Sehat">Pesan Ini</button>
             </div>
 
-            <div class="mix-card" style="flex: 1; min-width: 300px; border-top: 4px solid #1976d2; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="mix-card" style="border-top: 4px solid #1976d2; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <img src="images/mix-imun-boster.webp" alt="Paket Keripik Imun Booster" class="product-img" loading="lazy" width="300" height="240">
-
-                <h3 style="color: #1976d2;">MIX IMUN BOOSTER</h3>
+                <h3 style="color: #1976d2; margin-top:10px;">MIX IMUN BOOSTER</h3>
                 <p style="font-size: 0.9em; font-style: italic; color: #666;">(Premium Vitamin)</p>
-                <p style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp 32.500</p>
+                <p id="price-mix-imun" style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp -</p>
                 <p class="mix-desc" style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; min-height: 60px;">
                     <strong>Isi:</strong> Strawberry, Brokoli, Wortel, Jamur Tiram.
                 </p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Imun Booster (100gr) - Rp 32.500" style="margin-top: 0; width: 100%; font-size: 0.9em;">Pesan Paket Imun</a>
+                <button class="cta-button mix-order-btn" data-mix-key="MIX Imun Booster">Pesan Ini</button>
             </div>
 
-            <div class="mix-card" style="flex: 1; min-width: 300px; border-top: 4px solid #d32f2f; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div class="mix-card" style="border-top: 4px solid #d32f2f; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <img src="images/mix-extrem.webp" alt="Paket Keripik Pedas Ekstrem" class="product-img" loading="lazy" width="300" height="240">
-
-                <h3 style="color: #d32f2f;">MIX EKSTREM</h3>
+                <h3 style="color: #d32f2f; margin-top:10px;">MIX EKSTREM</h3>
                 <p style="font-size: 0.9em; font-style: italic; color: #666;">(Pedas & Gurih)</p>
-                <p style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp 30.500</p>
+                <p id="price-mix-ekstrem" style="font-weight: 800; font-size: 1.6em; color: #c62828; margin: 10px 0;">Rp -</p>
                 <p class="mix-desc" style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; min-height: 60px;">
                     <strong>Isi:</strong> Cabe Rawit, Bawang Merah, Paprika, Kentang Wedges.
                 </p>
-                <a href="#order-form" class="cta-button mix-order-btn" data-product-name="Paket Mix Ekstrem (100gr) - Rp 30.500" style="margin-top: 0; width: 100%; font-size: 0.9em;">Pesan Paket Ekstrem</a>
+                <button class="cta-button mix-order-btn" data-mix-key="MIX Ekstrem Pedas">Pesan Ini</button>
             </div>
 
         </div>
         
-        <div class="promo-horizontal-card">
-    <div class="promo-left">
-        <img src="images/paket-borong.webp" alt="Promo Borong Semua" loading="lazy">
-    </div>
-    <div class="promo-right">
-        <h3 class="promo-title">🔥 PROMO "BORONG SEMUA" 🔥</h3>
-        <p class="promo-desc">
-            Penasaran semua rasa? Ambil paket komplit! <br>
-            <strong>1 bungkus tiap varian</strong> (Total 6 Bungkus / 600gr).
-        </p>
-        <div class="promo-price-box">
-            <div style="text-align: right; line-height: 1.2;">
-                <p style="font-size: 0.85em; color: #444; margin: 0;">Normal:</p>
-                <s style="color: #444; font-size: 0.9em; font-weight: 600;">Rp 154.500</s>
-            </div>
-            <div style="text-align: left; border-left: 2px solid #bbb; padding-left: 15px;">
-                <p style="font-size: 2em; font-weight: 800; color: #c62828; margin: 0; line-height: 1;">Rp 146.800</p>
-                <p style="font-size: 0.8em; color: #1b5e20; font-weight: 800; margin: 2px 0 0 0;">(Lebih Hemat 5%)</p>
+        <div class="promo-horizontal-card" style="background: #fff; padding: 20px; margin-top: 30px; border-radius: 12px; border: 2px dashed #c62828;">
+            <div class="promo-right">
+                <h3 class="promo-title">🔥 PROMO "BORONG SEMUA" (6 VARIAN) 🔥</h3>
+                <div class="promo-price-box">
+                    <div style="text-align: center;">
+                        <p style="font-size: 2em; font-weight: 800; color: #c62828; margin: 0; line-height: 1;" id="price-promo-borong">Rp -</p>
+                        <p style="font-size: 0.8em; color: #1b5e20; font-weight: 800; margin: 2px 0 0 0;">(Lebih Hemat 5%)</p>
+                    </div>
+                </div>
+                <button class="cta-button mix-order-btn" data-mix-key="PROMO BORONG SEMUA" style="margin-top:15px; width:auto; padding: 10px 30px;">
+                    AMBIL PROMO (600gr) 🛒
+                </button>
             </div>
         </div>
-        <a href="#order-form" class="cta-button mix-order-btn" 
-           data-product-name="PROMO BORONG SEMUA (6 Paket / 600gr) - Rp 146.800">
-           AMBIL PROMO (600gr) 🛒
-        </a>
-    </div>
-</div>
     </div>
 </section>
 
@@ -831,13 +808,7 @@
     </footer>
 
     <script>
-    /**
-     * =========================================================
-     * BAGIAN 1: DATABASE HARGA MODAL & RESEP MIX
-     * =========================================================
-     */
-    
-    // 1. DATA HARGA MODAL PER KG (Update disini jika harga pasar naik)
+    // --- 1. DATABASE HARGA MODAL ---
     const DATA_HARGA_MODAL = {
         "Keripik Sayur": [
             { nama: "Keripik Bawang Merah", modal: 300000 },
@@ -874,36 +845,28 @@
         ]
     };
 
-    // 2. RESEP PAKET MIX (TENTUKAN KOMPOSISINYA DISINI)
-    // Cukup tulis nama produknya (harus mirip dengan database di atas).
-    // Sistem akan otomatis membagi berat 100gr dengan jumlah item.
+    // --- 2. RESEP MIX (KOMPOSISI UNTUK RUMUS) ---
     const MIX_KOMPOSISI = {
-        "MIX Sweet Garden": ["Keripik Ubi Madu", "Keripik Ubi Ungu", "Keripik Pisang"], // 3 item @33gr
-        "MIX Savory": ["Keripik Wortel", "Keripik Buncis", "Keripik Kentang", "Keripik Jagung Manis"], // 4 item @25gr
-        "MIX Serat Sehat": ["Keripik Okra", "Keripik Buncis", "Keripik Wortel"], 
-        "MIX Ekstrem Pedas": ["Keripik Cabe Besar", "Keripik Cabe Rawit", "Keripik Paprika", "Keripik Bawang Merah"],
-        "MIX Fusion Lengkap": ["Keripik Apel", "Keripik Pisang", "Keripik Wortel", "Keripik Ubi Madu", "Keripik Buncis", "Keripik Nangka"], // 6 item @16.6gr
-        "MIX Imun Booster": ["Keripik Brokoli", "Keripik Bawang Putih", "Keripik Jamur Tiram"]
+        "MIX Sweet Garden": ["Keripik Labu Madu", "Keripik Ubi Ungu", "Keripik Wortel", "Keripik Buncis", "Keripik Jagung Manis"],
+        "MIX Savory": ["Keripik Brokoli", "Keripik Bawang Bombay", "Keripik Jamur Tiram", "Keripik Jamur Kuping", "Keripik Cabe Besar", "Keripik Paprika"],
+        "MIX Fusion Lengkap": ["Keripik Apel", "Keripik Pisang", "Keripik Nangka", "Keripik Wortel", "Keripik Ubi Ungu", "Keripik Okra"],
+        "MIX Serat Sehat": ["Keripik Gedebog Pisang", "Keripik Okra", "Keripik Ubi Ungu", "Keripik Labu Madu"],
+        "MIX Imun Booster": ["Keripik Strawberry", "Keripik Brokoli", "Keripik Wortel", "Keripik Jamur Tiram"],
+        "MIX Ekstrem Pedas": ["Keripik Cabe Rawit", "Keripik Bawang Merah", "Keripik Paprika", "Keripik Kentang Wedges"]
     };
 
-    /**
-     * =========================================================
-     * BAGIAN 2: LOGIKA PENETAPAN HARGA
-     * =========================================================
-     */
+    // --- 3. FUNGSI HITUNG HARGA ---
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID')}`;
 
-    // Helper: Cari Harga Modal per Kg berdasarkan nama
     function findModalPrice(namaProduk) {
         for (let kat in DATA_HARGA_MODAL) {
             let found = DATA_HARGA_MODAL[kat].find(p => p.nama.toLowerCase().includes(namaProduk.toLowerCase()));
             if(found) return found.modal;
         }
-        console.warn(`Harga modal untuk ${namaProduk} tidak ditemukan, pakai default 150rb.`);
-        return 150000; // Fallback jika salah ketik nama
+        return 150000; 
     }
 
-    // 1. Hitung Harga Satuan
+    // Rumus Satuan: (Modal/10 + 2000) + 60%
     function hitungHargaJualSatuan(modalPerKg) {
         let modalPer100g = modalPerKg / 10;
         let basePrice = modalPer100g + 2000; 
@@ -911,149 +874,62 @@
         return Math.ceil(hargaJual / 100) * 100;
     }
 
-    // 2. Hitung Harga MIX (Berdasarkan Komposisi)
+    // RUMUS MIX: (Total Modal Bahan 100gr + 2000) + 60%
     function hitungHargaJualMix(namaMix) {
         const komposisi = MIX_KOMPOSISI[namaMix];
         if(!komposisi) return 0;
 
         let jumlahItem = komposisi.length;
-        let beratPerItem = 100 / jumlahItem; // 100gr dibagi rata
+        let beratPerItem = 100 / jumlahItem; 
         let totalModalBahan = 0;
 
         komposisi.forEach(bahan => {
             let modalKg = findModalPrice(bahan);
             let modalPerGram = modalKg / 1000;
-            let biayaBahanIni = modalPerGram * beratPerItem;
-            totalModalBahan += biayaBahanIni;
+            totalModalBahan += (modalPerGram * beratPerItem);
         });
 
-        // Rumus: (Total Modal Bahan + 2000 Packing) + 60% Profit
         let basePrice = totalModalBahan + 2000;
         let hargaJual = basePrice + (basePrice * 0.60);
-
         return Math.ceil(hargaJual / 100) * 100;
     }
 
-    // 3. Generate List Produk Lengkap (Satuan + Mix)
-    function getReadyProductList() {
-        let options = [];
-        
-        // A. Masukkan Produk Satuan
-        for (let kategori in DATA_HARGA_MODAL) {
-            DATA_HARGA_MODAL[kategori].forEach(produk => {
-                let harga = hitungHargaJualSatuan(produk.modal);
-                options.push({
-                    label: `${produk.nama} - ${formatCurrency(harga)}`,
-                    value: harga, // Simpan harga murni untuk sorting
-                    name: produk.nama
-                });
-            });
-        }
-
-        // B. Masukkan Produk Mix (Loop dari Resep)
-        for (let namaMix in MIX_KOMPOSISI) {
-            let harga = hitungHargaJualMix(namaMix);
-            options.push({
-                label: `${namaMix} - ${formatCurrency(harga)}`,
-                value: harga,
-                name: namaMix
-            });
-        }
-        
-        // Sortir opsi agar rapi (Opsional, saat ini urut by insert)
-        return options;
-    }
-    const GLOBAL_PRODUCT_LIST = getReadyProductList();
-
-    /**
-     * =========================================================
-     * BAGIAN 3: RENDER TAMPILAN (GRID & TABEL)
-     * =========================================================
-     */
-    
-    // Render Kartu MIX (Grid 6 Kolom)
-    function renderMixCards() {
-        const container = document.getElementById('mix-card-container');
-        if(!container) return;
-
-        let html = "";
-        let count = 0;
-        
-        // Loop Resep Mix
-        for (let namaMix in MIX_KOMPOSISI) {
-            let harga = hitungHargaJualMix(namaMix);
-            // Ambil gambar dummy atau sesuaikan nama file
-            let imgName = "mix-1.webp"; 
-            
-            html += `
-            <div class="mix-card">
-                <div class="mix-img-wrapper">
-                    <img src="images/${imgName}" class="mix-img" alt="${namaMix}">
-                </div>
-                <div class="mix-info">
-                    <div class="mix-name" style="font-size:0.85em; min-height:35px;">${namaMix}</div>
-                    <div class="mix-price" style="font-size:0.9em;">${formatCurrency(harga)}</div>
-                    <button class="bs-btn" style="margin-top:5px; font-size:0.7em; padding:4px;" 
-                        onclick="document.getElementById('paket-1').value='${namaMix} - ${formatCurrency(harga)}'; document.getElementById('order-form').scrollIntoView();">
-                        + Beli
-                    </button>
-                </div>
-            </div>`;
-            count++;
-        }
-        container.innerHTML = html;
-        
-        // Update Harga Paket MIX Fusion di Best Seller (Jika ada)
-        const displayMix = document.getElementById('price-mix-display');
-        if(displayMix) {
-            // Ambil harga Mix Fusion Lengkap sebagai sampel
-            let h = hitungHargaJualMix("MIX Fusion Lengkap");
-            displayMix.textContent = formatCurrency(h);
-        }
-    }
-
-    // Render Tabel Harga
+    // --- 4. RENDER TABEL & UPDATE KARTU MANUAL ---
     function renderTable(tbodyId, categoryKey) {
         const tbody = document.getElementById(tbodyId);
         if (!tbody) return; 
-
         let html = "";
         const items = DATA_HARGA_MODAL[categoryKey];
-
         if (items) {
             items.forEach(prod => {
                 let hargaEcer = hitungHargaJualSatuan(prod.modal);
-                
-                // Rumus Tier: (Harga Ecer x 10) - Diskon Persen
                 let hargaPerKg = hargaEcer * 10;
-                let t1 = hargaPerKg * (1 - 0.10);
-                let t2 = hargaPerKg * (1 - 0.15);
-                let t3 = hargaPerKg * (1 - 0.20);
-                let t4 = hargaPerKg * (1 - 0.25);
+                let t1 = hargaPerKg * 0.90; // Diskon 10%
+                let t2 = hargaPerKg * 0.85; // Diskon 15%
+                let t3 = hargaPerKg * 0.80; // Diskon 20%
+                let t4 = hargaPerKg * 0.75; // Diskon 25%
 
-                html += `
-                    <tr>
-                        <td style="text-align:left; font-weight:600;">${prod.nama}</td>
-                        <td style="display:none">${prod.modal}</td>
-                        <td style="background-color:rgba(0,0,0,0.03); font-weight:bold;">${formatCurrency(hargaEcer)}</td>
-                        <td>${formatCurrency(t1)}</td>
-                        <td>${formatCurrency(t2)}</td>
-                        <td>${formatCurrency(t3)}</td>
-                        <td style="font-weight:bold; color:#d32f2f;">${formatCurrency(t4)}</td>
-                    </tr>
-                `;
+                html += `<tr>
+                    <td style="text-align:left; font-weight:600;">${prod.nama}</td>
+                    <td style="display:none">${prod.modal}</td>
+                    <td style="background-color:rgba(0,0,0,0.03); font-weight:bold;">${formatCurrency(hargaEcer)}</td>
+                    <td>${formatCurrency(t1)}</td>
+                    <td>${formatCurrency(t2)}</td>
+                    <td>${formatCurrency(t3)}</td>
+                    <td style="font-weight:bold; color:#d32f2f;">${formatCurrency(t4)}</td>
+                </tr>`;
 
-                // Update Harga Best Seller
-                if(prod.nama.includes("Wortel")) {
-                    const el = document.getElementById('price-wortel-display');
+                // Update Harga Best Seller (Dicocokkan dengan Nama)
+                if(prod.nama === "Keripik Wortel") {
+                    let el = document.getElementById('price-wortel-display');
                     if(el) el.textContent = formatCurrency(hargaEcer);
                 }
-                if(prod.nama.includes("Nangka")) {
-                    const el = document.getElementById('price-nangka-display');
+                if(prod.nama === "Keripik Nangka") {
+                    let el = document.getElementById('price-nangka-display');
                     if(el) el.textContent = formatCurrency(hargaEcer);
                 }
-                if(prod.nama.includes("Bawang Putih")) {
-                    const el = document.getElementById('price-bawang-display');
+                if(prod.nama === "Keripik Bawang Putih") {
+                    let el = document.getElementById('price-bawang-display');
                     if(el) el.textContent = formatCurrency(hargaEcer);
                 }
             });
@@ -1061,17 +937,70 @@
         tbody.innerHTML = html;
     }
 
-    /**
-     * =========================================================
-     * BAGIAN 4: CART & DISKON SYSTEM
-     * =========================================================
-     */
+    function updateMixCardPrices() {
+        // Update Mix Fusion di Best Seller
+        let fusionPrice = hitungHargaJualMix("MIX Fusion Lengkap");
+        let fusionDisplay = document.getElementById('price-mix-display');
+        if(fusionDisplay) fusionDisplay.textContent = formatCurrency(fusionPrice);
+
+        // Update Paket Mix di Section Bawah
+        const map = {
+            'price-mix-sweet': 'MIX Sweet Garden',
+            'price-mix-savory': 'MIX Savory',
+            'price-mix-fusion': 'MIX Fusion Lengkap',
+            'price-mix-serat': 'MIX Serat Sehat',
+            'price-mix-imun': 'MIX Imun Booster',
+            'price-mix-ekstrem': 'MIX Ekstrem Pedas'
+        };
+
+        let totalPromo = 0;
+        for (let id in map) {
+            let key = map[id];
+            let harga = hitungHargaJualMix(key);
+            let el = document.getElementById(id);
+            if(el) el.textContent = formatCurrency(harga);
+            totalPromo += harga;
+        }
+
+        // Update Promo Borong
+        let elPromo = document.getElementById('price-promo-borong');
+        if(elPromo) {
+            let hargaPromo = Math.ceil((totalPromo * 0.95) / 100) * 100; // Diskon 5%
+            elPromo.textContent = formatCurrency(hargaPromo);
+        }
+    }
+
+    // --- 5. DATA GLOBAL UTK DROPDOWN ---
+    function getReadyProductList() {
+        let options = [];
+        // Satuan
+        for (let kategori in DATA_HARGA_MODAL) {
+            DATA_HARGA_MODAL[kategori].forEach(produk => {
+                let harga = hitungHargaJualSatuan(produk.modal);
+                options.push({ label: `${produk.nama} - ${formatCurrency(harga)}`, value: harga });
+            });
+        }
+        // Mix
+        for (let namaMix in MIX_KOMPOSISI) {
+            let harga = hitungHargaJualMix(namaMix);
+            options.push({ label: `${namaMix} - ${formatCurrency(harga)}`, value: harga });
+        }
+        // Promo
+        let totalPromo = 0;
+        for(let k in MIX_KOMPOSISI) totalPromo += hitungHargaJualMix(k);
+        let hargaBorong = Math.ceil((totalPromo * 0.95) / 100) * 100;
+        options.push({ label: `PROMO BORONG SEMUA (600gr) - ${formatCurrency(hargaBorong)}`, value: hargaBorong });
+
+        return options;
+    }
+    const GLOBAL_PRODUCT_LIST = getReadyProductList();
+
+
+    // --- 6. LOGIKA CART & CALCULATE ---
     let productIdCounter = 1;
     const GROSIR_DISCOUNT_RATES = { 1: 0.10, 5: 0.15, 15: 0.20, 25: 0.25 };
     const FLASH_SALE_DISCOUNT = 0.05; 
     let isFlashSaleActive = false;
-    let flashSaleEndTime;
-    const WEIGHT_PER_PCS_GRAMS = 100; 
 
     function extractPrice(value) {
         if (!value) return 0;
@@ -1093,29 +1022,6 @@
         });
     }
 
-    function getMaxDiscount(totalWeightKg) {
-        let bestDiscount = { rate: 0, type: 'None', tier: null, range: null };
-        for (const threshold in GROSIR_DISCOUNT_RATES) {
-            if (totalWeightKg >= parseInt(threshold)) {
-                const rate = GROSIR_DISCOUNT_RATES[threshold];
-                if (rate > bestDiscount.rate) {
-                    bestDiscount.rate = rate;
-                    bestDiscount.type = 'Grosir';
-                    const t = parseInt(threshold);
-                    const tierNum = (t == 1) ? 1 : (t == 5) ? 2 : (t == 15) ? 3 : 4;
-                    let maxKg = (t == 1) ? 4 : (t == 5) ? 14 : (t == 15) ? 24 : 'ke atas';
-                    bestDiscount.range = (maxKg === 'ke atas') ? '25 kg+' : `${t}-${maxKg} kg`;
-                    bestDiscount.tier = tierNum;
-                }
-            }
-        }
-        if (isFlashSaleActive && bestDiscount.rate === 0 && totalWeightKg > 0) {
-             bestDiscount.rate = FLASH_SALE_DISCOUNT;
-             bestDiscount.type = 'Flash Sale';
-        }
-        return bestDiscount;
-    }
-
     function calculateTotal() {
         let totalHargaNormal = 0; 
         let totalWeightGrams = 0;
@@ -1123,33 +1029,35 @@
         
         const productItems = document.querySelectorAll('#product-list-container .product-item');
         
-        // Loop 1: Hitung Berat
         productItems.forEach(item => {
             const select = item.querySelector('.product-select');
             const qtyInput = item.querySelector('.product-quantity');
             const unitInput = item.querySelector('.unit-select');
-            
             const qtyVal = parseFloat(qtyInput.value) || 0;
             const unit = unitInput.value;
             let qtyPcs = (unit === 'kg') ? qtyVal * 10 : qtyVal;
             
             // Berat per pcs (Asumsi Mix juga 100gr)
             let weightPerPcs = 100; 
+            if(select.value.includes("PROMO BORONG")) weightPerPcs = 600;
+
             totalWeightGrams += (weightPerPcs * qtyPcs);
-            
-            if(item.querySelector('.display-item-weight')) 
-                item.querySelector('.display-item-weight').textContent = `${weightPerPcs} g`;
+            if(item.querySelector('.display-item-weight')) item.querySelector('.display-item-weight').textContent = `${weightPerPcs} g`;
         });
 
         const totalWeightKg = Math.floor(totalWeightGrams / 1000);
-        const { rate: globalDiscRate, type: discType, tier: discTier, range: discRange } = getMaxDiscount(totalWeightKg);
+        
+        // Logika Diskon
+        let globalDiscRate = 0;
+        for (const threshold in GROSIR_DISCOUNT_RATES) {
+            if (totalWeightKg >= parseInt(threshold)) globalDiscRate = Math.max(globalDiscRate, GROSIR_DISCOUNT_RATES[threshold]);
+        }
 
-        // Loop 2: Hitung Harga
         productItems.forEach(item => {
             const select = item.querySelector('.product-select');
             const qtyInput = item.querySelector('.product-quantity');
-            const unitInput = item.querySelector('.unit-select');
             const subDisplay = item.querySelector('.display-subtotal');
+            const unitInput = item.querySelector('.unit-select');
             
             const qtyVal = parseFloat(qtyInput.value) || 0;
             const unit = unitInput.value;
@@ -1158,79 +1066,22 @@
             const hargaEcer = extractPrice(select.value);
             totalHargaNormal += (hargaEcer * qtyPcs);
             
-            // Harga Ecer x Qty x (1 - Diskon)
             let finalItemPrice = (hargaEcer * qtyPcs) * (1 - globalDiscRate);
             finalGrandTotal += finalItemPrice;
             
             subDisplay.textContent = formatCurrency(finalItemPrice);
-            if (globalDiscRate > 0) {
-                 subDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
-            }
-            
-            const rmvBtn = item.querySelector('.remove-product-btn');
-            if(productItems.length > 1) rmvBtn.style.display = 'inline-block';
-            else rmvBtn.style.display = 'none';
+            if (globalDiscRate > 0) subDisplay.textContent += ` (${(globalDiscRate * 100).toFixed(0)}% OFF)`;
+
+            const rmv = item.querySelector('.remove-product-btn');
+            if(productItems.length > 1) rmv.style.display = 'inline-block'; else rmv.style.display = 'none';
         });
 
-        // Update Struk
+        document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         document.getElementById('display-normal-price').textContent = formatCurrency(totalHargaNormal);
         document.getElementById('display-discount-amount').textContent = formatCurrency(totalHargaNormal - finalGrandTotal);
-        document.getElementById('display-grand-total').textContent = formatCurrency(finalGrandTotal);
         
-        const weightText = totalWeightGrams >= 1000 ? `${(totalWeightGrams/1000).toFixed(2)} kg` : `${totalWeightGrams} g`;
-        document.getElementById('display-total-weight').textContent = weightText;
-        
-        const tierNote = document.getElementById('discount-tier-note');
-        if(tierNote) {
-            if(globalDiscRate > 0) {
-                tierNote.textContent = discType === 'Grosir' 
-                    ? `Grosir Tier ${discTier} (${(globalDiscRate*100).toFixed(0)}% Off)` 
-                    : `Flash Sale 5% Off`;
-                tierNote.style.display = 'block';
-            } else {
-                tierNote.style.display = 'none';
-            }
-        }
-
-        const footerNote = document.getElementById('total-discount-keterangan');
-        if(footerNote && discType === 'Grosir') {
-            footerNote.innerHTML = `* HARGA GROSIR AKTIF: Tier ${discTier} (${discRange})<br>* Diskon ${(globalDiscRate*100).toFixed(0)}% dari harga ecer.`;
-        } else if (footerNote) {
-             footerNote.innerHTML = `* Pesan min. 1 kg untuk harga grosir.`;
-        }
-    }
-
-    // Timer Flash Sale
-    function startCountdownTimer() {
-        const timerElement = document.getElementById('countdown-timer');
-        const bannerElement = document.getElementById('flash-sale-banner');
-        
-        const storedEndTime = localStorage.getItem('flashSaleEndTime');
-        if (storedEndTime && parseInt(storedEndTime) > Date.now()) {
-            flashSaleEndTime = parseInt(storedEndTime);
-        } else {
-            flashSaleEndTime = Date.now() + FLASH_SALE_DURATION * 1000;
-            localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
-        }
-
-        function updateTimer() {
-            const now = Date.now();
-            const distance = flashSaleEndTime - now;
-            if (distance < 0) {
-                flashSaleEndTime = Date.now() + FLASH_SALE_DURATION * 1000;
-                localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
-            }
-            isFlashSaleActive = true;
-            if (bannerElement) bannerElement.style.display = 'block';
-
-            const h = Math.floor(distance / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
-            if (timerElement) timerElement.textContent = `${h}:${m}:${s}`;
-            
-            setTimeout(updateTimer, 1000);
-        }
-        updateTimer();
+        const wText = totalWeightGrams >= 1000 ? `${(totalWeightGrams/1000).toFixed(2)} kg` : `${totalWeightGrams} g`;
+        document.getElementById('display-total-weight').textContent = wText;
     }
 
     // Add Product
@@ -1258,7 +1109,6 @@
         container.appendChild(newItem);
     }
 
-    // WA Sender
     function sendWhatsAppOrder(e) {
         e.preventDefault();
         const nama = document.getElementById('nama').value;
@@ -1274,32 +1124,38 @@
         window.open(`https://api.whatsapp.com/send?phone=6285735785319&text=${encodeURIComponent(msg)}`);
     }
 
-    /**
-     * =========================================================
-     * INITIALIZE (EKSEKUSI SAAT LOAD)
-     * =========================================================
-     */
+    // --- EXECUTE ---
     document.addEventListener('DOMContentLoaded', function() {
-        // 1. Render Tabel
         renderTable('tbody-veggie', 'Keripik Sayur');
         renderTable('tbody-coated', 'Varian Bertepung');
         renderTable('tbody-fruit', 'Keripik Buah');
         
-        // 2. Render Kartu Mix (Grid)
-        renderMixCards();
+        updateMixCardPrices(); // PENTING: Update harga di kartu manual mix
 
-        // 3. Listener
-        const firstSelect = document.getElementById('paket-1');
-        if(firstSelect) { populateSelectOptions(firstSelect); firstSelect.addEventListener('change', calculateTotal); }
-        const q1 = document.getElementById('jumlah-1'); if(q1) q1.addEventListener('input', calculateTotal);
-        const u1 = document.getElementById('unit-1'); if(u1) u1.addEventListener('change', calculateTotal);
-        const addBtn = document.getElementById('add-product-btn'); if(addBtn) addBtn.addEventListener('click', addProductItem);
-        const waForm = document.getElementById('whatsappForm'); if(waForm) waForm.addEventListener('submit', sendWhatsAppOrder);
+        const s1 = document.getElementById('paket-1'); if(s1) { populateSelectOptions(s1); s1.addEventListener('change', calculateTotal); }
+        document.getElementById('jumlah-1').addEventListener('input', calculateTotal);
+        document.getElementById('unit-1').addEventListener('change', calculateTotal);
+        document.getElementById('add-product-btn').addEventListener('click', addProductItem);
+        document.getElementById('whatsappForm').addEventListener('submit', sendWhatsAppOrder);
         
-        startCountdownTimer();
+        // Listener Tombol Pesan di Kartu Manual
+        document.querySelectorAll('.mix-order-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                let mixName = this.getAttribute('data-mix-key');
+                let select = document.getElementById('paket-1');
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].text.includes(mixName)) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+                calculateTotal();
+                document.getElementById('order-form').scrollIntoView({behavior:'smooth'});
+            });
+        });
+
         calculateTotal();
 
-        // Switch Category Function
         window.switchCategory = function(cat) {
             document.querySelectorAll('.product-list').forEach(l => l.style.display = 'none');
             document.getElementById(cat + '-list').style.display = 'block';
