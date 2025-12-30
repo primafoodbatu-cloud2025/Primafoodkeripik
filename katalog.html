@@ -466,7 +466,7 @@
                 <div class="promo-price-box">
                     <div style="text-align: right; line-height: 1.2;">
                         <p style="font-size: 0.85em; color: #444; margin: 0;">Normal:</p>
-                        <s style="color: #444; font-size: 0.9em; font-weight: 600;">Rp 154.500</s>
+                        <s style="color: #444; font-size: 0.9em; font-weight: 600;" id="price-promo-normal">Rp -</s>
                     </div>
                     <div style="text-align: left; border-left: 2px solid #bbb; padding-left: 15px;">
                         <p style="font-size: 2em; font-weight: 800; color: #c62828; margin: 0; line-height: 1;" id="price-promo-borong">Rp -</p>
@@ -1107,6 +1107,7 @@
             { nama: "Keripik Ubi Madu", modal: 100000 },
             { nama: "Keripik Ubi Ungu", modal: 100000 },
             { nama: "Keripik Wortel", modal: 130000 },
+            { nama: "Keripik Salak", modal: 140000 } 
         ],
         "Varian Bertepung": [
             { nama: "Keripik Bawang Bombay", modal: 140000 },
@@ -1124,10 +1125,10 @@
             { nama: "Keripik Buah Naga", modal: 220000 },
             { nama: "Keripik Mangga", modal: 140000 },
             { nama: "Keripik Nanas", modal: 135000 },
-            { nama: "Keripik Nangka", modal: 145000 },
+            { nama: "Keripik Nangka", modal: 105000 },
             { nama: "Keripik Pisang", modal: 90000 },
-            { nama: "Keripik Salak", modal: 125000 },
-            { nama: "Keripik Strawberry", modal: 500000 },
+            { nama: "Keripik Salak", modal: 125000 }, 
+            { nama: "Keripik Strawberry", modal: 500000 }
         ]
     };
 
@@ -1141,21 +1142,19 @@
         "MIX Ekstrem Pedas": ["Keripik Cabe Rawit", "Keripik Bawang Merah", "Keripik Paprika", "Keripik Kentang Wedges"]
     };
 
-    // --- 3. FORMULA HARGA ---
+    // --- 3. HELPER FUNCTIONS ---
     const formatCurrency = (num) => `Rp ${num.toLocaleString('id-ID')}`;
 
     function findModalPrice(namaProduk) {
-        // Cari di semua kategori
         for (let kat in DATA_HARGA_MODAL) {
             let found = DATA_HARGA_MODAL[kat].find(p => p.nama.toLowerCase() === namaProduk.toLowerCase());
             if(found) return found.modal;
         }
-        // Coba partial match jika exact match gagal
         for (let kat in DATA_HARGA_MODAL) {
             let found = DATA_HARGA_MODAL[kat].find(p => p.nama.toLowerCase().includes(namaProduk.toLowerCase()));
             if(found) return found.modal;
         }
-        return 150000; // Default fallback
+        return 150000; 
     }
 
     function hitungHargaJualSatuan(modalPerKg) {
@@ -1181,7 +1180,7 @@
         return Math.ceil(hargaJual / 100) * 100;
     }
 
-    // --- 4. UPDATE DOM HTML ---
+    // --- 4. UPDATE DOM HTML (FINAL & BENAR) ---
     function updateCatalogPrices() {
         const allCards = document.querySelectorAll('.catalog-card');
         
@@ -1192,7 +1191,6 @@
             let productName = nameEl.textContent.trim();
             let finalPriceEcer = 0;
 
-            // Cek apakah ini produk MIX atau SATUAN
             if (MIX_KOMPOSISI[productName]) {
                 finalPriceEcer = hitungHargaJualMix(productName);
             } else {
@@ -1200,18 +1198,14 @@
                 finalPriceEcer = hitungHargaJualSatuan(modal);
             }
 
-            // Update Harga Ecer di Card
             const priceEl = card.querySelector('.catalog-price-ecer');
             if(priceEl) {
-                // Simpan text /100gr jika ada
                 priceEl.innerHTML = `${formatCurrency(finalPriceEcer)} <small>/100gr</small>`;
             }
 
-            // Update Tabel Grosir (Jika ada tabel di card tersebut)
             const table = card.querySelector('.mini-tier-table');
-            if (table && finalPriceEcer > 0 && !MIX_KOMPOSISI[productName]) { // Mix biasanya gak ada tabel tier di card katalog ini, tapi jaga2
+            if (table && finalPriceEcer > 0 && !MIX_KOMPOSISI[productName]) { 
                 let hargaPerKgRetail = finalPriceEcer * 10;
-                
                 let t1 = Math.ceil((hargaPerKgRetail * 0.90)/100)*100; // 10%
                 let t2 = Math.ceil((hargaPerKgRetail * 0.85)/100)*100; // 15%
                 let t3 = Math.ceil((hargaPerKgRetail * 0.80)/100)*100; // 20%
@@ -1226,19 +1220,26 @@
             }
         });
 
-        // Update Promo Borong
-        let totalPromo = 0;
-        for(let k in MIX_KOMPOSISI) totalPromo += hitungHargaJualMix(k);
-        let hargaBorong = Math.ceil((totalPromo * 0.95) / 100) * 100;
+        // === UPDATE PROMO BORONG (FINAL) ===
+        let totalPromoNormal = 0;
+        
+        for(let k in MIX_KOMPOSISI) {
+            totalPromoNormal += hitungHargaJualMix(k);
+        }
+        
+        let hargaBorongDiskon = Math.ceil((totalPromoNormal * 0.95) / 100) * 100;
+
+        const normalEl = document.getElementById('price-promo-normal');
+        if(normalEl) normalEl.textContent = formatCurrency(totalPromoNormal);
+
         const promoEl = document.getElementById('price-promo-borong');
-        if(promoEl) promoEl.textContent = formatCurrency(hargaBorong);
+        if(promoEl) promoEl.textContent = formatCurrency(hargaBorongDiskon);
     }
 
-    // Jalankan Saat Halaman Dimuat
+    // --- 5. INITIALIZE ---
     document.addEventListener("DOMContentLoaded", function() {
         updateCatalogPrices();
         
-        // Link WA Helper (yang lama)
         var allWaLinks = document.querySelectorAll('a[href*="wa.me"]');
         allWaLinks.forEach(function(link) {
             var originalHref = link.getAttribute('href');
