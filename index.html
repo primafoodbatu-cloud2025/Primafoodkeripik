@@ -62,6 +62,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=5.7">
 
     <script>
@@ -101,33 +102,85 @@
   <header class="hero-section">
     <div class="container">
         
-        <div class="hero-grid-wrapper">
+        <div class="hero-top-logo">
+            <img src="images/logo-rilldelish.webp" alt="Rilldelish Logo">
+        </div>
+
+        <div class="hero-slider">
             
-            <div class="hero-text-col">
-                <h1 class="hero-title">PUSAT KULAKAN & PABRIK KERIPIK BUAH SAYUR BATU</h1>
-                <h2 class="hero-subtitle">Supplier Tangan Pertama. Harga Pabrik Termurah untuk Reseller & Agen.</h2>
-                <p style="font-size: 1.1em; margin-top: 15px;">Langsung dari Produsen (Tanpa Perantara). Kualitas Premium, Tanpa MSG, Siap Kirim Bal-balan.</p>
-                
-                <div class="hero-cta-group">
-                    <a href="katalog.html" class="cta-button" style="background-color: #e65100; min-width: 200px;">📚 LIHAT KATALOG GROSIR</a>
-                    <a href="#order-form" class="cta-button" style="background-color: #2e7d32; min-width: 200px;">🛒 PESAN SEKARANG ⚡</a>
+            <div class="hero-slide active">
+                <div class="hero-grid-wrapper">
+                    <div class="hero-text-col">
+                        <h1 class="hero-title">Pusat Kulakan <span class="highlight-text">Keripik Buah & Sayur</span> Batu</h1>
+                        <p class="hero-desc">Langsung dari Pabrik. Tanpa Perantara. Kualitas Premium Tanpa MSG.</p>
+                        <a href="katalog.html" target="_blank" class="btn-luxury">
+                            LIHAT KATALOG GROSIR ➔
+                        </a>
+                    </div>
+                    <div class="hero-img-col">
+                        <img src="images/produk-mix-hero.webp" alt="Keripik Buah Sayur Mix" class="hero-product-img">
+                    </div>
                 </div>
             </div>
 
-            <div class="hero-img-col">
-                <img src="images/logo-rilldelish.webp" alt="Logo Grosir Rilldelish" class="hero-logo-img">
+            <div class="hero-slide">
+                <div class="hero-grid-wrapper">
+                    <div class="hero-text-col">
+                        <h1 class="hero-title">Varian <span class="highlight-text color-green">Sayur Murni</span> Sehat</h1>
+                        <p class="hero-desc">Wortel, Buncis, Brokoli, Okra. Diproses Vacuum Frying suhu rendah.</p>
+                        <a href="katalog.html" target="_blank" class="btn-luxury">
+                            LIHAT KATALOG GROSIR ➔
+                        </a>
+                    </div>
+                    <div class="hero-img-col">
+                        <img src="images/produk-sayur-hero.webp" alt="Keripik Sayur Rilldelish" class="hero-product-img">
+                    </div>
+                </div>
             </div>
-            
+
+            <div class="hero-slide">
+                <div class="hero-grid-wrapper">
+                    <div class="hero-text-col">
+                        <h1 class="hero-title">Aneka <span class="highlight-text color-orange">Keripik Buah</span> Asli</h1>
+                        <p class="hero-desc">Apel, Nangka, Salak, Nanas, Mangga. Manis alami tanpa pemanis buatan.</p>
+                        <a href="katalog.html" target="_blank" class="btn-luxury">
+                            LIHAT KATALOG GROSIR ➔
+                        </a>
+                    </div>
+                    <div class="hero-img-col">
+                        <img src="images/produk-buah-hero.webp" alt="Keripik Buah Rilldelish" class="hero-product-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-slide">
+                <div class="hero-grid-wrapper">
+                    <div class="hero-text-col">
+                        <h1 class="hero-title">Olahan <span class="highlight-text color-red">Keripik Bertepung</span></h1>
+                        <p class="hero-desc">Jamur, Usus, Kulit, dan varian crispy lainnya. Renyah & Gurih.</p>
+                        <a href="katalog.html" target="_blank" class="btn-luxury">
+                            LIHAT KATALOG GROSIR ➔
+                        </a>
+                    </div>
+                    <div class="hero-img-col">
+                        <img src="images/produk-tepung-hero.webp" alt="Keripik Crispy Rilldelish" class="hero-product-img">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
         </div>
 
         <div class="business-desc">
-            <p style="margin: 0 0 10px 0;">
-                Mencari <strong>Produsen Keripik Sayur & Buah</strong> untuk dijual lagi? Anda berada di tempat yang tepat. Kami melayani pemesanan <strong>Partai Besar</strong> dengan sistem diskon bertingkat.
-            </p>
-            <hr style="border-top: 1px dashed #999; opacity: 0.3; margin: 10px auto;">
-            <p style="margin: 0; font-size: 0.95em;">
-                <strong>✅ DIPERCAYA SEBAGAI SUPPLIER UTAMA</strong> oleh pusat oleh-oleh raksasa di Kota Batu, Malang, Jogja, & Denpasar seperti: <br>
-                <span style="font-style: italic; color: #2E7D32; font-weight: 600;">Strudel Malang, Brawijaya Batu, Paradise Point, Deduwa, HC Putra, Buah Tangan, Java, Lapis Tugu, dll.</span>
+            <p style="margin: 0; font-size: 0.9em;">
+                <strong>✅ DIPERCAYA SEBAGAI SUPPLIER UTAMA:</strong> <br>
+                <span style="font-style: italic; color: #2E7D32;">Strudel Malang, Brawijaya Batu, Paradise Point, Deduwa, Java, dll.</span>
             </p>
         </div>
 
