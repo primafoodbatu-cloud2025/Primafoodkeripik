@@ -395,7 +395,7 @@ section { padding: 80px 0; width: 100%; position: relative; }
 }
 
 /* =========================================
-   HERO SECTION 2.0 (GRID SYSTEM)
+   HERO SECTION UPDATE (FIX TEXT & GAMBAR BESAR)
    ========================================= */
 
 .hero-section {
@@ -403,7 +403,6 @@ section { padding: 80px 0; width: 100%; position: relative; }
     padding: 30px 0 50px 0;
     position: relative;
     overflow: hidden;
-    /* Pastikan tinggi section stabil */
     min-height: 550px; 
     display: flex;
     flex-direction: column;
@@ -425,7 +424,6 @@ section { padding: 80px 0; width: 100%; position: relative; }
 
 .hero-slide {
     display: none;
-    /* Mencegah layout bergeser saat animasi */
     width: 100%; 
 }
 
@@ -439,50 +437,60 @@ section { padding: 80px 0; width: 100%; position: relative; }
     to {opacity: 1; transform: translateY(0);}
 }
 
-/* --- GRID LAYOUT UTAMA --- */
+/* --- GRID LAYOUT --- */
 .hero-grid-wrapper {
     display: flex;
-    align-items: center; /* Vertikal center */
+    align-items: center; 
     justify-content: space-between;
-    gap: 40px; /* Jarak antar kolom */
+    gap: 20px; /* Jarak antar kolom kiri dan kanan */
     width: 100%;
 }
 
-/* 1. KOLOM KIRI (TEKS) - DIKUNCI LEBARNYA */
+/* 1. KOLOM TEKS (Dikecilkan sedikit agar gambar punya ruang lebih luas) */
 .hero-text-col {
-    flex: 0 0 45%; /* Fix lebar 45% dari container, tidak akan menyempit */
-    max-width: 45%;
+    flex: 0 0 40%; /* Lebar 40% */
+    max-width: 40%;
     text-align: left;
-    padding-right: 10px;
 }
 
-/* Typography Rapih */
+/* Typography Title */
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5em; /* Ukuran font disesuaikan agar tidak terlalu besar */
-    line-height: 1.2; /* Jarak antar baris judul */
+    font-size: 2.6em;
+    line-height: 1.3;
     color: #2c3e50;
     margin-bottom: 15px;
     letter-spacing: -0.5px;
 }
 
-.hero-desc {
-    font-size: 1.1em;
-    line-height: 1.6; /* Jarak antar baris deskripsi lebih lega */
-    color: #555;
-    margin-bottom: 30px;
-    max-width: 100%;
+/* --- PERBAIKAN: HIGHLIGHT TEXT (Agar terbaca jelas) --- */
+.highlight-text {
+    /* Reset efek gradient lama */
+    background: none; 
+    -webkit-text-fill-color: initial;
+    
+    /* Style Baru: Kotak Solid Tulisan Putih */
+    display: inline-block;
+    background-color: #d35400; /* Default Orange */
+    color: #ffffff !important; /* Tulisan Putih Wajib */
+    padding: 0 10px; /* Jarak dalam kotak */
+    border-radius: 6px;
+    line-height: 1.4; /* Agar tinggi kotak pas */
+    margin: 0 5px; /* Jarak kiri kanan */
 }
 
-.highlight-text {
-    background: linear-gradient(90deg, #c0392b, #d35400);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
+/* Warna Kotak per Varian */
+.highlight-text.color-green { background-color: #1b5e20; } /* Hijau Tua */
+.highlight-text.color-orange { background-color: #e67e22; } /* Orange */
+.highlight-text.color-red { background-color: #c0392b; }    /* Merah */
+
+
+.hero-desc {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
 }
-.highlight-text.color-green { background: linear-gradient(90deg, #1b5e20, #2ecc71); }
-.highlight-text.color-orange { background: linear-gradient(90deg, #e67e22, #f1c40f); }
-.highlight-text.color-red { background: linear-gradient(90deg, #c0392b, #e74c3c); }
 
 /* Tombol Compact */
 .btn-luxury {
@@ -505,29 +513,30 @@ section { padding: 80px 0; width: 100%; position: relative; }
     box-shadow: 0 8px 20px rgba(27, 94, 32, 0.3);
 }
 
-/* 2. KOLOM KANAN (GRID GAMBAR) - DIKUNCI LEBARNYA */
+/* 2. KOLOM GAMBAR (Grid Diperbesar & Dirapatkan) */
 .hero-img-grid {
-    flex: 0 0 50%; /* Fix lebar 50% */
-    max-width: 50%;
+    flex: 0 0 58%; /* Lebar diperbesar jadi 58% */
+    max-width: 58%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
-    grid-template-rows: repeat(2, 1fr);    /* 2 Baris */
-    gap: 15px; /* Jarak antar foto */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    
+    /* JARAK RAPAT (Sesuai Request) */
+    gap: 8px; 
 }
 
-/* Style Tiap Gambar */
+/* Style Gambar */
 .grid-img {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Memaksa gambar jadi KOTAK (Square) */
-    object-fit: cover;   /* Memotong gambar agar pas di kotak */
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;   
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    background-color: #fff; /* Placeholder kalau gambar loading */
     transition: transform 0.3s ease;
 }
 
 .grid-img:hover {
-    transform: scale(1.02); /* Efek zoom sedikit saat hover */
+    transform: scale(1.02);
 }
 
 /* Dots & Trust */
@@ -552,26 +561,27 @@ section { padding: 80px 0; width: 100%; position: relative; }
    ========================================= */
 @media (max-width: 768px) {
     .hero-grid-wrapper {
-        flex-direction: column-reverse; /* Gambar di atas, Teks di bawah */
+        flex-direction: column-reverse;
         gap: 25px;
     }
     
-    /* Reset Lebar untuk HP */
     .hero-text-col, .hero-img-grid {
         flex: 0 0 100%; 
         max-width: 100%;
-        padding-right: 0;
         text-align: center;
     }
 
     .hero-img-grid {
-        gap: 10px;
-        padding: 0 10px; /* Sedikit padding pinggir di HP */
+        gap: 6px; /* Sangat rapat di HP */
+        padding: 0 5px;
+    }
+
+    .highlight-text {
+        display: inline-block;
+        margin-bottom: 5px; /* Agar tidak dempet di HP jika teks turun */
     }
 
     .hero-title { font-size: 1.8em; margin-bottom: 10px; }
     .hero-desc { font-size: 0.95em; margin-bottom: 20px; }
-    
-    /* Logo tengah */
     .hero-top-logo { text-align: center; }
 }
