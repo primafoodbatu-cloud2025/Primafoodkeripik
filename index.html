@@ -63,7 +63,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.7">
+    <link rel="stylesheet" href="style.css?v=5.8">
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -1341,5 +1341,47 @@
         <span class="float-wa-text">Hubungi Admin</span>
     </a>
 </div>
+
+    <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Fungsi untuk navigasi manual jika user klik dots
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    // Fungsi Utama Slider
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("hero-slide");
+        let dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        
+        // Sembunyikan semua slide
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+            slides[i].classList.remove("active");
+        }
+        
+        // Matikan semua dots
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        
+        // Tampilkan slide yang aktif
+        slides[slideIndex-1].style.display = "block";  
+        slides[slideIndex-1].classList.add("active");
+        dots[slideIndex-1].className += " active";
+    }
+
+    // Auto Slide (Ganti setiap 5 detik)
+    setInterval(function() {
+        slideIndex++;
+        showSlides(slideIndex);
+    }, 5000); 
+</script>
 </body>
 </html>
