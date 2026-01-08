@@ -395,245 +395,95 @@ section { padding: 80px 0; width: 100%; position: relative; }
 }
 
 /* =========================================
-   HERO SECTION 3.0 (STACKED CARDS & FIXED ALIGNMENT)
+   UPDATE: TUMPUKAN GAMBAR RAPAT (CLUSTERED)
    ========================================= */
 
-.hero-section {
-    background: #f4f1ea; 
-    padding: 40px 0 60px 0;
-    position: relative;
-    overflow: hidden;
-    min-height: 600px; /* Tinggi sedikit ditambah agar tumpukan gambar muat */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.hero-top-logo img {
-    width: 80px;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 30px;
-    display: block; /* Memastikan logo block agar margin berlaku */
-}
-
-/* Slider Wrapper */
-.hero-slider {
-    position: relative;
-    width: 100%;
-}
-
-.hero-slide {
-    display: none;
-    width: 100%; 
-}
-
-.hero-slide.active {
-    display: block;
-    animation: fadeEffect 0.8s ease-in-out;
-}
-
-@keyframes fadeEffect {
-    from {opacity: 0; transform: translateY(15px);} 
-    to {opacity: 1; transform: translateY(0);}
-}
-
-/* --- GRID LAYOUT --- */
-.hero-grid-wrapper {
-    display: flex;
-    align-items: center; /* Vertikal Center */
-    justify-content: space-between; /* Jarak maksimal antara teks dan gambar */
-    gap: 10px;
-    width: 100%;
-    padding: 0 10px; /* Padding safety kiri kanan */
-}
-
-/* 1. KOLOM TEKS (FIXED ALIGNMENT) */
-.hero-text-col {
-    flex: 0 0 40%; /* Lebar fix 40% */
-    max-width: 40%;
-    
-    /* MEMAKSA PERATAAN KIRI */
-    text-align: left !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Memaksa item flex ke kiri */
-    justify-content: center;
-}
-
-/* Typography */
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8em;
-    line-height: 1.25;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    text-align: left; /* Double check */
-    width: 100%;
-}
-
-.highlight-text {
-    display: inline-block;
-    background-color: #d35400;
-    color: #ffffff !important;
-    padding: 2px 12px;
-    border-radius: 6px;
-    margin: 0 5px 5px 0; /* Margin sedikit biar rapi kalau turun baris */
-}
-.highlight-text.color-green { background-color: #1b5e20; }
-.highlight-text.color-orange { background-color: #e67e22; }
-.highlight-text.color-red { background-color: #c0392b; }
-
-.hero-desc {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 30px;
-    text-align: left;
-    width: 100%;
-}
-
-/* Tombol Compact */
-.btn-luxury {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #1b5e20;
-    color: #fff !important;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.85em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.25);
-    transition: all 0.3s;
-}
-.btn-luxury:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.35);
-}
-
-/* 2. KOLOM GAMBAR (STACKING CARDS / TUMPUKAN) */
+/* Container Gambar Kanan */
 .hero-img-stack {
-    flex: 0 0 55%; /* Area gambar lebar */
+    flex: 0 0 55%;
     max-width: 55%;
     position: relative;
-    height: 400px; /* Tinggi fix agar gambar absolute bisa diatur */
-    /* Agar tumpukan gambar berada di tengah area kanannya */
-    display: flex; 
+    height: 450px; /* Tinggi ditambah sedikit agar gambar besar muat */
+    display: flex;
     align-items: center;
     justify-content: center;
+    /* Pastikan tidak ada overflow yang terpotong */
+    perspective: 1000px; 
 }
 
-/* Style Dasar Gambar Kartu */
+/* Style Dasar Kartu - PUSAT DI TENGAH */
 .img-card {
-    position: absolute; /* Kunci penumpukan */
-    width: 60%; /* Ukuran gambar BESAR (60% dari container kanan) */
+    position: absolute;
+    width: 75%; /* UKURAN GAMBAR DIPERBESAR */
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 20px;
-    border: 5px solid #fff; /* Border putih agar pemisah jelas saat numpuk */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Bayangan mewah */
-    transition: transform 0.4s ease;
+    border: 6px solid #fff; /* Border dipertebal */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Bayangan lebih tebal */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
+    
+    /* KUNCI: Posisikan titik pusat gambar tepat di tengah container */
+    top: 50%;
+    left: 50%;
 }
 
+/* Hover Effect: Zoom & Lurus */
 .img-card:hover {
-    z-index: 10 !important; /* Saat dihover dia naik ke paling atas */
-    transform: scale(1.1) rotate(0deg) !important; /* Jadi lurus dan besar */
+    z-index: 50 !important;
+    transform: translate(-50%, -50%) scale(1.15) rotate(0deg) !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
-/* POSISI TUMPUKAN ACAK (KARTU REMI) */
+/* POSISI TUMPUKAN "NGUMPUL" DI TENGAH
+   Rumus: translate(-50%, -50%) adalah titik tengah murni.
+   Kita ubah % nya sedikit-sedikit untuk menggeser.
+*/
 
-/* Kartu 1 (Paling Belakang - Kiri Atas) */
+/* Kartu 1 (Paling Belakang - Geser Kiri Atas Dikit) */
 .pos-1 {
-    top: 0;
-    left: 5%;
-    transform: rotate(-8deg);
     z-index: 1;
+    /* Geser ke kiri (60%) dan atas (60%) + Putar Kiri */
+    transform: translate(-65%, -60%) rotate(-15deg);
 }
 
-/* Kartu 2 (Tengah Belakang - Kanan Atas) */
+/* Kartu 2 (Tengah Belakang - Geser Kanan Atas Dikit) */
 .pos-2 {
-    top: 10px;
-    right: 5%;
-    transform: rotate(6deg);
     z-index: 2;
+    /* Geser ke kanan (35%) dan atas (58%) + Putar Kanan */
+    transform: translate(-35%, -58%) rotate(10deg);
 }
 
-/* Kartu 3 (Depan Kiri - Bawah) */
+/* Kartu 3 (Depan Kiri - Geser Bawah Dikit) */
 .pos-3 {
-    bottom: 0;
-    left: 15%;
-    transform: rotate(-4deg);
     z-index: 3;
+    /* Geser ke kiri (60%) dan bawah (40%) + Putar Dikit */
+    transform: translate(-60%, -40%) rotate(-5deg);
 }
 
-/* Kartu 4 (Paling Depan - Kanan Bawah) */
+/* Kartu 4 (Paling Depan - Geser Kanan Bawah Dikit) */
 .pos-4 {
-    bottom: 10px;
-    right: 15%;
-    transform: rotate(3deg);
     z-index: 4;
+    /* Geser ke kanan (40%) dan bawah (45%) + Putar Kanan */
+    transform: translate(-40%, -45%) rotate(8deg);
 }
 
-/* Dots & Trust */
-.slider-dots { text-align: center; margin-top: 30px; margin-bottom: 20px; }
-.dot { cursor: pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #ccc; border-radius: 50%; display: inline-block; transition: 0.3s; }
-.dot.active { background-color: #1b5e20; width: 25px; border-radius: 10px; }
-
-.business-desc {
-    text-align: center;
-    background: #fff;
-    border: 1px dashed #bbb;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 /* =========================================
-   RESPONSIVE (HP)
+   RESPONSIVE HP (Mobile)
    ========================================= */
 @media (max-width: 768px) {
-    .hero-grid-wrapper {
-        flex-direction: column-reverse; /* Gambar atas, Teks bawah */
-        gap: 30px;
+    .hero-img-stack {
+        height: 350px; /* Tinggi di HP */
     }
     
-    /* Reset Teks di HP jadi Center */
-    .hero-text-col {
-        flex: 0 0 100%; 
-        max-width: 100%;
-        text-align: center !important;
-        align-items: center; /* Flex center */
-    }
-
-    .hero-title, .hero-desc {
-        text-align: center;
-    }
-
-    .hero-img-stack {
-        flex: 0 0 100%;
-        max-width: 100%;
-        height: 300px; /* Tinggi dikurangi di HP */
-    }
-
     .img-card {
-        width: 55%; /* Gambar sedikit diperkecil di HP agar muat */
+        width: 65%; /* Di HP jangan terlalu besar agar tidak keluar layar */
         border-width: 3px;
     }
-    
-    /* Posisi di HP dirapatkan */
-    .pos-1 { left: 0; transform: rotate(-6deg); }
-    .pos-2 { right: 0; transform: rotate(5deg); }
-    .pos-3 { left: 10%; bottom: 10px; }
-    .pos-4 { right: 10%; bottom: 20px; }
 
-    .hero-top-logo { 
-        margin-left: auto; 
-        margin-right: auto; 
-    }
+    /* Penyesuaian posisi di HP agar tetap di tengah */
+    .pos-1 { transform: translate(-65%, -60%) rotate(-10deg); }
+    .pos-2 { transform: translate(-35%, -60%) rotate(8deg); }
+    .pos-3 { transform: translate(-60%, -40%) rotate(-5deg); }
+    .pos-4 { transform: translate(-40%, -45%) rotate(5deg); }
 }
