@@ -393,3 +393,120 @@ section { padding: 80px 0; width: 100%; position: relative; }
 @media (min-width: 769px) {
     .mix-card { padding: 10px !important; }
 }
+
+/* =========================================
+   UPDATE HERO SECTION 2 KOLOM (RILLDELISH)
+   ========================================= */
+
+/* Hapus style flex column bawaan lama pada hero-section agar grid bisa jalan */
+.hero-section {
+    display: block !important; /* Reset display */
+    text-align: left; /* Default rata kiri untuk desktop */
+}
+
+/* Wrapper Grid Utama */
+.hero-grid-wrapper {
+    display: flex;
+    flex-direction: row; /* Berjajar ke samping */
+    align-items: center; /* Teks dan Gambar rata tengah secara vertikal */
+    justify-content: space-between;
+    gap: 40px; /* Jarak antara teks dan gambar */
+    margin-bottom: 40px;
+}
+
+/* Kolom Kiri (Teks) */
+.hero-text-col {
+    flex: 1; /* Mengambil sisa ruang yang ada */
+    padding-right: 20px;
+}
+
+/* Kolom Kanan (Gambar) */
+.hero-img-col {
+    flex: 0 0 300px; /* Lebar area gambar fix di 300px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-logo-img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 250px; /* Ukuran Logo di Desktop diperbesar sedikit biar seimbang */
+    object-fit: contain;
+    margin-bottom: 0 !important;
+}
+
+/* Group Tombol */
+.hero-cta-group {
+    margin-top: 30px; 
+    display: flex; 
+    justify-content: flex-start; /* Tombol rata kiri */
+    gap: 15px; 
+    flex-wrap: wrap;
+}
+
+/* Override alignment Text agar Rata Kiri di Desktop */
+.hero-section .hero-title,
+.hero-section .hero-subtitle,
+.hero-section p {
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Style Box Business Desc (Trust Box) */
+.hero-section .business-desc {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 1.05em;
+    color: #333;
+    background-color: #e8f5e9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+    max-width: 100%; /* Full width */
+    text-align: center; /* Isinya tetap rata tengah agar rapi */
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (Layaknya tampilan lama)
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-grid-wrapper {
+        flex-direction: column-reverse; /* Gambar di atas, Teks di bawah */
+        gap: 20px;
+        text-align: center;
+    }
+
+    .hero-text-col {
+        padding-right: 0;
+    }
+
+    /* Kembalikan teks jadi rata tengah di HP */
+    .hero-section .hero-title,
+    .hero-section .hero-subtitle,
+    .hero-section p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Kembalikan tombol jadi rata tengah di HP */
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .hero-img-col {
+        flex: auto;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .hero-logo-img {
+        max-width: 150px; /* Ukuran logo kembali kecil di HP */
+    }
+    
+    .hero-section .business-desc {
+        text-align: center !important;
+    }
+}
