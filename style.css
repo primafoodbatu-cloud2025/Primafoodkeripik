@@ -395,15 +395,15 @@ section { padding: 80px 0; width: 100%; position: relative; }
 }
 
 /* =========================================
-   HERO SECTION UPDATE (FIX TEXT & GAMBAR BESAR)
+   HERO SECTION 3.0 (STACKED CARDS & FIXED ALIGNMENT)
    ========================================= */
 
 .hero-section {
     background: #f4f1ea; 
-    padding: 30px 0 50px 0;
+    padding: 40px 0 60px 0;
     position: relative;
     overflow: hidden;
-    min-height: 550px; 
+    min-height: 600px; /* Tinggi sedikit ditambah agar tumpukan gambar muat */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -413,7 +413,8 @@ section { padding: 80px 0; width: 100%; position: relative; }
     width: 80px;
     height: auto;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    display: block; /* Memastikan logo block agar margin berlaku */
 }
 
 /* Slider Wrapper */
@@ -433,110 +434,147 @@ section { padding: 80px 0; width: 100%; position: relative; }
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0; transform: translateY(10px);} 
+    from {opacity: 0; transform: translateY(15px);} 
     to {opacity: 1; transform: translateY(0);}
 }
 
 /* --- GRID LAYOUT --- */
 .hero-grid-wrapper {
     display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    gap: 20px; /* Jarak antar kolom kiri dan kanan */
+    align-items: center; /* Vertikal Center */
+    justify-content: space-between; /* Jarak maksimal antara teks dan gambar */
+    gap: 10px;
+    width: 100%;
+    padding: 0 10px; /* Padding safety kiri kanan */
+}
+
+/* 1. KOLOM TEKS (FIXED ALIGNMENT) */
+.hero-text-col {
+    flex: 0 0 40%; /* Lebar fix 40% */
+    max-width: 40%;
+    
+    /* MEMAKSA PERATAAN KIRI */
+    text-align: left !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Memaksa item flex ke kiri */
+    justify-content: center;
+}
+
+/* Typography */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    line-height: 1.25;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: left; /* Double check */
     width: 100%;
 }
 
-/* 1. KOLOM TEKS (Dikecilkan sedikit agar gambar punya ruang lebih luas) */
-.hero-text-col {
-    flex: 0 0 40%; /* Lebar 40% */
-    max-width: 40%;
-    text-align: left;
-}
-
-/* Typography Title */
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.6em;
-    line-height: 1.3;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    letter-spacing: -0.5px;
-}
-
-/* --- PERBAIKAN: HIGHLIGHT TEXT (Agar terbaca jelas) --- */
 .highlight-text {
-    /* Reset efek gradient lama */
-    background: none; 
-    -webkit-text-fill-color: initial;
-    
-    /* Style Baru: Kotak Solid Tulisan Putih */
     display: inline-block;
-    background-color: #d35400; /* Default Orange */
-    color: #ffffff !important; /* Tulisan Putih Wajib */
-    padding: 0 10px; /* Jarak dalam kotak */
+    background-color: #d35400;
+    color: #ffffff !important;
+    padding: 2px 12px;
     border-radius: 6px;
-    line-height: 1.4; /* Agar tinggi kotak pas */
-    margin: 0 5px; /* Jarak kiri kanan */
+    margin: 0 5px 5px 0; /* Margin sedikit biar rapi kalau turun baris */
 }
-
-/* Warna Kotak per Varian */
-.highlight-text.color-green { background-color: #1b5e20; } /* Hijau Tua */
-.highlight-text.color-orange { background-color: #e67e22; } /* Orange */
-.highlight-text.color-red { background-color: #c0392b; }    /* Merah */
-
+.highlight-text.color-green { background-color: #1b5e20; }
+.highlight-text.color-orange { background-color: #e67e22; }
+.highlight-text.color-red { background-color: #c0392b; }
 
 .hero-desc {
     font-size: 1.1em;
     line-height: 1.6;
     color: #555;
     margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
 }
 
 /* Tombol Compact */
 .btn-luxury {
     display: inline-block;
-    padding: 10px 25px;
+    padding: 12px 30px;
     background-color: #1b5e20;
     color: #fff !important;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.8em;
+    font-size: 0.85em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 4px 10px rgba(27, 94, 32, 0.2);
+    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.25);
     transition: all 0.3s;
 }
 .btn-luxury:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(27, 94, 32, 0.3);
+    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.35);
 }
 
-/* 2. KOLOM GAMBAR (Grid Diperbesar & Dirapatkan) */
-.hero-img-grid {
-    flex: 0 0 58%; /* Lebar diperbesar jadi 58% */
-    max-width: 58%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    
-    /* JARAK RAPAT (Sesuai Request) */
-    gap: 8px; 
+/* 2. KOLOM GAMBAR (STACKING CARDS / TUMPUKAN) */
+.hero-img-stack {
+    flex: 0 0 55%; /* Area gambar lebar */
+    max-width: 55%;
+    position: relative;
+    height: 400px; /* Tinggi fix agar gambar absolute bisa diatur */
+    /* Agar tumpukan gambar berada di tengah area kanannya */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 }
 
-/* Style Gambar */
-.grid-img {
-    width: 100%;
-    aspect-ratio: 1 / 1; 
-    object-fit: cover;   
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
+/* Style Dasar Gambar Kartu */
+.img-card {
+    position: absolute; /* Kunci penumpukan */
+    width: 60%; /* Ukuran gambar BESAR (60% dari container kanan) */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid #fff; /* Border putih agar pemisah jelas saat numpuk */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Bayangan mewah */
+    transition: transform 0.4s ease;
 }
 
-.grid-img:hover {
-    transform: scale(1.02);
+.img-card:hover {
+    z-index: 10 !important; /* Saat dihover dia naik ke paling atas */
+    transform: scale(1.1) rotate(0deg) !important; /* Jadi lurus dan besar */
+}
+
+/* POSISI TUMPUKAN ACAK (KARTU REMI) */
+
+/* Kartu 1 (Paling Belakang - Kiri Atas) */
+.pos-1 {
+    top: 0;
+    left: 5%;
+    transform: rotate(-8deg);
+    z-index: 1;
+}
+
+/* Kartu 2 (Tengah Belakang - Kanan Atas) */
+.pos-2 {
+    top: 10px;
+    right: 5%;
+    transform: rotate(6deg);
+    z-index: 2;
+}
+
+/* Kartu 3 (Depan Kiri - Bawah) */
+.pos-3 {
+    bottom: 0;
+    left: 15%;
+    transform: rotate(-4deg);
+    z-index: 3;
+}
+
+/* Kartu 4 (Paling Depan - Kanan Bawah) */
+.pos-4 {
+    bottom: 10px;
+    right: 15%;
+    transform: rotate(3deg);
+    z-index: 4;
 }
 
 /* Dots & Trust */
@@ -561,27 +599,41 @@ section { padding: 80px 0; width: 100%; position: relative; }
    ========================================= */
 @media (max-width: 768px) {
     .hero-grid-wrapper {
-        flex-direction: column-reverse;
-        gap: 25px;
+        flex-direction: column-reverse; /* Gambar atas, Teks bawah */
+        gap: 30px;
     }
     
-    .hero-text-col, .hero-img-grid {
+    /* Reset Teks di HP jadi Center */
+    .hero-text-col {
         flex: 0 0 100%; 
         max-width: 100%;
+        text-align: center !important;
+        align-items: center; /* Flex center */
+    }
+
+    .hero-title, .hero-desc {
         text-align: center;
     }
 
-    .hero-img-grid {
-        gap: 6px; /* Sangat rapat di HP */
-        padding: 0 5px;
+    .hero-img-stack {
+        flex: 0 0 100%;
+        max-width: 100%;
+        height: 300px; /* Tinggi dikurangi di HP */
     }
 
-    .highlight-text {
-        display: inline-block;
-        margin-bottom: 5px; /* Agar tidak dempet di HP jika teks turun */
+    .img-card {
+        width: 55%; /* Gambar sedikit diperkecil di HP agar muat */
+        border-width: 3px;
     }
+    
+    /* Posisi di HP dirapatkan */
+    .pos-1 { left: 0; transform: rotate(-6deg); }
+    .pos-2 { right: 0; transform: rotate(5deg); }
+    .pos-3 { left: 10%; bottom: 10px; }
+    .pos-4 { right: 10%; bottom: 20px; }
 
-    .hero-title { font-size: 1.8em; margin-bottom: 10px; }
-    .hero-desc { font-size: 0.95em; margin-bottom: 20px; }
-    .hero-top-logo { text-align: center; }
+    .hero-top-logo { 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
 }
